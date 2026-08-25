@@ -13,6 +13,10 @@ export default defineConfig({
           const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
           request.url = `/services/index.html${query}`;
         }
+        if (request.url === '/enquiry' || request.url === '/enquiry/' || request.url?.startsWith('/enquiry?')) {
+          const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
+          request.url = `/enquiry/index.html${query}`;
+        }
         next();
       });
     },
@@ -42,6 +46,11 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
     if (url.pathname === '/services' || url.pathname === '/services/') url.pathname = '/services/index.html';
+    if (url.pathname === '/enquiry.html') {
+      url.pathname = '/enquiry/';
+      return Response.redirect(url.toString(), 301);
+    }
+    if (url.pathname === '/enquiry' || url.pathname === '/enquiry/') url.pathname = '/enquiry/index.html';
     const response = await env.ASSETS.fetch(new Request(url, request));
     const secured = new Response(response.body, response);
     for (const [name, value] of Object.entries(securityHeaders)) secured.headers.set(name, value);
@@ -63,7 +72,8 @@ export default {
         serverError: resolve(import.meta.dirname, '500.html'),
         services: resolve(import.meta.dirname, 'services/index.html'),
         work: resolve(import.meta.dirname, 'work/index.html'),
-        enquiry: resolve(import.meta.dirname, 'enquiry.html'),
+        enquiry: resolve(import.meta.dirname, 'enquiry/index.html'),
+        enquiryRedirect: resolve(import.meta.dirname, 'enquiry.html'),
         privacy: resolve(import.meta.dirname, 'privacy.html'),
         accessibility: resolve(import.meta.dirname, 'accessibility.html'),
       },
