@@ -63,8 +63,6 @@ export default {
         serverError: resolve(import.meta.dirname, '500.html'),
         services: resolve(import.meta.dirname, 'services/index.html'),
         work: resolve(import.meta.dirname, 'work/index.html'),
-        aspectCaseStudy: resolve(import.meta.dirname, 'case-aspect.html'),
-        dispulseCaseStudy: resolve(import.meta.dirname, 'case-dispulse.html'),
         enquiry: resolve(import.meta.dirname, 'enquiry.html'),
         privacy: resolve(import.meta.dirname, 'privacy.html'),
         accessibility: resolve(import.meta.dirname, 'accessibility.html'),

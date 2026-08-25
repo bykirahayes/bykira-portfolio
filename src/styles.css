@@ -1089,6 +1089,44 @@ header.scrolled { padding: 8px 11px 7px; border-color: rgba(255,255,255,.15); }
 .header-content { gap: 18px; }
 .nav-toggle { display: none; }
 
+.first-project-card {
+  position: relative;
+  isolation: isolate;
+  min-height: 520px;
+  margin-top: 35px;
+  padding: clamp(28px, 5vw, 70px);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: end;
+  gap: 40px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 2px 2px 52px 2px;
+  color: #f4f1ec;
+  background:
+    radial-gradient(circle at 78% 85%, rgba(255,73,49,.42), transparent 34%),
+    linear-gradient(135deg, #111 0%, #070707 72%);
+}
+.first-project-card::after { content: ''; position: absolute; inset: 18px; z-index: -1; border: 1px solid rgba(255,255,255,.055); border-radius: 1px 1px 39px 1px; pointer-events: none; }
+.first-project-label { position: absolute; top: 38px; left: clamp(28px, 5vw, 70px); color: rgba(255,255,255,.42); font: 8px var(--mono); letter-spacing: .16em; }
+.first-project-card h3,
+.first-project-card h2 { margin: 0; font: 400 clamp(46px, 6vw, 88px)/.88 var(--serif); letter-spacing: -.04em; }
+.first-project-card div > p { max-width: 440px; margin: 28px 0 0; color: rgba(255,255,255,.55); font: 15px/1.65 var(--serif); }
+.first-project-card > a { justify-self: end; padding: 14px 18px; border: 1px solid rgba(255,255,255,.34); border-radius: 999px; color: #fff; font: 8px var(--mono); letter-spacing: .08em; text-decoration: none; text-transform: uppercase; transition: .25s ease; }
+.first-project-card > a:hover { border-color: var(--coral-light); background: var(--coral); transform: translateY(-2px); }
+.first-project-card > a span { margin-left: 12px; color: var(--coral-light); }
+.first-project-orbit { position: absolute; z-index: -1; width: 570px; height: 280px; top: 38px; right: -120px; border: 1px solid rgba(255,255,255,.09); border-radius: 50%; transform: rotate(-18deg); }
+.first-project-star { position: absolute; top: 26%; right: 25%; color: var(--coral-light); font-size: 20px; animation: spin 9s linear infinite; }
+
+@media (max-width: 680px) {
+  .first-project-card { min-height: 520px; grid-template-columns: 1fr; align-content: end; padding: 28px 24px; border-radius: 2px 2px 30px 2px; }
+  .first-project-label { top: 28px; left: 24px; }
+  .first-project-card h3,
+  .first-project-card h2 { font-size: clamp(46px, 15vw, 68px); }
+  .first-project-card > a { justify-self: start; }
+  .first-project-orbit { right: -310px; }
+}
+
 @media (max-width: 720px) {
   header { overflow: visible; }
   header .header-content { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; }
