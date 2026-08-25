@@ -149,19 +149,38 @@ enquiryForm?.addEventListener('submit', (event) => {
   if (!enquiryForm.reportValidity()) return;
   const data = new FormData(enquiryForm);
   const value = (name) => String(data.get(name) || '').trim();
-  const subject = `Website enquiry — ${value('business') || value('name')}`;
+  const projectName = value('business') || value('name');
+  const subject = `New project ✦ ${projectName} — ${value('service')}`;
   const body = [
-    `Name: ${value('name')}`,
-    `Email: ${value('email')}`,
-    `Business / project: ${value('business') || 'Not provided'}`,
-    `Service: ${value('service')}`,
-    `Budget: ${value('budget')}`,
-    `Ideal launch: ${value('launch') || 'Flexible'}`,
-    `Current website: ${value('website') || 'None provided'}`,
-    `How they found Kira: ${value('source') || 'Not provided'}`,
+    'BY KIRA® / NEW PROJECT ENQUIRY',
+    '────────────────────────────',
     '',
-    'Project details:',
+    'Hello Kira,',
+    '',
+    "I'd like to start a conversation about a website project. Here are the essentials:",
+    '',
+    '01 / CONTACT',
+    `Name             ${value('name')}`,
+    `Email            ${value('email')}`,
+    `Business         ${value('business') || 'Not provided'}`,
+    '',
+    '02 / PROJECT',
+    `Service          ${value('service')}`,
+    `Budget           ${value('budget')}`,
+    `Ideal launch     ${value('launch') || 'Flexible'}`,
+    `Current website  ${value('website') || 'None provided'}`,
+    '',
+    '03 / THE BRIEF',
+    '────────────────────────────',
     value('details'),
+    '',
+    '04 / DISCOVERY',
+    `Found Kira via   ${value('source') || 'Not provided'}`,
+    '',
+    '────────────────────────────',
+    `You can reply directly to ${value('name')} at ${value('email')}.`,
+    '',
+    'Sent via bykira.co.uk/enquiry/',
   ].join('\n');
   const status = enquiryForm.querySelector('.form-status');
   if (status) status.textContent = 'Your email app is opening — review the message, then press send.';
