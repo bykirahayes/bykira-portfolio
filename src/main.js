@@ -62,6 +62,26 @@ document.querySelectorAll('header').forEach((header) => {
   });
 });
 
+// Keep one complete, consistent footer across every page and error route.
+document.querySelectorAll('footer').forEach((footer) => {
+  footer.className = '';
+  footer.id = 'site-footer';
+  footer.innerHTML = `
+    <div class="footer-inner">
+      <div class="footer-lead">
+        <p class="footer-kicker">HAVE A PROJECT IN MIND?</p>
+        <h2>Let's make it<br><em>worth visiting.</em></h2>
+        <a class="footer-email" href="mailto:info@bykira.co.uk">info@bykira.co.uk <span>↗</span></a>
+      </div>
+      <div class="footer-columns">
+        <div><span class="footer-label">Navigate</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/#about">About</a><a href="/#process">Steps</a><a href="/faq">FAQ</a><a href="/enquiry/">Enquire</a></div>
+        <div><span class="footer-label">Connect</span><a href="mailto:info@bykira.co.uk">Email</a><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a></div>
+        <div><span class="footer-label">Details</span><span>Manchester, England</span><span>Working worldwide</span><button class="cookie-settings" type="button">Privacy &amp; cookies</button></div>
+      </div>
+      <div class="footer-bottom"><a class="logo" href="/" aria-label="Kira home">Kira<span>®</span></a><span>Independent website developer</span><span>© 2026 Kira</span><a href="#main-content">Back to top ↑</a></div>
+    </div>`;
+});
+
 const enquiryPanel = document.querySelector('.enquiry-panel');
 if (enquiryPanel) {
   enquiryPanel.addEventListener('pointermove', (event) => {
