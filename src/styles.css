@@ -2079,3 +2079,58 @@ body .first-project-orbit { width: 520px; height: 230px; top: -80px; right: 9%; 
   body .first-project-card > a { grid-column: 1; justify-self: start; white-space: normal; line-height: 1.4; }
   body .first-project-orbit { top: 20px; right: -330px; }
 }
+
+/* Enquiry motion and interaction effects. */
+.enquiry-main::before { content: ''; position: fixed; z-index: 0; width: 760px; height: 520px; left: -280px; bottom: -280px; border-radius: 50%; background: radial-gradient(ellipse, rgba(255,63,39,.16), transparent 68%); filter: blur(18px); pointer-events: none; animation: enquiry-ambient 9s ease-in-out infinite alternate; }
+.enquiry-main > * { position: relative; z-index: 1; }
+.enquiry-intro .eyebrow { animation: enquiry-rise .65s .05s both; }
+.enquiry-intro h1 { animation: enquiry-rise .8s .12s both; }
+.enquiry-intro > p:not(.eyebrow) { animation: enquiry-rise .8s .2s both; }
+.enquiry-details { animation: enquiry-rise .8s .28s both; }
+.enquiry-availability { animation: enquiry-rise .8s .36s both; }
+.enquiry-availability i { animation: enquiry-status 2.4s ease-in-out infinite; }
+.enquiry-intro::before { animation: enquiry-orbit 16s ease-in-out infinite alternate; }
+.enquiry-panel { --enquiry-x: 70%; --enquiry-y: 15%; animation: enquiry-panel-in .85s .16s both; }
+.enquiry-panel::after { content: ''; position: absolute; z-index: 0; inset: 0; opacity: .75; background: radial-gradient(420px circle at var(--enquiry-x) var(--enquiry-y), rgba(255,101,73,.095), transparent 67%); pointer-events: none; transition: opacity .3s ease; }
+.enquiry-panel:hover::after { opacity: 1; }
+.enquiry-panel-head,
+.enquiry-panel form { position: relative; z-index: 2; }
+.enquiry-panel form > * { animation: enquiry-field-in .55s both; }
+.enquiry-panel form > *:nth-child(1) { animation-delay: .28s; }
+.enquiry-panel form > *:nth-child(2) { animation-delay: .34s; }
+.enquiry-panel form > *:nth-child(3) { animation-delay: .40s; }
+.enquiry-panel form > *:nth-child(4) { animation-delay: .46s; }
+.enquiry-panel form > *:nth-child(5) { animation-delay: .52s; }
+.enquiry-panel form > *:nth-child(6) { animation-delay: .58s; }
+.enquiry-panel form > *:nth-child(7) { animation-delay: .64s; }
+.enquiry-panel label::after { content: ''; position: absolute; right: 14px; top: 14px; width: 5px; height: 5px; border-radius: 50%; background: var(--coral); opacity: 0; transform: scale(.4); transition: opacity .2s ease, transform .2s ease; }
+.enquiry-panel label { position: relative; }
+.enquiry-panel label:focus-within::after,
+.enquiry-panel label.has-value::after { opacity: 1; transform: scale(1); }
+.enquiry-panel label:focus-within > span { color: var(--coral-light); }
+.enquiry-panel input,
+.enquiry-panel select,
+.enquiry-panel textarea { transition: color .2s ease; }
+.enquiry-submit button span { display: inline-block; transition: transform .22s ease; }
+.enquiry-submit button:hover span { transform: translate(3px,-3px); }
+
+@keyframes enquiry-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes enquiry-panel-in { from { opacity: 0; transform: translateY(26px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes enquiry-field-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes enquiry-ambient { from { transform: translate3d(-3%,2%,0) scale(.92); opacity: .55; } to { transform: translate3d(10%,-7%,0) scale(1.12); opacity: 1; } }
+@keyframes enquiry-orbit { from { transform: rotate(-28deg) translateX(-10px); } to { transform: rotate(-20deg) translateX(18px); } }
+@keyframes enquiry-status { 0%,100% { transform: scale(.85); box-shadow: 0 0 6px rgba(119,228,147,.3); } 50% { transform: scale(1.15); box-shadow: 0 0 18px rgba(119,228,147,.7); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .enquiry-main::before,
+  .enquiry-intro::before,
+  .enquiry-intro .eyebrow,
+  .enquiry-intro h1,
+  .enquiry-intro > p:not(.eyebrow),
+  .enquiry-details,
+  .enquiry-availability,
+  .enquiry-availability i,
+  .enquiry-panel,
+  .enquiry-panel form > * { animation: none !important; }
+  .enquiry-panel::after { display: none; }
+}

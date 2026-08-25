@@ -36,6 +36,22 @@ document.querySelectorAll('header').forEach((header) => {
   });
 });
 
+const enquiryPanel = document.querySelector('.enquiry-panel');
+if (enquiryPanel) {
+  enquiryPanel.addEventListener('pointermove', (event) => {
+    const bounds = enquiryPanel.getBoundingClientRect();
+    enquiryPanel.style.setProperty('--enquiry-x', `${event.clientX - bounds.left}px`);
+    enquiryPanel.style.setProperty('--enquiry-y', `${event.clientY - bounds.top}px`);
+  });
+
+  enquiryPanel.querySelectorAll('input, select, textarea').forEach((field) => {
+    const updateFieldState = () => field.closest('label')?.classList.toggle('has-value', Boolean(field.value));
+    field.addEventListener('change', updateFieldState);
+    field.addEventListener('input', updateFieldState);
+    updateFieldState();
+  });
+}
+
 function initRevealAnimations() {
   const elements = document.querySelectorAll('.project, .section-heading, .about-layout, .skills-row, .process-intro, .process-step, .contact, .intro-strip');
   if (!('IntersectionObserver' in window)) {
