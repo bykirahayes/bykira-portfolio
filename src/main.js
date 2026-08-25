@@ -53,7 +53,7 @@ if (enquiryPanel) {
 }
 
 function initRevealAnimations() {
-  const elements = document.querySelectorAll('.project, .section-heading, .about-layout, .skills-row, .process-intro, .process-step, .contact, .intro-strip');
+  const elements = document.querySelectorAll('.project, .section-topline, .section-heading, .about-layout, .skills-row, .process-intro, .process-step, .contact, .intro-strip, .first-project-card, .service-card, .sales-note, .faq-list details, .faq-cta, .footer-lead, .footer-columns');
   if (!('IntersectionObserver' in window)) {
     elements.forEach((element) => element.classList.add('is-visible'));
     return;
@@ -66,11 +66,20 @@ function initRevealAnimations() {
     });
   }, { threshold: 0.12 });
 
-  elements.forEach((element) => {
+  elements.forEach((element, index) => {
     element.classList.add('reveal');
+    element.style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 55}ms`);
     observer.observe(element);
   });
 }
+
+document.querySelectorAll('.service-card, .process-step, .faq-list details').forEach((item) => {
+  item.addEventListener('pointermove', (event) => {
+    const bounds = item.getBoundingClientRect();
+    item.style.setProperty('--card-x', `${event.clientX - bounds.left}px`);
+    item.style.setProperty('--card-y', `${event.clientY - bounds.top}px`);
+  });
+});
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', (event) => {

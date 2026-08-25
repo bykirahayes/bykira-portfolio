@@ -1582,6 +1582,43 @@ section[id] { scroll-margin-top: 100px; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
 
+/* Production motion layer. */
+.reveal { opacity: 0; filter: blur(5px); transform: translateY(28px) scale(.992); transition: opacity .75s cubic-bezier(.2,.75,.2,1) var(--reveal-delay,0ms), transform .75s cubic-bezier(.2,.75,.2,1) var(--reveal-delay,0ms), filter .75s ease var(--reveal-delay,0ms); }
+.reveal.is-visible { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); }
+.section-topline.reveal { transform: translateY(12px); }
+.section-topline.reveal.is-visible { transform: translateY(0); }
+.service-card,
+.process-step,
+.faq-list details { --card-x: 50%; --card-y: 50%; position: relative; }
+.service-card::after,
+.faq-list details::after { content: ''; position: absolute; z-index: 0; inset: 0; opacity: 0; background: radial-gradient(280px circle at var(--card-x) var(--card-y), rgba(255,105,76,.075), transparent 68%); pointer-events: none; transition: opacity .28s ease; }
+.service-card:hover::after,
+.faq-list details:hover::after { opacity: 1; }
+.process-step:hover { box-shadow: inset 0 0 70px rgba(255,105,76,.055); }
+.service-card > *,
+.process-step > *,
+.faq-list details > * { position: relative; z-index: 1; }
+.header-cta,
+.first-project-card > a { position: relative; overflow: hidden; }
+.header-cta::after,
+.first-project-card > a::after { content: ''; position: absolute; inset: -2px; background: linear-gradient(110deg, transparent 28%, rgba(255,255,255,.5) 48%, transparent 68%); transform: translateX(-140%); transition: transform .55s ease; pointer-events: none; }
+.header-cta:hover::after,
+.first-project-card > a:hover::after { transform: translateX(140%); }
+.logo { transition: color .2s ease, letter-spacing .3s ease; }
+.logo:hover { color: var(--coral-light); letter-spacing: -.02em; }
+.enquiry-panel-head-copy { display: flex !important; flex-direction: column; align-items: flex-start; gap: 10px; }
+.enquiry-panel-kicker { display: block; }
+.enquiry-panel-title { display: block; line-height: 1.15; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible { opacity: 1 !important; filter: none !important; transform: none !important; transition: none !important; }
+  .service-card::after,
+  .faq-list details::after,
+  .header-cta::after,
+  .first-project-card > a::after { display: none !important; }
+}
+
 /* Distinctive precision interface for the hero. */
 .hero-interface {
   position: absolute;
