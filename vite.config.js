@@ -36,6 +36,8 @@ export default defineConfig({
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === '/') url.pathname = '/index.html';
+    if (url.pathname === '/work' || url.pathname === '/work/') url.pathname = '/work/index.html';
     if (url.pathname === '/faq.html') {
       url.pathname = '/faq';
       return Response.redirect(url.toString(), 301);
