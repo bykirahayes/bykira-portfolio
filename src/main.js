@@ -165,6 +165,10 @@ enquiryForm?.addEventListener('submit', (event) => {
   const data = new FormData(enquiryForm);
   const value = (name) => String(data.get(name) || '').trim();
   const projectName = value('business') || value('name');
+  const launchDate = value('launch');
+  const formattedLaunchDate = launchDate
+    ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${launchDate}T00:00:00Z`))
+    : 'Flexible';
   const subject = `Website enquiry | ${projectName} | ${value('service')}`;
   const body = [
     'NEW WEBSITE PROJECT ENQUIRY',
@@ -182,7 +186,7 @@ enquiryForm?.addEventListener('submit', (event) => {
     'PROJECT OVERVIEW',
     `Service required: ${value('service')}`,
     `Approximate budget: ${value('budget')}`,
-    `Preferred launch: ${value('launch') || 'Flexible'}`,
+    `Preferred launch date: ${formattedLaunchDate}`,
     `Current website: ${value('website') || 'None provided'}`,
     '',
     'PROJECT BRIEF',
