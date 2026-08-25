@@ -137,7 +137,13 @@ document.querySelectorAll('footer').forEach((footer) => {
   links.className = 'legal-links';
   links.setAttribute('aria-label', 'Legal and accessibility');
   links.innerHTML = '<a href="/privacy.html">Privacy &amp; cookies</a><a href="/accessibility.html">Accessibility</a>';
-  footer.append(links);
+  const footerBottom = footer.querySelector('.footer-bottom');
+  if (footerBottom) {
+    links.classList.add('legal-links-inline');
+    footerBottom.insertBefore(links, footerBottom.lastElementChild);
+  } else {
+    footer.append(links);
+  }
 });
 
 document.querySelectorAll('.cookie-settings').forEach((button) => {
