@@ -9,6 +9,10 @@ export default defineConfig({
         if (request.url === '/faq' || request.url?.startsWith('/faq?')) {
           request.url = `/faq.html${request.url.slice(4)}`;
         }
+        if (request.url === '/services' || request.url === '/services/' || request.url?.startsWith('/services?')) {
+          const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
+          request.url = `/services/index.html${query}`;
+        }
         next();
       });
     },
@@ -33,6 +37,11 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
     if (url.pathname === '/faq') url.pathname = '/faq.html';
+    if (url.pathname === '/services.html') {
+      url.pathname = '/services/';
+      return Response.redirect(url.toString(), 301);
+    }
+    if (url.pathname === '/services' || url.pathname === '/services/') url.pathname = '/services/index.html';
     const response = await env.ASSETS.fetch(new Request(url, request));
     const secured = new Response(response.body, response);
     for (const [name, value] of Object.entries(securityHeaders)) secured.headers.set(name, value);
@@ -52,7 +61,7 @@ export default {
         faq: resolve(import.meta.dirname, 'faq.html'),
         notFound: resolve(import.meta.dirname, '404.html'),
         serverError: resolve(import.meta.dirname, '500.html'),
-        services: resolve(import.meta.dirname, 'services.html'),
+        services: resolve(import.meta.dirname, 'services/index.html'),
         aspectCaseStudy: resolve(import.meta.dirname, 'case-aspect.html'),
         dispulseCaseStudy: resolve(import.meta.dirname, 'case-dispulse.html'),
         enquiry: resolve(import.meta.dirname, 'enquiry.html'),

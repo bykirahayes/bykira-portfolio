@@ -1,3 +1,5 @@
 /faq.html  /faq  301
 /faq       /faq.html  200
-
+/services.html  /services/  301
+/services       /services/index.html  200
+/services/      /services/index.html  200
