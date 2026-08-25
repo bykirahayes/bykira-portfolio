@@ -9,6 +9,32 @@ document.querySelectorAll('header').forEach((header) => {
   const navigation = header.querySelector('nav');
   if (!headerContent || !navigation || header.querySelector('.nav-toggle')) return;
 
+  const path = window.location.pathname;
+  const onHomePage = path === '/' || path.endsWith('/index.html');
+  const pageContext = path.startsWith('/work') ? 'WORK'
+    : path.startsWith('/services') ? 'SERVICES'
+      : path.startsWith('/faq') ? 'FAQ'
+        : path.startsWith('/enquiry') ? 'ENQUIRY'
+          : path.includes('privacy') ? 'PRIVACY'
+            : path.includes('accessibility') ? 'ACCESSIBILITY'
+              : 'HOME';
+  const activeKey = pageContext.toLowerCase();
+  navigation.innerHTML = [
+    ['work', '/work/', '01', 'Work'],
+    ['services', '/services/', '£', 'Services'],
+    ['about', onHomePage ? '#about' : '/#about', '02', 'About'],
+    ['faq', '/faq', '?', 'FAQ'],
+  ].map(([key, href, marker, label]) => `<a${activeKey === key ? ' class="active" aria-current="page"' : ''} href="${href}"><span>${marker}</span>${label}</a>`).join('');
+
+  let headerActions = headerContent.querySelector('.header-actions');
+  if (!headerActions) {
+    headerActions = document.createElement('div');
+    headerActions.className = 'header-actions';
+    headerContent.append(headerActions);
+  }
+  const enquiryPage = path.startsWith('/enquiry');
+  headerActions.innerHTML = `<div class="header-status"><span class="status-dot"></span><span class="status-copy">AVAILABLE</span></div><span class="active-section" data-static>${pageContext}</span><a class="header-cta" href="${enquiryPage ? 'mailto:info@bykira.co.uk' : '/enquiry/'}">${enquiryPage ? 'Email directly' : 'Start a project'} <span>↗</span></a>`;
+
   const toggle = document.createElement('button');
   toggle.className = 'nav-toggle';
   toggle.type = 'button';

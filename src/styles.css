@@ -319,6 +319,51 @@ footer { background: #080808; }
   .policy-page .policy-section h3 { margin-top: 28px; }
 }
 
+/* Unified site header — professional, editorial and consistent. */
+header { top: 10px; width: calc(100% - 20px); max-width: none; padding: 9px 10px 8px; overflow: visible; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; background: rgba(7,7,7,.88); box-shadow: 0 16px 55px rgba(0,0,0,.34); backdrop-filter: blur(20px) saturate(125%); }
+header::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: linear-gradient(105deg, rgba(255,255,255,.035), transparent 36%, rgba(255,84,55,.025)); pointer-events: none; }
+header .header-content { display: grid; grid-template-columns: minmax(205px, 1fr) auto minmax(315px, 1fr); gap: 18px; align-items: center; width: 100%; }
+header .header-brand { display: flex; align-items: center; min-width: 0; gap: 14px; }
+header .logo { position: relative; color: #f5f2ed; font-size: 26px; line-height: 1; }
+header .logo::after { content: ''; position: absolute; right: -8px; top: 1px; width: 4px; height: 4px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 8px rgba(255,91,66,.6); }
+header .brand-role { margin-left: 5px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.34); font: 7px var(--mono); letter-spacing: .13em; white-space: nowrap; }
+header nav { justify-self: center; display: flex; gap: 2px; padding: 4px; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; background: rgba(255,255,255,.035); box-shadow: inset 0 1px rgba(255,255,255,.025); }
+header nav a { position: relative; min-width: 0; padding: 9px 12px; border: 0; border-radius: 8px; color: rgba(255,255,255,.52); background: transparent; box-shadow: none; font: 8px var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+header nav a span { margin-right: 7px; color: rgba(255,255,255,.25); font-size: 6px; }
+header nav a:hover { color: #fff; background: rgba(255,255,255,.045); }
+header nav a.active { color: #fff; background: rgba(255,91,66,.12); box-shadow: inset 0 0 0 1px rgba(255,111,82,.2); }
+header nav a.active::after { content: ''; position: absolute; right: 12px; bottom: 4px; left: 12px; height: 1px; background: var(--coral); }
+header .header-actions { display: flex; align-items: center; justify-content: flex-end; gap: clamp(11px, 1.5vw, 22px); min-width: 0; }
+header .header-status { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.42); font: 7px var(--mono); letter-spacing: .09em; }
+header .active-section { min-width: 74px; padding-left: 16px; border-left: 1px solid rgba(255,255,255,.1); color: var(--coral-light); font: 7px var(--mono); letter-spacing: .1em; text-align: center; }
+header .header-cta { padding: 11px 15px; border: 0; border-radius: 10px; color: #090909; background: #f4f1ed; box-shadow: 0 5px 18px rgba(0,0,0,.18); font: 8px var(--mono); letter-spacing: .04em; text-decoration: none; text-transform: uppercase; }
+header .header-cta:hover { color: #090909; background: #fff; transform: translateY(-1px); }
+header .scroll-progress { right: 12px; bottom: -1px; left: 12px; width: auto; height: 1px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.04); }
+header .scroll-progress span { background: linear-gradient(90deg, var(--coral), var(--coral-light)); }
+
+@media (max-width: 1080px) {
+  header .header-content { grid-template-columns: auto 1fr auto; gap: 12px; }
+  header .brand-role,
+  header .active-section { display: none; }
+  header nav a { padding: 8px 9px; }
+  header nav a span { display: none; }
+}
+
+@media (max-width: 720px) {
+  header { top: 7px; width: calc(100% - 14px); padding: 7px 8px; border-radius: 13px; }
+  header .header-content { grid-template-columns: 1fr auto; gap: 10px; }
+  header .header-brand { z-index: 12; }
+  header .logo { font-size: 23px; }
+  header .header-actions { display: none; }
+  header .nav-toggle { display: inline-flex; height: 36px; min-width: 76px; }
+  header nav { position: absolute; z-index: 11; top: calc(100% + 10px); right: 0; left: 0; display: grid; width: auto; padding: 8px; border: 1px solid rgba(255,255,255,.13); border-radius: 4px 4px 24px 4px; background: rgba(7,7,7,.98); box-shadow: 0 28px 70px rgba(0,0,0,.5); opacity: 0; visibility: hidden; transform: translateY(-8px); }
+  header.menu-open nav { opacity: 1; visibility: visible; transform: translateY(0); }
+  header nav a { display: flex; justify-content: space-between; width: 100%; min-height: 47px; padding: 0 13px; border-bottom: 1px solid rgba(255,255,255,.075); border-radius: 0; font-size: 9px; }
+  header nav a span { display: inline; margin-left: auto; order: 2; font-size: 7px; }
+  header nav a.active { background: rgba(255,91,66,.08); box-shadow: none; }
+  header nav a.active::after { display: none; }
+}
+
 /* Enquiry page refinement. */
 body .enquiry-main { position: relative; grid-template-columns: minmax(0, .8fr) minmax(560px, 1.2fr); gap: clamp(55px, 7vw, 110px); align-items: start; padding-top: 128px; }
 body .enquiry-intro { position: sticky; top: 108px; min-height: calc(100vh - 150px); padding: clamp(65px, 8vw, 115px) 0 50px; overflow: hidden; }
@@ -2273,4 +2318,70 @@ body .first-project-orbit { width: 520px; height: 230px; top: -80px; right: 9%; 
   .enquiry-panel,
   .enquiry-panel form > * { animation: none !important; }
   .enquiry-panel::after { display: none; }
+}
+
+/* Final site-wide navigation system. */
+header {
+  top: 12px;
+  width: min(1540px, calc(100% - 24px));
+  padding: 8px 9px 7px;
+  overflow: visible;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  background: rgba(7,7,7,.9);
+  box-shadow: 0 18px 60px rgba(0,0,0,.32);
+  backdrop-filter: blur(22px) saturate(130%);
+}
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(110deg, rgba(255,255,255,.04), transparent 32%, rgba(255,91,66,.035));
+  pointer-events: none;
+}
+header.scrolled { padding: 7px 9px 6px; border-color: rgba(255,255,255,.18); background: rgba(7,7,7,.96); }
+header .header-content { display: grid; grid-template-columns: minmax(220px,1fr) auto minmax(335px,1fr); gap: 18px; align-items: center; width: 100%; }
+header .header-brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
+header .logo { position: relative; color: #f5f2ed; font-size: 26px; line-height: 1; }
+header .logo::after { content: ''; position: absolute; top: 1px; right: -9px; width: 4px; height: 4px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 10px rgba(255,91,66,.7); }
+header .brand-role { margin-left: 2px; padding-left: 16px; border-left: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.36); font: 7px var(--mono); letter-spacing: .14em; }
+header nav { justify-self: center; display: flex; align-items: center; gap: 2px; padding: 4px; border: 1px solid rgba(255,255,255,.09); border-radius: 10px; background: rgba(255,255,255,.035); }
+header nav a { position: relative; display: flex; align-items: center; gap: 7px; padding: 9px 12px; border: 0; border-radius: 7px; color: rgba(255,255,255,.52); background: transparent; box-shadow: none; font: 8px var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+header nav a span { color: rgba(255,255,255,.25); font-size: 6px; }
+header nav a:hover { color: #fff; background: rgba(255,255,255,.05); transform: none; }
+header nav a.active { color: #fff; background: rgba(255,91,66,.13); box-shadow: inset 0 0 0 1px rgba(255,111,82,.22); }
+header nav a.active::after { content: ''; position: absolute; right: 12px; bottom: 4px; left: 12px; height: 1px; background: var(--coral); }
+header nav a.active span { color: var(--coral-light); }
+header .header-actions { display: flex; align-items: center; justify-content: flex-end; gap: clamp(12px,1.5vw,22px); min-width: 0; }
+header .header-status { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.43); font: 7px var(--mono); letter-spacing: .1em; }
+header .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #7dff9c; box-shadow: 0 0 9px rgba(125,255,156,.5); }
+header .active-section { min-width: 72px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,.1); color: rgba(255,160,129,.86); font: 7px var(--mono); letter-spacing: .11em; text-align: center; }
+header .header-cta { display: inline-flex; align-items: center; gap: 12px; padding: 11px 15px; border: 0; border-radius: 9px; color: #090909; background: #f3f0eb; font: 8px var(--mono); letter-spacing: .05em; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
+header .header-cta span { color: var(--coral); font-size: 12px; }
+header .header-cta:hover { color: #090909; background: #fff; transform: translateY(-1px); }
+header .scroll-progress { right: 10px; bottom: -1px; left: 10px; width: auto; height: 1px; background: rgba(255,255,255,.04); }
+
+@media (max-width: 1080px) {
+  header .header-content { grid-template-columns: auto 1fr auto; gap: 12px; }
+  header .brand-role, header .active-section { display: none; }
+  header nav a { padding: 8px 9px; }
+  header nav a span { display: none; }
+}
+
+@media (max-width: 720px) {
+  header { top: 7px; width: calc(100% - 14px); padding: 7px 8px; border-radius: 12px; }
+  header.scrolled { padding: 7px 8px; }
+  header .header-content { position: relative; grid-template-columns: 1fr auto; gap: 10px; }
+  header .header-brand { z-index: 12; }
+  header .logo { font-size: 23px; }
+  header .header-actions { display: none; }
+  header .nav-toggle { display: inline-flex; height: 36px; min-width: 76px; }
+  header nav { position: absolute; z-index: 11; top: calc(100% + 10px); right: 0; left: 0; display: grid; justify-self: stretch; width: 100%; padding: 8px; border: 1px solid rgba(255,255,255,.13); border-radius: 4px 4px 24px 4px; background: rgba(7,7,7,.985); box-shadow: 0 28px 70px rgba(0,0,0,.5); opacity: 0; visibility: hidden; transform: translateY(-8px); }
+  header.menu-open nav { opacity: 1; visibility: visible; transform: translateY(0); }
+  header nav a { display: flex; justify-content: space-between; width: 100%; min-height: 47px; padding: 0 13px; border-bottom: 1px solid rgba(255,255,255,.075); border-radius: 0; font-size: 9px; }
+  header nav a span { display: inline; margin-left: auto; order: 2; font-size: 7px; }
+  header nav a.active { background: rgba(255,91,66,.08); box-shadow: none; }
+  header nav a.active::after { display: none; }
 }
