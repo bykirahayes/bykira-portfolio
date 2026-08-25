@@ -1574,6 +1574,10 @@ footer::before {
 .policy-section p, .policy-section li { max-width: 720px; color: var(--muted); font-size: 14px; line-height: 1.75; }
 .policy-section ul { padding-left: 20px; }
 .policy-section a { color: inherit; }
+.work-page .portfolio { padding-top: 190px; min-height: 100vh; }
+.work-page .section-heading h1 { font: 500 clamp(53px, 7vw, 98px)/.87 var(--serif); letter-spacing: -.08em; }
+.work-page .section-heading h1 em { color: var(--coral-light); font-style: italic; font-weight: 400; }
+.work-page .project-details h2 { font: 500 30px var(--serif); letter-spacing: -.04em; }
 
 /* Honest essential-cookie notice. */
 .cookie-notice {
@@ -1618,6 +1622,8 @@ footer::before {
   .cookie-notice { right: 10px; bottom: 10px; display: block; width: calc(100% - 20px); padding: 20px; }
   .cookie-actions { margin-top: 18px; }
   .legal-links { justify-content: flex-start; width: calc(100% - 40px); }
+  .work-page .portfolio { padding-top: 130px; }
+  .work-page .section-heading h1 { font-size: 58px; }
 }
 
 /* Separate FAQ page. */
