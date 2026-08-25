@@ -1097,21 +1097,31 @@ header.scrolled { padding: 8px 11px 7px; border-color: rgba(255,255,255,.15); }
   .nav-toggle {
     position: relative;
     z-index: 12;
-    display: grid;
-    place-content: center;
-    gap: 5px;
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 50%;
-    background: rgba(8,8,8,.92);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-width: 72px;
+    height: 34px;
+    padding: 0 11px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px;
+    color: rgba(255,255,255,.86);
+    background: rgba(255,255,255,.045);
+    font: 7px var(--mono);
+    letter-spacing: .12em;
+    text-transform: uppercase;
     cursor: pointer;
+    transition: color .2s ease, background .2s ease, border-color .2s ease;
   }
-  .nav-toggle span { display: block; width: 17px; height: 1px; background: #fff; transition: transform .25s ease, opacity .2s ease; }
-  header.menu-open .nav-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-  header.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
-  header.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-toggle:hover,
+  header.menu-open .nav-toggle { color: #fff; border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.09); }
+  .nav-toggle-icon { position: relative; display: block; width: 13px; height: 9px; }
+  .nav-toggle-icon i { position: absolute; right: 0; display: block; width: 13px; height: 1px; background: currentColor; transition: top .25s ease, transform .25s ease, width .25s ease; }
+  .nav-toggle-icon i:first-child { top: 2px; }
+  .nav-toggle-icon i:last-child { top: 7px; width: 9px; }
+  header.menu-open .nav-toggle-icon i:first-child { top: 4px; transform: rotate(45deg); }
+  header.menu-open .nav-toggle-icon i:last-child { top: 4px; width: 13px; transform: rotate(-45deg); }
   header nav {
     position: absolute;
     z-index: 11;
@@ -1162,7 +1172,23 @@ header nav a.active span { color: var(--coral-light); }
 
 @media (max-width: 680px) {
   header { top: 7px; padding: 7px 8px; border-radius: 11px; }
-  header nav a { padding: 7px 8px; }
+  header nav {
+    right: 0;
+    left: 0;
+    width: auto;
+    justify-self: stretch;
+    padding: 8px;
+    border-color: rgba(255,255,255,.12);
+    background: rgba(8,8,8,.98);
+  }
+  header nav a {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 12px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-radius: 0;
+    font-size: 9px;
+  }
   .header-cta { padding: 8px 10px; }
 }
 

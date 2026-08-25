@@ -14,19 +14,21 @@ document.querySelectorAll('header').forEach((header) => {
   toggle.type = 'button';
   toggle.setAttribute('aria-label', 'Open menu');
   toggle.setAttribute('aria-expanded', 'false');
-  toggle.innerHTML = '<span></span><span></span><span></span>';
+  toggle.innerHTML = '<span class="nav-toggle-label">Menu</span><span class="nav-toggle-icon" aria-hidden="true"><i></i><i></i></span>';
   headerContent.append(toggle);
 
   const closeMenu = () => {
     header.classList.remove('menu-open');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open menu');
+    toggle.querySelector('.nav-toggle-label').textContent = 'Menu';
   };
 
   toggle.addEventListener('click', () => {
     const open = header.classList.toggle('menu-open');
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    toggle.querySelector('.nav-toggle-label').textContent = open ? 'Close' : 'Menu';
   });
   navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', (event) => {
