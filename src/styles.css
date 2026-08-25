@@ -1087,6 +1087,53 @@ header {
 }
 header.scrolled { padding: 8px 11px 7px; border-color: rgba(255,255,255,.15); }
 .header-content { gap: 18px; }
+.nav-toggle { display: none; }
+
+@media (max-width: 720px) {
+  header { overflow: visible; }
+  header .header-content { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; }
+  header .header-brand { position: relative; z-index: 12; }
+  header .header-actions { display: none; }
+  .nav-toggle {
+    position: relative;
+    z-index: 12;
+    display: grid;
+    place-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 50%;
+    background: rgba(8,8,8,.92);
+    cursor: pointer;
+  }
+  .nav-toggle span { display: block; width: 17px; height: 1px; background: #fff; transition: transform .25s ease, opacity .2s ease; }
+  header.menu-open .nav-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  header.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  header.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  header nav {
+    position: absolute;
+    z-index: 11;
+    top: calc(100% + 12px);
+    right: 0;
+    left: 0;
+    display: grid;
+    gap: 0;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 2px 2px 22px 2px;
+    background: rgba(8,8,8,.97);
+    box-shadow: 0 24px 60px rgba(0,0,0,.45);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity .2s ease, visibility .2s ease, transform .2s ease;
+  }
+  header.menu-open nav { opacity: 1; visibility: visible; transform: translateY(0); }
+  header nav a { display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 0 12px; border-bottom: 1px solid rgba(255,255,255,.08); font-size: 10px; }
+  header nav a:last-child { border-bottom: 0; }
+}
 .brand-role { color: rgba(255,255,255,.32); letter-spacing: .1em; }
 header nav { padding: 3px; border-color: rgba(255,255,255,.07); background: rgba(255,255,255,.025); }
 header nav a { padding: 8px 12px; color: rgba(255,255,255,.57); transition-duration: .2s; }

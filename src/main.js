@@ -4,6 +4,36 @@ const hero = document.querySelector('.hero');
 
 if (content) content.style.display = 'block';
 
+document.querySelectorAll('header').forEach((header) => {
+  const headerContent = header.querySelector('.header-content');
+  const navigation = header.querySelector('nav');
+  if (!headerContent || !navigation || header.querySelector('.nav-toggle')) return;
+
+  const toggle = document.createElement('button');
+  toggle.className = 'nav-toggle';
+  toggle.type = 'button';
+  toggle.setAttribute('aria-label', 'Open menu');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.innerHTML = '<span></span><span></span><span></span>';
+  headerContent.append(toggle);
+
+  const closeMenu = () => {
+    header.classList.remove('menu-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+  };
+
+  toggle.addEventListener('click', () => {
+    const open = header.classList.toggle('menu-open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+});
+
 function initRevealAnimations() {
   const elements = document.querySelectorAll('.project, .section-heading, .about-layout, .skills-row, .process-intro, .process-step, .contact, .intro-strip');
   if (!('IntersectionObserver' in window)) {
