@@ -150,38 +150,38 @@ enquiryForm?.addEventListener('submit', (event) => {
   const data = new FormData(enquiryForm);
   const value = (name) => String(data.get(name) || '').trim();
   const projectName = value('business') || value('name');
-  const subject = `New project ✦ ${projectName} — ${value('service')}`;
+  const subject = `Website enquiry | ${projectName} | ${value('service')}`;
   const body = [
-    'BY KIRA® / NEW PROJECT ENQUIRY',
-    '────────────────────────────',
+    'NEW WEBSITE PROJECT ENQUIRY',
+    'Submitted via By Kira',
     '',
     'Hello Kira,',
     '',
-    "I'd like to start a conversation about a website project. Here are the essentials:",
+    "I'd like to discuss a new website project. I've included the key details below.",
     '',
-    '01 / CONTACT',
-    `Name             ${value('name')}`,
-    `Email            ${value('email')}`,
-    `Business         ${value('business') || 'Not provided'}`,
+    'CONTACT DETAILS',
+    `Name: ${value('name')}`,
+    `Email: ${value('email')}`,
+    `Business or project: ${value('business') || 'Not provided'}`,
     '',
-    '02 / PROJECT',
-    `Service          ${value('service')}`,
-    `Budget           ${value('budget')}`,
-    `Ideal launch     ${value('launch') || 'Flexible'}`,
-    `Current website  ${value('website') || 'None provided'}`,
+    'PROJECT OVERVIEW',
+    `Service required: ${value('service')}`,
+    `Approximate budget: ${value('budget')}`,
+    `Preferred launch: ${value('launch') || 'Flexible'}`,
+    `Current website: ${value('website') || 'None provided'}`,
     '',
-    '03 / THE BRIEF',
-    '────────────────────────────',
+    'PROJECT BRIEF',
     value('details'),
     '',
-    '04 / DISCOVERY',
-    `Found Kira via   ${value('source') || 'Not provided'}`,
+    'HOW I FOUND YOU',
+    value('source') || 'Not provided',
     '',
-    '────────────────────────────',
-    `You can reply directly to ${value('name')} at ${value('email')}.`,
+    'NEXT STEP',
+    `Please reply to ${value('name')} at ${value('email')}.`,
     '',
-    'Sent via bykira.co.uk/enquiry/',
-  ].join('\n');
+    '—',
+    'Sent securely from the project enquiry form at bykira.co.uk/enquiry/',
+  ].join('\r\n');
   const status = enquiryForm.querySelector('.form-status');
   if (status) status.textContent = 'Your email app is opening — review the message, then press send.';
   window.location.href = `mailto:info@bykira.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
