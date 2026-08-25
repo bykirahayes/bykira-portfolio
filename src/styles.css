@@ -2111,6 +2111,9 @@ body .first-project-orbit { width: 520px; height: 230px; top: -80px; right: 9%; 
 .enquiry-panel input,
 .enquiry-panel select,
 .enquiry-panel textarea { transition: color .2s ease; }
+.enquiry-panel select { color-scheme: dark; background-color: transparent; }
+.enquiry-panel select option { color: #f5f2ed; background-color: #111; }
+.enquiry-panel select option:checked { color: #fff; background-color: #2a1713; }
 .enquiry-submit button span { display: inline-block; transition: transform .22s ease; }
 .enquiry-submit button:hover span { transform: translate(3px,-3px); }
 
