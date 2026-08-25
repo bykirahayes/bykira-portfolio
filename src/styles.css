@@ -1974,3 +1974,52 @@ footer::before {
 .enquiry-main{display:grid;grid-template-columns:.82fr 1.18fr;width:min(1440px,calc(100% - 80px));margin:auto;gap:90px;padding-bottom:130px}.enquiry-intro{position:sticky;top:92px;width:auto;height:max-content;margin:0;padding:120px 0 60px;border-bottom:0}.enquiry-intro h1{margin:36px 0 38px;font-size:clamp(68px,7vw,115px)}.enquiry-intro>p{max-width:480px}.enquiry-intro>div{display:grid;gap:10px;margin-top:55px;color:rgba(255,255,255,.35);font:8px var(--mono);text-transform:uppercase}.enquiry-panel{margin-top:80px;padding:55px;border:1px solid var(--edge);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.025),transparent)}.enquiry-panel form{display:grid;gap:32px}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:25px}.enquiry-panel label{display:grid;gap:11px}.enquiry-panel label>span{color:rgba(255,255,255,.45);font:8px var(--mono);text-transform:uppercase}.enquiry-panel input,.enquiry-panel select,.enquiry-panel textarea{width:100%;padding:14px 0;border:0;border-bottom:1px solid rgba(255,255,255,.16);border-radius:0;outline:0;color:#f1eee9;background:transparent;font:13px var(--sans)}.enquiry-panel textarea{resize:vertical}.enquiry-panel select{color-scheme:dark}.enquiry-panel input:focus,.enquiry-panel select:focus,.enquiry-panel textarea:focus{border-color:var(--coral)}.enquiry-submit{display:flex;justify-content:space-between;align-items:center;gap:25px;margin-top:10px}.enquiry-submit p{max-width:280px;color:rgba(255,255,255,.35);font-size:10px;line-height:1.6}.enquiry-submit button{padding:16px 20px;border:0;border-radius:9px;background:#f3f0eb;color:#090909;font:500 9px var(--mono);text-transform:uppercase;cursor:pointer}.enquiry-submit button span{margin-left:12px;color:var(--coral)}.form-status{min-height:1.4em;color:var(--coral-light);font:9px var(--mono)}
 @media(max-width:900px){.sales-hero-grid,.case-story,.enquiry-main{grid-template-columns:1fr}.service-card{grid-template-columns:38px 1fr}.service-card ul,.service-price{grid-column:2}.case-facts{grid-template-columns:1fr 1fr}.enquiry-intro{position:static;padding-bottom:0}.enquiry-panel{margin-top:0}.case-hero{min-height:650px}.case-hero h1{font-size:19vw}}
 @media(max-width:600px){.sales-main,.case-main,.enquiry-main{padding-top:75px}.sales-hero,.service-list,.case-facts,.case-story,.case-interface,.next-case,.enquiry-main{width:calc(100% - 28px)}.sales-hero{padding-top:70px}.sales-hero h1,.enquiry-intro h1{font-size:18vw}.sales-hero-grid{gap:35px}.sales-meta{display:grid;gap:9px;margin-top:45px}.service-card{gap:12px;padding:52px 0}.service-card ul,.service-price{grid-column:1/-1;margin-left:50px}.sales-note{width:calc(100% - 28px);margin:80px auto;padding:45px 22px}.case-hero{width:calc(100% - 20px);min-height:550px;padding:35px 22px}.case-summary{grid-template-columns:1fr}.case-facts div{padding:25px 15px!important}.case-story{margin:90px auto;gap:35px}.case-interface{margin-bottom:90px;padding:20px}.case-browser-body{min-height:280px;padding:28px}.case-browser-body strong{font-size:22vw}.next-case{margin-bottom:90px}.next-case{display:block}.next-case a{display:block;margin-top:20px}.enquiry-main{gap:30px;padding-bottom:80px}.enquiry-intro{padding-top:70px}.enquiry-panel{padding:28px 20px}.field-row{grid-template-columns:1fr}.enquiry-submit{align-items:flex-start;flex-direction:column}.enquiry-submit button{width:100%}}
+
+/* First-project feature panel — kept last so its layout remains consistent. */
+body .first-project-card {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(170px, .55fr) minmax(360px, 1.35fr) auto;
+  align-items: end;
+  gap: clamp(30px, 5vw, 80px);
+  min-height: 390px;
+  margin-top: clamp(38px, 6vw, 75px);
+  padding: clamp(38px, 5vw, 72px);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 3px 3px 44px 3px;
+  color: #f5f2ed;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 64px 64px,
+    radial-gradient(circle at 82% 115%, rgba(255,73,48,.52), transparent 42%),
+    #090909;
+}
+body .first-project-card::before { content: '001'; position: absolute; right: 3%; bottom: -18%; z-index: -1; color: transparent; font: 700 clamp(180px, 25vw, 360px)/.8 var(--sans); letter-spacing: -.12em; -webkit-text-stroke: 1px rgba(255,126,91,.12); }
+body .first-project-card::after { inset: 16px; border-color: rgba(255,255,255,.065); border-radius: 2px 2px 31px 2px; }
+body .first-project-label { position: static; align-self: start; margin: 0; padding-top: 4px; color: var(--coral-light); font: 8px var(--mono); letter-spacing: .15em; }
+body .first-project-label::before { content: '✦'; display: block; margin-bottom: 22px; color: #fff; font-size: 17px; }
+body .first-project-card > div { position: relative; z-index: 2; }
+body .first-project-card h2,
+body .first-project-card h3 { margin: 0; color: #f5f2ed; font: 400 clamp(46px, 5.1vw, 78px)/.88 var(--serif); letter-spacing: -.055em; }
+body .first-project-card div > p { max-width: 530px; margin: 25px 0 0; color: rgba(255,255,255,.59); font: 15px/1.65 var(--serif); }
+body .first-project-card > a { position: relative; z-index: 2; align-self: end; justify-self: end; white-space: nowrap; padding: 15px 19px; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; color: #fff; background: rgba(8,8,8,.35); font: 8px var(--mono); letter-spacing: .09em; text-decoration: none; text-transform: uppercase; }
+body .first-project-card > a:hover { border-color: var(--coral-light); background: var(--coral); }
+body .first-project-star { display: none; }
+body .first-project-orbit { width: 520px; height: 230px; top: -80px; right: 9%; border-color: rgba(255,255,255,.1); }
+
+@media (max-width: 900px) {
+  body .first-project-card { grid-template-columns: 135px 1fr; min-height: 430px; }
+  body .first-project-card > a { grid-column: 2; justify-self: start; }
+}
+
+@media (max-width: 620px) {
+  body .first-project-card { grid-template-columns: 1fr; gap: 26px; min-height: 510px; padding: 30px 24px; align-content: end; }
+  body .first-project-label { position: absolute; top: 28px; left: 24px; }
+  body .first-project-label::before { display: none; }
+  body .first-project-card h2,
+  body .first-project-card h3 { font-size: clamp(48px, 15vw, 68px); }
+  body .first-project-card > a { grid-column: 1; justify-self: start; white-space: normal; line-height: 1.4; }
+  body .first-project-orbit { top: 20px; right: -330px; }
+}
