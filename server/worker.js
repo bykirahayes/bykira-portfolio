@@ -9,6 +9,7 @@ const securityHeaders = {
 
 const jsonHeaders = { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' };
 const sessionCookie = 'kira_admin_session';
+const publicAdminOrigins = new Set(['https://bykira.co.uk', 'https://www.bykira.co.uk']);
 const encoder = new TextEncoder();
 
 const toBase64Url = (bytes) => {
@@ -49,7 +50,8 @@ const readCookie = (request, name) => {
 };
 
 const authenticated = async (request, env) => {
-  const value = readCookie(request, sessionCookie);
+  const bearer = request.headers.get('Authorization')?.replace(/^Bearer\s+/i, '') || '';
+  const value = bearer || readCookie(request, sessionCookie);
   const [payload, signature] = value.split('.');
   if (!payload || !signature || !safeEqual(signature, await sign(payload, env.ADMIN_SESSION_SECRET))) return false;
   try {
@@ -62,7 +64,16 @@ const authenticated = async (request, env) => {
 
 const validOrigin = (request) => {
   const origin = request.headers.get('Origin');
-  return !origin || origin === new URL(request.url).origin;
+  return !origin || origin === new URL(request.url).origin || publicAdminOrigins.has(origin);
+};
+
+const withAdminCors = (response, request) => {
+  const origin = request.headers.get('Origin');
+  if (!publicAdminOrigins.has(origin)) return response;
+  const corsResponse = new Response(response.body, response);
+  corsResponse.headers.set('Access-Control-Allow-Origin', origin);
+  corsResponse.headers.set('Vary', 'Origin');
+  return corsResponse;
 };
 
 const deviceFrom = (userAgent) => /Mobi|Android|iPhone|iPad/i.test(userAgent) ? 'Mobile / tablet' : 'Desktop';
@@ -102,7 +113,7 @@ const login = async (request, env) => {
   }
   await env.DB.prepare('DELETE FROM login_attempts WHERE identifier_hash = ?').bind(ipHash).run();
   const session = await createSession(env);
-  return Response.json({ ok: true }, { headers: { ...jsonHeaders, 'Set-Cookie': `${sessionCookie}=${session}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=28800` } });
+  return Response.json({ ok: true, token: session }, { headers: { ...jsonHeaders, 'Set-Cookie': `${sessionCookie}=${session}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=28800` } });
 };
 
 const analytics = async (request, env) => {
@@ -157,10 +168,15 @@ const staticPath = (pathname) => {
 export default {
   async fetch(request, env, context) {
     const url = new URL(request.url);
-    if (url.pathname === '/api/login' && request.method === 'POST') return login(request, env);
-    if (url.pathname === '/api/analytics' && request.method === 'GET') return analytics(request, env);
-    if (url.pathname === '/api/me' && request.method === 'GET') return Response.json({ authenticated: await authenticated(request, env) }, { headers: jsonHeaders });
-    if (url.pathname === '/api/logout' && request.method === 'POST' && validOrigin(request)) return Response.json({ ok: true }, { headers: { ...jsonHeaders, 'Set-Cookie': `${sessionCookie}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0` } });
+    if (url.pathname.startsWith('/api/') && request.method === 'OPTIONS') {
+      const origin = request.headers.get('Origin');
+      if (!publicAdminOrigins.has(origin)) return new Response(null, { status: 403 });
+      return new Response(null, { status: 204, headers: { 'Access-Control-Allow-Origin': origin, 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Allow-Headers': 'Authorization, Content-Type', 'Access-Control-Max-Age': '86400', Vary: 'Origin' } });
+    }
+    if (url.pathname === '/api/login' && request.method === 'POST') return withAdminCors(await login(request, env), request);
+    if (url.pathname === '/api/analytics' && request.method === 'GET') return withAdminCors(await analytics(request, env), request);
+    if (url.pathname === '/api/me' && request.method === 'GET') return withAdminCors(Response.json({ authenticated: await authenticated(request, env) }, { headers: jsonHeaders }), request);
+    if (url.pathname === '/api/logout' && request.method === 'POST' && validOrigin(request)) return withAdminCors(Response.json({ ok: true }, { headers: { ...jsonHeaders, 'Set-Cookie': `${sessionCookie}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0` } }), request);
     if (url.pathname === '/faq.html') { url.pathname = '/faq'; return Response.redirect(url.toString(), 301); }
     if (url.pathname === '/services.html') { url.pathname = '/services/'; return Response.redirect(url.toString(), 301); }
     if (url.pathname === '/enquiry.html') { url.pathname = '/enquiry/'; return Response.redirect(url.toString(), 301); }
