@@ -149,6 +149,8 @@ const staticPath = (pathname) => {
   if (pathname === '/enquiry' || pathname === '/enquiry/') return '/enquiry/index.html';
   if (pathname === '/admin' || pathname === '/admin/') return '/admin/index.html';
   if (pathname === '/about' || pathname === '/about/') return '/about/index.html';
+  if (pathname === '/privacy' || pathname === '/privacy/') return '/privacy/index.html';
+  if (pathname === '/accessibility' || pathname === '/accessibility/') return '/accessibility/index.html';
   return pathname;
 };
 
@@ -162,6 +164,8 @@ export default {
     if (url.pathname === '/faq.html') { url.pathname = '/faq'; return Response.redirect(url.toString(), 301); }
     if (url.pathname === '/services.html') { url.pathname = '/services/'; return Response.redirect(url.toString(), 301); }
     if (url.pathname === '/enquiry.html') { url.pathname = '/enquiry/'; return Response.redirect(url.toString(), 301); }
+    if (url.pathname === '/privacy.html') { url.pathname = '/privacy/'; return Response.redirect(url.toString(), 301); }
+    if (url.pathname === '/accessibility.html') { url.pathname = '/accessibility/'; return Response.redirect(url.toString(), 301); }
     const requestedPath = staticPath(url.pathname);
     url.pathname = requestedPath;
     const response = await env.ASSETS.fetch(new Request(url, request));

@@ -193,7 +193,7 @@ document.querySelectorAll('footer').forEach((footer) => {
   const links = document.createElement('nav');
   links.className = 'legal-links';
   links.setAttribute('aria-label', 'Legal and accessibility');
-  links.innerHTML = '<a href="/privacy.html">Privacy &amp; cookies</a><a href="/accessibility.html">Accessibility</a>';
+  links.innerHTML = '<a href="/privacy/">Privacy &amp; cookies</a><a href="/accessibility/">Accessibility</a>';
   const footerBottom = footer.querySelector('.footer-bottom');
   if (footerBottom) {
     links.classList.add('legal-links-inline');
@@ -205,7 +205,7 @@ document.querySelectorAll('footer').forEach((footer) => {
 
 document.querySelectorAll('.cookie-settings').forEach((button) => {
   const link = document.createElement('a');
-  link.href = '/privacy.html#cookies';
+  link.href = '/privacy/#cookies';
   link.textContent = 'Privacy & cookies';
   button.replaceWith(link);
 });
