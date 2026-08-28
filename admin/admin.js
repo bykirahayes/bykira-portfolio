@@ -1,3 +1,8 @@
+const publicWebsite = window.location.hostname === 'bykira.co.uk' || window.location.hostname === 'www.bykira.co.uk';
+
+if (publicWebsite) {
+  window.location.replace('https://bykira-portfolio.safe-bream-3817.chatgpt.site/admin/');
+} else {
 const loginView = document.getElementById('login-view');
 const dashboardView = document.getElementById('dashboard-view');
 const loginForm = document.getElementById('login-form');
@@ -90,3 +95,4 @@ fetch('/api/me', { credentials: 'same-origin', cache: 'no-store', headers: { Acc
   .catch((error) => {
     if (!error.message.includes('Redirecting')) showLogin('Unable to verify your session. Please refresh and try again.');
   });
+}
