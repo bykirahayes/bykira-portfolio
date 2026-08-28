@@ -148,6 +148,7 @@ const staticPath = (pathname) => {
   if (pathname === '/services' || pathname === '/services/') return '/services/index.html';
   if (pathname === '/enquiry' || pathname === '/enquiry/') return '/enquiry/index.html';
   if (pathname === '/admin' || pathname === '/admin/') return '/admin/index.html';
+  if (pathname === '/about' || pathname === '/about/') return '/about/index.html';
   return pathname;
 };
 

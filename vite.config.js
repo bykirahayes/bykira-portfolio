@@ -23,6 +23,10 @@ export default defineConfig({
           const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
           request.url = `/admin/index.html${query}`;
         }
+        if (request.url === '/about' || request.url === '/about/' || request.url?.startsWith('/about?')) {
+          const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
+          request.url = `/about/index.html${query}`;
+        }
         next();
       });
     },
@@ -59,6 +63,7 @@ export default defineConfig({
         privacy: resolve(import.meta.dirname, 'privacy.html'),
         accessibility: resolve(import.meta.dirname, 'accessibility.html'),
         admin: resolve(import.meta.dirname, 'admin/index.html'),
+        about: resolve(import.meta.dirname, 'about/index.html'),
       },
     },
   },

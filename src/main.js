@@ -21,9 +21,9 @@ document.querySelectorAll('header').forEach((header) => {
   if (!headerContent || !navigation || header.querySelector('.nav-toggle')) return;
 
   const path = window.location.pathname;
-  const onHomePage = path === '/' || path.endsWith('/index.html');
   const pageContext = path.startsWith('/work') ? 'WORK'
     : path.startsWith('/services') ? 'SERVICES'
+      : path.startsWith('/about') ? 'ABOUT'
       : path.startsWith('/faq') ? 'FAQ'
         : path.startsWith('/enquiry') ? 'ENQUIRY'
           : path.includes('privacy') ? 'PRIVACY'
@@ -33,7 +33,7 @@ document.querySelectorAll('header').forEach((header) => {
   navigation.innerHTML = [
     ['work', '/work/', '01', 'Work'],
     ['services', '/services/', '£', 'Services'],
-    ['about', onHomePage ? '#about' : '/#about', '02', 'About'],
+    ['about', '/about/', '02', 'About'],
     ['faq', '/faq', '?', 'FAQ'],
   ].map(([key, href, marker, label]) => `<a${activeKey === key ? ' class="active" aria-current="page"' : ''} href="${href}"><span>${marker}</span>${label}</a>`).join('');
 
@@ -85,7 +85,7 @@ document.querySelectorAll('footer').forEach((footer) => {
         <a class="footer-email" href="mailto:info@bykira.co.uk">info@bykira.co.uk <span>↗</span></a>
       </div>
       <div class="footer-columns">
-        <div><span class="footer-label">Navigate</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/#about">About</a><a href="/#process">Steps</a><a href="/faq">FAQ</a><a href="/enquiry/">Enquire</a></div>
+        <div><span class="footer-label">Navigate</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/#process">Steps</a><a href="/faq">FAQ</a><a href="/enquiry/">Enquire</a></div>
         <div><span class="footer-label">Connect</span><a href="mailto:info@bykira.co.uk">Email</a><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a></div>
         <div><span class="footer-label">Details</span><span>Manchester, England</span><span>Working worldwide</span><button class="cookie-settings" type="button">Privacy &amp; cookies</button><a href="/admin/" rel="nofollow">Owner login ↗</a></div>
       </div>
