@@ -11,7 +11,6 @@ const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, (character
 const showLogin = (message = '') => { loginView.hidden = false; dashboardView.hidden = true; loginMessage.textContent = message; };
 const showDashboard = () => { loginView.hidden = true; dashboardView.hidden = false; };
 const empty = '<p class="empty">No visits recorded yet.</p>';
-const ownerSignInPath = '/signin-with-chatgpt?return_to=%2Fadmin%2F';
 
 const apiFetch = (path, options = {}) => {
   const token = sessionStorage.getItem(sessionKey);
@@ -25,11 +24,7 @@ const readJson = async (response) => {
   const contentType = response.headers.get('Content-Type') || '';
   const body = await response.text();
   if (!contentType.toLowerCase().includes('application/json') || body.trimStart().startsWith('<')) {
-    // The hosting layer returns an HTML sign-in page when the owner's
-    // ChatGPT session expires. Use a top-level navigation instead of trying
-    // to parse that page as JSON.
-    if (!publicWebsite) window.top.location.assign(ownerSignInPath);
-    throw new Error('Owner verification is required. Redirecting…');
+    throw new Error('The admin service is temporarily unavailable. Please refresh and try again.');
   }
   try {
     return JSON.parse(body);

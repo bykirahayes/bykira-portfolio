@@ -168,6 +168,14 @@ const staticPath = (pathname) => {
 export default {
   async fetch(request, env, context) {
     const url = new URL(request.url);
+    if (url.hostname === 'bykira-portfolio.safe-bream-3817.chatgpt.site'
+      && !url.pathname.startsWith('/api/')
+      && (request.method === 'GET' || request.method === 'HEAD')) {
+      url.protocol = 'https:';
+      url.hostname = 'bykira.co.uk';
+      url.port = '';
+      return Response.redirect(url.toString(), 308);
+    }
     if (url.pathname.startsWith('/api/') && request.method === 'OPTIONS') {
       const origin = request.headers.get('Origin');
       if (!publicAdminOrigins.has(origin)) return new Response(null, { status: 403 });
