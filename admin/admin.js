@@ -6,6 +6,7 @@ const dashboardView = document.getElementById('dashboard-view');
 const loginForm = document.getElementById('login-form');
 const loginMessage = document.getElementById('login-message');
 const number = new Intl.NumberFormat('en-GB');
+let latestAnalytics = null;
 
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character]));
 const showLogin = (message = '') => { loginView.hidden = false; dashboardView.hidden = true; loginMessage.textContent = message; };
@@ -38,6 +39,10 @@ const renderRank = (target, rows, labelKey) => {
 };
 
 const renderDashboard = (data) => {
+  latestAnalytics = data;
+  const today = new Date().toISOString().slice(0, 10);
+  const todayViews = Number(data.daily.find((row) => row.day === today)?.views || 0);
+  document.getElementById('metric-today').textContent = number.format(todayViews);
   document.getElementById('metric-7').textContent = number.format(data.summary.last7 || 0);
   document.getElementById('metric-30').textContent = number.format(data.summary.last30 || 0);
   document.getElementById('metric-total').textContent = number.format(data.summary.total || 0);
@@ -50,7 +55,50 @@ const renderDashboard = (data) => {
   const deviceTotal = data.devices.reduce((total, item) => total + Number(item.views), 0) || 1;
   document.getElementById('device-list').innerHTML = data.devices.length ? data.devices.map((item) => `<div class="device-row"><span>${escapeHtml(item.device)}</span><div class="device-track"><i style="--width:${(Number(item.views) / deviceTotal) * 100}%"></i></div><strong>${number.format(item.views)}</strong></div>`).join('') : empty;
   document.getElementById('recent-list').innerHTML = data.recent.length ? data.recent.map((item) => `<div class="activity-row"><strong>${escapeHtml(item.path)}</strong><span>${escapeHtml(item.device)}</span><span>${escapeHtml(item.referrer_origin || 'Direct / unknown')}</span><time>${new Date(`${item.created_at}Z`).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })}</time></div>`).join('') : empty;
+  const recentWeek = values.slice(-7).reduce((total, item) => total + item.value, 0);
+  const previousWeek = values.slice(-14, -7).reduce((total, item) => total + item.value, 0);
+  const change = previousWeek ? Math.round(((recentWeek - previousWeek) / previousWeek) * 100) : null;
+  const insight = document.getElementById('performance-insight');
+  insight.innerHTML = change === null
+    ? `<strong>${number.format(recentWeek)}</strong><p>views in the last seven days. More history is needed for a week-on-week comparison.</p>`
+    : `<strong>${change >= 0 ? '+' : ''}${change}%</strong><p>${change >= 0 ? 'More' : 'Fewer'} views than the previous seven-day period.</p>`;
   document.getElementById('updated-at').textContent = `Updated ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`;
+};
+
+const csvCell = (value) => `"${String(value ?? '').replace(/"/g, '""')}"`;
+const exportAnalytics = () => {
+  if (!latestAnalytics) return;
+  const rows = [
+    ['By Kira website analytics'],
+    ['Exported', new Date().toISOString()],
+    [],
+    ['Summary', 'Views'],
+    ['Last 7 days', latestAnalytics.summary.last7],
+    ['Last 30 days', latestAnalytics.summary.last30],
+    ['All time', latestAnalytics.summary.total],
+    [],
+    ['Daily activity'],
+    ['Date', 'Views'],
+    ...latestAnalytics.daily.map((item) => [item.day, item.views]),
+    [],
+    ['Top pages'],
+    ['Page', 'Views'],
+    ...latestAnalytics.pages.map((item) => [item.path, item.views]),
+    [],
+    ['Traffic sources'],
+    ['Source', 'Views'],
+    ...latestAnalytics.referrers.map((item) => [item.source, item.views]),
+    [],
+    ['Devices'],
+    ['Device', 'Views'],
+    ...latestAnalytics.devices.map((item) => [item.device, item.views]),
+  ];
+  const blob = new Blob([rows.map((row) => row.map(csvCell).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `bykira-analytics-${new Date().toISOString().slice(0, 10)}.csv`;
+  link.click();
+  URL.revokeObjectURL(link.href);
 };
 
 const loadAnalytics = async () => {
@@ -89,6 +137,7 @@ loginForm.addEventListener('submit', async (event) => {
 });
 
 document.getElementById('refresh-button').addEventListener('click', loadAnalytics);
+document.getElementById('export-button').addEventListener('click', exportAnalytics);
 document.getElementById('logout-button').addEventListener('click', async () => { await apiFetch('/api/logout', { method: 'POST' }); sessionStorage.removeItem(sessionKey); showLogin('You have signed out securely.'); });
 
 apiFetch('/api/me')
