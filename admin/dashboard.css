@@ -1,99 +1,27 @@
-.dashboard {
+.cloudflare-access {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 44px;
-  width: min(1560px, calc(100% - 48px));
-  padding: 56px 0 80px;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, .72fr);
+  gap: clamp(60px, 8vw, 140px);
+  align-items: center;
+  width: min(1320px, calc(100% - 80px));
+  min-height: calc(100vh - 85px);
+  margin: auto;
+  padding: 80px 0;
 }
-
-.dashboard-sidebar {
-  position: sticky;
-  top: 96px;
-  display: flex;
-  flex-direction: column;
-  align-self: start;
-  height: calc(100vh - 120px);
-  padding: 24px 20px;
-  border: 1px solid var(--edge);
-  border-radius: 3px 3px 24px 3px;
-  background: rgba(255, 255, 255, .018);
-}
-
-.dashboard-sidebar > div:first-child > strong {
-  display: block;
-  margin-top: 10px;
-  font: 400 28px var(--serif);
-}
-
-.dashboard-sidebar nav {
-  display: grid;
-  gap: 4px;
-  margin-top: 48px;
-}
-
-.dashboard-sidebar nav a {
-  display: grid;
-  grid-template-columns: 25px 1fr;
-  gap: 10px;
-  padding: 12px;
-  border-radius: 7px;
-  color: rgba(255, 255, 255, .48);
-  font: 9px var(--mono);
-  text-decoration: none;
-}
-
-.dashboard-sidebar nav a span { color: rgba(255, 155, 123, .55); font-size: 7px; }
-.dashboard-sidebar nav a:hover,
-.dashboard-sidebar nav a.active { color: #fff; background: rgba(255, 255, 255, .05); }
-
-.service-state {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px;
-  align-items: start;
-  margin-top: auto;
-  padding: 18px 0;
-  border-top: 1px solid var(--edge);
-  color: rgba(255, 255, 255, .37);
-  font: 7px/1.6 var(--mono);
-}
-
-.service-state i {
-  width: 7px;
-  height: 7px;
-  margin-top: 3px;
-  border-radius: 50%;
-  background: #69d39b;
-  box-shadow: 0 0 14px rgba(105, 211, 155, .7);
-}
-
-.service-state strong { display: block; color: rgba(255, 255, 255, .72); font-size: 8px; }
-.dashboard-sidebar > button { padding: 12px; }
-.dashboard-content { min-width: 0; }
-.dashboard-top { padding-top: 26px; scroll-margin-top: 100px; }
-.metric-grid { grid-template-columns: repeat(4, 1fr); }
-.dashboard-grid > article { scroll-margin-top: 100px; }
-.insight-panel { display: flex; flex-direction: column; }
-.insight { display: flex; flex: 1; flex-direction: column; justify-content: flex-end; padding-top: 35px; }
-.insight strong { color: var(--coral-light); font: 400 clamp(60px, 7vw, 100px)/.9 var(--serif); letter-spacing: -.06em; }
-.insight p { max-width: 270px; margin: 22px 0 4px; color: var(--muted); font: 13px/1.6 var(--serif); }
-
-@media (max-width: 1100px) {
-  .dashboard { grid-template-columns: 1fr; }
-  .dashboard-sidebar { position: static; display: grid; grid-template-columns: 1fr auto; height: auto; }
-  .dashboard-sidebar nav,
-  .dashboard-sidebar .service-state { display: none; }
-  .dashboard-sidebar > button { grid-column: 2; grid-row: 1; }
-}
-
-@media (max-width: 850px) {
-  .dashboard { width: calc(100% - 28px); padding-top: 30px; }
-  .metric-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 520px) {
-  .metric-grid { grid-template-columns: 1fr; }
-  .dashboard-actions { display: grid; }
-  .dashboard-sidebar { grid-template-columns: 1fr; }
-  .dashboard-sidebar > button { grid-column: 1; grid-row: auto; }
-}
+.cloudflare-intro h1 { margin: 35px 0; color: #f5f2ed; font: 400 clamp(70px, 8vw, 126px)/.82 var(--serif); letter-spacing: -.065em; }
+.cloudflare-intro h1 em { color: var(--coral-light); font-weight: 400; }
+.cloudflare-intro > p:not(.eyebrow) { max-width: 500px; color: var(--muted); font: 16px/1.7 var(--serif); }
+.cloudflare-card { display: grid; gap: 30px; padding: clamp(32px, 4vw, 58px); border: 1px solid rgba(255, 255, 255, .14); border-radius: 3px 3px 34px 3px; background: radial-gradient(circle at 100% 0, rgba(255, 74, 44, .12), transparent 30%), rgba(255, 255, 255, .018); box-shadow: 0 35px 100px rgba(0, 0, 0, .35); }
+.cloudflare-status { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; }
+.cloudflare-status > i { width: 9px; height: 9px; margin-top: 7px; border-radius: 50%; background: #69d39b; box-shadow: 0 0 18px rgba(105, 211, 155, .7); }
+.cloudflare-status span { color: rgba(255, 255, 255, .4); font: 7px var(--mono); letter-spacing: .12em; }
+.cloudflare-status strong { display: block; margin: 10px 0 14px; color: #fff; font: 400 31px var(--serif); }
+.cloudflare-status p { margin: 0; color: var(--muted); font: 12px/1.65 var(--sans); }
+.cloudflare-card ul { display: grid; gap: 0; margin: 0; padding: 0; border-top: 1px solid var(--edge); list-style: none; }
+.cloudflare-card li { display: grid; grid-template-columns: 32px 1fr; padding: 15px 0; border-bottom: 1px solid var(--edge); color: rgba(255, 255, 255, .65); font: 10px var(--mono); }
+.cloudflare-card li span { color: var(--coral-light); font-size: 7px; }
+.cloudflare-button { display: flex; justify-content: space-between; padding: 17px 18px; border-radius: 8px; color: #080808; background: #f4f1ec; font: 8px var(--mono); letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
+.cloudflare-button span { color: var(--coral); font-size: 13px; }
+.cloudflare-button:hover { background: #fff; }
+.cloudflare-card small { color: rgba(255, 255, 255, .32); font: 7px/1.5 var(--mono); }
+@media (max-width: 850px) { .cloudflare-access { grid-template-columns: 1fr; width: calc(100% - 34px); padding: 75px 0; } .cloudflare-intro h1 { font-size: 18vw; } }

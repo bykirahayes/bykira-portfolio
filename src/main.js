@@ -4,15 +4,14 @@ const hero = document.querySelector('.hero');
 
 if (content) content.style.display = 'block';
 
-// Privacy-friendly analytics: one anonymous page view, with no cookies or stored IP address.
-if (window.location.hostname === 'bykira.co.uk' || window.location.hostname === 'www.bykira.co.uk') {
-  fetch('https://bykira-analytics.safe-bream-3817.chatgpt.site/api/event', {
-    method: 'POST',
-    mode: 'cors',
-    keepalive: true,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ path: window.location.pathname, referrer: document.referrer, userAgent: navigator.userAgent }),
-  }).catch(() => {});
+// Cookie-free, privacy-friendly analytics provided by Cloudflare.
+if ((window.location.hostname === 'bykira.co.uk' || window.location.hostname === 'www.bykira.co.uk')
+  && !window.location.pathname.startsWith('/admin')) {
+  const analyticsBeacon = document.createElement('script');
+  analyticsBeacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  analyticsBeacon.dataset.cfBeacon = JSON.stringify({ token: 'ac5a21b6d03b4bbaa67aa4a2eadeba79' });
+  analyticsBeacon.defer = true;
+  document.head.append(analyticsBeacon);
 }
 
 document.querySelectorAll('header').forEach((header) => {
@@ -186,7 +185,7 @@ if (hero) {
 
 initRevealAnimations();
 
-// This site deliberately uses no cookies, analytics or advertising trackers.
+// Cloudflare Web Analytics is cookie-free; no advertising trackers are used.
 // Keep privacy and accessibility information available from every standard footer.
 document.querySelectorAll('footer').forEach((footer) => {
   if (footer.querySelector('.legal-links')) return;

@@ -5,53 +5,27 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="theme-color" content="#080808">
-  <title>Analytics — Kira</title>
+  <title>Analytics Access — Kira</title>
   <link rel="icon" href="/image/favicon.ico">
   <link rel="stylesheet" href="/admin/admin.css">
   <link rel="stylesheet" href="/admin/dashboard.css">
-  <script type="module" src="/admin/admin.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="admin-header"><a class="brand" href="/">Kira<span>®</span></a><span>PRIVATE ANALYTICS</span><a href="/">View website ↗</a></header>
-  <main id="main-content">
-    <section class="login-shell" id="login-view" aria-labelledby="login-title">
-      <div class="login-intro"><p class="eyebrow">OWNER ACCESS / 01</p><h1 id="login-title">Your site,<br><em>in numbers.</em></h1><p>Sign in to view private, cookie-free website analytics.</p><div class="security-note"><span>✦</span><p>Protected with rate limiting, an encrypted connection and a secure eight-hour session.</p></div></div>
-      <form class="login-card" id="login-form">
-        <div class="card-head"><span>SECURE LOGIN</span><span>01 — 03</span></div>
-        <label><span>01 / USERNAME</span><input name="username" autocomplete="username" required></label>
-        <label><span>02 / EMAIL</span><input name="email" type="email" autocomplete="email" required></label>
-        <label><span>03 / PASSWORD</span><input name="password" type="password" autocomplete="current-password" required></label>
-        <p class="form-message" id="login-message" role="alert"></p>
-        <button type="submit">Enter dashboard <span>↗</span></button>
-      </form>
+  <main id="main-content" class="cloudflare-access">
+    <section class="cloudflare-intro" aria-labelledby="analytics-title">
+      <p class="eyebrow">OWNER ACCESS / CLOUDFLARE</p>
+      <h1 id="analytics-title">Your site,<br><em>in numbers.</em></h1>
+      <p>Website analytics are now collected and managed through Cloudflare’s privacy-first platform.</p>
+      <div class="security-note"><span>✦</span><p>No tracking cookies, no visitor profiles and no ChatGPT-hosted analytics backend.</p></div>
     </section>
-
-    <section class="dashboard" id="dashboard-view" hidden aria-labelledby="dashboard-title">
-      <aside class="dashboard-sidebar" aria-label="Dashboard navigation">
-        <div><p class="eyebrow">OWNER DASHBOARD</p><strong>By Kira</strong></div>
-        <nav><a href="#overview" class="active"><span>01</span>Overview</a><a href="#pages"><span>02</span>Pages</a><a href="#audience"><span>03</span>Audience</a><a href="#activity"><span>04</span>Activity</a></nav>
-        <div class="service-state"><i></i><span><strong>Analytics connected</strong>Live, privacy-friendly data</span></div>
-        <button id="logout-button" type="button">Sign out</button>
-      </aside>
-      <div class="dashboard-content">
-        <div class="dashboard-top" id="overview"><div><p class="eyebrow">PRIVATE ANALYTICS / LIVE</p><h1 id="dashboard-title">Site performance.</h1><p>A clear view of how people are finding and using bykira.co.uk—without tracking cookies or stored IP addresses.</p></div><div class="dashboard-actions"><button id="export-button" type="button">Export CSV</button><button id="refresh-button" type="button">Refresh data</button></div></div>
-        <div class="metric-grid" aria-label="Analytics summary">
-          <article><span>TODAY</span><strong id="metric-today">—</strong><small>page views</small></article>
-          <article><span>LAST 7 DAYS</span><strong id="metric-7">—</strong><small>page views</small></article>
-          <article><span>LAST 30 DAYS</span><strong id="metric-30">—</strong><small>page views</small></article>
-          <article><span>ALL TIME</span><strong id="metric-total">—</strong><small>page views</small></article>
-        </div>
-        <div class="dashboard-grid">
-          <article class="panel chart-panel"><div class="panel-head"><span>30-DAY ACTIVITY</span><span>DAILY PAGE VIEWS</span></div><div class="chart" id="daily-chart" aria-label="Daily page views chart"></div></article>
-          <article class="panel insight-panel"><div class="panel-head"><span>AT A GLANCE</span><span>LAST 30 DAYS</span></div><div class="insight" id="performance-insight"><strong>—</strong><p>Waiting for live analytics.</p></div></article>
-          <article class="panel" id="pages"><div class="panel-head"><span>TOP PAGES</span><span>ALL TIME</span></div><div class="rank-list" id="page-list"></div></article>
-          <article class="panel" id="audience"><div class="panel-head"><span>TRAFFIC SOURCES</span><span>ORIGIN ONLY</span></div><div class="rank-list" id="referrer-list"></div></article>
-          <article class="panel"><div class="panel-head"><span>DEVICES</span><span>ANONYMOUS</span></div><div class="device-list" id="device-list"></div></article>
-          <article class="panel recent-panel" id="activity"><div class="panel-head"><span>RECENT ACTIVITY</span><span>LATEST 15</span></div><div class="activity-table" id="recent-list"></div></article>
-        </div>
-        <p class="updated" id="updated-at" aria-live="polite"></p>
-      </div>
+    <section class="cloudflare-card" aria-labelledby="cloudflare-title">
+      <div class="card-head"><span>SECURE OWNER PORTAL</span><span>CONNECTED</span></div>
+      <div class="cloudflare-status"><i></i><div><span>LIVE SERVICE</span><strong id="cloudflare-title">Cloudflare Web Analytics</strong><p>Page views, visits, referral sources, devices and Core Web Vitals are available in your private Cloudflare account.</p></div></div>
+      <ul><li><span>01</span>Cookie-free analytics</li><li><span>02</span>Owner-only account access</li><li><span>03</span>Live website performance data</li></ul>
+      <a class="cloudflare-button" href="https://dash.cloudflare.com/6d15ad73fada83dd3ce56b8452714289/web-analytics" target="_blank" rel="noopener noreferrer">Open analytics dashboard <span>↗</span></a>
+      <small>Cloudflare will ask you to sign in if your owner session has expired.</small>
     </section>
   </main>
 </body>
