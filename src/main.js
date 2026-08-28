@@ -6,7 +6,7 @@ if (content) content.style.display = 'block';
 
 // Privacy-friendly analytics: one anonymous page view, with no cookies or stored IP address.
 if (window.location.hostname === 'bykira.co.uk' || window.location.hostname === 'www.bykira.co.uk') {
-  fetch('https://bykira-portfolio.safe-bream-3817.chatgpt.site/api/event', {
+  fetch('https://bykira-analytics.safe-bream-3817.chatgpt.site/api/event', {
     method: 'POST',
     mode: 'cors',
     keepalive: true,
@@ -87,7 +87,7 @@ document.querySelectorAll('footer').forEach((footer) => {
       <div class="footer-columns">
         <div><span class="footer-label">Navigate</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/#about">About</a><a href="/#process">Steps</a><a href="/faq">FAQ</a><a href="/enquiry/">Enquire</a></div>
         <div><span class="footer-label">Connect</span><a href="mailto:info@bykira.co.uk">Email</a><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a></div>
-        <div><span class="footer-label">Details</span><span>Manchester, England</span><span>Working worldwide</span><button class="cookie-settings" type="button">Privacy &amp; cookies</button></div>
+        <div><span class="footer-label">Details</span><span>Manchester, England</span><span>Working worldwide</span><button class="cookie-settings" type="button">Privacy &amp; cookies</button><a href="https://bykira-portfolio.safe-bream-3817.chatgpt.site/admin/" rel="nofollow">Owner login ↗</a></div>
       </div>
       <div class="footer-bottom"><a class="logo" href="/" aria-label="Kira home">Kira<span>®</span></a><span>Independent website developer</span><span>© 2026 Kira</span><a href="#main-content">Back to top ↑</a></div>
     </div>`;

@@ -107,16 +107,15 @@ const login = async (request, env) => {
 
 const analytics = async (request, env) => {
   if (!await authenticated(request, env)) return Response.json({ error: 'Unauthorised' }, { status: 401, headers: jsonHeaders });
-  await initialiseDatabase(env.DB);
-  const [summary, daily, pages, referrers, devices, recent] = await Promise.all([
-    env.DB.prepare("SELECT COUNT(*) AS total, SUM(created_at >= datetime('now','-7 days')) AS last7, SUM(created_at >= datetime('now','-30 days')) AS last30 FROM page_views").first(),
-    env.DB.prepare("SELECT date(created_at) AS day, COUNT(*) AS views FROM page_views WHERE created_at >= datetime('now','-29 days') GROUP BY day ORDER BY day").all(),
-    env.DB.prepare('SELECT path, COUNT(*) AS views FROM page_views GROUP BY path ORDER BY views DESC LIMIT 8').all(),
-    env.DB.prepare("SELECT COALESCE(referrer_origin, 'Direct / unknown') AS source, COUNT(*) AS views FROM page_views GROUP BY source ORDER BY views DESC LIMIT 8").all(),
-    env.DB.prepare('SELECT device, COUNT(*) AS views FROM page_views GROUP BY device ORDER BY views DESC').all(),
-    env.DB.prepare('SELECT path, device, referrer_origin, created_at FROM page_views ORDER BY id DESC LIMIT 15').all(),
-  ]);
-  return Response.json({ summary, daily: daily.results, pages: pages.results, referrers: referrers.results, devices: devices.results, recent: recent.results }, { headers: jsonHeaders });
+  try {
+    const response = await fetch(`${env.ANALYTICS_COLLECTOR_URL}/api/analytics`, {
+      headers: { Authorization: `Bearer ${env.ANALYTICS_READ_SECRET}` },
+    });
+    if (!response.ok) throw new Error('Collector unavailable');
+    return new Response(response.body, { status: 200, headers: jsonHeaders });
+  } catch {
+    return Response.json({ error: 'Analytics are temporarily unavailable.' }, { status: 503, headers: jsonHeaders });
+  }
 };
 
 const externalEvent = async (request, env) => {
@@ -155,15 +154,9 @@ const staticPath = (pathname) => {
 export default {
   async fetch(request, env, context) {
     const url = new URL(request.url);
-    if (url.pathname === '/api/event' && request.method === 'OPTIONS') {
-      const origin = request.headers.get('Origin');
-      if (origin !== 'https://bykira.co.uk' && origin !== 'https://www.bykira.co.uk') return new Response(null, { status: 403 });
-      return new Response(null, { status: 204, headers: { 'Access-Control-Allow-Origin': origin, 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '86400', Vary: 'Origin' } });
-    }
     if (url.pathname === '/api/login' && request.method === 'POST') return login(request, env);
     if (url.pathname === '/api/analytics' && request.method === 'GET') return analytics(request, env);
     if (url.pathname === '/api/me' && request.method === 'GET') return Response.json({ authenticated: await authenticated(request, env) }, { headers: jsonHeaders });
-    if (url.pathname === '/api/event' && request.method === 'POST') return externalEvent(request, env);
     if (url.pathname === '/api/logout' && request.method === 'POST' && validOrigin(request)) return Response.json({ ok: true }, { headers: { ...jsonHeaders, 'Set-Cookie': `${sessionCookie}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0` } });
     if (url.pathname === '/faq.html') { url.pathname = '/faq'; return Response.redirect(url.toString(), 301); }
     if (url.pathname === '/services.html') { url.pathname = '/services/'; return Response.redirect(url.toString(), 301); }
