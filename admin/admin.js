@@ -8,6 +8,19 @@ const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, (character
 const showLogin = (message = '') => { loginView.hidden = false; dashboardView.hidden = true; loginMessage.textContent = message; };
 const showDashboard = () => { loginView.hidden = true; dashboardView.hidden = false; };
 const empty = '<p class="empty">No visits recorded yet.</p>';
+const ownerSignInPath = '/signin-with-chatgpt?return_to=%2Fadmin%2F';
+
+const readJson = async (response) => {
+  const contentType = response.headers.get('Content-Type') || '';
+  if (!contentType.toLowerCase().includes('application/json')) {
+    // The hosting layer returns an HTML sign-in page when the owner's
+    // ChatGPT session expires. Use a top-level navigation instead of trying
+    // to parse that page as JSON.
+    window.top.location.assign(ownerSignInPath);
+    throw new Error('Owner verification is required. Redirecting…');
+  }
+  return response.json();
+};
 
 const renderRank = (target, rows, labelKey) => {
   target.innerHTML = rows.length ? rows.map((row, index) => `<div class="rank-row"><i>${String(index + 1).padStart(2, '0')}</i><span title="${escapeHtml(row[labelKey])}">${escapeHtml(row[labelKey])}</span><strong>${number.format(row.views)}</strong></div>`).join('') : empty;
@@ -35,7 +48,7 @@ const loadAnalytics = async () => {
     const response = await fetch('/api/analytics', { credentials: 'same-origin', headers: { Accept: 'application/json' } });
     if (response.status === 401) return showLogin('Your session has ended. Please sign in again.');
     if (!response.ok) throw new Error('Unable to load analytics.');
-    renderDashboard(await response.json());
+    renderDashboard(await readJson(response));
     showDashboard();
   } catch (error) {
     showLogin(error.message);
@@ -52,7 +65,7 @@ loginForm.addEventListener('submit', async (event) => {
   const form = new FormData(loginForm);
   try {
     const response = await fetch('/api/login', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(form)) });
-    const result = await response.json();
+    const result = await readJson(response);
     if (!response.ok) throw new Error(result.error || 'Unable to sign in.');
     loginForm.reset();
     await loadAnalytics();
@@ -66,4 +79,9 @@ loginForm.addEventListener('submit', async (event) => {
 document.getElementById('refresh-button').addEventListener('click', loadAnalytics);
 document.getElementById('logout-button').addEventListener('click', async () => { await fetch('/api/logout', { method: 'POST', credentials: 'same-origin' }); showLogin('You have signed out securely.'); });
 
-fetch('/api/me', { credentials: 'same-origin' }).then((response) => response.json()).then((data) => data.authenticated ? loadAnalytics() : showLogin()).catch(() => showLogin());
+fetch('/api/me', { credentials: 'same-origin', headers: { Accept: 'application/json' } })
+  .then(readJson)
+  .then((data) => data.authenticated ? loadAnalytics() : showLogin())
+  .catch((error) => {
+    if (!error.message.includes('Redirecting')) showLogin('Unable to verify your session. Please refresh and try again.');
+  });
