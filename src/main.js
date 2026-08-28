@@ -4,6 +4,17 @@ const hero = document.querySelector('.hero');
 
 if (content) content.style.display = 'block';
 
+// Privacy-friendly analytics: one anonymous page view, with no cookies or stored IP address.
+if (window.location.hostname === 'bykira.co.uk' || window.location.hostname === 'www.bykira.co.uk') {
+  fetch('https://bykira-portfolio.safe-bream-3817.chatgpt.site/api/event', {
+    method: 'POST',
+    mode: 'cors',
+    keepalive: true,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ path: window.location.pathname, referrer: document.referrer, userAgent: navigator.userAgent }),
+  }).catch(() => {});
+}
+
 document.querySelectorAll('header').forEach((header) => {
   const headerContent = header.querySelector('.header-content');
   const navigation = header.querySelector('nav');

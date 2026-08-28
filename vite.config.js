@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { cpSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
+import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync } from 'node:fs';
 import { sites } from '@openai/sites-vite-plugin';
 import { defineConfig } from 'vite';
 
@@ -19,6 +19,10 @@ export default defineConfig({
           const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
           request.url = `/enquiry/index.html${query}`;
         }
+        if (request.url === '/admin' || request.url === '/admin/' || request.url?.startsWith('/admin?')) {
+          const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
+          request.url = `/admin/index.html${query}`;
+        }
         next();
       });
     },
@@ -26,42 +30,7 @@ export default defineConfig({
       this.emitFile({
         type: 'asset',
         fileName: 'server/index.js',
-        source: `const securityHeaders = {
-  'Content-Security-Policy': "default-src 'self'; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests",
-  'Cross-Origin-Opener-Policy': 'same-origin',
-  'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
-  'Referrer-Policy': 'strict-origin-when-cross-origin',
-  'X-Content-Type-Options': 'nosniff',
-  'X-Frame-Options': 'DENY',
-};
-
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    if (url.pathname === '/') url.pathname = '/index.html';
-    if (url.pathname === '/work' || url.pathname === '/work/') url.pathname = '/work/index.html';
-    if (url.pathname === '/faq.html') {
-      url.pathname = '/faq';
-      return Response.redirect(url.toString(), 301);
-    }
-    if (url.pathname === '/faq') url.pathname = '/faq.html';
-    if (url.pathname === '/services.html') {
-      url.pathname = '/services/';
-      return Response.redirect(url.toString(), 301);
-    }
-    if (url.pathname === '/services' || url.pathname === '/services/') url.pathname = '/services/index.html';
-    if (url.pathname === '/enquiry.html') {
-      url.pathname = '/enquiry/';
-      return Response.redirect(url.toString(), 301);
-    }
-    if (url.pathname === '/enquiry' || url.pathname === '/enquiry/') url.pathname = '/enquiry/index.html';
-    const response = await env.ASSETS.fetch(new Request(url, request));
-    const secured = new Response(response.body, response);
-    for (const [name, value] of Object.entries(securityHeaders)) secured.headers.set(name, value);
-    return secured;
-  },
-};
-`,
+        source: readFileSync(resolve(import.meta.dirname, 'server/worker.js'), 'utf8'),
       });
     },
     closeBundle() {
@@ -89,6 +58,7 @@ export default {
         enquiryRedirect: resolve(import.meta.dirname, 'enquiry.html'),
         privacy: resolve(import.meta.dirname, 'privacy.html'),
         accessibility: resolve(import.meta.dirname, 'accessibility.html'),
+        admin: resolve(import.meta.dirname, 'admin/index.html'),
       },
     },
   },

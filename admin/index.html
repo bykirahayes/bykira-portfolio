@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#080808">
+  <title>Analytics — Kira</title>
+  <link rel="icon" href="/image/favicon.ico">
+  <link rel="stylesheet" href="/admin/admin.css">
+  <script type="module" src="/admin/admin.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="admin-header"><a class="brand" href="/">Kira<span>®</span></a><span>PRIVATE ANALYTICS</span><a href="/">View website ↗</a></header>
+  <main id="main-content">
+    <section class="login-shell" id="login-view" aria-labelledby="login-title">
+      <div class="login-intro"><p class="eyebrow">OWNER ACCESS / 01</p><h1 id="login-title">Your site,<br><em>in numbers.</em></h1><p>Sign in to view private, cookie-free website analytics.</p><div class="security-note"><span>✦</span><p>Protected with rate limiting, an encrypted connection and a secure eight-hour session.</p></div></div>
+      <form class="login-card" id="login-form">
+        <div class="card-head"><span>SECURE LOGIN</span><span>01 — 03</span></div>
+        <label><span>01 / USERNAME</span><input name="username" autocomplete="username" required></label>
+        <label><span>02 / EMAIL</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span>03 / PASSWORD</span><input name="password" type="password" autocomplete="current-password" required></label>
+        <p class="form-message" id="login-message" role="alert"></p>
+        <button type="submit">Enter dashboard <span>↗</span></button>
+      </form>
+    </section>
+
+    <section class="dashboard" id="dashboard-view" hidden aria-labelledby="dashboard-title">
+      <div class="dashboard-top"><div><p class="eyebrow">PRIVATE ANALYTICS / LIVE</p><h1 id="dashboard-title">The overview.</h1><p>Anonymous page-view data. No visitor profiles, tracking cookies or stored IP addresses.</p></div><div class="dashboard-actions"><button id="refresh-button" type="button">Refresh data</button><button id="logout-button" type="button">Sign out</button></div></div>
+      <div class="metric-grid" aria-label="Analytics summary">
+        <article><span>LAST 7 DAYS</span><strong id="metric-7">—</strong><small>page views</small></article>
+        <article><span>LAST 30 DAYS</span><strong id="metric-30">—</strong><small>page views</small></article>
+        <article><span>ALL TIME</span><strong id="metric-total">—</strong><small>page views</small></article>
+      </div>
+      <div class="dashboard-grid">
+        <article class="panel chart-panel"><div class="panel-head"><span>30-DAY ACTIVITY</span><span>PAGE VIEWS</span></div><div class="chart" id="daily-chart" aria-label="Daily page views chart"></div></article>
+        <article class="panel"><div class="panel-head"><span>TOP PAGES</span><span>ALL TIME</span></div><div class="rank-list" id="page-list"></div></article>
+        <article class="panel"><div class="panel-head"><span>TRAFFIC SOURCES</span><span>ORIGIN ONLY</span></div><div class="rank-list" id="referrer-list"></div></article>
+        <article class="panel"><div class="panel-head"><span>DEVICES</span><span>ANONYMOUS</span></div><div class="device-list" id="device-list"></div></article>
+        <article class="panel recent-panel"><div class="panel-head"><span>RECENT ACTIVITY</span><span>LATEST 15</span></div><div class="activity-table" id="recent-list"></div></article>
+      </div>
+      <p class="updated" id="updated-at" aria-live="polite"></p>
+    </section>
+  </main>
+</body>
+</html>
