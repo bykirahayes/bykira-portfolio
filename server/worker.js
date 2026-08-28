@@ -166,6 +166,11 @@ export default {
     const response = await env.ASSETS.fetch(new Request(url, request));
     const secured = new Response(response.body, response);
     for (const [name, value] of Object.entries(securityHeaders)) secured.headers.set(name, value);
+    if (requestedPath.startsWith('/admin/') || requestedPath.includes('/assets/admin-')) {
+      secured.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+      secured.headers.set('Pragma', 'no-cache');
+      secured.headers.set('Expires', '0');
+    }
     if (request.method === 'GET' && secured.status === 200 && secured.headers.get('Content-Type')?.includes('text/html') && !requestedPath.startsWith('/admin/')) context.waitUntil(trackView(request, env, new URL(request.url).pathname));
     return secured;
   },
