@@ -2385,3 +2385,62 @@ header .scroll-progress { right: 10px; bottom: -1px; left: 10px; width: auto; he
   header nav a.active { background: rgba(255,91,66,.08); box-shadow: none; }
   header nav a.active::after { display: none; }
 }
+
+/* Keep the two hero messages in a single flow so they never overlap. */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: max(100svh, 760px);
+  padding: clamp(118px, 15vh, 160px) 24px 170px;
+}
+.hero-signature,
+.hero-copy {
+  position: relative;
+  inset: auto;
+  left: auto;
+  right: auto;
+  top: auto;
+  bottom: auto;
+  width: min(920px, 82vw);
+  margin: 0;
+  transform: none;
+}
+.hero-signature { flex: 0 0 auto; text-align: center; }
+.hero-signature h2 { font-size: clamp(52px, 6.5vw, 94px); }
+.hero-copy {
+  z-index: 9;
+  flex: 0 0 auto;
+  width: min(680px, 72vw);
+  margin-top: clamp(46px, 6vh, 72px);
+  text-align: center;
+}
+.hero .hero-copy h1 { text-align: center; }
+
+@media (max-width: 720px) {
+  .hero {
+    min-height: 780px;
+    padding: 112px 22px 175px;
+  }
+  .hero-signature,
+  .hero-copy {
+    left: auto;
+    right: auto;
+    top: auto;
+    width: 100%;
+    transform: none;
+  }
+  .hero-signature h2 { font-size: clamp(48px, 15vw, 70px); }
+  .hero-copy { margin-top: 42px; }
+  .hero .hero-copy h1 { font-size: 18px; line-height: 1.25; }
+}
+
+@media (max-height: 760px) and (min-width: 721px) {
+  .hero {
+    min-height: 760px;
+    padding-top: 110px;
+    padding-bottom: 145px;
+  }
+  .hero-signature h2 { font-size: clamp(50px, 6vw, 82px); }
+  .hero-copy { margin-top: 38px; }
+}
