@@ -1,22 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kira — Website Developer</title>
-  <meta name="description" content="Kira is an independent website developer in Manchester, creating thoughtful, distinctive websites for people and businesses with good ideas." />
+  <title>Freelance Web Designer &amp; Developer Manchester | By Kira</title>
+  <meta name="description" content="Freelance web designer and developer in Manchester creating distinctive, responsive websites for small businesses, founders and creative professionals." />
   <meta name="theme-color" content="#080808" />
   <meta name="color-scheme" content="dark" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Kira — Website Developer" />
-  <meta property="og:description" content="Thoughtful, distinctive websites for people and businesses with good ideas." />
+  <meta property="og:title" content="Freelance Web Designer &amp; Developer Manchester | By Kira" />
+  <meta property="og:description" content="Distinctive, responsive websites for small businesses, founders and creative professionals." />
   <meta property="og:locale" content="en_GB" />
+  <meta property="og:url" content="https://bykira.co.uk/" />
+  <meta property="og:site_name" content="By Kira" />
   <meta property="og:image" content="https://bykira.co.uk/og.png" />
   <meta property="og:image:alt" content="Kira — Website Developer. Thoughtful websites. Built properly." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kira — Website Developer" />
-  <meta name="twitter:description" content="Thoughtful, distinctive websites for people and businesses with good ideas." />
+  <meta name="twitter:title" content="Freelance Web Designer &amp; Developer Manchester | By Kira" />
+  <meta name="twitter:description" content="Distinctive, responsive websites for small businesses, founders and creative professionals." />
   <meta name="twitter:image" content="https://bykira.co.uk/og.png" />
   <meta name="twitter:image:alt" content="Kira — Website Developer. Thoughtful websites. Built properly." />
   <link rel="canonical" href="https://bykira.co.uk/" />
@@ -26,16 +28,42 @@
   <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png">
   <link rel="manifest" href="image/site.webmanifest">
   <link rel="stylesheet" href="src/styles.css">
-    <link rel="stylesheet" href="src/hero-fix.css?v=20260829b">
+  <link rel="stylesheet" href="src/hero-fix.css?v=20260829c">
   <script type="module" src="src/header-effects.js"></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Kira",
-      "alternateName": "By Kira",
-      "url": "https://bykira.co.uk/",
-      "description": "Independent website developer creating thoughtful, distinctive websites for people and businesses with good ideas."
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://bykira.co.uk/#website",
+          "name": "By Kira",
+          "url": "https://bykira.co.uk/",
+          "inLanguage": "en-GB",
+          "publisher": { "@id": "https://bykira.co.uk/#business" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://bykira.co.uk/#business",
+          "name": "By Kira",
+          "url": "https://bykira.co.uk/",
+          "email": "info@bykira.co.uk",
+          "logo": "https://bykira.co.uk/image/android-chrome-512x512.png",
+          "description": "Independent website design and development studio based in Manchester, England.",
+          "areaServed": ["Manchester", "United Kingdom", "Worldwide"],
+          "sameAs": [
+            "https://www.linkedin.com/in/kian-price-880251400/",
+            "https://x.com/KAPforges"
+          ]
+        },
+        {
+          "@type": "Service",
+          "name": "Website design and development",
+          "provider": { "@id": "https://bykira.co.uk/#business" },
+          "areaServed": "United Kingdom",
+          "url": "https://bykira.co.uk/services/"
+        }
+      ]
     }
   </script>
 </head>
@@ -44,7 +72,7 @@
   <div id="content">
     <header>
       <div class="header-content">
-        <div class="header-brand"><a class="logo" href="#hero" aria-label="Kira home">Kira<span>®</span></a><span class="brand-role">WEB DEVELOPER</span></div>
+        <div class="header-brand"><a class="logo" href="#hero" aria-label="Kira home">Kira<span>™</span></a><span class="brand-role">WEB DEVELOPER</span></div>
         <nav aria-label="Primary navigation">
           <a href="/work/"><span>01</span> Work</a>
           <a href="/about/"><span>02</span> About</a>
@@ -83,8 +111,9 @@
           <a class="interface-caption" href="/work/">SCROLL TO EXPLORE ↓</a>
         </div>
         <div class="hero-copy">
-          <p class="eyebrow">KIRA® — WEBSITE DEVELOPER</p>
+          <p class="eyebrow">KIRA™ — WEBSITE DEVELOPER</p>
           <h1>Websites for people <br>who want to build <br>something <em>better.</em></h1>
+          <div class="hero-actions" aria-label="Homepage actions"><a class="hero-primary" href="/enquiry/">Start a project <span>↗</span></a><a class="hero-secondary" href="/services/">View services</a></div>
         </div>
         <div class="hero-signature">
           <span>Website developer · Manchester, England</span>
@@ -96,6 +125,17 @@
       <section class="intro-strip" aria-label="Introduction">
         <p><span class="inline-symbol">✦</span> Clear thinking, useful details,<br>and a little bit of personality.</p>
         <span>02 — 05</span>
+      </section>
+
+      <section class="home-services" aria-labelledby="home-services-title">
+        <div class="section-topline"><p class="eyebrow"><span class="section-symbol">↗</span> WHAT I BUILD</p><p class="section-note">Clear scope. Thoughtful execution.</p></div>
+        <div class="home-services-intro"><h2 id="home-services-title">A website with<br><em>a job to do.</em></h2><p>Whether you need a focused landing page or a complete business website, every project is shaped around what your visitors need to understand, trust and do next.</p></div>
+        <div class="home-service-grid">
+          <article><span>01 / FOCUSED</span><h3>Landing pages</h3><p>A clear, persuasive page for a launch, service or campaign.</p></article>
+          <article><span>02 / COMPLETE</span><h3>Business websites</h3><p>A distinctive digital home that explains your offer and earns confidence.</p></article>
+          <article><span>03 / IMPROVED</span><h3>Website redesigns</h3><p>A sharper structure, stronger presentation and a more useful experience.</p></article>
+        </div>
+        <div class="home-services-footer"><span>Responsive build · SEO foundations · Accessible interactions</span><a href="/services/">Explore services and pricing <span>↗</span></a></div>
       </section>
 
       <section class="portfolio empty-portfolio" id="portfolio">
@@ -114,7 +154,7 @@
         <div class="section-topline"><p class="eyebrow"><span class="section-symbol">✳</span> 02 / A little about me</p><p class="section-note">The person behind the pixels</p></div>
         <div class="about-layout">
           <div class="about-heading"><span class="about-number" aria-hidden="true">02</span><span class="about-coordinate">53.4808° N / 2.2426° W</span><h2>Not just<br>another <em>developer.</em></h2><div class="about-orbit" aria-hidden="true"><span>✦</span></div></div>
-          <div class="about-copy"><span class="about-label">WHO / WHAT / WHY</span><p>I'm Kira, a website developer with a soft spot for <mark>good typography</mark>, thoughtful interfaces, and the satisfying moment when a messy idea starts to make sense.</p><p>I work across design and development, which means I can help shape the idea and then build the website. No hand-offs, no disappearing act.</p><div class="about-signoff"><span>KIRA® — WEB DEV</span><a class="text-link" href="enquiry/">Let's make something <span>↗</span></a></div></div>
+          <div class="about-copy"><span class="about-label">WHO / WHAT / WHY</span><p>I'm Kira, a website developer with a soft spot for <mark>good typography</mark>, thoughtful interfaces, and the satisfying moment when a messy idea starts to make sense.</p><p>I work across design and development, which means I can help shape the idea and then build the website. No hand-offs, no disappearing act.</p><div class="about-signoff"><span>KIRA™ — WEB DEV</span><a class="text-link" href="enquiry/">Let's make something <span>↗</span></a></div></div>
         </div>
         <div class="about-foot"><span>Based in Manchester</span><span>Working worldwide</span><span>Usually near a coffee</span></div>
       </section>
@@ -168,7 +208,7 @@
           <div><span class="footer-label">Connect</span><a href="mailto:info@bykira.co.uk">Email</a><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a></div>
           <div><span class="footer-label">Details</span><span>Manchester, England</span><span>Working worldwide</span><button class="cookie-settings" type="button">Cookie notice</button></div>
         </div>
-        <div class="footer-bottom"><a class="logo" href="#hero" aria-label="Back to the top">Kira<span>®</span></a><span>Independent website developer</span><span>© 2026 Kira</span><a href="#hero">Back to top ↑</a></div>
+        <div class="footer-bottom"><a class="logo" href="#hero" aria-label="Back to the top">Kira<span>™</span></a><span>Independent website developer</span><span>© 2026 Kira</span><a href="#hero">Back to top ↑</a></div>
       </div>
     </footer>
   </div>

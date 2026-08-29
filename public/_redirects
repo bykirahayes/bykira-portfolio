@@ -3,5 +3,8 @@
 /services.html  /services/  301
 /services       /services/index.html  200
 /services/      /services/index.html  200
+/terms.html     /terms/  301
+/terms          /terms/index.html  200
+/terms/         /terms/index.html  200
 /admin          https://bykira.co.uk/admin/  308
 /admin/*        https://bykira.co.uk/admin/:splat  308

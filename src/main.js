@@ -5,8 +5,16 @@ const hero = document.querySelector('.hero');
 if (content) content.style.display = 'block';
 
 // Cookie-free, privacy-friendly analytics provided by Cloudflare.
+const analyticsPreference = (() => {
+  try { return window.localStorage.getItem('bykira-analytics'); } catch { return null; }
+})();
+const analyticsOptedOut = analyticsPreference === 'off'
+  || navigator.globalPrivacyControl === true
+  || navigator.doNotTrack === '1';
+
 if ((window.location.hostname === 'bykira.co.uk' || window.location.hostname === 'www.bykira.co.uk')
-  && !window.location.pathname.startsWith('/admin')) {
+  && !window.location.pathname.startsWith('/admin')
+  && !analyticsOptedOut) {
   const analyticsBeacon = document.createElement('script');
   analyticsBeacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
   analyticsBeacon.dataset.cfBeacon = JSON.stringify({ token: 'ac5a21b6d03b4bbaa67aa4a2eadeba79' });
@@ -86,9 +94,9 @@ document.querySelectorAll('footer').forEach((footer) => {
       <div class="footer-columns">
         <div><span class="footer-label">Navigate</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/#process">Steps</a><a href="/faq">FAQ</a><a href="/enquiry/">Enquire</a></div>
         <div><span class="footer-label">Connect</span><a href="mailto:info@bykira.co.uk">Email</a><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a></div>
-        <div><span class="footer-label">Details</span><span>Manchester, England</span><span>Working worldwide</span><button class="cookie-settings" type="button">Privacy &amp; cookies</button><a href="/admin/" rel="nofollow">Owner login ↗</a></div>
+        <div><span class="footer-label">Details</span><span>Manchester, England</span><span>Working worldwide</span><button class="cookie-settings" type="button">Privacy &amp; cookies</button><a href="/terms/">Website terms</a><a href="/admin/" rel="nofollow">Owner login ↗</a></div>
       </div>
-      <div class="footer-bottom"><a class="logo" href="/" aria-label="Kira home">Kira<span>®</span></a><span>Independent website developer</span><span>© 2026 Kira</span><a href="#main-content">Back to top ↑</a></div>
+      <div class="footer-bottom"><a class="logo" href="/" aria-label="Kira home">Kira<span>™</span></a><span>Independent website developer</span><span>© 2026 Kira</span><a href="#main-content">Back to top ↑</a></div>
     </div>`;
 });
 
@@ -208,6 +216,28 @@ document.querySelectorAll('.cookie-settings').forEach((button) => {
   link.textContent = 'Privacy & cookies';
   button.replaceWith(link);
 });
+
+const analyticsControl = document.querySelector('#analytics-preference');
+if (analyticsControl) {
+  const status = document.querySelector('#analytics-status');
+  const updateAnalyticsControl = () => {
+    const disabled = (() => {
+      try { return window.localStorage.getItem('bykira-analytics') === 'off'; } catch { return false; }
+    })();
+    analyticsControl.textContent = disabled ? 'Allow privacy-friendly analytics' : 'Opt out of analytics';
+    analyticsControl.setAttribute('aria-pressed', String(disabled));
+    if (status) status.textContent = disabled ? 'Analytics are off on this device.' : 'Privacy-friendly analytics are on.';
+  };
+  analyticsControl.addEventListener('click', () => {
+    try {
+      const disabled = window.localStorage.getItem('bykira-analytics') === 'off';
+      if (disabled) window.localStorage.removeItem('bykira-analytics');
+      else window.localStorage.setItem('bykira-analytics', 'off');
+    } catch { /* The preference cannot be stored when browser storage is unavailable. */ }
+    updateAnalyticsControl();
+  });
+  updateAnalyticsControl();
+}
 
 document.querySelectorAll('.faq-list details').forEach((item) => {
   item.open = true;

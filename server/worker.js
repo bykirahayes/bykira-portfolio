@@ -17,6 +17,7 @@ const staticPath = (pathname) => {
   if (pathname === '/about' || pathname === '/about/') return '/about/index.html';
   if (pathname === '/privacy' || pathname === '/privacy/') return '/privacy/index.html';
   if (pathname === '/accessibility' || pathname === '/accessibility/') return '/accessibility/index.html';
+  if (pathname === '/terms' || pathname === '/terms/') return '/terms/index.html';
   return pathname;
 };
 
@@ -35,6 +36,7 @@ export default {
     if (url.pathname === '/enquiry.html') { url.pathname = '/enquiry/'; return Response.redirect(url.toString(), 301); }
     if (url.pathname === '/privacy.html') { url.pathname = '/privacy/'; return Response.redirect(url.toString(), 301); }
     if (url.pathname === '/accessibility.html') { url.pathname = '/accessibility/'; return Response.redirect(url.toString(), 301); }
+    if (url.pathname === '/terms.html') { url.pathname = '/terms/'; return Response.redirect(url.toString(), 301); }
     url.pathname = staticPath(url.pathname);
     const response = await env.ASSETS.fetch(new Request(url, request));
     const secured = new Response(response.body, response);

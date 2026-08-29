@@ -35,6 +35,10 @@ export default defineConfig({
           const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
           request.url = `/accessibility/index.html${query}`;
         }
+        if (request.url === '/terms' || request.url === '/terms/' || request.url?.startsWith('/terms?')) {
+          const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
+          request.url = `/terms/index.html${query}`;
+        }
         next();
       });
     },
@@ -72,6 +76,7 @@ export default defineConfig({
         accessibility: resolve(import.meta.dirname, 'accessibility.html'),
         privacyPage: resolve(import.meta.dirname, 'privacy/index.html'),
         accessibilityPage: resolve(import.meta.dirname, 'accessibility/index.html'),
+        termsPage: resolve(import.meta.dirname, 'terms/index.html'),
         admin: resolve(import.meta.dirname, 'admin/index.html'),
         about: resolve(import.meta.dirname, 'about/index.html'),
       },
