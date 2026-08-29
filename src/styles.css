@@ -2515,3 +2515,209 @@ header .header-cta { min-height: 44px; font-size: 10px; }
   header .logo { width: 44px; height: 44px; flex-basis: 44px; }
   header .nav-toggle { min-width: 76px; height: 44px; }
 }
+
+/* Toolkit system — one visual language across the full site. */
+:root {
+  --toolkit-bg: #080808;
+  --toolkit-panel: rgba(255,255,255,.022);
+  --toolkit-panel-strong: rgba(255,255,255,.042);
+  --toolkit-line: rgba(255,255,255,.125);
+  --toolkit-line-soft: rgba(255,255,255,.055);
+  --toolkit-hot: rgba(255,105,78,.5);
+  --toolkit-corner: 3px 3px 38px 3px;
+  --toolkit-grid:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+}
+
+body {
+  background-color: var(--toolkit-bg);
+  background-image:
+    radial-gradient(circle at 8% 8%, rgba(255,74,50,.055), transparent 25rem),
+    linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+  background-size: auto, 64px 64px, 64px 64px;
+}
+
+header,
+.intro-strip,
+.home-services,
+.portfolio,
+.about,
+.skills,
+.process,
+.sales-hero,
+.sales-note,
+.policy-page .policy-hero,
+.enquiry-panel,
+.faq-hero,
+.faq-cta,
+.error-page {
+  border-color: var(--toolkit-line);
+  border-radius: var(--toolkit-corner);
+}
+
+.intro-strip,
+.home-services,
+.portfolio,
+.about,
+.skills,
+.process,
+.sales-hero,
+.policy-page .policy-hero,
+.enquiry-panel,
+.faq-hero,
+.faq-cta,
+.error-page {
+  background-color: var(--toolkit-panel);
+  background-image: var(--toolkit-grid);
+  background-size: 64px 64px, 64px 64px;
+}
+
+.section-topline,
+.sales-meta,
+.faq-hero-meta,
+.enquiry-panel-head,
+.footer-columns,
+.footer-bottom,
+.error-topline {
+  border-color: var(--toolkit-line);
+}
+
+.section-topline::after,
+.sales-meta::after,
+.faq-hero-meta::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border: 1px solid var(--coral-light);
+  background: rgba(255,91,66,.14);
+  box-shadow: 0 0 14px rgba(255,91,66,.3);
+  transform: rotate(45deg);
+}
+
+.section-topline .eyebrow,
+.section-note,
+.sales-meta,
+.policy-switcher,
+.enquiry-panel-head,
+.faq-hero-meta,
+.footer-label,
+.footer-kicker,
+.error-topline {
+  font-family: var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.home-services {
+  margin: 70px auto;
+  padding: 42px clamp(22px, 4vw, 64px) 70px;
+  border: 1px solid var(--toolkit-line);
+}
+.home-service-grid {
+  overflow: hidden;
+  border: 1px solid var(--toolkit-line);
+  border-radius: var(--toolkit-corner);
+  background: rgba(4,4,4,.5);
+}
+.home-service-grid article { position: relative; transition: background .3s ease, transform .3s ease; }
+.home-service-grid article::after { content: '↗'; position: absolute; right: 25px; top: 28px; color: rgba(255,255,255,.2); font: 10px var(--mono); }
+.home-service-grid article:hover { background: linear-gradient(145deg, rgba(255,91,66,.09), transparent 65%); }
+.home-service-grid article:hover::after { color: var(--coral-light); }
+
+.portfolio,
+.about,
+.skills,
+.process { overflow: hidden; }
+.portfolio::after,
+.about::after,
+.process::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 16px;
+  border: 1px solid var(--toolkit-line-soft);
+  border-radius: 2px 2px 28px 2px;
+  pointer-events: none;
+}
+.portfolio > *, .about > *, .process > * { position: relative; z-index: 1; }
+
+.project-visual,
+.about-copy,
+.tool-console,
+.process-step,
+.first-project-card,
+.service-card,
+.policy-page .policy-section li,
+.faq-list details {
+  border-radius: var(--toolkit-corner);
+}
+
+.tool-console { box-shadow: 18px 18px 0 rgba(255,75,51,.055), 0 30px 80px rgba(0,0,0,.34); }
+.tool-console::before { border-radius: 2px 2px 27px 2px; }
+.tool-console .tool-cloud span { border-radius: 3px 3px 13px 3px; }
+
+.sales-hero {
+  width: min(1440px, calc(100% - 40px));
+  margin: 110px auto 70px;
+  padding: clamp(60px, 8vw, 110px) clamp(24px, 5vw, 74px) 42px;
+  border: 1px solid var(--toolkit-line);
+}
+.sales-meta { padding-top: 22px; border-top: 1px solid var(--toolkit-line); }
+.service-list { overflow: hidden; border: 1px solid var(--toolkit-line); border-radius: var(--toolkit-corner); background: rgba(4,4,4,.4); }
+.service-card { padding-inline: clamp(24px, 4vw, 58px); border-color: var(--toolkit-line); transition: background .3s ease; }
+.service-card:hover { background: linear-gradient(90deg, rgba(255,85,58,.07), transparent 72%); }
+.sales-note { border-radius: var(--toolkit-corner); background-image: var(--toolkit-grid), radial-gradient(circle at 90% 110%,rgba(255,61,38,.18),transparent 45%); background-size: 64px 64px, 64px 64px, auto; }
+
+.policy-page .policy-hero { background-image: var(--toolkit-grid), radial-gradient(circle at 86% 86%, rgba(255,75,49,.27), transparent 35%); background-size: 64px 64px, 64px 64px, auto; }
+.policy-switcher { border-radius: 3px 3px 18px 3px; }
+.policy-switcher a { border-radius: 2px 2px 12px 2px; }
+.policy-page .policy-section { border-top: 1px solid var(--toolkit-line); }
+.policy-page .policy-section li { background: var(--toolkit-panel); }
+
+.enquiry-intro { border-color: var(--toolkit-line); }
+.enquiry-panel { position: relative; background-image: var(--toolkit-grid), linear-gradient(145deg, rgba(255,255,255,.025), transparent); background-size: 64px 64px, 64px 64px, auto; }
+.enquiry-panel::after { content: ''; position: absolute; inset: 15px; z-index: -1; border: 1px solid var(--toolkit-line-soft); border-radius: 2px 2px 27px 2px; pointer-events: none; }
+.enquiry-panel-head { padding-bottom: 22px; border-bottom: 1px solid var(--toolkit-line); }
+.enquiry-panel input:focus,
+.enquiry-panel select:focus,
+.enquiry-panel textarea:focus { background: linear-gradient(90deg, rgba(255,91,66,.055), transparent 60%); }
+.enquiry-submit button { border-radius: 3px 3px 15px 3px; }
+
+.faq-hero { border: 1px solid var(--toolkit-line); }
+.faq-list { overflow: hidden; border: 1px solid var(--toolkit-line); border-radius: var(--toolkit-corner); background: var(--toolkit-panel); }
+.faq-list details { padding: 0 clamp(18px, 3vw, 42px); border-bottom: 1px solid var(--toolkit-line); }
+.faq-list details:last-child { border-bottom: 0; }
+.faq-cta { width: min(1440px, calc(100% - 40px)); margin: 70px auto; border: 1px solid var(--toolkit-line); }
+
+footer { margin-top: 70px; border-top: 1px solid var(--toolkit-line); background-image: var(--toolkit-grid), radial-gradient(circle at 13% 105%, rgba(255,61,39,.22), transparent 30%); background-size: 64px 64px, 64px 64px, auto; }
+footer .footer-lead { padding: clamp(34px, 5vw, 68px); border: 1px solid var(--toolkit-line); border-radius: var(--toolkit-corner); background: rgba(5,5,5,.66); }
+footer .footer-columns { padding: 34px; border: 1px solid var(--toolkit-line); border-radius: var(--toolkit-corner); background: rgba(5,5,5,.56); }
+.error-footer > div { border: 1px solid var(--toolkit-line); border-radius: var(--toolkit-corner); background: var(--toolkit-panel); }
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible { outline: 2px solid var(--coral-light); outline-offset: 4px; }
+
+@media (max-width: 760px) {
+  :root { --toolkit-corner: 3px 3px 26px 3px; }
+  .home-services { width: calc(100% - 20px); padding: 25px 20px 55px; }
+  .home-service-grid { border: 0; background: transparent; }
+  .home-service-grid article { padding-inline: 4px; }
+  .sales-hero { width: calc(100% - 20px); margin-top: 86px; padding: 54px 20px 35px; }
+  .service-list { width: calc(100% - 20px); }
+  .faq-cta { width: calc(100% - 20px); margin: 30px auto; }
+  .section-topline::after, .sales-meta::after, .faq-hero-meta::after { display: none; }
+  footer .footer-lead, footer .footer-columns { padding: 28px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-service-grid article,
+  .service-card,
+  .tool-console { transition: none; }
+}
