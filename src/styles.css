@@ -2406,9 +2406,10 @@ header .scroll-progress { right: 10px; bottom: -1px; left: 10px; width: auto; he
   margin: 0;
   transform: none;
 }
-.hero-signature { flex: 0 0 auto; text-align: center; }
+.hero-signature { order: 1; flex: 0 0 auto; text-align: center; }
 .hero-signature h2 { font-size: clamp(52px, 6.5vw, 94px); }
 .hero-copy {
+  order: 2;
   z-index: 9;
   flex: 0 0 auto;
   width: min(680px, 72vw);
