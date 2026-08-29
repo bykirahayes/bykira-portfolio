@@ -65,7 +65,7 @@
   .hero-copy { margin-top: 42px; }
   .hero .hero-copy h1 { font-size: 18px; line-height: 1.25; }
   .hero-actions { margin-top: 22px; }
-  .hero-actions a { min-height: 42px; padding: 0 14px; font-size: 7px; }
+  .hero-actions a { min-height: 44px; padding: 0 14px; font-size: 7px; }
 }
 
 @media (max-height: 760px) and (min-width: 721px) {
