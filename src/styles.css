@@ -2721,3 +2721,7 @@ textarea:focus-visible { outline: 2px solid var(--coral-light); outline-offset: 
   .service-card,
   .tool-console { transition: none; }
 }
+
+.form-trap { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+.turnstile-wrap { min-height: 65px; }
+.enquiry-submit button:disabled { cursor: wait; opacity: .65; transform: none; }

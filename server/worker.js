@@ -1,5 +1,5 @@
 const securityHeaders = {
-  'Content-Security-Policy': "default-src 'self'; base-uri 'self'; connect-src 'self' https://cloudflareinsights.com; form-action 'self' mailto:; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; upgrade-insecure-requests",
+  'Content-Security-Policy': "default-src 'self'; base-uri 'self'; connect-src 'self' https://cloudflareinsights.com https://contact.bykira.co.uk https://challenges.cloudflare.com; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self' data:; object-src 'none'; script-src 'self' https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests",
   'Cross-Origin-Opener-Policy': 'same-origin',
   'Cross-Origin-Resource-Policy': 'same-origin',
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',

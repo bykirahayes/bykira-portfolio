@@ -1,4 +1,4 @@
-Contact: mailto:info@bykira.co.uk
+Contact: https://bykira.co.uk/enquiry/
 Expires: 2027-08-29T23:59:59Z
 Canonical: https://bykira.co.uk/.well-known/security.txt
 Preferred-Languages: en

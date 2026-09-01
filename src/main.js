@@ -49,8 +49,7 @@ document.querySelectorAll('header').forEach((header) => {
     headerActions.className = 'header-actions';
     headerContent.append(headerActions);
   }
-  const enquiryPage = path.startsWith('/enquiry');
-  headerActions.innerHTML = `<div class="header-status"><span class="status-dot"></span><span class="status-copy">AVAILABLE</span></div><span class="active-section" data-static>${pageContext}</span><a class="header-cta" href="${enquiryPage ? 'mailto:info@bykira.co.uk' : '/enquiry/'}">${enquiryPage ? 'Email directly' : 'Start a project'} <span>↗</span></a>`;
+  headerActions.innerHTML = `<div class="header-status"><span class="status-dot"></span><span class="status-copy">AVAILABLE</span></div><span class="active-section" data-static>${pageContext}</span><a class="header-cta" href="/enquiry/">Start a project <span>↗</span></a>`;
 
   const toggle = document.createElement('button');
   toggle.className = 'nav-toggle';
@@ -88,11 +87,11 @@ document.querySelectorAll('footer').forEach((footer) => {
       <div class="footer-lead">
         <p class="footer-kicker">HAVE A PROJECT IN MIND?</p>
         <h2>Let's make it<br><em>worth visiting.</em></h2>
-        <a class="footer-email" href="mailto:info@bykira.co.uk">info@bykira.co.uk <span>↗</span></a>
+        <a class="footer-email" href="/enquiry/">Start an enquiry <span>↗</span></a>
       </div>
       <div class="footer-columns">
         <div><span class="footer-label">Navigate</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/#process">Steps</a><a href="/faq">FAQ</a><a href="/enquiry/">Enquire</a></div>
-        <div><span class="footer-label">Connect</span><a href="mailto:info@bykira.co.uk">Email</a><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a></div>
+        <div><span class="footer-label">Connect</span><a href="/enquiry/">Enquiry form</a><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a></div>
         <div><span class="footer-label">Details</span><span>Manchester, England</span><span>Working worldwide</span><button class="cookie-settings" type="button">Privacy &amp; cookies</button><a href="/terms/">Website terms</a></div>
       </div>
       <div class="footer-bottom"><a class="logo" href="/" aria-label="Kira home"><img src="/image/kira-logo.png" alt="Kira" width="44" height="44"></a><span>Independent website developer</span><span>© 2026 Kira</span><a href="#main-content">Back to top ↑</a></div>
@@ -249,44 +248,34 @@ enquiryForm?.addEventListener('submit', (event) => {
   if (!enquiryForm.reportValidity()) return;
   const data = new FormData(enquiryForm);
   const value = (name) => String(data.get(name) || '').trim();
-  const projectName = value('business') || value('name');
-  const launchDate = value('launch');
-  const formattedLaunchDate = launchDate
-    ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${launchDate}T00:00:00Z`))
-    : 'Flexible';
-  const subject = `Website enquiry | ${projectName} | ${value('service')}`;
-  const body = [
-    'NEW WEBSITE PROJECT ENQUIRY',
-    'Submitted via By Kira',
-    '',
-    'Hello Kira,',
-    '',
-    "I'd like to discuss a new website project. I've included the key details below.",
-    '',
-    'CONTACT DETAILS',
-    `Name: ${value('name')}`,
-    `Email: ${value('email')}`,
-    `Business or project: ${value('business') || 'Not provided'}`,
-    '',
-    'PROJECT OVERVIEW',
-    `Service required: ${value('service')}`,
-    `Approximate budget: ${value('budget')}`,
-    `Preferred launch date: ${formattedLaunchDate}`,
-    `Current website: ${value('website') || 'None provided'}`,
-    '',
-    'PROJECT BRIEF',
-    value('details'),
-    '',
-    'HOW I FOUND YOU',
-    value('source') || 'Not provided',
-    '',
-    'NEXT STEP',
-    `Please reply to ${value('name')} at ${value('email')}.`,
-    '',
-    '—',
-    'Sent securely from the project enquiry form at bykira.co.uk/enquiry/',
-  ].join('\r\n');
   const status = enquiryForm.querySelector('.form-status');
-  if (status) status.textContent = 'Your email app is opening — review the message, then press send.';
-  window.location.href = `mailto:info@bykira.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const button = enquiryForm.querySelector('button[type="submit"]');
+  const turnstileToken = value('cf-turnstile-response');
+  if (!turnstileToken) {
+    if (status) status.textContent = 'Please complete the security check and try again.';
+    return;
+  }
+  const payload = {
+    name: value('name'), email: value('email'), business: value('business'),
+    service: value('service'), budget: value('budget'), launch: value('launch'),
+    website: value('website'), details: value('details'), source: value('source'),
+    companyWebsite: value('companyWebsite'), turnstileToken,
+  };
+  if (button) button.disabled = true;
+  if (status) status.textContent = 'Sending your enquiry securely…';
+  fetch('https://contact.bykira.co.uk/enquiry', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  }).then(async (response) => {
+    if (!response.ok) throw new Error('submission_failed');
+    enquiryForm.reset();
+    if (status) status.textContent = 'Thanks — your enquiry has been sent. I’ll reply within two working days.';
+    window.turnstile?.reset();
+  }).catch(() => {
+    if (status) status.textContent = 'The enquiry could not be sent just now. Please wait a moment and try again.';
+    window.turnstile?.reset();
+  }).finally(() => {
+    if (button) button.disabled = false;
+  });
 });
