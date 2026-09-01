@@ -1,8 +1,10 @@
 const securityHeaders = {
   'Content-Security-Policy': "default-src 'self'; base-uri 'self'; connect-src 'self' https://cloudflareinsights.com; form-action 'self' mailto:; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; upgrade-insecure-requests",
   'Cross-Origin-Opener-Policy': 'same-origin',
+  'Cross-Origin-Resource-Policy': 'same-origin',
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Strict-Transport-Security': 'max-age=63072000; includeSubDomains',
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
 };
@@ -13,7 +15,6 @@ const staticPath = (pathname) => {
   if (pathname === '/faq') return '/faq.html';
   if (pathname === '/services' || pathname === '/services/') return '/services/index.html';
   if (pathname === '/enquiry' || pathname === '/enquiry/') return '/enquiry/index.html';
-  if (pathname === '/admin' || pathname === '/admin/') return '/admin/index.html';
   if (pathname === '/about' || pathname === '/about/') return '/about/index.html';
   if (pathname === '/privacy' || pathname === '/privacy/') return '/privacy/index.html';
   if (pathname === '/accessibility' || pathname === '/accessibility/') return '/accessibility/index.html';
@@ -24,6 +25,17 @@ const staticPath = (pathname) => {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === '/admin' || url.pathname.startsWith('/admin/')) {
+      return new Response('Not Found', {
+        status: 404,
+        headers: {
+          ...securityHeaders,
+          'Cache-Control': 'no-store',
+          'Content-Type': 'text/plain; charset=utf-8',
+          'X-Robots-Tag': 'noindex, nofollow, noarchive',
+        },
+      });
+    }
     if (url.hostname === 'bykira-portfolio.safe-bream-3817.chatgpt.site'
       && (request.method === 'GET' || request.method === 'HEAD')) {
       url.protocol = 'https:';

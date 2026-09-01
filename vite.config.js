@@ -19,10 +19,6 @@ export default defineConfig({
           const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
           request.url = `/enquiry/index.html${query}`;
         }
-        if (request.url === '/admin' || request.url === '/admin/' || request.url?.startsWith('/admin?')) {
-          const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
-          request.url = `/admin/index.html${query}`;
-        }
         if (request.url === '/about' || request.url === '/about/' || request.url?.startsWith('/about?')) {
           const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
           request.url = `/about/index.html${query}`;
@@ -77,7 +73,6 @@ export default defineConfig({
         privacyPage: resolve(import.meta.dirname, 'privacy/index.html'),
         accessibilityPage: resolve(import.meta.dirname, 'accessibility/index.html'),
         termsPage: resolve(import.meta.dirname, 'terms/index.html'),
-        admin: resolve(import.meta.dirname, 'admin/index.html'),
         about: resolve(import.meta.dirname, 'about/index.html'),
       },
     },
