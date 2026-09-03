@@ -3,9 +3,21 @@ import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync } from 'node:fs';
 import { sites } from '@openai/sites-vite-plugin';
 import { defineConfig } from 'vite';
 
+const browserContentSecurityPolicy = "default-src 'self'; base-uri 'self'; connect-src 'self' https://cloudflareinsights.com https://contact.bykira.co.uk https://challenges.cloudflare.com; form-action 'self'; frame-src https://challenges.cloudflare.com; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests";
+
 export default defineConfig({
   plugins: [sites(), {
     name: 'clean-faq-url',
+    transformIndexHtml() {
+      return [{
+        tag: 'meta',
+        attrs: {
+          'http-equiv': 'Content-Security-Policy',
+          content: browserContentSecurityPolicy,
+        },
+        injectTo: 'head-prepend',
+      }];
+    },
     configureServer(server) {
       server.middlewares.use((request, _response, next) => {
         if (request.url === '/faq' || request.url?.startsWith('/faq?')) {
