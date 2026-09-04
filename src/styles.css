@@ -3181,6 +3181,7 @@ footer .footer-bottom > a:last-child,
 footer .legal-links-inline a {
   display: inline-flex;
   align-items: center;
+  min-width: 24px;
   min-height: 32px;
 }
 
