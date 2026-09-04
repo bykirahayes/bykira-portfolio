@@ -3191,6 +3191,9 @@ footer .footer-bottom > a:last-child { font-size: 11px; }
 
 .sales-note .contact-button,
 .faq-cta .contact-button,
+.sales-hero-grid > div a,
+.faq-hero-layout > div a,
+.faq-list details > div a,
 .policy-switcher a {
   display: inline-flex;
   align-items: center;
@@ -3200,6 +3203,9 @@ footer .footer-bottom > a:last-child { font-size: 11px; }
 
 .sales-note .contact-button,
 .faq-cta .contact-button { padding-inline: 18px; font-size: 12px; }
+.sales-hero-grid > div a,
+.faq-hero-layout > div a,
+.faq-list details > div a { font-size: 12px; }
 .policy-switcher a { font-size: 11px; }
 
 section[id],
