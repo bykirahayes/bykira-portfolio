@@ -34,8 +34,7 @@ const response = await worker.fetch(new Request('https://contact.bykira.co.uk/en
   TURNSTILE_SECRET_KEY: 'test-secret',
   RESEND_API_KEY: 'test-key',
   ENQUIRY_FROM: 'By Kira <enquiries@example.com>',
-  ENQUIRY_TO: 'owner@example.com',
-  ENQUIRY_ANALYTICS: { writeDataPoint: () => {} }
+  ENQUIRY_TO: 'owner@example.com'
 }, {
   waitUntil: (promise) => backgroundTasks.push(promise)
 });
@@ -61,17 +60,14 @@ assert.equal(acknowledgement.subject, 'Your project brief has arrived — By Kir
 assert.match(acknowledgement.html, /Your idea is safely with me/);
 assert.doesNotMatch(acknowledgement.html, /A useful second line/);
 
-let journeyPoint;
 const eventResponse = await worker.fetch(new Request('https://contact.bykira.co.uk/event', {
   method: 'POST',
   headers: { Origin: 'https://bykira.co.uk', 'Content-Type': 'application/json' },
   body: JSON.stringify({ event: 'enquiry_started', path: '/enquiry/', device: 'desktop' })
 }), {
-  JOURNEY_RATE_LIMITER: { limit: async () => ({ success: true }) },
-  ENQUIRY_ANALYTICS: { writeDataPoint: (point) => { journeyPoint = point; } }
+  JOURNEY_RATE_LIMITER: { limit: async () => ({ success: true }) }
 }, { waitUntil: () => {} });
 
 assert.equal(eventResponse.status, 204);
-assert.deepEqual(journeyPoint.blobs.slice(0, 3), ['enquiry_started', '/enquiry/', 'desktop']);
 
 console.log('Email template checks passed.');

@@ -198,12 +198,14 @@ async function sendEmail(env, payload) {
     });
   } catch { return null; }
 }
-function recordJourney(env, request, event, path, device) {
-  env.ENQUIRY_ANALYTICS?.writeDataPoint({
-    blobs: [event, path, device, request.cf?.country || 'unknown'],
-    doubles: [1],
-    indexes: ['enquiry-funnel']
-  });
+function recordJourney(request, event, path, device) {
+  console.log(JSON.stringify({
+    event: 'enquiry_journey',
+    journey_event: event,
+    path,
+    device,
+    country: request.cf?.country || 'unknown'
+  }));
 }
 
 export default { async fetch(request, env, ctx) {
@@ -222,7 +224,7 @@ export default { async fetch(request, env, ctx) {
     const path = clean(parsed.value.path, 100);
     const device = clean(parsed.value.device, 20);
     if (!JOURNEY_EVENTS.has(event) || path !== '/enquiry/' || !['mobile', 'desktop'].includes(device)) return reply(origin, 400, { ok: false, message: 'Invalid event.' });
-    recordJourney(env, request, event, path, device);
+    recordJourney(request, event, path, device);
     return reply(origin, 204, null);
   }
   if (!(await env.ENQUIRY_RATE_LIMITER.limit({ key: ip })).success) return reply(origin, 429, { ok: false, message: 'Too many attempts. Please wait and try again.' });
@@ -241,7 +243,7 @@ export default { async fetch(request, env, ctx) {
   const html = htmlEmail(data, timestamp);
   const sent = await sendEmail(env, { from: env.ENQUIRY_FROM, to: [env.ENQUIRY_TO], reply_to: data.email, subject: `New website enquiry · ${data.service} · ${data.budget}`, text: message, html });
   if (!sent?.ok) { console.error(JSON.stringify({ event: 'enquiry_delivery_failed', status: sent?.status || 0 })); return reply(origin, 503, { ok: false, message: 'The enquiry could not be sent. Please try again.' }); }
-  recordJourney(env, request, 'enquiry_delivered', '/enquiry/', 'server');
+  recordJourney(request, 'enquiry_delivered', '/enquiry/', 'server');
   ctx.waitUntil((async () => {
     const acknowledgement = await sendEmail(env, {
       from: env.ENQUIRY_FROM,
