@@ -3171,3 +3171,52 @@ body .enquiry-trust-grid p { margin: 0; color: rgba(255,255,255,.52); font-size:
   body .enquiry-trust .section-topline { margin-bottom: 34px; }
   body .enquiry-trust-grid article { padding: 26px 4px; background: transparent; }
 }
+
+/* Universal usability: generous targets, legible utility text and stronger
+   system-level contrast support without changing the studio's visual identity. */
+:where(a, button, summary, input, select, textarea) { touch-action: manipulation; }
+
+footer .footer-columns a,
+footer .footer-bottom > a:last-child,
+footer .legal-links-inline a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+}
+
+footer .footer-columns a { font-size: 13px; }
+footer .legal-links-inline a,
+footer .footer-bottom > a:last-child { font-size: 11px; }
+
+.sales-note .contact-button,
+.faq-cta .contact-button,
+.policy-switcher a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.sales-note .contact-button,
+.faq-cta .contact-button { padding-inline: 18px; font-size: 12px; }
+.policy-switcher a { font-size: 11px; }
+
+section[id],
+[id="main-content"] { scroll-margin-top: 96px; }
+
+@media (prefers-contrast: more) {
+  :root { --muted: rgba(255,255,255,.78); --line: rgba(255,255,255,.3); }
+  header,
+  .service-card,
+  .faq-list,
+  .enquiry-panel,
+  footer .footer-lead,
+  footer .footer-columns { border-color: rgba(255,255,255,.45); }
+}
+
+@media (forced-colors: active) {
+  :where(a, button, summary, input, select, textarea):focus-visible {
+    outline: 3px solid Highlight;
+  }
+  .status-dot { forced-color-adjust: none; background: Highlight; }
+}
