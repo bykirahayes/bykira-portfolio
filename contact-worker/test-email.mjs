@@ -24,6 +24,7 @@ const enquiry = {
   turnstileToken: 'test-token'
 };
 
+const backgroundTasks = [];
 const response = await worker.fetch(new Request('https://contact.bykira.co.uk/enquiry', {
   method: 'POST',
   headers: { Origin: 'https://bykira.co.uk', 'Content-Type': 'application/json' },
@@ -33,11 +34,16 @@ const response = await worker.fetch(new Request('https://contact.bykira.co.uk/en
   TURNSTILE_SECRET_KEY: 'test-secret',
   RESEND_API_KEY: 'test-key',
   ENQUIRY_FROM: 'By Kira <enquiries@example.com>',
-  ENQUIRY_TO: 'owner@example.com'
+  ENQUIRY_TO: 'owner@example.com',
+  ENQUIRY_ANALYTICS: { writeDataPoint: () => {} }
+}, {
+  waitUntil: (promise) => backgroundTasks.push(promise)
 });
 
+await Promise.all(backgroundTasks);
+
 assert.equal(response.status, 200);
-assert.equal(outbound.length, 2);
+assert.equal(outbound.length, 3);
 
 const email = JSON.parse(outbound[1].options.body);
 assert.equal(email.reply_to, enquiry.email);
@@ -48,5 +54,24 @@ assert.match(email.html, /A clear first line\.<br>A useful second line\./);
 assert.match(email.html, /Reply to enquiry/);
 assert.match(email.text, /01 \/ CONTACT/);
 assert.match(email.text, /12 October 2026/);
+
+const acknowledgement = JSON.parse(outbound[2].options.body);
+assert.deepEqual(acknowledgement.to, [enquiry.email]);
+assert.equal(acknowledgement.subject, 'Your project brief has arrived — By Kira');
+assert.match(acknowledgement.html, /Your idea is safely with me/);
+assert.doesNotMatch(acknowledgement.html, /A useful second line/);
+
+let journeyPoint;
+const eventResponse = await worker.fetch(new Request('https://contact.bykira.co.uk/event', {
+  method: 'POST',
+  headers: { Origin: 'https://bykira.co.uk', 'Content-Type': 'application/json' },
+  body: JSON.stringify({ event: 'enquiry_started', path: '/enquiry/', device: 'desktop' })
+}), {
+  JOURNEY_RATE_LIMITER: { limit: async () => ({ success: true }) },
+  ENQUIRY_ANALYTICS: { writeDataPoint: (point) => { journeyPoint = point; } }
+}, { waitUntil: () => {} });
+
+assert.equal(eventResponse.status, 204);
+assert.deepEqual(journeyPoint.blobs.slice(0, 3), ['enquiry_started', '/enquiry/', 'desktop']);
 
 console.log('Email template checks passed.');
