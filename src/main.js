@@ -46,6 +46,8 @@ document.querySelectorAll('header').forEach((header) => {
     : path.startsWith('/services') ? 'SERVICES'
       : path.startsWith('/about') ? 'ABOUT'
       : path.startsWith('/faq') ? 'FAQ'
+        : path.startsWith('/website-review') ? 'FREE REVIEW'
+          : path.startsWith('/guides') ? 'GUIDES'
         : path.startsWith('/enquiry') ? 'ENQUIRY'
           : path.includes('privacy') ? 'PRIVACY'
             : path.includes('accessibility') ? 'ACCESSIBILITY'
@@ -111,8 +113,8 @@ document.querySelectorAll('footer').forEach((footer) => {
         <a class="footer-email" href="/enquiry/">Start an enquiry <span>↗</span></a>
       </div>
       <div class="footer-columns">
-        <div><span class="footer-label">Navigate</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/#process">Steps</a><a href="/faq">FAQ</a><a href="/enquiry/">Enquire</a></div>
-        <div><span class="footer-label">Connect</span><a href="/enquiry/">Enquiry form</a><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a></div>
+        <div><span class="footer-label">Navigate</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/guides/">Guides</a><a href="/faq">FAQ</a><a href="/enquiry/">Enquire</a></div>
+        <div><span class="footer-label">Connect</span><a href="/website-review/">Free website review</a><a href="/enquiry/">Project enquiry</a><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a></div>
         <div><span class="footer-label">Details</span><span>Manchester, England</span><span>Working worldwide</span><button class="cookie-settings" type="button">Privacy &amp; cookies</button><a href="/terms/">Website terms</a></div>
       </div>
       <div class="footer-bottom"><a class="logo" href="/" aria-label="Kira home"><img src="/image/kira-logo.png" alt="Kira" width="44" height="44"></a><span>Independent website developer</span><span>© 2026 Kira</span><a href="#main-content">Back to top ↑</a></div>
@@ -181,7 +183,7 @@ const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
 const sections = Array.from(document.querySelectorAll('main section[id]'));
 const activeSectionLabel = document.querySelector('.active-section');
 const scrollProgress = document.querySelector('.scroll-progress span');
-const sectionLabels = { hero: '00 / HOME', portfolio: '01 / WORK', about: '02 / ABOUT', skills: '03 / TOOLKIT', process: '04 / STEPS', contact: '05 / CONTACT', faq: 'FAQ / INFO' };
+const sectionLabels = { hero: '00 / HOME', portfolio: '01 / WORK', about: '02 / ABOUT', skills: '03 / TOOLKIT', process: '04 / STEPS', contact: '06 / CONTACT', faq: 'FAQ / INFO' };
 const updateActiveNavigation = () => {
   const currentSection = sections.reduce((current, section) => {
     return window.scrollY >= section.offsetTop - 180 ? section.id : current;

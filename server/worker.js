@@ -19,6 +19,11 @@ const staticPath = (pathname) => {
   if (pathname === '/privacy' || pathname === '/privacy/') return '/privacy/index.html';
   if (pathname === '/accessibility' || pathname === '/accessibility/') return '/accessibility/index.html';
   if (pathname === '/terms' || pathname === '/terms/') return '/terms/index.html';
+  if (pathname === '/website-review' || pathname === '/website-review/') return '/website-review/index.html';
+  if (pathname === '/guides' || pathname === '/guides/') return '/guides/index.html';
+  if (pathname === '/guides/small-business-website-cost' || pathname === '/guides/small-business-website-cost/') return '/guides/small-business-website-cost/index.html';
+  if (pathname === '/guides/service-business-homepage' || pathname === '/guides/service-business-homepage/') return '/guides/service-business-homepage/index.html';
+  if (pathname === '/guides/website-launch-checklist' || pathname === '/guides/website-launch-checklist/') return '/guides/website-launch-checklist/index.html';
   return pathname;
 };
 

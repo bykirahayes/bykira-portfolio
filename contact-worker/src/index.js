@@ -1,5 +1,5 @@
 const ALLOWED_ORIGINS = new Set(['https://bykira.co.uk', 'https://www.bykira.co.uk']);
-const SERVICES = new Set(['Landing page', 'Business or portfolio website', 'Custom website', 'Redesign of an existing site', 'Not sure yet']);
+const SERVICES = new Set(['Landing page', 'Business or portfolio website', 'Custom website', 'Redesign of an existing site', 'Not sure yet', 'Free website review']);
 const BUDGETS = new Set(['£500–£1,000', '£1,000–£2,500', '£2,500–£5,000', '£5,000+', 'I need guidance']);
 const JOURNEY_EVENTS = new Set(['enquiry_viewed', 'enquiry_started', 'enquiry_validation_error', 'enquiry_security_incomplete', 'enquiry_submitted', 'enquiry_submit_failed']);
 
@@ -223,7 +223,7 @@ export default { async fetch(request, env, ctx) {
     const event = clean(parsed.value.event, 50);
     const path = clean(parsed.value.path, 100);
     const device = clean(parsed.value.device, 20);
-    if (!JOURNEY_EVENTS.has(event) || path !== '/enquiry/' || !['mobile', 'desktop'].includes(device)) return reply(origin, 400, { ok: false, message: 'Invalid event.' });
+    if (!JOURNEY_EVENTS.has(event) || !['/enquiry/', '/website-review/'].includes(path) || !['mobile', 'desktop'].includes(device)) return reply(origin, 400, { ok: false, message: 'Invalid event.' });
     recordJourney(request, event, path, device);
     return reply(origin, 204, null);
   }
@@ -243,7 +243,7 @@ export default { async fetch(request, env, ctx) {
   const html = htmlEmail(data, timestamp);
   const sent = await sendEmail(env, { from: env.ENQUIRY_FROM, to: [env.ENQUIRY_TO], reply_to: data.email, subject: `New website enquiry · ${data.service} · ${data.budget}`, text: message, html });
   if (!sent?.ok) { console.error(JSON.stringify({ event: 'enquiry_delivery_failed', status: sent?.status || 0 })); return reply(origin, 503, { ok: false, message: 'The enquiry could not be sent. Please try again.' }); }
-  recordJourney(request, 'enquiry_delivered', '/enquiry/', 'server');
+  recordJourney(request, 'enquiry_delivered', data.service === 'Free website review' ? '/website-review/' : '/enquiry/', 'server');
   ctx.waitUntil((async () => {
     const acknowledgement = await sendEmail(env, {
       from: env.ENQUIRY_FROM,

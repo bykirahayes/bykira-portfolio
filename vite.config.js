@@ -47,6 +47,12 @@ export default defineConfig({
           const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
           request.url = `/terms/index.html${query}`;
         }
+        const directoryRoutes = ['/website-review', '/guides', '/guides/small-business-website-cost', '/guides/service-business-homepage', '/guides/website-launch-checklist'];
+        const matchedRoute = directoryRoutes.find((route) => request.url === route || request.url === `${route}/` || request.url?.startsWith(`${route}?`));
+        if (matchedRoute) {
+          const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
+          request.url = `${matchedRoute}/index.html${query}`;
+        }
         next();
       });
     },
@@ -86,6 +92,11 @@ export default defineConfig({
         accessibilityPage: resolve(import.meta.dirname, 'accessibility/index.html'),
         termsPage: resolve(import.meta.dirname, 'terms/index.html'),
         about: resolve(import.meta.dirname, 'about/index.html'),
+        websiteReview: resolve(import.meta.dirname, 'website-review/index.html'),
+        guides: resolve(import.meta.dirname, 'guides/index.html'),
+        guideWebsiteCost: resolve(import.meta.dirname, 'guides/small-business-website-cost/index.html'),
+        guideHomepage: resolve(import.meta.dirname, 'guides/service-business-homepage/index.html'),
+        guideLaunch: resolve(import.meta.dirname, 'guides/website-launch-checklist/index.html'),
       },
     },
   },
