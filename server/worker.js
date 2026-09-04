@@ -22,6 +22,11 @@ const staticPath = (pathname) => {
   return pathname;
 };
 
+const secureRedirect = (url, status) => new Response(null, {
+  status,
+  headers: { ...securityHeaders, Location: url },
+});
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -41,14 +46,14 @@ export default {
       url.protocol = 'https:';
       url.hostname = 'bykira.co.uk';
       url.port = '';
-      return Response.redirect(url.toString(), 308);
+      return secureRedirect(url.toString(), 308);
     }
-    if (url.pathname === '/faq.html') { url.pathname = '/faq'; return Response.redirect(url.toString(), 301); }
-    if (url.pathname === '/services.html') { url.pathname = '/services/'; return Response.redirect(url.toString(), 301); }
-    if (url.pathname === '/enquiry.html') { url.pathname = '/enquiry/'; return Response.redirect(url.toString(), 301); }
-    if (url.pathname === '/privacy.html') { url.pathname = '/privacy/'; return Response.redirect(url.toString(), 301); }
-    if (url.pathname === '/accessibility.html') { url.pathname = '/accessibility/'; return Response.redirect(url.toString(), 301); }
-    if (url.pathname === '/terms.html') { url.pathname = '/terms/'; return Response.redirect(url.toString(), 301); }
+    if (url.pathname === '/faq.html') { url.pathname = '/faq'; return secureRedirect(url.toString(), 301); }
+    if (url.pathname === '/services.html') { url.pathname = '/services/'; return secureRedirect(url.toString(), 301); }
+    if (url.pathname === '/enquiry.html') { url.pathname = '/enquiry/'; return secureRedirect(url.toString(), 301); }
+    if (url.pathname === '/privacy.html') { url.pathname = '/privacy/'; return secureRedirect(url.toString(), 301); }
+    if (url.pathname === '/accessibility.html') { url.pathname = '/accessibility/'; return secureRedirect(url.toString(), 301); }
+    if (url.pathname === '/terms.html') { url.pathname = '/terms/'; return secureRedirect(url.toString(), 301); }
     url.pathname = staticPath(url.pathname);
     const response = await env.ASSETS.fetch(new Request(url, request));
     const secured = new Response(response.body, response);
