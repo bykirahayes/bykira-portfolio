@@ -35,6 +35,11 @@ const secureRedirect = (url, status) => new Response(null, {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.hostname === 'www.bykira.co.uk'
+      && (request.method === 'GET' || request.method === 'HEAD')) {
+      url.hostname = 'bykira.co.uk';
+      return secureRedirect(url.toString(), 308);
+    }
     if (url.pathname === '/admin' || url.pathname.startsWith('/admin/')) {
       return new Response('Not Found', {
         status: 404,
