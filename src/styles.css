@@ -3396,3 +3396,6 @@ footer{background:#121217;background-image:none;border-top:1px solid #ffffff20}f
 .contact{background:#15151a;background-image:none}.contact:before,.contact:after{display:none}
 @media(max-width:1080px){header .header-content{grid-template-columns:minmax(140px,1fr) auto}header .header-actions{display:none}}
 @media(max-width:760px){.sales-hero,.policy-page .policy-hero,.faq-hero,.guides-hero,.guide-article-hero,.enquiry-intro,.review-intro{padding:28px 22px}.sales-hero h1,.policy-page .policy-hero h1,.faq-hero h1,.guides-hero h1,.guide-article-hero h1,.enquiry-intro h1,.review-intro h1,.about-heading h1,.empty-portfolio h1{font-size:clamp(2.35rem,9.5vw,4rem);line-height:1.1}footer .footer-lead,footer .footer-columns{padding-inline:0}.policy-section{padding-block:28px}.guides-hero{margin-bottom:30px}}
+/* Echo the landscape quietly on secondary pages; keep forms visually calm. */
+.sales-hero,.policy-page .policy-hero,.faq-hero,.guides-hero,.guide-article-hero{background-image:radial-gradient(ellipse at 100% 0%,rgba(77,92,163,.18),transparent 65%)}
+footer{background-image:radial-gradient(ellipse at 100% 100%,rgba(96,78,151,.14),transparent 60%)}
