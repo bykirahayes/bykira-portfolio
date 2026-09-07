@@ -37,4 +37,18 @@
 @media(max-width:1600px){.studio-hero{margin-left:16px;margin-right:16px}}
 @media(max-width:800px){.studio-hero{margin-top:86px;padding:0 24px}.studio-hero-layout{padding:34px 0;gap:32px}.studio-hero h1{font-size:clamp(2.8rem,9vw,5rem)}.studio-hero-signature{border-radius:3px 3px 34px 3px}.studio-hero-signature img{width:120px}.studio-hero-signature::after{font-size:90px;bottom:12px}.studio-hero-top{gap:8px}.studio-hero-description{margin-top:24px}}
 @media(max-width:380px){.studio-hero{margin-left:10px;margin-right:10px;padding:0 18px}.studio-hero h1{font-size:2.65rem}.studio-hero-signature img{width:85px}}
+/* A studio signature, framed by the same fine technical lines as the Toolkit. */
+.studio-hero-signature{display:flex;align-self:center;flex-direction:column;gap:24px;width:100%;padding:18px 0;border:0;border-radius:0;background:none;overflow:visible}
+.studio-hero-signature::before,.studio-hero-signature::after{display:none}
+.studio-hero-stamp{display:flex;flex-direction:row;justify-content:space-between;gap:12px;font-size:.6875rem;letter-spacing:.06em}
+.signature-orbit{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:1;background:radial-gradient(circle,rgba(255,99,65,.13),transparent 68%);isolation:isolate}
+.signature-orbit::before{content:'';position:absolute;inset:13%;border:1px solid var(--toolkit-line);border-radius:50%;box-shadow:0 0 65px rgba(255,99,65,.06)}
+.signature-orbit::after{content:'';position:absolute;inset:0;background:linear-gradient(var(--toolkit-line-soft),var(--toolkit-line-soft)) center/1px 100% no-repeat,linear-gradient(var(--toolkit-line-soft),var(--toolkit-line-soft)) center/100% 1px no-repeat;z-index:-1}
+.signature-orbit-ring{position:absolute;inset:3%;border:1px solid var(--toolkit-line);border-top-color:var(--coral-light);border-radius:50%;transform:rotate(-35deg)}
+.signature-orbit-ring::before{content:'';position:absolute;left:50%;top:-3px;width:5px;height:5px;border-radius:50%;background:var(--coral-light);box-shadow:0 0 14px rgba(255,130,99,.7)}
+.studio-hero-signature .signature-orbit img{display:block;width:64%;max-width:260px;height:auto;margin:0;grid-area:1/1;mix-blend-mode:screen;filter:drop-shadow(0 12px 28px rgba(255,99,65,.13));animation:signature-arrive 1s ease-out both}
+.signature-coordinate{position:absolute;color:var(--coral-light);font:400 1rem var(--mono)}.coordinate-top{left:4%;top:4%}.coordinate-bottom{right:4%;bottom:4%}
+.studio-hero-signoff{display:flex;flex-direction:row;justify-content:space-between;gap:12px;padding-top:18px;font-size:.75rem}
+@keyframes signature-arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:800px){.studio-hero-signature{max-width:360px;margin:0 auto;gap:18px}.studio-hero-signature .signature-orbit img{width:64%;max-width:220px}}
 @media(prefers-reduced-motion:reduce){.studio-hero *{animation:none!important;transition:none!important}}
