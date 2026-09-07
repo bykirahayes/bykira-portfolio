@@ -28,7 +28,7 @@
 .studio-hero-signature::before{content:'';position:absolute;top:0;left:26px;width:70px;height:2px;background:var(--coral-light)}
 .studio-hero-signature::after{content:'01';position:absolute;right:20px;bottom:78px;color:rgba(255,255,255,.035);font:500 180px/1 var(--sans);pointer-events:none}
 .studio-hero-stamp,.studio-hero-signoff{color:#bcb6b1;position:relative;z-index:1}.studio-hero-stamp>span:first-child{color:var(--coral-light)}
-.studio-hero-signature img{width:85%;max-width:330px;transform:none;filter:none;animation:studio-mark-in .8s ease-out both;position:relative;z-index:1}
+.studio-hero-signature img{width:176px;max-width:100%;transform:none;filter:none;animation:none;position:relative;z-index:1}
 .studio-hero-signoff{border-color:var(--toolkit-line)}
 .studio-hero-primary{background:#f4f1ec;border-color:#f4f1ec;border-radius:3px 3px 16px 3px}.studio-hero-primary span{color:#b84227}.studio-hero-primary:hover{background:var(--coral-light);border-color:var(--coral-light)}
 .studio-hero-secondary{border-color:var(--toolkit-line)}.studio-hero-secondary span{color:var(--coral-light)}
