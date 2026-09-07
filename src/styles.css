@@ -2497,6 +2497,12 @@ header .scroll-progress { right: 10px; bottom: -1px; left: 10px; width: auto; he
   line-height: 1;
 }
 .logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+/* Frame the original artwork without its generous transparent margins. */
+header .logo.wordmark, footer .logo.wordmark { position: relative; display: block; overflow: hidden; width: 148px; height: 48px; flex: 0 0 148px; }
+header .logo.wordmark::after { display: none; }
+header .logo.wordmark img, footer .logo.wordmark img { position: absolute; width: 100%; height: auto; max-width: none; top: 50%; left: 0; transform: translateY(-50%); object-fit: contain; }
+footer .logo.wordmark { width: 190px; height: 62px; flex-basis: 190px; }
+@media(max-width:720px) { header .logo.wordmark { width: 128px; height: 44px; flex-basis: 128px; } footer .logo.wordmark { width: 170px; height: 56px; flex-basis: 170px; } }
 header .logo { width: 42px; height: 42px; flex-basis: 42px; font-size: 0; }
 header .logo::after { top: 3px; right: -6px; }
 footer .logo,
