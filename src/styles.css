@@ -3367,52 +3367,32 @@ section[id],
   .review-boundaries { padding: 38px 20px; }
   .review-boundaries article { padding-inline: 4px; }
 }
-/* By Kira — expressive type, atmospheric colour, and a quiet reading rhythm. */
-:root{--studio-paper:#f3f3ef;--studio-ink:#202020;--studio-violet:#c3b6ef;--studio-rust:#9f3929;--toolkit-corner:20px;--studio-wash:radial-gradient(ellipse at 100% 0%,#c3b6ef80,transparent 52%),radial-gradient(ellipse at 0% 110%,#f3a58b90,transparent 48%)}
-body{background-color:#101011;color:#f3f3ef}
-header{border-radius:20px;background:#141416f5;box-shadow:none}
-header::before{background:none}header nav{border:0;background:none}header nav a{font-family:var(--sans);font-size:.8125rem;text-transform:none;letter-spacing:0;border-radius:100px}header nav a span{display:none}
-header .header-cta,header .nav-toggle{border-radius:100px}header .header-cta{font-family:var(--sans);font-size:.8125rem;text-transform:none;letter-spacing:0}header .brand-role{display:none}
-header .header-content{grid-template-columns:minmax(160px,1fr) auto minmax(235px,1fr)}
-main h1{overflow-wrap:normal;text-wrap:balance}
-/* Each route opens with the same light, atmospheric cover. */
-.sales-hero,.policy-page .policy-hero,.faq-hero,.guides-hero,.guide-article-hero,.enquiry-intro,.review-intro{
- background-color:var(--studio-paper);background-image:var(--studio-wash);background-size:auto;border:0;border-radius:24px;padding:clamp(28px,4vw,64px);color:var(--studio-ink);box-shadow:none;isolation:isolate;max-width:none
-}
-.sales-hero h1,.policy-page .policy-hero h1,.faq-hero h1,.guides-hero h1,.guide-article-hero h1,.enquiry-intro h1,.review-intro h1{color:var(--studio-ink);font-family:var(--serif);font-weight:500;line-height:1.02;letter-spacing:-.055em;font-size:clamp(3rem,6.8vw,6.8rem)}
-.sales-hero h1 em,.policy-page .policy-hero h1 em,.faq-hero h1 em,.guides-hero h1 em,.enquiry-intro h1 em,.review-intro h1 em{color:var(--studio-rust)}
-.sales-hero p,.sales-hero .sales-meta,.policy-page .policy-hero p,.policy-page .policy-hero .policy-meta,.faq-hero p,.faq-hero .faq-hero-meta,.guides-hero p,.guide-article-hero p,.enquiry-intro p,.review-intro p,.review-proof,.enquiry-intro .enquiry-details{color:#49494a;line-height:1.7}
-.sales-hero .eyebrow,.policy-hero .eyebrow,.faq-hero .eyebrow,.guides-hero .eyebrow,.guide-article-hero .eyebrow,.enquiry-intro .eyebrow,.review-intro .eyebrow{color:var(--studio-rust);font-size:.75rem}
-.policy-hero-mark{display:none}.policy-page .policy-hero:before,.policy-page .policy-hero:after{display:none}
-.policy-hero a,.guide-article-hero>a{color:var(--studio-rust)}
-.guide-article-hero{margin-bottom:20px}.guides-hero{margin-bottom:48px}.enquiry-intro,.review-intro{position:relative;top:auto;align-self:start}
-.enquiry-intro h1,.review-intro h1{font-size:clamp(2.75rem,5.1vw,5.2rem)}
-/* About and work retain their honest content, without a stack of outer cards. */
-main:not(.home-story)>.about,main:not(.home-story)>.portfolio,main:not(.home-story)>.skills{background:none;border:0;border-bottom:1px solid #ffffff24;border-radius:0}
-.about-heading h1,.empty-portfolio h1{font:500 clamp(3rem,7vw,7rem)/1.02 var(--serif);letter-spacing:-.055em;color:#f3f3ef}.about-heading h1 em,.empty-portfolio h1 em{color:var(--studio-violet)}
-.about-orbit{display:none}.about-number,.skills-watermark{font-family:var(--sans);font-weight:800}
-/* Common surfaces: a restrained line, not a box around every thought. */
-.service-list,.faq-list,.guide-grid,.home-guides-grid{border-radius:18px;border-color:#ffffff26;background:#ffffff03}
-.service-card,.faq-list details{border-color:#ffffff24}.service-card:hover,.faq-list details[open]{background:#c3b6ef09}
-.policy-section{background:none;border:0;border-bottom:1px solid #ffffff24;border-radius:0;padding-block:38px}
-.policy-section h2,.guide-copy h2{line-height:1.12}.policy-section p,.policy-section li,.guide-copy p,.guide-copy li{line-height:1.85}
-.sales-note,.faq-cta,.guides-cta,.review-boundaries,.enquiry-trust{background:#19181c;border:1px solid #ffffff20;border-radius:22px;box-shadow:none}
-.sales-note,.faq-cta,.guides-cta{background-image:radial-gradient(ellipse at 100% 120%,#76649f35,transparent 65%)}
-.guide-grid>a,.home-guides-grid>a{background:transparent}.guide-grid>a:hover,.home-guides-grid>a:hover{background:#c3b6ef0d}
-.guide-grid h2,.home-guides-grid strong{line-height:1.18}.guide-grid p{font-size:1rem}
-.contact-button,.service-button,.enquiry-submit,.guide-actions a,.sales-note .contact-button{border-radius:100px;min-height:48px}
-/* Forms stay dark and clear; the visual treatment never covers a control. */
-.enquiry-panel{background:#18181b;border:1px solid #ffffff26;border-radius:22px;box-shadow:none}
-.enquiry-panel input,.enquiry-panel select,.enquiry-panel textarea{font-size:1rem;color:#f3f3ef;color-scheme:dark}
-.enquiry-panel select option{background:#202024;color:#fff}.enquiry-panel label{line-height:1.6}
-.enquiry-panel :is(input,select,textarea):focus-visible{outline:2px solid var(--studio-violet);outline-offset:4px}
-/* The shared footer closes every page with the same broad typographic gesture. */
-footer{background:#131215;background-image:radial-gradient(ellipse at 0% 100%,#75463745,transparent 60%),radial-gradient(ellipse at 100% 100%,#7560b52b,transparent 65%);border-top:1px solid #ffffff24}
-footer .footer-lead,footer .footer-columns{border:0;border-radius:0;background:none;box-shadow:none}footer .footer-lead h2{font-size:clamp(3rem,6.5vw,6.5rem);line-height:1.02;letter-spacing:-.055em}footer .footer-lead h2 em{color:var(--studio-violet)}footer .footer-columns a{font-size:.875rem;min-height:36px;display:flex;align-items:center}
-.error-page{background:#17161b;border-radius:24px;background-image:radial-gradient(ellipse at 100% 100%,#7560b533,transparent 60%)}
+/* By Kira / Midnight studio — a single dark visual system. */
+:root{--coral:#b5a5ee;--coral-light:#c9bdf4;--muted:#b0afb9;--toolkit-corner:12px;--toolkit-hot:#b5a5ee55;--toolkit-grid:none;--studio-paper:#15151a;--studio-ink:#f1f0f5;--studio-violet:#c9bdf4;--studio-rust:#c9bdf4;--studio-wash:none}
+body{background:#101014;color:#f1f0f5}
+header{border-radius:12px;background:#131318f5;box-shadow:none;border-color:#ffffff20}header::before{background:none}header nav{border:0;background:none}header nav a{font-family:var(--sans);font-size:.8125rem;text-transform:none;letter-spacing:0;border-radius:6px}header nav a span,header .brand-role{display:none}header .header-cta{border-radius:6px;background:#c9bdf4;color:#181421;font:500 .8125rem var(--sans);text-transform:none;letter-spacing:0}header .header-cta span{color:#403253}
+header .header-content{grid-template-columns:minmax(160px,1fr) auto minmax(235px,1fr)}header nav a.active{background:#c9bdf414;box-shadow:none}header .active-section{color:#c9bdf4}header .nav-toggle{border-radius:8px}
+main h1{text-wrap:balance}
+.sales-hero,.policy-page .policy-hero,.faq-hero,.guides-hero,.guide-article-hero,.enquiry-intro,.review-intro{background:#15151a;background-image:none;border:1px solid #ffffff17;border-radius:12px;padding:clamp(28px,4vw,64px);color:#f1f0f5;box-shadow:none;isolation:isolate;max-width:none}
+.sales-hero h1,.policy-page .policy-hero h1,.faq-hero h1,.guides-hero h1,.guide-article-hero h1,.enquiry-intro h1,.review-intro h1,.about-heading h1,.empty-portfolio h1{color:#f1f0f5;font-family:var(--sans);font-weight:500;line-height:1.06;letter-spacing:-.065em;font-size:clamp(2.75rem,6vw,6rem)}
+.sales-hero h1 em,.policy-page .policy-hero h1 em,.faq-hero h1 em,.guides-hero h1 em,.enquiry-intro h1 em,.review-intro h1 em,.about-heading h1 em,.empty-portfolio h1 em{color:#c9bdf4;font-style:normal}
+.sales-hero p,.sales-hero .sales-meta,.policy-page .policy-hero p,.faq-hero p,.faq-hero .faq-hero-meta,.guides-hero p,.guide-article-hero p,.enquiry-intro p,.review-intro p,.review-proof,.enquiry-intro .enquiry-details{color:#b9b7c3;line-height:1.75}
+.sales-hero .eyebrow,.policy-hero .eyebrow,.faq-hero .eyebrow,.guides-hero .eyebrow,.guide-article-hero .eyebrow,.enquiry-intro .eyebrow,.review-intro .eyebrow{color:#c9bdf4;font-size:.75rem}
+.policy-hero-mark,.about-orbit{display:none}.policy-page .policy-hero:before,.policy-page .policy-hero:after{display:none}
+.policy-hero a,.guide-article-hero>a{color:#c9bdf4}.guides-hero{margin-bottom:48px}.enquiry-intro,.review-intro{position:relative;top:auto;align-self:start}.enquiry-intro h1,.review-intro h1{font-size:clamp(2.6rem,4.8vw,4.8rem)}
+main:not(.home-story)>.about,main:not(.home-story)>.portfolio,main:not(.home-story)>.skills{background:none;border:0;border-bottom:1px solid #ffffff20;border-radius:0}
+.service-list,.faq-list,.guide-grid,.home-guides-grid{border-radius:12px;border-color:#ffffff20;background:#15151a}.service-card,.faq-list details{border-color:#ffffff20}.service-card:hover,.faq-list details[open]{background:#c9bdf409}
+.service-card h2,.guide-grid h2,.home-guides-grid strong,.policy-section h2,.guide-copy h2,.enquiry-trust h2,.review-boundaries h2,.faq-cta h2,.sales-note h2,.guides-cta h2{font-family:var(--sans);font-weight:500;line-height:1.14;letter-spacing:-.035em}
+.policy-section{background:none;border:0;border-bottom:1px solid #ffffff20;border-radius:0;padding-block:38px}.policy-section p,.policy-section li,.guide-copy p,.guide-copy li{line-height:1.85}
+.sales-note,.faq-cta,.guides-cta,.review-boundaries,.enquiry-trust,.error-page{background:#15151a;background-image:none;border:1px solid #ffffff20;border-radius:12px;box-shadow:none}
+.guide-grid>a,.home-guides-grid>a{background:transparent}.guide-grid>a:hover,.home-guides-grid>a:hover{background:#c9bdf40b}.guide-grid p{font-size:1rem}
+.contact-button,.service-button,.enquiry-submit,.guide-actions a{border-radius:6px;min-height:48px}
+.enquiry-panel{background:#15151a;border:1px solid #ffffff20;border-radius:12px;box-shadow:none}.enquiry-panel:before,.enquiry-panel:after{display:none}
+.enquiry-panel input,.enquiry-panel select,.enquiry-panel textarea{font-size:1rem;color:#f1f0f5;color-scheme:dark}.enquiry-panel select option{background:#202026;color:#fff}.enquiry-panel label{line-height:1.6}.enquiry-panel :is(input,select,textarea):focus-visible{outline:2px solid #c9bdf4;outline-offset:4px}
+.enquiry-intro .enquiry-next li,.enquiry-intro .enquiry-next strong,.enquiry-intro .enquiry-availability span,.enquiry-intro .enquiry-details span,.sales-hero .sales-meta span,.faq-hero .faq-hero-meta span{color:#b9b7c3}
+.enquiry-intro .enquiry-next span,.enquiry-intro .enquiry-details b,.sales-hero a{color:#c9bdf4}
+.policy-page .policy-hero .policy-switcher a{color:#c4c1cd;border-color:#ffffff30;background:transparent}.policy-page .policy-hero .policy-switcher a.active{background:#c9bdf4;color:#181421}
+footer{background:#121217;background-image:none;border-top:1px solid #ffffff20}footer .footer-lead,footer .footer-columns{border:0;border-radius:0;background:none;box-shadow:none}footer .footer-lead h2{font:500 clamp(2.7rem,5.8vw,5.6rem)/1.08 var(--sans);letter-spacing:-.055em}footer .footer-lead h2 em{color:#c9bdf4;font-style:normal}footer .footer-columns a{font-size:.875rem;min-height:36px;display:flex;align-items:center}
+.contact{background:#15151a;background-image:none}.contact:before,.contact:after{display:none}
 @media(max-width:1080px){header .header-content{grid-template-columns:minmax(140px,1fr) auto}header .header-actions{display:none}}
-@media(max-width:760px){.sales-hero,.policy-page .policy-hero,.faq-hero,.guides-hero,.guide-article-hero,.enquiry-intro,.review-intro{padding:28px 22px;border-radius:18px}.sales-hero h1,.policy-page .policy-hero h1,.faq-hero h1,.guides-hero h1,.guide-article-hero h1,.enquiry-intro h1,.review-intro h1{font-size:clamp(2.65rem,11vw,4.5rem);line-height:1.08}.about-heading h1,.empty-portfolio h1{font-size:clamp(2.8rem,12vw,4.8rem)}footer .footer-lead,footer .footer-columns{padding-inline:0}.policy-section{padding-block:28px}.guides-hero{margin-bottom:30px}}
-@media(forced-colors:active){.sales-hero,.policy-page .policy-hero,.faq-hero,.guides-hero,.guide-article-hero,.enquiry-intro,.review-intro{border:1px solid CanvasText}.enquiry-panel :is(input,select,textarea):focus-visible{outline-color:Highlight}}
-.enquiry-intro .enquiry-next li,.enquiry-intro .enquiry-next strong,.enquiry-intro .enquiry-availability span,.enquiry-intro .enquiry-details span,.sales-hero .sales-meta span,.faq-hero .faq-hero-meta span{color:#49494a}
-.enquiry-intro .enquiry-next span,.enquiry-intro .enquiry-details b,.sales-hero a{color:#9f3929}
-.policy-page .policy-hero .policy-switcher a{color:#49494a;border-color:#20202040;background:transparent}.policy-page .policy-hero .policy-switcher a.active{background:#202020;color:#fff}
+@media(max-width:760px){.sales-hero,.policy-page .policy-hero,.faq-hero,.guides-hero,.guide-article-hero,.enquiry-intro,.review-intro{padding:28px 22px}.sales-hero h1,.policy-page .policy-hero h1,.faq-hero h1,.guides-hero h1,.guide-article-hero h1,.enquiry-intro h1,.review-intro h1,.about-heading h1,.empty-portfolio h1{font-size:clamp(2.35rem,9.5vw,4rem);line-height:1.1}footer .footer-lead,footer .footer-columns{padding-inline:0}.policy-section{padding-block:28px}.guides-hero{margin-bottom:30px}}
