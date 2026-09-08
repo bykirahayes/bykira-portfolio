@@ -121,6 +121,11 @@ document.querySelectorAll('footer').forEach((footer) => {
     </div>`;
 });
 
+document.querySelectorAll('header .logo, footer .logo').forEach((link) => {
+  link.classList.add('wordmark');
+  link.innerHTML = '<img src="/image/bykira-wordmark.png" alt="By Kira" width="1664" height="936">';
+});
+
 const enquiryPanel = document.querySelector('.enquiry-panel');
 if (enquiryPanel) {
   enquiryPanel.addEventListener('pointermove', (event) => {
