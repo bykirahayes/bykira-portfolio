@@ -1,4 +1,13 @@
-/* A quieter purple studio identity, retaining the restored split composition. */
+/* Explicitly scoped hero typography prevents legacy global hero rules leaking in. */
+.hero .hero-identity h1{font:500 clamp(3.5rem,6.4vw,6.5rem)/1.05 var(--sans);letter-spacing:-.055em;text-align:left;text-wrap:initial;text-shadow:none;margin:0;width:100%;max-width:none}
+.hero .hero-identity h1>span,.hero .hero-identity h1>em{display:block;position:static;font:inherit;font-style:normal;line-height:1.05;color:#f3eff9;letter-spacing:inherit;transform:none}
+.hero .hero-identity h1>em{color:#c6aafa}
+.hero .hero-identity h1>em:after{display:none}
+.hero .hero-identity .hero-signoff{margin:26px 0 0;font:400 1.0625rem/1.6 var(--sans);letter-spacing:0;text-transform:none;color:#bcb6c8}
+.hero .hero-identity{align-items:flex-start;text-align:left}
+.hero .hero-offer>p{font:400 clamp(1.5rem,2.2vw,2rem)/1.35 var(--sans);letter-spacing:-.025em}
+.hero .hero-offer>p em{font-style:normal;color:#c6aafa}
+@media(max-width:640px){.hero .hero-identity h1{font-size:clamp(3rem,13vw,4.5rem)}.hero .hero-identity .hero-signoff{font-size:1rem}}
 .hero{display:grid;place-items:center;min-height:max(100svh,760px);padding:clamp(105px,12vh,135px) clamp(18px,3vw,48px) clamp(55px,7vh,85px);overflow:hidden}
 .hero-frame{position:relative;z-index:10;display:grid;grid-template-rows:auto 1fr auto;width:min(1420px,100%);min-height:min(670px,calc(100svh - 165px));border:1px solid rgba(255,255,255,.14);border-radius:3px 3px 42px 3px;background:linear-gradient(120deg,rgba(255,255,255,.035),rgba(255,255,255,.012) 52%,rgba(177,145,245,.05));box-shadow:0 35px 110px rgba(0,0,0,.34);backdrop-filter:blur(5px);overflow:hidden}
 .hero-frame::before{content:'';position:absolute;width:430px;height:430px;right:-180px;bottom:-230px;border:1px solid rgba(177,145,245,.2);border-radius:50%;box-shadow:0 0 0 85px rgba(177,145,245,.025),0 0 0 170px rgba(177,145,245,.018);pointer-events:none}
