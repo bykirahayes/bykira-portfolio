@@ -56,3 +56,18 @@
 .hero .hero-frame-footer{border:0;padding:40px 0 0}.hero .hero-frame-footer>span:nth-child(2){display:none}
 .hero{min-height:max(720px,95svh);background:radial-gradient(ellipse at 50% 110%,rgba(151,108,218,.15),transparent 58%),#09090c}
 @media(max-width:760px){.hero .hero-frame-main{grid-template-columns:1fr;gap:0}.hero .hero-identity{padding:20px 0 30px}.hero .hero-identity h1{font-size:clamp(3.6rem,14vw,6rem)}.hero .hero-offer{padding:0;max-width:460px}.hero .hero-frame-meta{padding-bottom:24px}.hero .hero-frame-footer{padding-top:32px}.hero{padding:110px 26px 48px;min-height:0}.hero .hero-frame-meta>span:last-child{font-size:0}.hero .hero-identity .hero-signoff{margin-top:24px}}
+/* Flowing serif composition inspired by the supplied typography reference. */
+.hero .hero-frame-main{display:flex;flex-direction:column;align-items:center;gap:0}
+.hero .hero-identity{width:100%;align-items:center;padding:30px 0 24px;text-align:center}
+.hero .hero-identity h1{width:100%;font:400 clamp(3.5rem,7.6vw,7.5rem)/.98 var(--serif);letter-spacing:-.06em;text-align:center}
+.hero .hero-identity h1>.hero-type-line{display:block;font:inherit;line-height:inherit;color:#f4f0f8}
+.hero .hero-identity h1>.hero-type-line:nth-child(2){padding-left:8%}
+.hero .hero-identity h1>.hero-type-line:nth-child(3){padding-right:5%}
+.hero .hero-identity h1 .hero-type-line em{position:static;display:inline;margin:0;font:italic 400 1em/.98 var(--serif);letter-spacing:inherit;color:#c6aafa}
+.hero .hero-identity h1 .hero-type-line em:after{display:none}
+.hero .hero-identity .hero-signoff{text-align:center;max-width:none;margin-top:26px}
+.hero .hero-offer{align-items:center;text-align:center;padding:0;max-width:540px}
+.hero .hero-offer>p{font:400 1rem/1.7 var(--sans);color:#bcb6c8;max-width:440px}
+.hero .hero-actions{justify-content:center;margin-top:22px}
+.hero .hero-frame-footer{padding-top:36px}
+@media(max-width:640px){.hero .hero-identity h1{font-size:clamp(2.3rem,8.7vw,3.5rem);line-height:1.08}.hero .hero-identity h1>.hero-type-line:nth-child(2){padding-left:0}.hero .hero-identity h1>.hero-type-line:nth-child(3){padding-right:0}.hero .hero-identity{padding-top:20px}.hero .hero-identity>p:first-child{font-size:.75rem;line-height:1.7}.hero .hero-identity .hero-signoff{font-size:.9375rem}}
