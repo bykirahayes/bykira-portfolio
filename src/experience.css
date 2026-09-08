@@ -149,17 +149,20 @@
 .experience-v3 body .logo.wordmark {
   width: 132px;
   height: 58px;
-  overflow: visible;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
 }
 .experience-v3 body .logo.wordmark img {
+  position: absolute;
+  top: 50%;
+  left: 0;
   width: 132px;
   height: auto;
   display: block;
   max-width: none;
-  transform: none;
+  transform: translateY(-50%);
   filter: drop-shadow(0 0 18px rgba(184, 145, 255, 0.16));
 }
 
@@ -1123,7 +1126,7 @@
   }
   .experience-v3 body .logo.wordmark img {
     width: 104px;
-    transform: none;
+    transform: translateY(-50%);
   }
   .experience-v3 body .header-cta {
     display: none;
