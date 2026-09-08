@@ -71,3 +71,22 @@
 .hero .hero-actions{justify-content:center;margin-top:22px}
 .hero .hero-frame-footer{padding-top:36px}
 @media(max-width:640px){.hero .hero-identity h1{font-size:clamp(2.3rem,8.7vw,3.5rem);line-height:1.08}.hero .hero-identity h1>.hero-type-line:nth-child(2){padding-left:0}.hero .hero-identity h1>.hero-type-line:nth-child(3){padding-right:0}.hero .hero-identity{padding-top:20px}.hero .hero-identity>p:first-child{font-size:.75rem;line-height:1.7}.hero .hero-identity .hero-signoff{font-size:.9375rem}}
+/* Small accents and a single entrance sequence; no continuous text motion. */
+.hero .hero-accents{position:absolute;inset:70px 0 70px;pointer-events:none;z-index:0;color:#c6aafa;opacity:.65}
+.hero-accents span{position:absolute;font:400 22px/1 var(--serif)}
+.hero-accent-one{left:5%;top:16%}.hero-accent-two{right:5%;top:8%;transform:rotate(12deg)}.hero-accent-three{right:10%;bottom:18%}
+.hero .hero-actions a{transition:transform .2s ease,background-color .2s ease,border-color .2s ease,box-shadow .2s ease}
+.hero .hero-actions a:hover{transform:translateY(-2px);box-shadow:0 7px 24px #b191f518}
+.hero .hero-actions a:active{transform:translateY(0);box-shadow:none}
+.hero .hero-actions a:focus-visible{outline:3px solid #d9c5ff;outline-offset:5px}
+@media(prefers-reduced-motion:no-preference){
+ .hero .hero-identity h1>.hero-type-line{animation:kira-line-arrive .85s cubic-bezier(.2,.65,.3,1) both}
+ .hero .hero-identity h1>.hero-type-line:nth-child(2){animation-delay:.1s}
+ .hero .hero-identity h1>.hero-type-line:nth-child(3){animation-delay:.2s}
+ .hero .hero-signoff,.hero .hero-offer{animation:kira-line-arrive .8s .3s ease-out both}
+ .hero .hero-accents{animation:kira-accents-arrive 1.2s .2s ease-out both}
+ @keyframes kira-line-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+ @keyframes kira-accents-arrive{from{opacity:0}to{opacity:.65}}
+}
+@media(max-width:760px){.hero .hero-accents{inset:50px 0 40px}.hero-accents span{font-size:16px}.hero-accent-one{left:0;top:0}.hero-accent-two{right:0;top:0}.hero-accent-three{display:none}}
+@media(prefers-reduced-motion:reduce){.hero .hero-accents,.hero .hero-identity h1>.hero-type-line,.hero .hero-signoff,.hero .hero-offer{animation:none!important}.hero .hero-actions a{transition:none!important;transform:none!important}}
