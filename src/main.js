@@ -106,13 +106,58 @@ document.querySelectorAll('header').forEach((header) => {
   }, { passive: true });
 });
 
+// A shared chapter language gives every route its own identity without
+// competing with the page content. Decorative layers stay out of the
+// accessibility tree and inherit the same violet / ice-blue palette.
+const chapterRoutes = [
+  { match: /^\/work\/?$/, code: '01', symbol: '↗', name: 'Work', note: 'Honest work, added as it happens' },
+  { match: /^\/about\/?$/, code: '02', symbol: '✳', name: 'About', note: 'The person behind the pixels' },
+  { match: /^\/services\/?$/, code: '03', symbol: '◇', name: 'Services', note: 'Clear offers, considered outcomes' },
+  { match: /^\/faq(?:\.html)?\/?$/, code: '04', symbol: '?', name: 'Questions', note: 'Useful answers, minus the fog' },
+  { match: /^\/enquiry(?:\.html)?\/?$/, code: '05', symbol: '✦', name: 'Enquiry', note: 'The first useful conversation' },
+  { match: /^\/guides(?:\/.*)?$/, code: '06', symbol: '↳', name: 'Guides', note: 'Notes for better website decisions' },
+  { match: /^\/website-review\/?$/, code: '07', symbol: '◎', name: 'Review', note: 'Three practical ideas, freely given' },
+  { match: /^\/privacy(?:\.html)?\/?$/, code: '08', symbol: '◌', name: 'Privacy', note: 'What is collected—and what is not' },
+  { match: /^\/accessibility(?:\.html)?\/?$/, code: '09', symbol: '✣', name: 'Accessibility', note: 'A website made for more people' },
+  { match: /^\/terms\/?$/, code: '10', symbol: '§', name: 'Terms', note: 'Clear expectations, written plainly' },
+];
+
+const routeChapter = chapterRoutes.find(({ match }) => match.test(window.location.pathname));
+const pageMain = document.querySelector('main');
+if (routeChapter && pageMain && !pageMain.querySelector('.page-chapter-rail')) {
+  pageMain.classList.add('chapter-page');
+  pageMain.insertAdjacentHTML('afterbegin', `
+    <div class="page-atmosphere" aria-hidden="true">
+      <span class="page-atmosphere-number">${routeChapter.code}</span>
+      <span class="page-atmosphere-orbit"><i></i></span>
+      <span class="page-atmosphere-cross page-atmosphere-cross-a">${routeChapter.symbol}</span>
+      <span class="page-atmosphere-cross page-atmosphere-cross-b">+</span>
+    </div>
+    <div class="page-chapter-rail" aria-hidden="true">
+      <span class="page-chapter-symbol">${routeChapter.symbol}</span>
+      <strong>${routeChapter.code} / ${routeChapter.name}</strong>
+      <i></i>
+      <span>${routeChapter.note}</span>
+    </div>`);
+
+  Array.from(pageMain.children)
+    .filter((element) => element.tagName === 'SECTION')
+    .forEach((section, index) => {
+      const marker = document.createElement('span');
+      marker.className = 'section-index-glyph';
+      marker.setAttribute('aria-hidden', 'true');
+      marker.innerHTML = `<i>${routeChapter.symbol}</i>${routeChapter.code}.${String(index + 1).padStart(2, '0')}`;
+      section.append(marker);
+    });
+}
+
 // Keep one complete, consistent footer across every page and error route.
 document.querySelectorAll('footer').forEach((footer) => {
   footer.className = '';
   footer.id = 'site-footer';
   footer.innerHTML = `
     <div class="footer-inner">
-      <div class="footer-topline"><span>06 / THE NEXT CHAPTER</span><span><i aria-hidden="true"></i> OPEN FOR SELECTED PROJECTS</span></div>
+      <div class="footer-topline"><span>11 / THE NEXT CHAPTER</span><span><i aria-hidden="true"></i> OPEN FOR SELECTED PROJECTS</span></div>
       <div class="footer-stage">
         <div class="footer-lead">
           <p class="footer-kicker">HAVE A PROJECT IN MIND?</p>
