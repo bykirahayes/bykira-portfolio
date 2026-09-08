@@ -1,6 +1,11 @@
+import './experience.css';
+
+document.documentElement.classList.add('experience-v3');
+document.body.dataset.route = window.location.pathname.split('/').filter(Boolean)[0] || 'home';
+
 const content = document.getElementById('content');
 const cursorGlow = document.querySelector('.cursor-glow');
-const hero = document.querySelector('.hero');
+const hero = document.querySelector('.atelier-hero, .hero');
 
 if (content) content.style.display = 'block';
 
@@ -107,10 +112,15 @@ document.querySelectorAll('footer').forEach((footer) => {
   footer.id = 'site-footer';
   footer.innerHTML = `
     <div class="footer-inner">
-      <div class="footer-lead">
-        <p class="footer-kicker">HAVE A PROJECT IN MIND?</p>
-        <h2>Let's make it<br><em>worth visiting.</em></h2>
-        <a class="footer-email" href="/enquiry/">Start an enquiry <span>↗</span></a>
+      <div class="footer-topline"><span>06 / THE NEXT CHAPTER</span><span><i aria-hidden="true"></i> OPEN FOR SELECTED PROJECTS</span></div>
+      <div class="footer-stage">
+        <div class="footer-lead">
+          <p class="footer-kicker">HAVE A PROJECT IN MIND?</p>
+          <h2>Let's make it<br><em>worth visiting.</em></h2>
+          <p class="footer-intro">Bring the rough idea. I’ll help turn it into a clear, distinctive website people remember—and know how to use.</p>
+          <a class="footer-email" href="/enquiry/">Start an enquiry <span>↗</span></a>
+        </div>
+        <div class="footer-signal" aria-hidden="true"><span class="footer-signal-ring"></span><strong>BK</strong><small>STUDIO SIGNAL / 06</small></div>
       </div>
       <div class="footer-columns">
         <div><span class="footer-label">Navigate</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/guides/">Guides</a><a href="/faq">FAQ</a><a href="/enquiry/">Enquire</a></div>

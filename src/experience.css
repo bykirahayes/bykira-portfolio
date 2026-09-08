@@ -1,0 +1,1343 @@
+/*
+ * BY KIRA — Editorial studio system
+ * A single visual language shared by every route.
+ */
+
+.experience-v3 {
+  --studio-bg: #09080d;
+  --studio-panel: #0f0d15;
+  --studio-panel-soft: #15111e;
+  --studio-ink: #f3f0f6;
+  --studio-muted: #aaa4b4;
+  --studio-faint: #716b7a;
+  --studio-violet: #b891ff;
+  --studio-violet-soft: #d5c4ff;
+  --studio-blue: #a6d5ff;
+  --studio-green: #77f5a1;
+  --studio-line: rgba(225, 216, 242, 0.16);
+  --studio-line-strong: rgba(225, 216, 242, 0.28);
+  --studio-grid: rgba(225, 216, 242, 0.035);
+  --studio-serif: Didot, "Bodoni MT", "Times New Roman", serif;
+  --studio-sans: Inter, "Helvetica Neue", Arial, sans-serif;
+  --studio-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.experience-v3 body {
+  --paper: var(--studio-bg);
+  --ink: var(--studio-ink);
+  --muted: var(--studio-muted);
+  --soft: var(--studio-panel-soft);
+  --coral: var(--studio-violet);
+  --coral-light: var(--studio-violet-soft);
+  --line: var(--studio-line);
+  background:
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(128, 77, 226, 0.12),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 90% 28%,
+      rgba(72, 122, 201, 0.07),
+      transparent 32rem
+    ),
+    var(--studio-bg);
+  color: var(--studio-ink);
+  font-family: var(--studio-sans);
+}
+
+/* Retire every legacy warm-red surface from the earlier direction. */
+.experience-v3 body .contact,
+.experience-v3 body .sales-note,
+.experience-v3 body .faq-cta,
+.experience-v3 body .guides-cta {
+  background-color: var(--studio-panel);
+  background-image:
+    linear-gradient(var(--studio-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--studio-grid) 1px, transparent 1px),
+    radial-gradient(
+      circle at 18% 100%,
+      rgba(184, 145, 255, 0.2),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 88% 8%,
+      rgba(166, 213, 255, 0.08),
+      transparent 30%
+    );
+  background-size:
+    68px 68px,
+    68px 68px,
+    auto,
+    auto;
+}
+
+.experience-v3 body .contact::before,
+.experience-v3 body .contact::after,
+.experience-v3 body .enquiry-main::before,
+.experience-v3 body footer::before {
+  background: radial-gradient(
+    ellipse,
+    rgba(142, 91, 235, 0.3),
+    rgba(91, 145, 235, 0.08) 42%,
+    transparent 70%
+  );
+}
+
+.experience-v3 body .enquiry-panel select option:checked {
+  color: var(--studio-ink);
+  background-color: #241b35;
+}
+
+.experience-v3 body::before {
+  opacity: 0.09;
+  mix-blend-mode: screen;
+}
+
+.experience-v3 body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--studio-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--studio-grid) 1px, transparent 1px);
+  background-size: 68px 68px;
+  mask-image: linear-gradient(to bottom, #000, transparent 82%);
+}
+
+.experience-v3 ::selection {
+  background: var(--studio-violet);
+  color: #110d18;
+}
+.experience-v3 :focus-visible {
+  outline: 2px solid var(--studio-blue);
+  outline-offset: 5px;
+}
+
+/* Navigation — a precise studio instrument, not a generic pill. */
+.experience-v3 body header {
+  position: fixed;
+  inset: 18px 22px auto;
+  padding: 0;
+  background: transparent;
+  transform: none;
+  z-index: 100;
+}
+
+.experience-v3 body header.scrolled {
+  padding: 0;
+  background: transparent;
+}
+
+.experience-v3 body .header-content {
+  min-height: 68px;
+  width: min(1450px, 100%);
+  padding: 9px 10px 9px 18px;
+  border: 1px solid var(--studio-line);
+  border-radius: 2px 2px 24px 2px;
+  background: rgba(10, 9, 14, 0.82);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px) saturate(125%);
+}
+
+.experience-v3 body .header-brand {
+  gap: 16px;
+  min-width: 185px;
+}
+.experience-v3 body .logo.wordmark {
+  width: 132px;
+  height: 58px;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+.experience-v3 body .logo.wordmark img {
+  width: 132px;
+  height: auto;
+  display: block;
+  max-width: none;
+  transform: translateY(-8px);
+  filter: drop-shadow(0 0 18px rgba(184, 145, 255, 0.16));
+}
+
+.experience-v3 body .brand-role,
+.experience-v3 body .active-section,
+.experience-v3 body .header-status {
+  color: var(--studio-faint);
+  font: 600 12px/1.2 var(--studio-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.experience-v3 body header nav {
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid var(--studio-line);
+  border-radius: 2px 2px 15px 2px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.experience-v3 body header nav a {
+  min-width: 76px;
+  padding: 9px 11px;
+  color: var(--studio-muted);
+  font: 600 12px/1 var(--studio-mono);
+  letter-spacing: 0.045em;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
+.experience-v3 body header nav a span {
+  color: var(--studio-violet);
+  margin-right: 7px;
+  font-size: 9px;
+}
+.experience-v3 body header nav a:hover,
+.experience-v3 body header nav a.active {
+  color: var(--studio-ink);
+  background: rgba(184, 145, 255, 0.1);
+}
+
+.experience-v3 body .header-actions {
+  gap: 14px;
+}
+.experience-v3 body .status-dot {
+  background: var(--studio-green);
+  box-shadow: 0 0 12px rgba(119, 245, 161, 0.8);
+}
+.experience-v3 body .header-cta,
+.experience-v3 body .atelier-primary,
+.experience-v3 body .contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 44px;
+  padding: 0 19px;
+  border: 1px solid var(--studio-violet);
+  border-radius: 2px 2px 16px 2px;
+  background: var(--studio-violet);
+  color: #120e19;
+  font: 700 12px/1 var(--studio-mono);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.experience-v3 body .header-cta:hover,
+.experience-v3 body .atelier-primary:hover,
+.experience-v3 body .contact-button:hover {
+  transform: translateY(-2px);
+  background: var(--studio-violet-soft);
+  box-shadow: 0 12px 32px rgba(142, 91, 235, 0.24);
+}
+
+.experience-v3 body .scroll-progress {
+  left: 22px;
+  right: 22px;
+  bottom: -5px;
+  background: transparent;
+}
+.experience-v3 body .scroll-progress span {
+  background: linear-gradient(90deg, var(--studio-violet), var(--studio-blue));
+}
+
+/* Homepage opening — an editorial composition with measured motion. */
+.experience-v3 body .atelier-home {
+  overflow: visible;
+}
+.experience-v3 body .atelier-hero {
+  position: relative;
+  min-height: 100svh;
+  width: min(1500px, calc(100% - 44px));
+  margin: 0 auto;
+  padding: 125px 62px 28px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.experience-v3 body .atelier-hero::before {
+  content: "";
+  position: absolute;
+  inset: 104px 0 20px;
+  z-index: -3;
+  border: 1px solid var(--studio-line);
+  border-radius: 2px 2px 46px 2px;
+  background:
+    radial-gradient(
+      circle at var(--pointer-x, 58%) var(--pointer-y, 42%),
+      rgba(184, 145, 255, 0.14),
+      transparent 22rem
+    ),
+    linear-gradient(145deg, rgba(184, 145, 255, 0.045), transparent 45%),
+    rgba(13, 11, 18, 0.8);
+}
+
+.experience-v3 body .atelier-grid {
+  position: absolute;
+  inset: 105px 1px 21px;
+  z-index: -2;
+  background-image:
+    linear-gradient(var(--studio-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--studio-grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(110deg, #000 20%, transparent 92%);
+}
+
+.experience-v3 body .atelier-orbit {
+  position: absolute;
+  z-index: -1;
+  width: min(68vw, 970px);
+  aspect-ratio: 1.9;
+  left: -10%;
+  top: 27%;
+  border: 1px solid rgba(184, 145, 255, 0.22);
+  border-radius: 50%;
+  transform: rotate(-18deg);
+  animation: atelier-breathe 8s ease-in-out infinite;
+}
+
+.experience-v3 body .atelier-orbit::before,
+.experience-v3 body .atelier-orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  border: 1px solid rgba(166, 213, 255, 0.09);
+}
+.experience-v3 body .atelier-orbit::before {
+  inset: 9%;
+}
+.experience-v3 body .atelier-orbit::after {
+  inset: 19%;
+}
+.experience-v3 body .atelier-orbit-dot {
+  position: absolute;
+  width: 9px;
+  aspect-ratio: 1;
+  right: 12%;
+  top: 15%;
+  border-radius: 50%;
+  background: var(--studio-violet);
+  box-shadow: 0 0 24px var(--studio-violet);
+  animation: atelier-pulse 2.8s ease-in-out infinite;
+}
+
+.experience-v3 body .atelier-ghost {
+  position: absolute;
+  z-index: -1;
+  left: -1.5vw;
+  top: 17%;
+  color: rgba(184, 145, 255, 0.065);
+  font: italic 500 clamp(320px, 47vw, 720px)/0.72 var(--studio-serif);
+  letter-spacing: -0.12em;
+  user-select: none;
+}
+
+.experience-v3 body .atelier-rail {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
+  gap: 24px;
+  min-height: 54px;
+  color: var(--studio-faint);
+  font: 600 12px/1.4 var(--studio-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.experience-v3 body .atelier-rail-top {
+  border-bottom: 1px solid var(--studio-line);
+}
+.experience-v3 body .atelier-rail-top span:first-child {
+  color: var(--studio-violet-soft);
+}
+.experience-v3 body .atelier-rail-top i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: var(--studio-green);
+  box-shadow: 0 0 10px var(--studio-green);
+}
+.experience-v3 body .atelier-rail span:nth-child(2) {
+  text-align: center;
+}
+
+.experience-v3 body .atelier-compose {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(310px, 0.62fr);
+  align-items: center;
+  gap: clamp(55px, 7vw, 120px);
+  min-height: calc(100svh - 270px);
+  padding: clamp(60px, 9vh, 110px) clamp(0px, 3vw, 44px);
+}
+
+.experience-v3 body .atelier-statement {
+  max-width: 940px;
+}
+.experience-v3 body .atelier-kicker,
+.experience-v3 body .eyebrow,
+.experience-v3 body .section-topline .eyebrow {
+  color: var(--studio-violet-soft);
+  font: 600 12px/1.4 var(--studio-mono);
+  letter-spacing: 0.105em;
+  text-transform: uppercase;
+}
+
+.experience-v3 body .atelier-statement h1 {
+  margin: 25px 0 0;
+  color: var(--studio-ink);
+  font: 500 clamp(74px, 9.4vw, 154px)/0.78 var(--studio-serif);
+  letter-spacing: -0.075em;
+  text-wrap: balance;
+}
+
+.experience-v3 body .atelier-statement h1 span {
+  display: block;
+}
+.experience-v3 body .atelier-statement h1 em {
+  color: var(--studio-violet);
+  font-weight: 400;
+}
+.experience-v3 body .atelier-caption {
+  max-width: 560px;
+  margin: 40px 0 0 22%;
+  color: var(--studio-muted);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.65;
+}
+
+.experience-v3 body .atelier-note {
+  position: relative;
+  align-self: end;
+  margin-bottom: 8%;
+  padding: 58px 38px 36px;
+  border: 1px solid var(--studio-line);
+  border-left: 3px solid var(--studio-violet);
+  border-radius: 2px 2px 34px 2px;
+  background: rgba(16, 14, 22, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.experience-v3 body .atelier-note-mark {
+  position: absolute;
+  right: 24px;
+  top: -15px;
+  color: rgba(184, 145, 255, 0.18);
+  font: 500 100px/1 var(--studio-serif);
+}
+.experience-v3 body .atelier-note > p {
+  position: relative;
+  color: var(--studio-ink);
+  font: 500 20px/1.55 var(--studio-serif);
+}
+.experience-v3 body .atelier-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 34px;
+}
+.experience-v3 body .atelier-secondary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 17px;
+  border-bottom: 1px solid var(--studio-line-strong);
+  color: var(--studio-ink);
+  font: 700 12px/1 var(--studio-mono);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.experience-v3 body .atelier-secondary:hover {
+  color: var(--studio-violet-soft);
+  border-color: var(--studio-violet);
+}
+
+.experience-v3 body .atelier-rail-bottom {
+  grid-template-columns: repeat(3, auto) 1fr;
+  border-top: 1px solid var(--studio-line);
+}
+.experience-v3 body .atelier-rail-bottom span::before {
+  content: "✦";
+  margin-right: 8px;
+  color: var(--studio-violet);
+}
+.experience-v3 body .atelier-rail-bottom a {
+  justify-self: end;
+  color: var(--studio-ink);
+  text-decoration: none;
+}
+.experience-v3 body .atelier-rail-bottom a span {
+  color: var(--studio-violet);
+  margin-left: 9px;
+}
+
+/* One layout rhythm across homepage, utility pages and content pages. */
+.experience-v3 body main:not(.atelier-home) {
+  padding-top: 126px;
+}
+.experience-v3 body .intro-strip,
+.experience-v3 body .portfolio,
+.experience-v3 body .about,
+.experience-v3 body .skills,
+.experience-v3 body .process,
+.experience-v3 body .home-services,
+.experience-v3 body .home-guides,
+.experience-v3 body .sales-main,
+.experience-v3 body .faq-main,
+.experience-v3 body .guides-main,
+.experience-v3 body .policy-main,
+.experience-v3 body .enquiry-main {
+  width: min(1380px, calc(100% - 64px));
+  margin-inline: auto;
+}
+
+.experience-v3 body .intro-strip,
+.experience-v3 body .portfolio,
+.experience-v3 body .about,
+.experience-v3 body .skills,
+.experience-v3 body .process,
+.experience-v3 body .home-services,
+.experience-v3 body .home-guides {
+  padding-top: clamp(100px, 12vw, 170px);
+  padding-bottom: clamp(100px, 12vw, 170px);
+}
+
+.experience-v3 body .intro-strip {
+  border-bottom: 1px solid var(--studio-line);
+}
+.experience-v3 body .intro-strip p {
+  color: var(--studio-ink);
+  font: 500 clamp(25px, 3vw, 42px)/1.1 var(--studio-serif);
+}
+.experience-v3 body .inline-symbol,
+.experience-v3 body .section-symbol {
+  color: var(--studio-violet);
+}
+
+.experience-v3 body .section-topline {
+  width: 100%;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--studio-line);
+}
+.experience-v3 body .section-note {
+  color: var(--studio-faint);
+  font: 500 12px/1.4 var(--studio-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.experience-v3 body .section-heading h1,
+.experience-v3 body .section-heading h2,
+.experience-v3 body .home-services h2,
+.experience-v3 body .about-heading h1,
+.experience-v3 body .about-heading h2,
+.experience-v3 body .skills h2,
+.experience-v3 body .process h2,
+.experience-v3 body .home-guides h2,
+.experience-v3 body .faq-hero h1,
+.experience-v3 body .sales-hero h1,
+.experience-v3 body .guides-hero h1,
+.experience-v3 body .policy-hero h1,
+.experience-v3 body .enquiry-intro h1 {
+  color: var(--studio-ink);
+  font-family: var(--studio-serif);
+  font-weight: 500;
+  letter-spacing: -0.065em;
+}
+
+.experience-v3 body h1 em,
+.experience-v3 body h2 em,
+.experience-v3 body h3 em {
+  color: var(--studio-violet);
+  font-weight: 400;
+}
+
+.experience-v3 body .home-service-grid,
+.experience-v3 body .process-steps,
+.experience-v3 body .guide-grid,
+.experience-v3 body .enquiry-trust-grid {
+  gap: 0;
+  border-top: 1px solid var(--studio-line);
+  border-left: 1px solid var(--studio-line);
+}
+
+.experience-v3 body .home-service-grid article,
+.experience-v3 body .process-step,
+.experience-v3 body .guide-grid > a,
+.experience-v3 body .enquiry-trust-grid > * {
+  position: relative;
+  min-height: 260px;
+  padding: clamp(28px, 4vw, 52px);
+  border: 0;
+  border-right: 1px solid var(--studio-line);
+  border-bottom: 1px solid var(--studio-line);
+  border-radius: 0 0 24px 0;
+  background: rgba(255, 255, 255, 0.012);
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.experience-v3 body .home-service-grid article:hover,
+.experience-v3 body .process-step:hover,
+.experience-v3 body .guide-grid > a:hover,
+.experience-v3 body .enquiry-trust-grid > *:hover {
+  z-index: 1;
+  background: linear-gradient(
+    145deg,
+    rgba(184, 145, 255, 0.1),
+    rgba(166, 213, 255, 0.025)
+  );
+  transform: translateY(-4px);
+}
+
+/* About and work retain their established content, now within the expanded system. */
+.experience-v3 body .about {
+  position: relative;
+}
+.experience-v3 body .about::before {
+  content: "02";
+  position: absolute;
+  left: -4vw;
+  top: 18%;
+  color: rgba(184, 145, 255, 0.075);
+  font: 500 clamp(260px, 35vw, 580px)/0.8 var(--studio-serif);
+  pointer-events: none;
+}
+.experience-v3 body .about-layout {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: 1.08fr 0.92fr;
+}
+.experience-v3 body .about-copy {
+  max-width: 520px;
+  padding: clamp(34px, 5vw, 68px);
+  border: 1px solid var(--studio-line);
+  border-left: 3px solid var(--studio-violet);
+  border-radius: 2px 2px 32px 2px;
+  background: rgba(255, 255, 255, 0.012);
+}
+.experience-v3 body .about-copy p {
+  color: var(--studio-muted);
+  font-size: clamp(18px, 1.55vw, 23px);
+}
+.experience-v3 body mark {
+  color: var(--studio-ink);
+  background: linear-gradient(transparent 72%, rgba(184, 145, 255, 0.48) 0);
+}
+.experience-v3 body .about-foot span::before {
+  content: "•";
+  margin-right: 9px;
+  color: var(--studio-violet);
+}
+
+.experience-v3 body .tool-console,
+.experience-v3 body .first-project-card {
+  border: 1px solid var(--studio-line);
+  border-radius: 2px 2px 34px 2px;
+  background:
+    linear-gradient(145deg, rgba(184, 145, 255, 0.055), transparent 50%),
+    var(--studio-panel);
+  box-shadow: 22px 22px 0 rgba(184, 145, 255, 0.035);
+}
+.experience-v3 body .tool-cloud span {
+  border-radius: 2px 2px 12px 2px;
+}
+
+.experience-v3 body .empty-portfolio {
+  min-height: calc(100svh - 130px);
+}
+.experience-v3 body .first-project-card {
+  overflow: hidden;
+}
+.experience-v3 body .first-project-card::after {
+  content: "001";
+  position: absolute;
+  right: -2%;
+  bottom: -20%;
+  color: rgba(184, 145, 255, 0.06);
+  font: 500 clamp(180px, 24vw, 360px)/1 var(--studio-serif);
+}
+
+/* Services — three editorial dossiers, one clear hierarchy. */
+.experience-v3 body .sales-main {
+  padding-bottom: 140px;
+}
+.experience-v3 body .sales-hero,
+.experience-v3 body .faq-hero,
+.experience-v3 body .guides-hero,
+.experience-v3 body .policy-hero {
+  position: relative;
+  padding: clamp(70px, 9vw, 125px) clamp(0px, 4vw, 60px);
+  border-top: 1px solid var(--studio-line);
+  border-bottom: 1px solid var(--studio-line);
+}
+.experience-v3 body .sales-hero h1,
+.experience-v3 body .faq-hero h1,
+.experience-v3 body .guides-hero h1,
+.experience-v3 body .policy-hero h1 {
+  font-size: clamp(66px, 9vw, 136px);
+  line-height: 0.85;
+}
+.experience-v3 body .service-list {
+  border: 0;
+}
+.experience-v3 body .service-card {
+  position: relative;
+  grid-template-columns: 0.25fr 1.1fr 0.7fr;
+  gap: clamp(30px, 5vw, 80px);
+  min-height: 360px;
+  padding: clamp(45px, 7vw, 92px) clamp(12px, 3vw, 44px);
+  border: 0;
+  border-bottom: 1px solid var(--studio-line);
+  border-radius: 0;
+  background: transparent;
+}
+.experience-v3 body .service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--card-x, 70%) var(--card-y, 40%),
+    rgba(184, 145, 255, 0.12),
+    transparent 20rem
+  );
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.experience-v3 body .service-card:hover::before {
+  opacity: 1;
+}
+.experience-v3 body .service-number {
+  color: rgba(184, 145, 255, 0.18);
+  font: 500 clamp(68px, 8vw, 120px)/0.8 var(--studio-serif);
+}
+.experience-v3 body .service-featured {
+  background: rgba(184, 145, 255, 0.035);
+}
+.experience-v3 body .service-price {
+  border-left-color: var(--studio-line);
+}
+.experience-v3 body .sales-note {
+  border-radius: 2px 2px 32px 2px;
+  background: var(--studio-panel);
+}
+
+/* FAQ, guides and policy pages become quiet, readable documents. */
+.experience-v3 body .faq-list details {
+  border-color: var(--studio-line);
+  border-radius: 0;
+  background: transparent;
+}
+.experience-v3 body .faq-list details[open] {
+  background: rgba(184, 145, 255, 0.045);
+}
+.experience-v3 body .faq-list summary {
+  min-height: 84px;
+  font-family: var(--studio-serif);
+  font-size: clamp(20px, 2vw, 28px);
+}
+.experience-v3 body .faq-list summary::after {
+  color: var(--studio-violet);
+}
+.experience-v3 body .faq-cta,
+.experience-v3 body .guides-cta {
+  border-radius: 2px 2px 34px 2px;
+  background:
+    linear-gradient(120deg, rgba(184, 145, 255, 0.11), transparent 60%),
+    var(--studio-panel);
+}
+
+.experience-v3 body .policy-main {
+  max-width: 1180px;
+}
+.experience-v3 body .policy-hero-mark {
+  color: rgba(184, 145, 255, 0.08);
+}
+.experience-v3 body .policy-switcher {
+  border-radius: 2px 2px 16px 2px;
+}
+.experience-v3 body .policy-section {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.36fr) 1fr;
+  gap: clamp(32px, 7vw, 100px);
+  padding: clamp(50px, 7vw, 90px) 0;
+  border-bottom: 1px solid var(--studio-line);
+}
+.experience-v3 body .policy-section h2 {
+  color: var(--studio-violet-soft);
+  font: 500 clamp(26px, 3vw, 42px)/1 var(--studio-serif);
+}
+.experience-v3 body .policy-section > *:not(h2) {
+  grid-column: 2;
+}
+
+/* Enquiry — the functional centre stays calm and unmistakably on-brand. */
+.experience-v3 body .enquiry-main {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.72fr) minmax(560px, 1.28fr);
+  gap: clamp(46px, 7vw, 110px);
+  align-items: start;
+  padding-bottom: 130px;
+}
+.experience-v3 body .enquiry-intro {
+  position: sticky;
+  top: 132px;
+  padding: 70px 0;
+}
+.experience-v3 body .enquiry-intro h1 {
+  font-size: clamp(64px, 7vw, 112px);
+  line-height: 0.82;
+}
+.experience-v3 body .enquiry-panel {
+  margin-top: 55px;
+  padding: clamp(34px, 5vw, 68px);
+  border: 1px solid var(--studio-line);
+  border-left: 3px solid var(--studio-violet);
+  border-radius: 2px 2px 42px 2px;
+  background:
+    radial-gradient(
+      circle at var(--enquiry-x, 80%) var(--enquiry-y, 10%),
+      rgba(184, 145, 255, 0.105),
+      transparent 19rem
+    ),
+    var(--studio-panel);
+  box-shadow: 28px 28px 0 rgba(184, 145, 255, 0.03);
+}
+.experience-v3 body .enquiry-panel-head {
+  border-bottom-color: var(--studio-line);
+}
+.experience-v3 body .enquiry-panel-count {
+  color: rgba(184, 145, 255, 0.28);
+}
+.experience-v3 body .enquiry-group {
+  border-color: var(--studio-line);
+}
+.experience-v3 body .enquiry-group legend,
+.experience-v3 body .enquiry-panel-kicker {
+  color: var(--studio-violet-soft);
+}
+.experience-v3 body .enquiry-panel input,
+.experience-v3 body .enquiry-panel select,
+.experience-v3 body .enquiry-panel textarea {
+  min-height: 52px;
+  color: var(--studio-ink);
+  background-color: rgba(255, 255, 255, 0.02);
+  border-color: var(--studio-line);
+  border-radius: 2px 2px 10px 2px;
+}
+.experience-v3 body .enquiry-panel input:focus,
+.experience-v3 body .enquiry-panel select:focus,
+.experience-v3 body .enquiry-panel textarea:focus {
+  border-color: var(--studio-violet);
+  box-shadow: 0 0 0 3px rgba(184, 145, 255, 0.09);
+}
+.experience-v3 body .enquiry-trust {
+  grid-column: 1 / -1;
+}
+
+/* Footer — a closing title page shared by every route. */
+.experience-v3 body footer#site-footer {
+  position: relative;
+  margin-top: 80px;
+  padding: 0 32px 28px;
+  overflow: hidden;
+  background: transparent;
+  color: var(--studio-ink);
+}
+.experience-v3 body footer#site-footer::before {
+  content: "BY KIRA";
+  position: absolute;
+  left: 2%;
+  bottom: -9vw;
+  color: rgba(184, 145, 255, 0.04);
+  font: italic 500 clamp(180px, 25vw, 440px)/1 var(--studio-serif);
+  letter-spacing: -0.08em;
+  white-space: nowrap;
+}
+.experience-v3 body footer#site-footer .footer-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1380px, 100%);
+  display: block;
+  padding: 0 clamp(30px, 5vw, 72px) 28px;
+  border: 1px solid var(--studio-line);
+  border-radius: 2px 2px 44px 2px;
+  background:
+    linear-gradient(130deg, rgba(184, 145, 255, 0.07), transparent 45%),
+    rgba(13, 11, 18, 0.9);
+}
+.experience-v3 body .footer-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 62px;
+  border-bottom: 1px solid var(--studio-line);
+  color: var(--studio-faint);
+  font: 600 12px/1.4 var(--studio-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.experience-v3 body .footer-topline span:last-child {
+  color: var(--studio-violet-soft);
+}
+.experience-v3 body .footer-topline i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--studio-green);
+  box-shadow: 0 0 12px rgba(119, 245, 161, 0.72);
+}
+.experience-v3 body .footer-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: clamp(50px, 8vw, 130px);
+  align-items: center;
+  padding: clamp(70px, 9vw, 130px) 0;
+  border-bottom: 1px solid var(--studio-line);
+}
+.experience-v3 body .footer-lead {
+  display: block;
+  max-width: 850px;
+  margin: 0;
+  padding: 4px 0 4px clamp(24px, 3vw, 48px);
+  border: 0;
+  border-left: 3px solid var(--studio-violet);
+  border-radius: 0;
+  background: transparent;
+}
+.experience-v3 body .footer-lead h2 {
+  margin: 24px 0 30px;
+  color: var(--studio-ink);
+  font: 500 clamp(60px, 7.2vw, 116px)/0.82 var(--studio-serif);
+  letter-spacing: -0.065em;
+}
+.experience-v3 body .footer-lead h2 em {
+  color: var(--studio-violet);
+}
+.experience-v3 body .footer-intro {
+  max-width: 570px;
+  color: var(--studio-muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+.experience-v3 body .footer-email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 48px;
+  margin-top: 34px;
+  padding: 0 20px;
+  border: 1px solid var(--studio-violet);
+  border-radius: 2px 2px 16px 2px;
+  background: var(--studio-violet);
+  color: #120e19;
+  font: 700 12px/1 var(--studio-mono);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+.experience-v3 body .footer-email:hover {
+  color: #120e19;
+  background: var(--studio-violet-soft);
+  transform: translateY(-2px);
+}
+.experience-v3 body .footer-signal {
+  position: relative;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: min(28vw, 340px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(184, 145, 255, 0.25);
+  border-radius: 50%;
+}
+.experience-v3 body .footer-signal::before,
+.experience-v3 body .footer-signal::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.experience-v3 body .footer-signal::before {
+  inset: 13%;
+  border: 1px dashed rgba(166, 213, 255, 0.18);
+  animation: footer-spin 24s linear infinite;
+}
+.experience-v3 body .footer-signal::after {
+  inset: 28%;
+  background: radial-gradient(
+    circle,
+    rgba(184, 145, 255, 0.2),
+    transparent 68%
+  );
+}
+.experience-v3 body .footer-signal-ring {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border-top: 2px solid var(--studio-violet);
+  border-right: 2px solid transparent;
+  transform: rotate(35deg);
+}
+.experience-v3 body .footer-signal strong {
+  position: relative;
+  z-index: 1;
+  color: var(--studio-ink);
+  font: italic 500 clamp(48px, 7vw, 92px)/1 var(--studio-serif);
+  letter-spacing: -0.08em;
+}
+.experience-v3 body .footer-signal small {
+  position: absolute;
+  bottom: 18%;
+  color: var(--studio-violet-soft);
+  font: 600 11px/1 var(--studio-mono);
+  letter-spacing: 0.09em;
+}
+.experience-v3 body .footer-columns {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: none;
+  margin: 0;
+  border-top: 1px solid var(--studio-line);
+  padding: 44px 0;
+}
+.experience-v3 body .footer-label {
+  color: var(--studio-violet-soft);
+}
+.experience-v3 body .footer-columns a,
+.experience-v3 body .footer-columns span {
+  color: var(--studio-muted);
+}
+.experience-v3 body .footer-bottom {
+  border-top-color: var(--studio-line);
+}
+.experience-v3 body .footer-bottom .logo.wordmark {
+  width: 152px;
+  height: 66px;
+}
+.experience-v3 body .footer-bottom .logo.wordmark img {
+  width: 152px;
+  transform: translateY(-10px);
+}
+.experience-v3 body .legal-links {
+  border-color: var(--studio-line);
+}
+
+@keyframes footer-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes atelier-breathe {
+  0%,
+  100% {
+    transform: rotate(-18deg) scale(1);
+    opacity: 0.72;
+  }
+  50% {
+    transform: rotate(-16deg) scale(1.035);
+    opacity: 1;
+  }
+}
+@keyframes atelier-pulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1050px) {
+  .experience-v3 body .header-status,
+  .experience-v3 body .active-section {
+    display: none;
+  }
+  .experience-v3 body .atelier-compose {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    align-content: center;
+  }
+  .experience-v3 body .atelier-note {
+    width: min(570px, 80%);
+    justify-self: end;
+    margin: 0;
+  }
+  .experience-v3 body .atelier-caption {
+    margin-left: 12%;
+  }
+  .experience-v3 body .enquiry-main {
+    grid-template-columns: 1fr;
+  }
+  .experience-v3 body .enquiry-intro {
+    position: relative;
+    top: auto;
+    padding-bottom: 10px;
+  }
+  .experience-v3 body .enquiry-panel {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .experience-v3 body header {
+    inset: 10px 12px auto;
+  }
+  .experience-v3 body .header-content {
+    min-height: 58px;
+    padding: 7px 9px 7px 13px;
+    border-radius: 2px 2px 18px 2px;
+  }
+  .experience-v3 body .header-brand {
+    min-width: 0;
+  }
+  .experience-v3 body .brand-role {
+    display: none;
+  }
+  .experience-v3 body .logo.wordmark {
+    width: 104px;
+    height: 44px;
+  }
+  .experience-v3 body .logo.wordmark img {
+    width: 104px;
+    transform: translateY(-7px);
+  }
+  .experience-v3 body .header-cta {
+    display: none;
+  }
+  .experience-v3 body .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+    padding: 0 13px;
+    border: 1px solid var(--studio-line);
+    border-radius: 2px 2px 12px 2px;
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--studio-ink);
+  }
+  .experience-v3 body header nav {
+    position: absolute;
+    inset: 68px 0 auto;
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    padding: 12px;
+    background: rgba(10, 9, 14, 0.96);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
+  }
+  .experience-v3 body header.menu-open nav {
+    display: grid;
+  }
+  .experience-v3 body header nav a {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .experience-v3 body .atelier-hero {
+    width: calc(100% - 24px);
+    padding: 91px 22px 14px;
+  }
+  .experience-v3 body .atelier-hero::before {
+    inset: 79px 0 10px;
+    border-radius: 2px 2px 30px 2px;
+  }
+  .experience-v3 body .atelier-grid {
+    inset: 80px 1px 11px;
+  }
+  .experience-v3 body .atelier-rail {
+    grid-template-columns: 1fr auto;
+    min-height: 48px;
+    font-size: 10px;
+  }
+  .experience-v3 body .atelier-rail span:nth-child(2) {
+    text-align: right;
+  }
+  .experience-v3 body .atelier-rail-top span:last-child {
+    display: none;
+  }
+  .experience-v3 body .atelier-compose {
+    min-height: calc(100svh - 198px);
+    padding: 44px 0 38px;
+  }
+  .experience-v3 body .atelier-statement h1 {
+    font-size: clamp(59px, 17.6vw, 102px);
+  }
+  .experience-v3 body .atelier-caption {
+    margin: 28px 0 0;
+    max-width: 430px;
+    font-size: 16px;
+  }
+  .experience-v3 body .atelier-note {
+    width: 92%;
+    padding: 43px 24px 25px;
+  }
+  .experience-v3 body .atelier-note > p {
+    font-size: 18px;
+  }
+  .experience-v3 body .atelier-orbit {
+    width: 120vw;
+    left: -45%;
+    top: 22%;
+  }
+  .experience-v3 body .atelier-ghost {
+    font-size: 88vw;
+    left: -16%;
+    top: 23%;
+  }
+  .experience-v3 body .atelier-rail-bottom {
+    grid-template-columns: repeat(3, auto);
+    gap: 10px;
+  }
+  .experience-v3 body .atelier-rail-bottom a {
+    display: none;
+  }
+  .experience-v3 body .atelier-rail-bottom span {
+    font-size: 9px;
+  }
+  .experience-v3 body main:not(.atelier-home) {
+    padding-top: 96px;
+  }
+  .experience-v3 body .intro-strip,
+  .experience-v3 body .portfolio,
+  .experience-v3 body .about,
+  .experience-v3 body .skills,
+  .experience-v3 body .process,
+  .experience-v3 body .home-services,
+  .experience-v3 body .home-guides,
+  .experience-v3 body .sales-main,
+  .experience-v3 body .faq-main,
+  .experience-v3 body .guides-main,
+  .experience-v3 body .policy-main,
+  .experience-v3 body .enquiry-main {
+    width: calc(100% - 36px);
+  }
+  .experience-v3 body .section-heading,
+  .experience-v3 body .about-layout,
+  .experience-v3 body .skills-row {
+    display: block;
+  }
+  .experience-v3 body .about-copy {
+    margin-top: 42px;
+  }
+  .experience-v3 body .about::before {
+    font-size: 74vw;
+    top: 23%;
+  }
+  .experience-v3 body .service-card {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 24px;
+  }
+  .experience-v3 body .service-price {
+    grid-column: 2;
+    padding-left: 0;
+    border-left: 0;
+  }
+  .experience-v3 body .policy-section {
+    display: block;
+  }
+  .experience-v3 body .policy-section h2 {
+    margin-bottom: 24px;
+  }
+  .experience-v3 body .enquiry-panel {
+    padding: 28px 20px;
+    border-radius: 2px 2px 25px 2px;
+  }
+  .experience-v3 body footer#site-footer {
+    padding: 0 12px 12px;
+  }
+  .experience-v3 body footer#site-footer .footer-inner {
+    padding: 0 24px 22px;
+  }
+  .experience-v3 body .footer-topline {
+    min-height: 56px;
+    font-size: 10px;
+  }
+  .experience-v3 body .footer-topline span:last-child {
+    display: none;
+  }
+  .experience-v3 body .footer-stage {
+    grid-template-columns: 1fr;
+    gap: 54px;
+    padding: 68px 0;
+  }
+  .experience-v3 body .footer-lead {
+    padding-left: 24px;
+  }
+  .experience-v3 body .footer-intro {
+    font-size: 16px;
+  }
+  .experience-v3 body .footer-signal {
+    width: min(74vw, 270px);
+  }
+  .experience-v3 body .footer-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px 24px;
+  }
+  .experience-v3 body .footer-columns > div:last-child {
+    grid-column: 1 / -1;
+  }
+  .experience-v3 body .footer-bottom {
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+  }
+  .experience-v3 body .footer-bottom > span,
+  .experience-v3 body .footer-bottom .legal-links {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 470px) {
+  .experience-v3 body .atelier-statement h1 {
+    font-size: clamp(52px, 16.8vw, 76px);
+  }
+  .experience-v3 body .atelier-note {
+    width: 100%;
+  }
+  .experience-v3 body .atelier-actions {
+    display: grid;
+  }
+  .experience-v3 body .atelier-secondary {
+    justify-content: center;
+  }
+  .experience-v3 body .service-card {
+    grid-template-columns: 1fr;
+  }
+  .experience-v3 body .service-number,
+  .experience-v3 body .service-price {
+    grid-column: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-v3 body .atelier-orbit,
+  .experience-v3 body .atelier-orbit-dot,
+  .experience-v3 body .footer-signal::before {
+    animation: none;
+  }
+}
