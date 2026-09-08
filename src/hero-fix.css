@@ -90,3 +90,12 @@
 }
 @media(max-width:760px){.hero .hero-accents{inset:50px 0 40px}.hero-accents span{font-size:16px}.hero-accent-one{left:0;top:0}.hero-accent-two{right:0;top:0}.hero-accent-three{display:none}}
 @media(prefers-reduced-motion:reduce){.hero .hero-accents,.hero .hero-identity h1>.hero-type-line,.hero .hero-signoff,.hero .hero-offer{animation:none!important}.hero .hero-actions a{transition:none!important;transform:none!important}}
+/* Decorative corner light: original CSS geometry, never an interactive layer. */
+.hero .hero-corners{position:absolute;inset:90px -20px 70px;pointer-events:none;z-index:0;overflow:hidden}
+.hero .hero-corner{position:absolute;width:clamp(70px,13vw,170px);height:clamp(65px,10vw,130px);opacity:.65;pointer-events:none}
+.hero .hero-corner:before{content:"";position:absolute;inset:0;border-color:#ba90fa;border-style:solid;border-width:1px 0 0 1px;border-radius:14px 0 0 0;mask-image:linear-gradient(135deg,#000 5%,transparent 73%);-webkit-mask-image:linear-gradient(135deg,#000 5%,transparent 73%)}
+.hero .hero-corner:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 0 0,#af7aef18,transparent 70%);border-radius:14px 0 0 0}
+.hero .hero-corner-left{left:0;top:22%}.hero .hero-corner-right{right:0;bottom:16%;transform:rotate(180deg)}
+@media(prefers-reduced-motion:no-preference){.hero .hero-corner-left{animation:corner-light-left 4s ease-out both}.hero .hero-corner-right{animation:corner-light-right 4s ease-out both}@keyframes corner-light-left{0%{opacity:0;transform:translate(-12px,12px)}45%{opacity:.9}100%{opacity:.65;transform:translate(0,0)}}@keyframes corner-light-right{0%{opacity:0;transform:rotate(180deg) translate(-12px,12px)}45%{opacity:.9}100%{opacity:.65;transform:rotate(180deg) translate(0,0)}}}
+@media(max-width:760px){.hero .hero-corners{inset:44px -14px 70px}.hero .hero-corner{width:52px;height:58px;opacity:.4}.hero .hero-corner-left{top:0}.hero .hero-corner-right{bottom:0}}
+@media(prefers-reduced-motion:reduce){.hero .hero-corner{animation:none!important}}
