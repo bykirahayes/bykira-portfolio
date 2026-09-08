@@ -1344,6 +1344,137 @@
   }
 }
 
+/* Final studio details: live orientation, page progress and tactile controls. */
+.experience-v3 body .studio-hud {
+  position: fixed;
+  z-index: 40;
+  top: 50%;
+  right: 9px;
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  width: 34px;
+  padding: 11px 7px;
+  border: 1px solid var(--studio-line);
+  border-radius: 17px;
+  background: rgba(10, 9, 14, 0.76);
+  color: var(--studio-faint);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(14px);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.experience-v3 body .studio-hud-location,
+.experience-v3 body .studio-hud-time,
+.experience-v3 body .studio-hud-page,
+.experience-v3 body .studio-hud-section {
+  font: 600 9px/1 var(--studio-mono);
+  letter-spacing: 0.08em;
+}
+
+.experience-v3 body .studio-hud-location {
+  color: var(--studio-violet-soft);
+}
+
+.experience-v3 body .studio-hud-time {
+  writing-mode: vertical-rl;
+  color: var(--studio-muted);
+}
+
+.experience-v3 body .studio-hud-track {
+  position: relative;
+  width: 1px;
+  height: 92px;
+  overflow: hidden;
+  background: rgba(225, 216, 242, 0.13);
+}
+
+.experience-v3 body .studio-hud-track i {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--studio-violet), var(--studio-blue));
+  box-shadow: 0 0 8px rgba(184, 145, 255, 0.7);
+  transform: scaleY(0.045);
+  transform-origin: top;
+  transition: transform 0.18s linear;
+}
+
+.experience-v3 body .studio-hud-page {
+  color: var(--studio-violet);
+}
+
+.experience-v3 body .studio-hud-section::before {
+  content: "/";
+  margin-right: 2px;
+  color: rgba(225, 216, 242, 0.26);
+}
+
+.experience-v3 body header nav a {
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-v3 body header nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--studio-violet), var(--studio-blue));
+  box-shadow: 0 0 8px rgba(184, 145, 255, 0.55);
+  transform: translateX(-50%);
+  transition: width 0.28s ease;
+}
+
+.experience-v3 body header nav a:hover::after,
+.experience-v3 body header nav a.active::after {
+  width: 24px;
+}
+
+.experience-v3 body .header-cta span,
+.experience-v3 body .atelier-primary span,
+.experience-v3 body .contact-button span,
+.experience-v3 body .footer-email span {
+  display: inline-block;
+  transition: transform 0.24s ease;
+}
+
+.experience-v3 body .header-cta:hover span,
+.experience-v3 body .atelier-primary:hover span,
+.experience-v3 body .contact-button:hover span,
+.experience-v3 body .footer-email:hover span {
+  transform: translate(3px, -3px);
+}
+
+.experience-v3 body .section-index-glyph {
+  transition: color 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.experience-v3 body .chapter-page > section:hover > .section-index-glyph {
+  color: var(--studio-violet-soft);
+  letter-spacing: 0.13em;
+}
+
+@media (max-width: 900px) {
+  .experience-v3 body .studio-hud {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-v3 body .studio-hud-track i,
+  .experience-v3 body header nav a::after,
+  .experience-v3 body .header-cta span,
+  .experience-v3 body .atelier-primary span,
+  .experience-v3 body .contact-button span,
+  .experience-v3 body .footer-email span,
+  .experience-v3 body .section-index-glyph {
+    transition: none;
+  }
+}
+
 /*
  * Palette lock
  * The original build used warm coral decoration on a handful of generated

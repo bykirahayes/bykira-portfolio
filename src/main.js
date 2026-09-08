@@ -151,6 +151,32 @@ if (routeChapter && pageMain && !pageMain.querySelector('.page-chapter-rail')) {
     });
 }
 
+// A quiet studio HUD adds useful orientation and a live Manchester timestamp.
+// It is decorative and non-interactive, so it never enters the tab order.
+const studioHud = document.createElement('aside');
+studioHud.className = 'studio-hud';
+studioHud.setAttribute('aria-hidden', 'true');
+studioHud.innerHTML = `
+  <span class="studio-hud-location">MCR</span>
+  <time class="studio-hud-time">--:--</time>
+  <span class="studio-hud-track"><i></i></span>
+  <span class="studio-hud-page">${routeChapter?.code || '00'}</span>
+  <span class="studio-hud-section">01</span>`;
+document.body.append(studioHud);
+
+const updateStudioTime = () => {
+  const time = studioHud.querySelector('.studio-hud-time');
+  if (!time) return;
+  time.textContent = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).format(new Date());
+};
+updateStudioTime();
+window.setInterval(updateStudioTime, 30000);
+
 // Keep one complete, consistent footer across every page and error route.
 document.querySelectorAll('footer').forEach((footer) => {
   footer.className = '';
@@ -241,8 +267,11 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
 const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
 const sections = Array.from(document.querySelectorAll('main section[id]'));
+const pageSections = Array.from(document.querySelectorAll('main section'));
 const activeSectionLabel = document.querySelector('.active-section');
 const scrollProgress = document.querySelector('.scroll-progress span');
+const studioHudProgress = document.querySelector('.studio-hud-track i');
+const studioHudSection = document.querySelector('.studio-hud-section');
 const sectionLabels = { hero: '00 / HOME', portfolio: '01 / WORK', about: '02 / ABOUT', skills: '03 / TOOLKIT', process: '04 / STEPS', contact: '06 / CONTACT', faq: 'FAQ / INFO' };
 const updateActiveNavigation = () => {
   const currentSection = sections.reduce((current, section) => {
@@ -250,10 +279,15 @@ const updateActiveNavigation = () => {
   }, 'hero');
   navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${currentSection}`));
   if (activeSectionLabel && !activeSectionLabel.hasAttribute('data-static')) activeSectionLabel.textContent = sectionLabels[currentSection] || '00 / HOME';
-  if (scrollProgress) {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
-    scrollProgress.style.transform = `scaleX(${progress})`;
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+  if (scrollProgress) scrollProgress.style.transform = `scaleX(${progress})`;
+  if (studioHudProgress) studioHudProgress.style.transform = `scaleY(${Math.max(0.045, progress)})`;
+  if (studioHudSection) {
+    const currentIndex = pageSections.reduce((current, section, index) => {
+      return window.scrollY >= section.offsetTop - 180 ? index : current;
+    }, 0);
+    studioHudSection.textContent = String(currentIndex + 1).padStart(2, '0');
   }
 };
 window.addEventListener('scroll', updateActiveNavigation, { passive: true });
