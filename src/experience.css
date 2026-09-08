@@ -1341,3 +1341,174 @@
     animation: none;
   }
 }
+
+/*
+ * Palette lock
+ * The original build used warm coral decoration on a handful of generated
+ * layers. Keep those shapes, but make every one of them part of the current
+ * violet / ice-blue system so no red can bleed through at any breakpoint.
+ */
+.experience-v3 body .contact::before {
+  border-color: var(--studio-bg) !important;
+  box-shadow: 0 0 54px 10px rgba(184, 145, 255, 0.13) !important;
+}
+
+.experience-v3 body .contact-aurora {
+  border-color: rgba(184, 145, 255, 0.28) !important;
+  background:
+    repeating-radial-gradient(circle, transparent 0 58px, rgba(166, 213, 255, 0.06) 59px 60px),
+    radial-gradient(circle, rgba(184, 145, 255, 0.18), transparent 58%) !important;
+  box-shadow:
+    0 0 100px rgba(126, 94, 218, 0.13),
+    inset 0 0 100px rgba(108, 152, 226, 0.08) !important;
+}
+
+.experience-v3 body .contact-ring {
+  border-color: rgba(166, 213, 255, 0.25) !important;
+  box-shadow:
+    inset 0 0 0 40px rgba(184, 145, 255, 0.018),
+    inset 0 0 0 80px rgba(166, 213, 255, 0.012) !important;
+}
+
+.experience-v3 body .process-list::before {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(184, 145, 255, 0.58) 0 8px,
+    transparent 8px 18px
+  ) !important;
+}
+
+.experience-v3 body .process-step::after {
+  border-color: rgba(166, 213, 255, 0.22) !important;
+}
+
+.experience-v3 body .skills-number,
+.experience-v3 body .skills-number::before,
+.experience-v3 body .skills-number::after {
+  color: rgba(184, 145, 255, 0.1) !important;
+  border-color: rgba(184, 145, 255, 0.1) !important;
+}
+
+.experience-v3 body .about::before {
+  border-color: rgba(166, 213, 255, 0.14) !important;
+  box-shadow: 0 0 90px rgba(126, 94, 218, 0.08) !important;
+}
+
+.experience-v3 body .about-number,
+.experience-v3 body .about-number::before,
+.experience-v3 body .about-number::after {
+  color: rgba(184, 145, 255, 0.1) !important;
+  border-color: rgba(184, 145, 255, 0.1) !important;
+}
+
+.experience-v3 body .about-orbit::before {
+  border-color: rgba(166, 213, 255, 0.22) !important;
+}
+
+.experience-v3 body .about-copy {
+  border-left-color: var(--studio-violet) !important;
+  box-shadow: inset 3px 0 0 rgba(166, 213, 255, 0.1) !important;
+}
+
+.experience-v3 body .about-copy::before {
+  color: rgba(184, 145, 255, 0.15) !important;
+  border-color: rgba(184, 145, 255, 0.15) !important;
+}
+
+.experience-v3 body header::before {
+  background-image: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.04),
+    transparent 32%,
+    rgba(184, 145, 255, 0.04)
+  ) !important;
+}
+
+.experience-v3 body .logo::after {
+  background-color: var(--studio-violet) !important;
+  box-shadow: 0 0 10px rgba(184, 145, 255, 0.7) !important;
+}
+
+.experience-v3 body .section-topline::after {
+  background-color: rgba(166, 213, 255, 0.15) !important;
+  box-shadow: 0 0 14px rgba(184, 145, 255, 0.28) !important;
+}
+
+.experience-v3 body main em::after {
+  border-color: rgba(166, 213, 255, 0.32) !important;
+}
+
+.experience-v3 body .tool-console::before {
+  border-color: rgba(184, 145, 255, 0.1) !important;
+}
+
+.experience-v3 body .footer-lead::before {
+  background-image: linear-gradient(
+    var(--studio-violet),
+    rgba(166, 213, 255, 0.08)
+  ) !important;
+}
+
+.experience-v3 body nav a.active {
+  box-shadow: inset 0 0 0 1px rgba(184, 145, 255, 0.24) !important;
+}
+
+.experience-v3 body .sales-meta::after {
+  background-color: rgba(166, 213, 255, 0.15) !important;
+  box-shadow: 0 0 14px rgba(184, 145, 255, 0.28) !important;
+}
+
+.experience-v3 body .service-card::after {
+  background-image: radial-gradient(
+    280px,
+    rgba(184, 145, 255, 0.08),
+    transparent 68%
+  ) !important;
+}
+
+.experience-v3 body .service-featured::before {
+  border-color: rgba(166, 213, 255, 0.14) !important;
+}
+
+.experience-v3 body .enquiry-panel::after {
+  border-color: rgba(184, 145, 255, 0.17) !important;
+  background-image: radial-gradient(
+    circle,
+    rgba(184, 145, 255, 0.11),
+    transparent 66%
+  ) !important;
+}
+
+.experience-v3 body .enquiry-group-send {
+  background-image: linear-gradient(
+    120deg,
+    rgba(184, 145, 255, 0.06),
+    rgba(9, 8, 13, 0.72) 42%
+  ) !important;
+}
+
+.experience-v3 body .enquiry-confirmation {
+  background-image:
+    radial-gradient(circle at 85% 15%, rgba(184, 145, 255, 0.15), transparent 30%),
+    none !important;
+}
+
+.experience-v3 body .confirmation-mark {
+  color: var(--studio-violet-soft) !important;
+  border-color: rgba(166, 213, 255, 0.42) !important;
+  background-color: rgba(184, 145, 255, 0.09) !important;
+}
+
+.experience-v3 body .enquiry-trust {
+  background-image:
+    linear-gradient(90deg, rgba(184, 145, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(166, 213, 255, 0.035) 1px, transparent 1px),
+    none !important;
+}
+
+.experience-v3 body .policy-hero {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+    radial-gradient(circle at 86% 86%, rgba(184, 145, 255, 0.22), transparent 35%) !important;
+}
