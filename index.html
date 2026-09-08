@@ -64,7 +64,7 @@
     />
     <link rel="manifest" href="/image/site.webmanifest" />
     <link rel="stylesheet" href="src/styles.css?v=20260829-toolkit" />
-    <link rel="stylesheet" href="/src/hero-fix.css?v=20260907-toolkit" />
+    <link rel="stylesheet" href="src/hero-fix.css?v=20260829f" />
     <script type="module" src="src/header-effects.js"></script>
     <script type="application/ld+json">
       {
@@ -103,7 +103,7 @@
       }
     </script>
   </head>
-  <body class="immersive-home">
+  <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <div id="content">
       <header>
@@ -138,17 +138,69 @@
         <div class="scroll-progress" aria-hidden="true"><span></span></div>
       </header>
 
-      <main id="main-content" class="home-story">
-        <section class="edition-hero" id="hero" aria-labelledby="edition-title">
-          <img class="edition-art" src="/image/hero-portal-original.png" alt="" width="1536" height="1024" fetchpriority="high" decoding="async" />
-          <div class="edition-opening">
-            <p class="edition-welcome">Welcome to</p>
-            <h1 id="edition-title">bykira<span class="sr-only"> — Website design &amp; development</span></h1>
+      <main id="main-content">
+        <section class="hero" id="hero">
+          <div class="hero-red-stage" aria-hidden="true">
+            <span class="red-beam beam-left"></span>
+            <span class="red-beam beam-centre"></span>
+            <span class="red-beam beam-right"></span>
+            <span class="hero-horizon"></span>
           </div>
-          <div class="edition-details">
-            <div class="edition-intro"><p>Distinctive websites.<br />Built around your world.</p><div class="edition-actions"><a href="/enquiry/" class="edition-primary">Start a project <span aria-hidden="true">↗</span></a><a href="/services/" class="edition-secondary">Explore services <span aria-hidden="true">→</span></a></div></div>
+          <div class="hero-symbols" aria-hidden="true">
+            <span class="symbol symbol-one">✦</span>
+            <span class="symbol symbol-two">⌁</span>
+            <span class="symbol symbol-three">✳</span>
+            <span class="symbol symbol-four">↗</span>
+            <span class="symbol symbol-five">◌</span>
           </div>
-          <div class="edition-foot"><span>INDEPENDENT DESIGN &amp; DEVELOPMENT</span><span>MANCHESTER · WORKING WORLDWIDE</span><a href="#home-services-title">Scroll to explore <span aria-hidden="true">↓</span></a></div>
+          <div class="hero-interface">
+            <span class="interface-ring ring-outer" aria-hidden="true"></span>
+            <span class="interface-ring ring-inner" aria-hidden="true"></span>
+            <span class="interface-axis axis-x" aria-hidden="true"></span>
+            <span class="interface-axis axis-y" aria-hidden="true"></span>
+            <span class="interface-node node-a" aria-hidden="true">01</span>
+            <span class="interface-node node-b" aria-hidden="true">✦</span>
+            <span class="interface-node node-c" aria-hidden="true">05</span>
+            <a class="interface-caption" href="/work/">SCROLL TO EXPLORE ↓</a>
+          </div>
+          <div class="hero-frame">
+            <div class="hero-frame-meta">
+              <span>01 / BY KIRA</span
+              ><span
+                ><i aria-hidden="true"></i> Available for selected
+                projects</span
+              >
+            </div>
+            <div class="hero-frame-main">
+              <span class="hero-index" aria-hidden="true">01</span>
+              <div class="hero-identity">
+                <p>Independent web studio · Manchester</p>
+                <h1>
+                  <span>Made with</span> <em>intent.</em
+                  ><small>Designed by Kira.<br />Built to perform.</small>
+                </h1>
+              </div>
+              <div class="hero-offer">
+                <span>Purpose / Personality / Performance</span>
+                <p>
+                  Websites for people who want to build something
+                  <em>better.</em>
+                </p>
+                <div class="hero-actions" aria-label="Homepage actions">
+                  <a class="hero-primary" href="/enquiry/"
+                    >Start a project <span>↗</span></a
+                  ><a class="hero-secondary" href="/services/">View services</a>
+                </div>
+              </div>
+            </div>
+            <div class="hero-frame-footer">
+              <span>Design + development</span
+              ><span>Built with care, clarity and character</span
+              ><a href="#home-services-title"
+                >Explore the studio <span>↓</span></a
+              >
+            </div>
+          </div>
         </section>
 
         <section class="intro-strip" aria-label="Introduction">
@@ -156,7 +208,7 @@
             <span class="inline-symbol">✦</span> Clear thinking, useful
             details,<br />and a little bit of personality.
           </p>
-            <span>THE IDEA IS ONLY THE BEGINNING ↘</span>
+            <span>02 — 06</span>
         </section>
 
         <section class="home-services" aria-labelledby="home-services-title">
