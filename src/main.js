@@ -224,7 +224,7 @@ if (enquiryPanel) {
 }
 
 function initRevealAnimations() {
-  const elements = document.querySelectorAll('.project, .section-topline, .section-heading, .about-layout, .skills-row, .process-intro, .process-step, .contact, .intro-strip, .first-project-card, .service-card, .sales-note, .faq-list details, .faq-cta, .footer-lead, .footer-columns');
+  const elements = document.querySelectorAll('.project, .section-topline, .section-heading, .about-layout, .skills-row, .process-intro, .process-step, .contact, .intro-strip, .first-project-card, .service-card, .sales-note, .faq-list details, .faq-cta, .footer-lead, .footer-columns, .build-standard-intro, .build-compass, .build-standard-grid article');
   if (!('IntersectionObserver' in window)) {
     elements.forEach((element) => element.classList.add('is-visible'));
     return;
