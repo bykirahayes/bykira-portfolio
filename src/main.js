@@ -183,22 +183,40 @@ document.querySelectorAll('footer').forEach((footer) => {
   footer.id = 'site-footer';
   footer.innerHTML = `
     <div class="footer-inner">
-      <div class="footer-topline"><span>11 / THE NEXT CHAPTER</span><span><i aria-hidden="true"></i> OPEN FOR SELECTED PROJECTS</span></div>
-      <div class="footer-stage">
-        <div class="footer-lead">
-          <p class="footer-kicker">HAVE A PROJECT IN MIND?</p>
-          <h2>Let's make it<br><em>worth visiting.</em></h2>
+      <div class="footer-topline">
+        <span>BK / DIGITAL STUDIO</span>
+        <span><i aria-hidden="true"></i> AVAILABLE FOR SELECTED PROJECTS</span>
+        <span>MANCHESTER / WORLDWIDE</span>
+      </div>
+      <div class="footer-stage footer-editorial">
+        <div class="footer-lead footer-pitch">
+          <p class="footer-kicker"><span aria-hidden="true">✦</span> THE NEXT CHAPTER</p>
+          <h2>Make the next click<br><em>mean something.</em></h2>
           <p class="footer-intro">Bring the rough idea. I’ll help turn it into a clear, distinctive website people remember—and know how to use.</p>
-          <a class="footer-email" href="/enquiry/">Start an enquiry <span>↗</span></a>
         </div>
-        <div class="footer-signal" aria-hidden="true"><span class="footer-signal-ring"></span><strong>BK</strong><small>STUDIO SIGNAL / 06</small></div>
+        <a class="footer-project-orbit" href="/enquiry/" aria-label="Start a project enquiry">
+          <span class="footer-project-orbit-ring" aria-hidden="true"></span>
+          <small>START A PROJECT</small>
+          <strong aria-hidden="true">↗</strong>
+          <em>TELL ME ABOUT YOUR IDEA</em>
+        </a>
       </div>
-      <div class="footer-columns">
-        <div><span class="footer-label">Navigate</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/guides/">Guides</a><a href="/faq">FAQ</a><a href="/enquiry/">Enquire</a></div>
-        <div><span class="footer-label">Connect</span><a href="/website-review/">Free website review</a><a href="/enquiry/">Project enquiry</a><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a></div>
-        <div><span class="footer-label">Details</span><span>Manchester, England</span><span>Working worldwide</span><button class="cookie-settings" type="button">Privacy &amp; cookies</button><a href="/terms/">Website terms</a></div>
+      <div class="footer-symbol-tape" aria-hidden="true">
+        <div><span>DESIGN</span><b>✦</b><span>DEVELOPMENT</span><b>⌁</b><span>CLARITY</span><b>◎</b><span>CHARACTER</span><b>↗</b><span>DESIGN</span><b>✦</b><span>DEVELOPMENT</span><b>⌁</b><span>CLARITY</span><b>◎</b><span>CHARACTER</span><b>↗</b></div>
       </div>
-      <div class="footer-bottom"><a class="logo" href="/" aria-label="Kira home"><img src="/image/kira-logo.png" alt="Kira" width="44" height="44"></a><span>Independent website developer</span><span>© 2026 Kira</span><a href="#main-content">Back to top ↑</a></div>
+      <div class="footer-directory">
+        <div class="footer-identity">
+          <a class="logo" href="/" aria-label="By Kira home"><img src="/image/kira-logo.png" alt="By Kira" width="44" height="44"></a>
+          <p>Independent website design<br>and development.</p>
+          <span>EST. MCR / 2026</span>
+        </div>
+        <div class="footer-columns">
+          <div><span class="footer-label">01 / Explore</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/guides/">Guides</a><a href="/faq">FAQ</a></div>
+          <div><span class="footer-label">02 / Start</span><a href="/enquiry/">Project enquiry</a><a href="/website-review/">Free website review</a><a href="/services/">Services &amp; pricing</a></div>
+          <div><span class="footer-label">03 / Follow</span><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a><button class="cookie-settings" type="button">Privacy &amp; cookies</button><a href="/terms/">Website terms</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span><i aria-hidden="true"></i> STUDIO ONLINE</span><span>© 2026 BY KIRA</span><a href="#main-content">BACK TO TOP ↑</a></div>
     </div>`;
 });
 
@@ -224,7 +242,7 @@ if (enquiryPanel) {
 }
 
 function initRevealAnimations() {
-  const elements = document.querySelectorAll('.project, .section-topline, .section-heading, .about-layout, .skills-row, .process-intro, .process-step, .contact, .intro-strip, .first-project-card, .service-card, .sales-note, .faq-list details, .faq-cta, .footer-lead, .footer-columns, .build-standard-intro, .build-compass, .build-standard-grid article');
+  const elements = document.querySelectorAll('.project, .section-topline, .section-heading, .about-layout, .skills-row, .process-intro, .process-step, .contact, .intro-strip, .first-project-card, .service-card, .sales-note, .faq-list details, .faq-cta, .footer-lead, .footer-project-orbit, .footer-directory, .build-standard-intro, .build-compass, .build-standard-grid article');
   if (!('IntersectionObserver' in window)) {
     elements.forEach((element) => element.classList.add('is-visible'));
     return;
