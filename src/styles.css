@@ -3366,3 +3366,15 @@ section[id],
   .review-boundaries { padding: 38px 20px; }
   .review-boundaries article { padding-inline: 4px; }
 }
+
+/* Keep the complete ByKira wordmark visible at every breakpoint. */
+header .logo.wordmark,
+footer .logo.wordmark {
+  overflow: visible;
+}
+
+header .logo.wordmark img,
+footer .logo.wordmark img {
+  left: 6px;
+  width: calc(100% - 12px);
+}
