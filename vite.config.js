@@ -8,15 +8,18 @@ const browserContentSecurityPolicy = "default-src 'self'; base-uri 'self'; conne
 export default defineConfig({
   plugins: [sites(), {
     name: 'clean-faq-url',
-    transformIndexHtml() {
-      return [{
-        tag: 'meta',
-        attrs: {
-          'http-equiv': 'Content-Security-Policy',
-          content: browserContentSecurityPolicy,
-        },
-        injectTo: 'head-prepend',
-      }];
+    transformIndexHtml(html) {
+      return {
+        html: html.replace('<html ', '<html class="experience-v3" '),
+        tags: [{
+          tag: 'meta',
+          attrs: {
+            'http-equiv': 'Content-Security-Policy',
+            content: browserContentSecurityPolicy,
+          },
+          injectTo: 'head-prepend',
+        }],
+      };
     },
     configureServer(server) {
       server.middlewares.use((request, _response, next) => {
