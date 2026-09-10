@@ -4329,3 +4329,129 @@
     transition: none !important;
   }
 }
+
+
+/* Hero v6 — true full-page opening composition. */
+.experience-v3 body header {
+  inset-inline: 18px !important;
+}
+
+.experience-v3 body .header-content {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+}
+
+.experience-v3 body .atelier-hero {
+  width: calc(100% - 36px) !important;
+  max-width: none !important;
+  min-height: calc(100svh - 18px) !important;
+  margin: 0 18px !important;
+  padding: 112px clamp(40px, 4vw, 86px) 18px !important;
+}
+
+.experience-v3 body .atelier-hero::before {
+  inset: 100px 0 18px !important;
+  border: 1px solid var(--studio-line);
+  border-radius: 38px 4px 38px 4px;
+}
+
+.experience-v3 body .atelier-grid {
+  inset: 101px 1px 19px !important;
+  border-radius: 37px 3px 37px 3px;
+}
+
+.experience-v3 body .atelier-compose {
+  grid-template-columns: minmax(0, 1.55fr) minmax(360px, 0.58fr) !important;
+  gap: clamp(50px, 7vw, 150px) !important;
+  min-height: calc(100svh - 278px) !important;
+  padding: clamp(46px, 6vh, 86px) clamp(18px, 3vw, 62px) !important;
+}
+
+.experience-v3 body .atelier-statement {
+  width: 100%;
+  max-width: 1180px !important;
+}
+
+.experience-v3 body .atelier-statement h1 {
+  font-size: clamp(5.2rem, 8.6vw, 12rem) !important;
+  line-height: 0.78 !important;
+}
+
+.experience-v3 body .atelier-caption {
+  max-width: 680px !important;
+}
+
+.experience-v3 body .atelier-note {
+  width: 100%;
+  max-width: 470px !important;
+  margin-right: clamp(0px, 2vw, 38px);
+}
+
+.experience-v3 body .atelier-note > p {
+  font-size: clamp(1.25rem, 1.45vw, 1.8rem) !important;
+}
+
+.experience-v3 body .atelier-orbit {
+  width: min(74vw, 1320px) !important;
+}
+
+.experience-v3 body .atelier-rail {
+  padding-inline: clamp(12px, 2.3vw, 44px);
+}
+
+@media (max-width: 980px) {
+  .experience-v3 body .atelier-compose {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    min-height: 0 !important;
+    padding-top: 76px !important;
+    padding-bottom: 70px !important;
+  }
+
+  .experience-v3 body .atelier-note {
+    max-width: 620px !important;
+    margin: 54px 0 0 8% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .experience-v3 body header {
+    inset-inline: 7px !important;
+  }
+
+  .experience-v3 body .atelier-hero {
+    width: calc(100% - 20px) !important;
+    min-height: 100svh !important;
+    margin: 0 10px !important;
+    padding: 84px 20px 10px !important;
+  }
+
+  .experience-v3 body .atelier-hero::before {
+    inset: 74px 0 10px !important;
+    border-radius: 24px 3px 24px 3px;
+  }
+
+  .experience-v3 body .atelier-grid {
+    inset: 75px 1px 11px !important;
+    border-radius: 23px 2px 23px 2px;
+  }
+
+  .experience-v3 body .atelier-rail {
+    padding-inline: 0;
+  }
+
+  .experience-v3 body .atelier-compose {
+    padding: 52px 0 48px !important;
+  }
+
+  .experience-v3 body .atelier-statement h1 {
+    font-size: clamp(4rem, 20vw, 6.4rem) !important;
+  }
+
+  .experience-v3 body .atelier-note {
+    width: 100% !important;
+    margin: 48px 0 0 !important;
+    padding-inline: 22px !important;
+  }
+}
