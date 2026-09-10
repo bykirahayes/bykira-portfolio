@@ -2678,3 +2678,47 @@
     transition: none;
   }
 }
+
+/* Full-bleed footer and unclipped brand mark. */
+.experience-v3 body footer#site-footer {
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+.experience-v3 body footer#site-footer .footer-inner {
+  width: 100%;
+  max-width: none;
+  overflow: visible;
+  border-radius: 0;
+}
+
+.experience-v3 body .footer-identity .logo.wordmark {
+  width: min(230px, 100%);
+  height: 100px;
+  overflow: visible;
+}
+
+.experience-v3 body .footer-identity .logo.wordmark img {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 650px) {
+  .experience-v3 body footer#site-footer {
+    padding: 0;
+  }
+
+  .experience-v3 body footer#site-footer .footer-inner {
+    border-radius: 0;
+  }
+
+  .experience-v3 body .footer-identity .logo.wordmark {
+    width: min(210px, 100%);
+    height: 92px;
+  }
+}
