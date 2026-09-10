@@ -493,3 +493,163 @@ if (enquiryForm) {
     window.turnstile?.reset();
   });
 }
+
+
+// Portfolio-grade interaction layer: expressive on capable devices, quiet everywhere else.
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+document.documentElement.classList.add('motion-capable');
+
+const pageWipe = document.createElement('div');
+pageWipe.className = 'page-wipe';
+pageWipe.setAttribute('aria-hidden', 'true');
+pageWipe.innerHTML = '<span>BY KIRA</span><i></i><small>DIGITAL STUDIO / MANCHESTER</small>';
+document.body.append(pageWipe);
+window.requestAnimationFrame(() => document.documentElement.classList.add('page-entered'));
+
+document.querySelectorAll('main > section, main > article, .guide-copy > section').forEach((section, index) => {
+  if (section.querySelector(':scope > .section-sigil')) return;
+  const sigil = document.createElement('span');
+  sigil.className = 'section-sigil';
+  sigil.setAttribute('aria-hidden', 'true');
+  sigil.innerHTML = `<i>${['✦', '⌁', '◎', '◇'][index % 4]}</i><b>${String(index + 1).padStart(2, '0')}</b>`;
+  section.append(sigil);
+});
+
+const interactiveCards = document.querySelectorAll([
+  '.home-service-grid article',
+  '.process-step',
+  '.project-fit-list article',
+  '.home-guides-grid > a',
+  '.guide-grid > a',
+  '.service-card',
+  '.enquiry-trust-grid > *',
+  '.first-project-card',
+  '.tool-console',
+  '.faq-list details'
+].join(','));
+
+if (finePointerQuery.matches && !reducedMotionQuery.matches) {
+  const cursor = document.createElement('div');
+  cursor.className = 'kira-pointer';
+  cursor.setAttribute('aria-hidden', 'true');
+  cursor.innerHTML = '<span></span><b>EXPLORE</b>';
+  document.body.append(cursor);
+
+  let pointerX = window.innerWidth / 2;
+  let pointerY = window.innerHeight / 2;
+  let cursorX = pointerX;
+  let cursorY = pointerY;
+  let cursorFrame = 0;
+
+  const renderPointer = () => {
+    cursorX += (pointerX - cursorX) * 0.18;
+    cursorY += (pointerY - cursorY) * 0.18;
+    cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+    cursorFrame = window.requestAnimationFrame(renderPointer);
+  };
+
+  window.addEventListener('pointermove', (event) => {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    cursor.classList.add('is-visible');
+  }, { passive: true });
+  document.documentElement.addEventListener('mouseleave', () => cursor.classList.remove('is-visible'));
+  renderPointer();
+
+  const pointerLabels = [
+    ['a', 'OPEN'],
+    ['button', 'SELECT'],
+    ['summary', 'READ'],
+    ['.contact-button, .header-cta, .atelier-primary, .project-fit-cta, .enquiry-submit', 'START'],
+    ['.service-card, .process-step, .tool-console', 'VIEW']
+  ];
+  pointerLabels.forEach(([selector, label]) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      element.addEventListener('pointerenter', () => {
+        cursor.querySelector('b').textContent = label;
+        cursor.classList.add('is-active');
+      });
+      element.addEventListener('pointerleave', () => {
+        cursor.querySelector('b').textContent = 'EXPLORE';
+        cursor.classList.remove('is-active');
+      });
+    });
+  });
+
+  document.querySelectorAll([
+    '.header-cta',
+    '.atelier-primary',
+    '.contact-button',
+    '.project-fit-cta',
+    '.enquiry-submit',
+    '.footer-identity-cta',
+    '.error-primary'
+  ].join(',')).forEach((element) => {
+    element.classList.add('is-magnetic');
+    element.addEventListener('pointermove', (event) => {
+      const bounds = element.getBoundingClientRect();
+      const x = (event.clientX - bounds.left - bounds.width / 2) * 0.14;
+      const y = (event.clientY - bounds.top - bounds.height / 2) * 0.18;
+      element.style.setProperty('--magnetic-x', `${x}px`);
+      element.style.setProperty('--magnetic-y', `${y}px`);
+    });
+    element.addEventListener('pointerleave', () => {
+      element.style.setProperty('--magnetic-x', '0px');
+      element.style.setProperty('--magnetic-y', '0px');
+    });
+  });
+
+  interactiveCards.forEach((card) => {
+    card.classList.add('is-depth-card');
+    card.addEventListener('pointermove', (event) => {
+      const bounds = card.getBoundingClientRect();
+      const x = event.clientX - bounds.left;
+      const y = event.clientY - bounds.top;
+      const rotateX = ((y / bounds.height) - 0.5) * -1.8;
+      const rotateY = ((x / bounds.width) - 0.5) * 1.8;
+      card.style.setProperty('--depth-x', `${x}px`);
+      card.style.setProperty('--depth-y', `${y}px`);
+      card.style.setProperty('--depth-rx', `${rotateX}deg`);
+      card.style.setProperty('--depth-ry', `${rotateY}deg`);
+    }, { passive: true });
+    card.addEventListener('pointerleave', () => {
+      card.style.setProperty('--depth-rx', '0deg');
+      card.style.setProperty('--depth-ry', '0deg');
+    });
+  });
+
+  window.addEventListener('pagehide', () => window.cancelAnimationFrame(cursorFrame), { once: true });
+}
+
+let previousScrollY = window.scrollY;
+let scrollVelocity = 0;
+let scrollTicking = false;
+const renderScrollAtmosphere = () => {
+  const delta = window.scrollY - previousScrollY;
+  previousScrollY = window.scrollY;
+  scrollVelocity += (delta - scrollVelocity) * 0.24;
+  document.documentElement.style.setProperty('--scroll-drift', `${Math.max(-18, Math.min(18, scrollVelocity * 0.18))}px`);
+  document.documentElement.style.setProperty('--scroll-turn', `${Math.max(-1.2, Math.min(1.2, scrollVelocity * 0.012))}deg`);
+  scrollTicking = false;
+};
+window.addEventListener('scroll', () => {
+  if (reducedMotionQuery.matches || scrollTicking) return;
+  scrollTicking = true;
+  window.requestAnimationFrame(renderScrollAtmosphere);
+}, { passive: true });
+
+document.addEventListener('click', (event) => {
+  if (reducedMotionQuery.matches || event.defaultPrevented || event.button !== 0) return;
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const link = event.target.closest('a[href]');
+  if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+  const destination = new URL(link.href, window.location.href);
+  if (destination.origin !== window.location.origin) return;
+  if (destination.pathname === window.location.pathname && destination.hash) return;
+  event.preventDefault();
+  document.documentElement.classList.add('page-leaving');
+  window.setTimeout(() => { window.location.href = destination.href; }, 280);
+});
+
+reducedMotionQuery.addEventListener?.('change', () => window.location.reload());
