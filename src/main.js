@@ -195,6 +195,7 @@ document.querySelectorAll('footer').forEach((footer) => {
         <div class="footer-identity">
           <a class="logo" href="/" aria-label="By Kira home"><img src="/image/kira-logo.png" alt="By Kira" width="44" height="44"></a>
           <p>Independent website design<br>and development.</p>
+          <a class="footer-identity-cta" href="/enquiry/">Start a project <span>↗</span></a>
           <span>EST. MCR / 2026</span>
         </div>
         <div class="footer-columns">
