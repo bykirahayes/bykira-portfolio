@@ -36,6 +36,7 @@ jobs:
         run: |
           test -f dist/client/index.html
           test -f dist/client/enquiry/index.html
+          test -f dist/client/commission/index.html
           test -f dist/client/privacy/index.html
           test -f dist/client/accessibility/index.html
           test -f dist/server/index.js

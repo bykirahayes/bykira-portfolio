@@ -51,7 +51,7 @@ export default defineConfig({
           const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
           request.url = `/terms/index.html${query}`;
         }
-        const directoryRoutes = ['/website-review', '/guides', '/guides/small-business-website-cost', '/guides/service-business-homepage', '/guides/website-launch-checklist'];
+        const directoryRoutes = ['/commission', '/website-review', '/guides', '/guides/small-business-website-cost', '/guides/service-business-homepage', '/guides/website-launch-checklist'];
         const matchedRoute = directoryRoutes.find((route) => request.url === route || request.url === `${route}/` || request.url?.startsWith(`${route}?`));
         if (matchedRoute) {
           const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
@@ -87,6 +87,7 @@ export default defineConfig({
         notFound: resolve(import.meta.dirname, '404.html'),
         serverError: resolve(import.meta.dirname, '500.html'),
         services: resolve(import.meta.dirname, 'services/index.html'),
+        commission: resolve(import.meta.dirname, 'commission/index.html'),
         work: resolve(import.meta.dirname, 'work/index.html'),
         enquiry: resolve(import.meta.dirname, 'enquiry/index.html'),
         enquiryRedirect: resolve(import.meta.dirname, 'enquiry.html'),
