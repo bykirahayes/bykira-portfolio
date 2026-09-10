@@ -184,7 +184,7 @@ document.querySelectorAll('footer').forEach((footer) => {
   footer.innerHTML = `
     <div class="footer-inner">
       <div class="footer-topline">
-        <span>BK / DIGITAL STUDIO</span>
+        <span>BY KIRA / DIGITAL STUDIO</span>
         <span><i aria-hidden="true"></i> AVAILABLE FOR SELECTED PROJECTS</span>
         <span>MANCHESTER / WORLDWIDE</span>
       </div>
@@ -506,11 +506,10 @@ pageWipe.setAttribute('aria-hidden', 'true');
 pageWipe.innerHTML = `
   <div class="loader-grid"></div>
   <div class="loader-topline">
-    <span>BK / DIGITAL STUDIO</span>
+    <span>BY KIRA / DIGITAL STUDIO</span>
     <span>53.4808° N / 2.2426° W</span>
   </div>
   <div class="loader-core">
-    <div class="loader-orbit"><i></i><i></i><b>✦</b></div>
     <strong>BY KIRA</strong>
     <p>DESIGN <em>✦</em> DEVELOPMENT</p>
   </div>
