@@ -4455,3 +4455,31 @@
     padding-inline: 22px !important;
   }
 }
+
+
+/* Header v7 — lock the command bar to the page grid. */
+.experience-v3 body header {
+  top: 18px !important;
+  left: 18px !important;
+  right: 18px !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  transform: none !important;
+  box-sizing: border-box;
+}
+
+.experience-v3 body .header-content {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 760px) {
+  .experience-v3 body header {
+    top: 7px !important;
+    left: 7px !important;
+    right: 7px !important;
+    width: auto !important;
+  }
+}
