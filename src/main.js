@@ -51,7 +51,8 @@ document.querySelectorAll('header').forEach((header) => {
     : path.startsWith('/services') ? 'SERVICES'
       : path.startsWith('/about') ? 'ABOUT'
       : path.startsWith('/faq') ? 'FAQ'
-        : path.startsWith('/website-review') ? 'FREE REVIEW'
+        : path.startsWith('/commission') ? 'COMMISSION'
+          : path.startsWith('/website-review') ? 'FREE REVIEW'
           : path.startsWith('/guides') ? 'GUIDES'
         : path.startsWith('/enquiry') ? 'ENQUIRY'
           : path.includes('privacy') ? 'PRIVACY'
@@ -116,7 +117,8 @@ const chapterRoutes = [
   { match: /^\/faq(?:\.html)?\/?$/, code: '04', symbol: '?', name: 'Questions', note: 'Useful answers, minus the fog' },
   { match: /^\/enquiry(?:\.html)?\/?$/, code: '05', symbol: '✦', name: 'Enquiry', note: 'The first useful conversation' },
   { match: /^\/guides(?:\/.*)?$/, code: '06', symbol: '↳', name: 'Guides', note: 'Notes for better website decisions' },
-  { match: /^\/website-review\/?$/, code: '07', symbol: '◎', name: 'Review', note: 'Three practical ideas, freely given' },
+  { match: /^\/commission\/?$/, code: '07', symbol: '£', name: 'Commission', note: 'Choose, brief, approve and pay' },
+  { match: /^\/website-review\/?$/, code: '08', symbol: '◎', name: 'Review', note: 'Three practical ideas, freely given' },
   { match: /^\/privacy(?:\.html)?\/?$/, code: '08', symbol: '◌', name: 'Privacy', note: 'What is collected—and what is not' },
   { match: /^\/accessibility(?:\.html)?\/?$/, code: '09', symbol: '✣', name: 'Accessibility', note: 'A website made for more people' },
   { match: /^\/terms\/?$/, code: '10', symbol: '§', name: 'Terms', note: 'Clear expectations, written plainly' },
@@ -200,7 +202,7 @@ document.querySelectorAll('footer').forEach((footer) => {
         </div>
         <div class="footer-columns">
           <div><span class="footer-label">01 / Explore</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/guides/">Guides</a><a href="/faq">FAQ</a></div>
-          <div><span class="footer-label">02 / Start</span><a href="/enquiry/">Project enquiry</a><a href="/website-review/">Free website review</a><a href="/services/">Services &amp; pricing</a></div>
+          <div><span class="footer-label">02 / Start</span><a href="/commission/">Commission &amp; payment</a><a href="/enquiry/">Project enquiry</a><a href="/website-review/">Free website review</a><a href="/services/">Services &amp; pricing</a></div>
           <div><span class="footer-label">03 / Follow</span><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a><button class="cookie-settings" type="button">Privacy &amp; cookies</button><a href="/terms/">Website terms</a></div>
         </div>
       </div>
@@ -694,3 +696,26 @@ document.addEventListener('click', (event) => {
 });
 
 reducedMotionQuery.addEventListener?.('change', () => window.location.reload());
+
+
+// Prefill the enquiry from a chosen commission package.
+if (enquiryForm) {
+  const commissionParams = new URLSearchParams(window.location.search);
+  const serviceValue = commissionParams.get('service');
+  const budgetValue = commissionParams.get('budget');
+  const setMatchingOption = (name, requestedValue) => {
+    if (!requestedValue) return;
+    const field = enquiryForm.elements.namedItem(name);
+    if (!(field instanceof HTMLSelectElement)) return;
+    const match = Array.from(field.options).find((option) => option.value === requestedValue || option.textContent.trim() === requestedValue);
+    if (!match) return;
+    field.value = match.value;
+    field.dispatchEvent(new Event('change', { bubbles: true }));
+  };
+  setMatchingOption('service', serviceValue);
+  setMatchingOption('budget', budgetValue);
+  if (commissionParams.get('source') === 'commission') {
+    const status = enquiryForm.querySelector('.form-status');
+    if (status) status.textContent = 'Your commission starting point has been added below. Complete the remaining details when ready.';
+  }
+}

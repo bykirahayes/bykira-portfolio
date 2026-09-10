@@ -6167,3 +6167,464 @@
     animation: none !important;
   }
 }
+
+
+/* Commission v14 — complete brief-to-payment journey. */
+.experience-v3 body .commission-main {
+  width: var(--studio-frame-width, calc(100% - 36px));
+  max-width: none;
+  margin: 18px auto;
+  padding: 0 clamp(32px, 4vw, 64px) 54px;
+  overflow: hidden;
+  border: 1px solid var(--studio-line);
+  border-radius: 38px 4px 38px 4px;
+  background:
+    linear-gradient(var(--studio-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--studio-grid) 1px, transparent 1px),
+    radial-gradient(circle at 82% 8%, rgba(184,145,255,.1), transparent 28rem),
+    var(--studio-bg);
+  background-size: 68px 68px, 68px 68px, auto, auto;
+}
+
+.experience-v3 body .commission-main > section {
+  position: relative;
+  border-bottom: 1px solid var(--studio-line);
+}
+
+.experience-v3 body .commission-hero {
+  padding: clamp(110px, 12vw, 180px) 0 0;
+}
+
+.experience-v3 body .commission-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, .55fr);
+  align-items: end;
+  gap: clamp(48px, 8vw, 140px);
+  min-height: 520px;
+  padding: 50px 0 72px;
+}
+
+.experience-v3 body .commission-hero h1 {
+  margin: 0;
+  font: 500 clamp(5rem, 8.5vw, 10rem)/.78 var(--studio-serif);
+  letter-spacing: -.07em;
+}
+
+.experience-v3 body .commission-hero-layout > div > p {
+  max-width: 680px;
+  margin-top: 36px;
+  color: var(--studio-muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.experience-v3 body .commission-hero aside {
+  padding: 34px 0 34px 32px;
+  border-left: 2px solid var(--studio-violet);
+}
+
+.experience-v3 body .commission-hero aside > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--studio-violet-soft);
+  font: 700 .65rem/1 var(--studio-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.experience-v3 body .commission-hero aside i,
+.experience-v3 body .commission-payment-panel > p i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--studio-green);
+  box-shadow: 0 0 12px rgba(119,245,161,.7);
+}
+
+.experience-v3 body .commission-hero aside strong {
+  display: block;
+  margin: 30px 0;
+  font: 500 clamp(1.8rem, 2.5vw, 2.8rem)/1.08 var(--studio-serif);
+}
+
+.experience-v3 body .commission-hero aside a,
+.experience-v3 body .commission-payment-copy > a,
+.experience-v3 body .commission-package-grid article > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: 0 18px;
+  border: 1px solid var(--studio-violet);
+  border-radius: 2px 2px 18px 2px;
+  background: var(--studio-violet);
+  color: #100c17;
+  font: 800 .7rem/1 var(--studio-mono);
+  letter-spacing: .07em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.experience-v3 body .commission-meta {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 72px;
+  align-items: center;
+  color: var(--studio-faint);
+  font: 700 .65rem/1 var(--studio-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.experience-v3 body .commission-packages,
+.experience-v3 body .commission-included,
+.experience-v3 body .commission-process {
+  padding-bottom: 58px;
+}
+
+.experience-v3 body .commission-package-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-left: 1px solid var(--studio-line);
+}
+
+.experience-v3 body .commission-package-grid article {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 620px;
+  padding: clamp(30px, 3vw, 48px);
+  border-right: 1px solid var(--studio-line);
+  border-bottom: 1px solid var(--studio-line);
+  background: rgba(9,8,13,.48);
+}
+
+.experience-v3 body .commission-package-grid .commission-featured {
+  background: linear-gradient(145deg, rgba(184,145,255,.1), rgba(9,8,13,.55) 45%);
+  box-shadow: inset 0 3px 0 var(--studio-violet);
+}
+
+.experience-v3 body .commission-number,
+.experience-v3 body .commission-recommended {
+  color: var(--studio-violet-soft);
+  font: 700 .64rem/1 var(--studio-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.experience-v3 body .commission-recommended {
+  position: absolute;
+  right: 28px;
+  top: 28px;
+  padding: 8px 10px;
+  border: 1px solid rgba(184,145,255,.35);
+}
+
+.experience-v3 body .commission-package-grid h2 {
+  margin: 68px 0 24px;
+  font: 500 clamp(2.2rem, 3.6vw, 4.3rem)/.92 var(--studio-serif);
+  letter-spacing: -.045em;
+}
+
+.experience-v3 body .commission-package-grid p,
+.experience-v3 body .commission-package-grid li {
+  color: var(--studio-muted);
+  line-height: 1.6;
+}
+
+.experience-v3 body .commission-package-grid ul {
+  display: grid;
+  gap: 12px;
+  margin: 32px 0;
+  padding: 28px 0;
+  border-top: 1px solid var(--studio-line);
+  border-bottom: 1px solid var(--studio-line);
+  list-style: none;
+}
+
+.experience-v3 body .commission-package-grid li::before {
+  content: "✦";
+  margin-right: 10px;
+  color: var(--studio-violet);
+}
+
+.experience-v3 body .commission-price {
+  display: grid;
+  gap: 6px;
+  margin-top: auto;
+  padding-bottom: 28px;
+}
+
+.experience-v3 body .commission-price span,
+.experience-v3 body .commission-price small {
+  color: var(--studio-faint);
+  font: 700 .63rem/1.4 var(--studio-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.experience-v3 body .commission-price strong {
+  color: var(--studio-ink);
+  font: 500 2.2rem/1 var(--studio-serif);
+}
+
+.experience-v3 body .commission-included-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(480px, 1.1fr);
+  gap: clamp(50px, 8vw, 140px);
+  padding: 72px 0 24px;
+}
+
+.experience-v3 body .commission-included-layout h2,
+.experience-v3 body .commission-payment h2,
+.experience-v3 body .commission-ready h2 {
+  margin: 24px 0 30px;
+  font: 500 clamp(4rem, 6.5vw, 7.5rem)/.82 var(--studio-serif);
+  letter-spacing: -.06em;
+}
+
+.experience-v3 body .commission-included-layout > div > p:last-child,
+.experience-v3 body .commission-payment-copy > p {
+  max-width: 640px;
+  color: var(--studio-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.experience-v3 body .commission-included ol {
+  border-top: 1px solid var(--studio-line);
+  list-style: none;
+}
+
+.experience-v3 body .commission-included li {
+  display: grid;
+  grid-template-columns: 54px 150px 1fr;
+  align-items: center;
+  gap: 20px;
+  min-height: 112px;
+  border-bottom: 1px solid var(--studio-line);
+}
+
+.experience-v3 body .commission-included li > span {
+  color: var(--studio-violet);
+  font: 700 .65rem/1 var(--studio-mono);
+}
+
+.experience-v3 body .commission-included li > strong {
+  font-family: var(--studio-serif);
+  font-size: 1.4rem;
+}
+
+.experience-v3 body .commission-included li p {
+  color: var(--studio-muted);
+}
+
+.experience-v3 body .commission-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  border-left: 1px solid var(--studio-line);
+}
+
+.experience-v3 body .commission-process-grid article {
+  min-height: 300px;
+  padding: 34px 28px;
+  border-right: 1px solid var(--studio-line);
+  border-bottom: 1px solid var(--studio-line);
+  background: rgba(9,8,13,.42);
+}
+
+.experience-v3 body .commission-process-grid article > span {
+  color: var(--studio-violet);
+  font: 700 .68rem/1 var(--studio-mono);
+}
+
+.experience-v3 body .commission-process-grid h3 {
+  margin: 70px 0 20px;
+  font: 500 2rem/1 var(--studio-serif);
+}
+
+.experience-v3 body .commission-process-grid p {
+  color: var(--studio-muted);
+  line-height: 1.6;
+}
+
+.experience-v3 body .commission-payment {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(460px, 1.1fr);
+  align-items: center;
+  gap: clamp(50px, 8vw, 140px);
+  padding: 84px 0;
+}
+
+.experience-v3 body .commission-payment-copy > a {
+  width: min(100%, 390px);
+  margin-top: 34px;
+}
+
+.experience-v3 body .commission-payment-panel {
+  padding: 28px;
+  border: 1px solid var(--studio-line-strong);
+  border-radius: 2px 2px 28px 2px;
+  background: rgba(9,8,13,.78);
+}
+
+.experience-v3 body .commission-payment-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 24px;
+  color: var(--studio-faint);
+  font: 700 .64rem/1 var(--studio-mono);
+  letter-spacing: .1em;
+}
+
+.experience-v3 body .commission-payment-head b {
+  color: var(--studio-violet-soft);
+}
+
+.experience-v3 body .commission-payment-panel button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 94px;
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px solid var(--studio-line);
+  border-radius: 2px 2px 18px 2px;
+  background: rgba(255,255,255,.025);
+  color: var(--studio-muted);
+  text-align: left;
+  cursor: not-allowed;
+  opacity: .72;
+}
+
+.experience-v3 body .commission-payment-panel button span {
+  display: grid;
+  gap: 7px;
+}
+
+.experience-v3 body .commission-payment-panel button strong {
+  color: var(--studio-ink);
+  font-family: var(--studio-serif);
+  font-size: 1.6rem;
+}
+
+.experience-v3 body .commission-payment-panel button small,
+.experience-v3 body .commission-payment-panel button > b {
+  color: var(--studio-faint);
+  font: 700 .6rem/1.4 var(--studio-mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.experience-v3 body .commission-payment-panel > p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  color: var(--studio-faint);
+  font-size: .8rem;
+}
+
+.experience-v3 body .commission-ready {
+  display: grid;
+  justify-items: center;
+  padding: 90px 0 40px;
+  text-align: center;
+}
+
+.experience-v3 body .commission-ready > span {
+  color: var(--studio-violet-soft);
+  font: 700 .64rem/1 var(--studio-mono);
+  letter-spacing: .12em;
+}
+
+@media (max-width: 980px) {
+  .experience-v3 body .commission-hero-layout,
+  .experience-v3 body .commission-included-layout,
+  .experience-v3 body .commission-payment {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-v3 body .commission-package-grid,
+  .experience-v3 body .commission-process-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .experience-v3 body .commission-hero aside {
+    max-width: 620px;
+  }
+}
+
+@media (max-width: 650px) {
+  .experience-v3 body .commission-main {
+    width: calc(100% - 20px);
+    margin-top: 10px;
+    padding: 0 20px 34px;
+    border-radius: 24px 3px 24px 3px;
+  }
+
+  .experience-v3 body .commission-hero {
+    padding-top: 92px;
+  }
+
+  .experience-v3 body .commission-hero h1 {
+    font-size: clamp(4rem, 19vw, 6rem);
+  }
+
+  .experience-v3 body .commission-hero-layout {
+    min-height: 0;
+    padding: 48px 0;
+  }
+
+  .experience-v3 body .commission-hero aside {
+    padding-left: 22px;
+  }
+
+  .experience-v3 body .commission-meta,
+  .experience-v3 body .commission-package-grid,
+  .experience-v3 body .commission-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-v3 body .commission-meta {
+    gap: 14px;
+    padding: 20px 0;
+  }
+
+  .experience-v3 body .commission-package-grid article {
+    min-height: 580px;
+    padding: 30px 22px;
+  }
+
+  .experience-v3 body .commission-included-layout h2,
+  .experience-v3 body .commission-payment h2,
+  .experience-v3 body .commission-ready h2 {
+    font-size: clamp(3.7rem, 17vw, 5.5rem);
+  }
+
+  .experience-v3 body .commission-included li {
+    grid-template-columns: 38px 1fr;
+    padding: 22px 0;
+  }
+
+  .experience-v3 body .commission-included li p {
+    grid-column: 2;
+  }
+
+  .experience-v3 body .commission-payment {
+    padding: 60px 0;
+  }
+
+  .experience-v3 body .commission-payment-panel {
+    padding: 18px;
+  }
+
+  .experience-v3 body .commission-payment-panel button {
+    display: grid;
+    gap: 16px;
+  }
+}
