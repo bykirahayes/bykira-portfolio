@@ -14,6 +14,7 @@ const staticPath = (pathname) => {
   if (pathname === '/work' || pathname === '/work/') return '/work/index.html';
   if (pathname === '/faq') return '/faq.html';
   if (pathname === '/services' || pathname === '/services/') return '/services/index.html';
+  if (pathname === '/commission' || pathname === '/commission/') return '/commission/index.html';
   if (pathname === '/enquiry' || pathname === '/enquiry/') return '/enquiry/index.html';
   if (pathname === '/about' || pathname === '/about/') return '/about/index.html';
   if (pathname === '/privacy' || pathname === '/privacy/') return '/privacy/index.html';
