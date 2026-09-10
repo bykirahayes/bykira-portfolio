@@ -5754,3 +5754,328 @@
     transition: none !important;
   }
 }
+
+
+/* Loader v12 — branded studio boot sequence. */
+.experience-v3 body .page-wipe {
+  --loader-progress: 0;
+  display: block;
+  overflow: hidden;
+  background: #09080d !important;
+  color: var(--studio-ink);
+  clip-path: inset(0);
+  transition: clip-path 0.68s cubic-bezier(0.77, 0, 0.18, 1) !important;
+}
+
+.experience-v3 body .page-wipe::before,
+.experience-v3 body .page-wipe::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0 50% 0 0;
+  background:
+    radial-gradient(circle at 85% 48%, rgba(184, 145, 255, 0.13), transparent 32%),
+    #0c0a10;
+  border-right: 1px solid var(--studio-line);
+  transform: translateY(0);
+  transition: transform 0.74s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.experience-v3 body .page-wipe::after {
+  inset: 0 0 0 50%;
+  border-right: 0;
+  border-left: 1px solid var(--studio-line);
+  background:
+    radial-gradient(circle at 15% 48%, rgba(166, 213, 255, 0.075), transparent 30%),
+    #0a090e;
+}
+
+.experience-v3.page-entered body .page-wipe::before {
+  transform: translateY(-105%);
+}
+
+.experience-v3.page-entered body .page-wipe::after {
+  transform: translateY(105%);
+}
+
+.experience-v3 body .loader-grid {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  opacity: 0.85;
+  background-image:
+    linear-gradient(var(--studio-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--studio-grid) 1px, transparent 1px);
+  background-size: 68px 68px;
+}
+
+.experience-v3 body .loader-grid::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 145, 255, 0.45), transparent);
+  box-shadow: 0 0 26px rgba(184, 145, 255, 0.28);
+  transform: scaleX(var(--loader-progress));
+}
+
+.experience-v3 body .loader-topline,
+.experience-v3 body .loader-bottom {
+  position: absolute;
+  z-index: 4;
+  left: clamp(22px, 3vw, 58px);
+  right: clamp(22px, 3vw, 58px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--studio-faint);
+  font: 700 0.62rem/1 var(--studio-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.experience-v3 body .loader-topline {
+  top: clamp(24px, 4vw, 54px);
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--studio-line);
+}
+
+.experience-v3 body .loader-bottom {
+  bottom: clamp(24px, 4vw, 54px);
+  padding-top: 18px;
+  border-top: 1px solid var(--studio-line);
+}
+
+.experience-v3 body .loader-topline span,
+.experience-v3 body .loader-bottom span {
+  position: static;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.experience-v3 body .loader-bottom span:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--studio-violet-soft);
+}
+
+.experience-v3 body .loader-bottom span:last-child i {
+  position: static;
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--studio-green);
+  box-shadow: 0 0 14px rgba(119, 245, 161, 0.75);
+  animation: kira-loader-status 1.2s ease-in-out infinite;
+}
+
+.experience-v3 body .loader-core {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 48%;
+  display: grid;
+  justify-items: center;
+  transform: translate(-50%, -50%);
+}
+
+.experience-v3 body .loader-core strong {
+  position: relative;
+  z-index: 3;
+  color: var(--studio-ink);
+  font: italic 500 clamp(5rem, 13vw, 14rem)/0.72 var(--studio-serif);
+  letter-spacing: -0.085em;
+  white-space: nowrap;
+  text-shadow: 0 0 60px rgba(184, 145, 255, 0.12);
+  animation: kira-loader-wordmark 0.76s cubic-bezier(0.2, 0.65, 0.3, 1) both;
+}
+
+.experience-v3 body .loader-core p {
+  position: relative;
+  z-index: 3;
+  margin: clamp(26px, 4vw, 48px) 0 0;
+  color: var(--studio-muted);
+  font: 700 0.68rem/1 var(--studio-mono);
+  letter-spacing: 0.24em;
+}
+
+.experience-v3 body .loader-core p em {
+  margin: 0 14px;
+  color: var(--studio-violet);
+  font-style: normal;
+}
+
+.experience-v3 body .loader-orbit {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width: min(48vw, 620px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(184, 145, 255, 0.24);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(calc(0.72 + (var(--loader-progress) * 0.28))) rotate(-18deg);
+  opacity: calc(0.3 + (var(--loader-progress) * 0.7));
+}
+
+.experience-v3 body .loader-orbit > i {
+  position: absolute;
+  inset: 12%;
+  width: auto;
+  height: auto;
+  border: 1px dashed rgba(166, 213, 255, 0.16);
+  border-radius: 50%;
+  background: transparent;
+  transform: none;
+  animation: kira-loader-orbit 8s linear infinite;
+}
+
+.experience-v3 body .loader-orbit > i:nth-child(2) {
+  inset: 27%;
+  border-style: solid;
+  animation-direction: reverse;
+  animation-duration: 5s;
+}
+
+.experience-v3 body .loader-orbit > b {
+  position: absolute;
+  right: 8%;
+  top: 22%;
+  color: var(--studio-violet);
+  font: 400 1.2rem/1 var(--studio-mono);
+  filter: drop-shadow(0 0 12px rgba(184, 145, 255, 0.7));
+  animation: kira-loader-star 1.4s ease-in-out infinite;
+}
+
+.experience-v3 body .loader-progress {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  bottom: clamp(78px, 10vw, 126px);
+  display: grid;
+  grid-template-columns: auto minmax(120px, 260px) 42px;
+  align-items: center;
+  gap: 16px;
+  width: min(620px, calc(100% - 44px));
+  transform: translateX(-50%);
+  color: var(--studio-faint);
+  font: 700 0.58rem/1 var(--studio-mono);
+  letter-spacing: 0.1em;
+}
+
+.experience-v3 body .loader-progress > span {
+  position: static;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  white-space: nowrap;
+}
+
+.experience-v3 body .loader-progress > div {
+  position: relative;
+  height: 1px;
+  overflow: hidden;
+  background: var(--studio-line);
+}
+
+.experience-v3 body .loader-progress > div i {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  background: linear-gradient(90deg, var(--studio-violet), var(--studio-blue));
+  transform: scaleX(var(--loader-progress));
+  transform-origin: left;
+  animation: none;
+}
+
+.experience-v3 body .loader-progress > b {
+  color: var(--studio-violet-soft);
+  font: 700 0.72rem/1 var(--studio-mono);
+  text-align: right;
+}
+
+.experience-v3 body .page-wipe.is-quick .loader-orbit,
+.experience-v3 body .page-wipe.is-quick .loader-core p,
+.experience-v3 body .page-wipe.is-quick .loader-progress > span {
+  display: none;
+}
+
+.experience-v3 body .page-wipe.is-quick .loader-core strong {
+  font-size: clamp(4rem, 10vw, 9rem);
+  animation-duration: 0.2s;
+}
+
+.experience-v3.page-leaving body .page-wipe::before,
+.experience-v3.page-leaving body .page-wipe::after {
+  transform: translateY(0);
+  transition-duration: 0.28s;
+}
+
+@keyframes kira-loader-wordmark {
+  from { opacity: 0; transform: translateY(24px); filter: blur(10px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes kira-loader-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes kira-loader-star {
+  0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.45; }
+  50% { transform: scale(1.25) rotate(90deg); opacity: 1; }
+}
+
+@keyframes kira-loader-status {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .experience-v3 body .loader-topline span:last-child {
+    display: none;
+  }
+
+  .experience-v3 body .loader-core {
+    top: 45%;
+  }
+
+  .experience-v3 body .loader-core strong {
+    font-size: clamp(4.5rem, 22vw, 7rem);
+  }
+
+  .experience-v3 body .loader-core p {
+    font-size: 0.56rem;
+    letter-spacing: 0.13em;
+  }
+
+  .experience-v3 body .loader-orbit {
+    width: 84vw;
+  }
+
+  .experience-v3 body .loader-progress {
+    grid-template-columns: 1fr 38px;
+    bottom: 100px;
+  }
+
+  .experience-v3 body .loader-progress > span {
+    display: none;
+  }
+
+  .experience-v3 body .loader-bottom span:first-child {
+    display: none;
+  }
+
+  .experience-v3 body .loader-bottom {
+    justify-content: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-v3 body .page-wipe {
+    display: none !important;
+  }
+}

@@ -503,9 +503,51 @@ document.documentElement.classList.add('motion-capable');
 const pageWipe = document.createElement('div');
 pageWipe.className = 'page-wipe';
 pageWipe.setAttribute('aria-hidden', 'true');
-pageWipe.innerHTML = '<span>BY KIRA</span><i></i><small>DIGITAL STUDIO / MANCHESTER</small>';
+pageWipe.innerHTML = `
+  <div class="loader-grid"></div>
+  <div class="loader-topline">
+    <span>BK / DIGITAL STUDIO</span>
+    <span>53.4808° N / 2.2426° W</span>
+  </div>
+  <div class="loader-core">
+    <div class="loader-orbit"><i></i><i></i><b>✦</b></div>
+    <strong>BY KIRA</strong>
+    <p>DESIGN <em>✦</em> DEVELOPMENT</p>
+  </div>
+  <div class="loader-progress">
+    <span>PREPARING THE EXPERIENCE</span>
+    <div><i></i></div>
+    <b data-loader-progress>000</b>
+  </div>
+  <div class="loader-bottom">
+    <span>INDEPENDENT / MANCHESTER</span>
+    <span>STUDIO ONLINE <i></i></span>
+  </div>`;
 document.body.append(pageWipe);
-window.requestAnimationFrame(() => document.documentElement.classList.add('page-entered'));
+
+const loaderSeen = (() => {
+  try {
+    const seen = window.sessionStorage.getItem('bykira-loader-seen') === 'yes';
+    window.sessionStorage.setItem('bykira-loader-seen', 'yes');
+    return seen;
+  } catch {
+    return false;
+  }
+})();
+if (loaderSeen) pageWipe.classList.add('is-quick');
+
+const loaderCounter = pageWipe.querySelector('[data-loader-progress]');
+const loaderStart = performance.now();
+const loaderDuration = loaderSeen ? 160 : 620;
+const updateLoaderCounter = (time) => {
+  const progress = Math.min(1, (time - loaderStart) / loaderDuration);
+  const eased = 1 - Math.pow(1 - progress, 3);
+  if (loaderCounter) loaderCounter.textContent = String(Math.round(eased * 100)).padStart(3, '0');
+  pageWipe.style.setProperty('--loader-progress', String(eased));
+  if (progress < 1) window.requestAnimationFrame(updateLoaderCounter);
+};
+window.requestAnimationFrame(updateLoaderCounter);
+window.setTimeout(() => document.documentElement.classList.add('page-entered'), loaderSeen ? 90 : 560);
 
 document.querySelectorAll('main > section, main > article, .guide-copy > section').forEach((section, index) => {
   if (section.querySelector(':scope > .section-sigil')) return;
