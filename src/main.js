@@ -188,19 +188,6 @@ document.querySelectorAll('footer').forEach((footer) => {
         <span><i aria-hidden="true"></i> AVAILABLE FOR SELECTED PROJECTS</span>
         <span>MANCHESTER / WORLDWIDE</span>
       </div>
-      <div class="footer-stage footer-editorial">
-        <div class="footer-lead footer-pitch">
-          <p class="footer-kicker"><span aria-hidden="true">✦</span> THE NEXT CHAPTER</p>
-          <h2>Make the next click<br><em>mean something.</em></h2>
-          <p class="footer-intro">Bring the rough idea. I’ll help turn it into a clear, distinctive website people remember—and know how to use.</p>
-        </div>
-        <a class="footer-project-orbit" href="/enquiry/" aria-label="Start a project enquiry">
-          <span class="footer-project-orbit-ring" aria-hidden="true"></span>
-          <small>START A PROJECT</small>
-          <strong aria-hidden="true">↗</strong>
-          <em>TELL ME ABOUT YOUR IDEA</em>
-        </a>
-      </div>
       <div class="footer-symbol-tape" aria-hidden="true">
         <div><span>DESIGN</span><b>✦</b><span>DEVELOPMENT</span><b>⌁</b><span>CLARITY</span><b>◎</b><span>CHARACTER</span><b>↗</b><span>DESIGN</span><b>✦</b><span>DEVELOPMENT</span><b>⌁</b><span>CLARITY</span><b>◎</b><span>CHARACTER</span><b>↗</b></div>
       </div>
@@ -242,7 +229,7 @@ if (enquiryPanel) {
 }
 
 function initRevealAnimations() {
-  const elements = document.querySelectorAll('.project, .section-topline, .section-heading, .about-layout, .skills-row, .process-intro, .process-step, .contact, .intro-strip, .first-project-card, .service-card, .sales-note, .faq-list details, .faq-cta, .footer-lead, .footer-project-orbit, .footer-directory, .build-standard-intro, .build-compass, .build-standard-grid article');
+  const elements = document.querySelectorAll('.project, .section-topline, .section-heading, .about-layout, .skills-row, .process-intro, .process-step, .contact, .intro-strip, .first-project-card, .service-card, .sales-note, .faq-list details, .faq-cta, .footer-directory, .build-standard-intro, .build-compass, .build-standard-grid article');
   if (!('IntersectionObserver' in window)) {
     elements.forEach((element) => element.classList.add('is-visible'));
     return;
