@@ -13,7 +13,7 @@ if (content) content.style.display = 'block';
 const analyticsPreference = (() => {
   try { return window.localStorage.getItem('bykira-analytics'); } catch { return null; }
 })();
-const analyticsOptedOut = analyticsPreference === 'off'
+const analyticsOptedOut = analyticsPreference !== 'on'
   || navigator.globalPrivacyControl === true
   || navigator.doNotTrack === '1';
 
@@ -203,7 +203,7 @@ document.querySelectorAll('footer').forEach((footer) => {
         <div class="footer-columns">
           <div><span class="footer-label">01 / Explore</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/guides/">Guides</a><a href="/faq">FAQ</a></div>
           <div><span class="footer-label">02 / Start</span><a href="/commission/">Commission &amp; payment</a><a href="/enquiry/">Project enquiry</a><a href="/website-review/">Free website review</a><a href="/services/">Services &amp; pricing</a></div>
-          <div><span class="footer-label">03 / Follow</span><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a><button class="cookie-settings" type="button">Privacy &amp; cookies</button><a href="/terms/">Website terms</a></div>
+          <div><span class="footer-label">03 / Follow</span><a href="https://www.linkedin.com/in/kian-price-880251400/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/KAPforges" target="_blank" rel="noopener noreferrer">X ↗</a><button class="cookie-settings" type="button">Privacy &amp; biscuits</button><a href="/terms/">Website terms</a></div>
         </div>
       </div>
       <div class="footer-bottom"><span><i aria-hidden="true"></i> STUDIO ONLINE</span><span>© 2026 BY KIRA</span><a href="#main-content">BACK TO TOP ↑</a></div>
@@ -324,7 +324,7 @@ document.querySelectorAll('footer').forEach((footer) => {
   const links = document.createElement('nav');
   links.className = 'legal-links';
   links.setAttribute('aria-label', 'Legal and accessibility');
-  links.innerHTML = '<a href="/privacy/">Privacy &amp; cookies</a><a href="/accessibility/">Accessibility</a>';
+  links.innerHTML = '<a href="/privacy/">Privacy &amp; biscuits</a><a href="/accessibility/">Accessibility</a>';
   const footerBottom = footer.querySelector('.footer-bottom');
   if (footerBottom) {
     links.classList.add('legal-links-inline');
@@ -334,11 +334,79 @@ document.querySelectorAll('footer').forEach((footer) => {
   }
 });
 
+const BISCUIT_CONSENT_KEY = 'bykira-biscuit-consent';
+
+const readBiscuitConsent = () => {
+  try { return window.localStorage.getItem(BISCUIT_CONSENT_KEY); } catch { return null; }
+};
+
+const saveBiscuitConsent = (analyticsAllowed) => {
+  try {
+    window.localStorage.setItem(BISCUIT_CONSENT_KEY, analyticsAllowed ? 'accepted' : 'rejected');
+    window.localStorage.setItem('bykira-analytics', analyticsAllowed ? 'on' : 'off');
+  } catch { /* Visitors can still browse if storage is unavailable. */ }
+};
+
+const biscuitNotice = document.createElement('section');
+biscuitNotice.className = 'cookie-notice biscuit-notice';
+biscuitNotice.setAttribute('role', 'dialog');
+biscuitNotice.setAttribute('aria-modal', 'false');
+biscuitNotice.setAttribute('aria-labelledby', 'biscuit-title');
+biscuitNotice.innerHTML = `
+  <div class="biscuit-copy">
+    <span class="cookie-index">A SMALL BITE OF PRIVACY</span>
+    <h2 id="biscuit-title">Fancy a biscuit?</h2>
+    <p>We use essential biscuits to keep the site working and, only with your permission, privacy-friendly analytics biscuits to understand what visitors enjoy.</p>
+    <div class="biscuit-preferences" hidden>
+      <label><span><strong>Essential biscuits</strong><small>Needed for your choices and core site features.</small></span><input type="checkbox" checked disabled></label>
+      <label><span><strong>Analytics biscuits</strong><small>Anonymous visit data that helps improve By Kira.</small></span><input id="biscuit-analytics" type="checkbox"></label>
+      <a href="/privacy/#cookies">Read the biscuit details ↗</a>
+    </div>
+  </div>
+  <div class="cookie-actions">
+    <button class="cookie-close" type="button" data-biscuit-action="reject">Reject</button>
+    <button class="cookie-manage" type="button" data-biscuit-action="settings" aria-expanded="false">Settings</button>
+    <button class="cookie-accept" type="button" data-biscuit-action="accept">Accept</button>
+  </div>`;
+
+const biscuitPreferences = biscuitNotice.querySelector('.biscuit-preferences');
+const biscuitAnalytics = biscuitNotice.querySelector('#biscuit-analytics');
+const biscuitSettingsButton = biscuitNotice.querySelector('[data-biscuit-action="settings"]');
+
+const showBiscuitNotice = (showSettings = false) => {
+  biscuitNotice.hidden = false;
+  biscuitPreferences.hidden = !showSettings;
+  biscuitSettingsButton.setAttribute('aria-expanded', String(showSettings));
+  biscuitSettingsButton.textContent = showSettings ? 'Save choices' : 'Settings';
+  biscuitAnalytics.checked = analyticsPreference === 'on';
+  window.requestAnimationFrame(() => biscuitNotice.classList.add('is-visible'));
+};
+
+const hideBiscuitNotice = () => {
+  biscuitNotice.classList.remove('is-visible');
+  window.setTimeout(() => { biscuitNotice.hidden = true; }, 220);
+};
+
+biscuitNotice.addEventListener('click', (event) => {
+  const action = event.target.closest('[data-biscuit-action]')?.dataset.biscuitAction;
+  if (!action) return;
+  if (action === 'settings' && biscuitPreferences.hidden) {
+    showBiscuitNotice(true);
+    return;
+  }
+  const allowAnalytics = action === 'accept' || (action === 'settings' && biscuitAnalytics.checked);
+  saveBiscuitConsent(allowAnalytics);
+  hideBiscuitNotice();
+  if (allowAnalytics && analyticsPreference !== 'on') window.setTimeout(() => window.location.reload(), 240);
+});
+
+document.body.append(biscuitNotice);
+biscuitNotice.hidden = true;
+if (!readBiscuitConsent()) showBiscuitNotice();
+
 document.querySelectorAll('.cookie-settings').forEach((button) => {
-  const link = document.createElement('a');
-  link.href = '/privacy/#cookies';
-  link.textContent = 'Privacy & cookies';
-  button.replaceWith(link);
+  button.textContent = 'Biscuit settings';
+  button.addEventListener('click', () => showBiscuitNotice(true));
 });
 
 const analyticsControl = document.querySelector('#analytics-preference');
