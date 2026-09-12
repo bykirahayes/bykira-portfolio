@@ -1,3 +1,5 @@
+import './desktop-header.css';
+
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
 
