@@ -1955,6 +1955,32 @@ footer::before {
 .cookie-accept { border: 1px solid #f5f2ed; color: #080808; background: #f5f2ed; }
 .cookie-close { border: 1px solid rgba(255,255,255,.16); color: rgba(255,255,255,.58); background: transparent; }
 .cookie-actions button:hover { border-color: var(--coral-light); }
+.cookie-notice {
+  opacity: 0;
+  transform: translateY(18px) scale(.985);
+  transition: opacity .22s ease, transform .22s ease;
+}
+.cookie-notice.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+.cookie-manage { border: 1px solid rgba(255,255,255,.28); color: #f5f2ed; background: rgba(255,255,255,.06); }
+.biscuit-preferences { display: grid; gap: 10px; margin-top: 18px; }
+.biscuit-preferences[hidden] { display: none; }
+.biscuit-preferences label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  background: rgba(255,255,255,.035);
+}
+.biscuit-preferences label span { display: grid; gap: 3px; }
+.biscuit-preferences strong { color: #f5f2ed; font: 500 10px var(--sans); }
+.biscuit-preferences small { color: rgba(255,255,255,.5); font: 9px/1.45 var(--sans); }
+.biscuit-preferences input { width: 17px; height: 17px; accent-color: var(--coral-light); }
+.biscuit-preferences a { width: max-content; color: var(--coral-light); font: 8px var(--mono); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
+.biscuit-preferences a:hover { text-decoration: underline; }
+
 
 @media (max-width: 720px) {
   .hero-studio-note { left: 24px; top: auto; bottom: 29%; gap: 12px; transform: none; font-size: 7px; }
