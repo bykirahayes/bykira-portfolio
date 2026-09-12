@@ -1,42 +1,285 @@
-@media (min-width: 1101px) {
-  .experience-v3 body header .nav-toggle {
-    display: none !important;
+@media (min-width: 1200px) {
+  .experience-v3 body header {
+    inset: 14px 18px auto !important;
+    width: auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
   }
 
   .experience-v3 body header .header-content {
+    position: relative !important;
     display: grid !important;
-    grid-template-columns: minmax(250px, 1fr) auto minmax(360px, 1fr) !important;
+    grid-template-columns: minmax(270px, 320px) minmax(0, 1fr) auto !important;
     align-items: center !important;
-    gap: 22px !important;
+    gap: clamp(18px, 2vw, 34px) !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 82px !important;
+    margin: 0 !important;
+    padding: 10px 14px 10px 22px !important;
+    border: 1px solid rgba(226, 217, 244, 0.15) !important;
+    border-radius: 3px 3px 28px 3px !important;
+    background:
+      linear-gradient(90deg, rgba(184, 145, 255, 0.035), transparent 22%, transparent 78%, rgba(166, 213, 255, 0.025)),
+      rgba(10, 9, 14, 0.88) !important;
+    box-shadow:
+      0 18px 55px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(22px) saturate(125%) !important;
+  }
+
+  .experience-v3 body header .header-content::after {
+    content: "";
+    position: absolute;
+    right: 18px;
+    bottom: -1px;
+    width: 112px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--studio-violet), var(--studio-blue));
+    opacity: 0.75;
+    pointer-events: none;
+  }
+
+  .experience-v3 body header .header-brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+    min-width: 0 !important;
+  }
+
+  .experience-v3 body header .logo.wordmark {
+    width: 178px !important;
+    height: 58px !important;
+  }
+
+  .experience-v3 body header .logo.wordmark img {
+    width: 178px !important;
+  }
+
+  .experience-v3 body header .brand-role {
+    display: inline-flex !important;
+    align-items: center !important;
+    min-height: 30px !important;
+    padding-left: 18px !important;
+    border-left: 1px solid rgba(226, 217, 244, 0.14) !important;
+    color: rgba(226, 217, 244, 0.48) !important;
+    font: 700 10px/1 var(--studio-mono) !important;
+    letter-spacing: 0.14em !important;
+    white-space: nowrap !important;
+  }
+
+  .experience-v3 body header .nav-toggle {
+    display: none !important;
   }
 
   .experience-v3 body header nav {
     position: static !important;
     display: flex !important;
     align-items: center !important;
-    justify-self: center !important;
-    width: auto !important;
+    justify-content: center !important;
+    justify-self: stretch !important;
+    gap: clamp(2px, 0.35vw, 7px) !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 4px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
   }
 
   .experience-v3 body header nav a {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 7px !important;
     width: auto !important;
-    min-height: 0 !important;
-    border-bottom: 0 !important;
+    min-width: 0 !important;
+    min-height: 38px !important;
+    padding: 0 clamp(8px, 0.7vw, 13px) !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    color: rgba(226, 217, 244, 0.62) !important;
+    background: transparent !important;
+    font: 700 10px/1 var(--studio-mono) !important;
+    letter-spacing: 0.055em !important;
+    white-space: nowrap !important;
+    text-transform: uppercase !important;
+    transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease !important;
+  }
+
+  .experience-v3 body header nav a span {
+    margin: 0 !important;
+    color: rgba(184, 145, 255, 0.74) !important;
+    font-size: 8px !important;
+    order: 2 !important;
+  }
+
+  .experience-v3 body header nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: 1px;
+    height: 2px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--studio-violet), var(--studio-blue));
+    opacity: 0;
+    transition: left 0.2s ease, right 0.2s ease, opacity 0.2s ease;
+  }
+
+  .experience-v3 body header nav a:hover {
+    color: var(--studio-ink) !important;
+    background: rgba(255, 255, 255, 0.035) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  .experience-v3 body header nav a.active,
+  .experience-v3 body header nav a[aria-current="page"] {
+    color: #fff !important;
+    background: rgba(184, 145, 255, 0.085) !important;
+    box-shadow: inset 0 0 0 1px rgba(184, 145, 255, 0.14) !important;
+  }
+
+  .experience-v3 body header nav a.active::after,
+  .experience-v3 body header nav a[aria-current="page"]::after {
+    left: 16px;
+    right: 16px;
+    opacity: 1;
   }
 
   .experience-v3 body header .header-actions {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    min-width: 0 !important;
+    gap: 18px !important;
+    min-width: max-content !important;
   }
 
-  .experience-v3 body header .header-status,
-  .experience-v3 body header .active-section,
+  .experience-v3 body header .header-status {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    padding-right: 18px !important;
+    border-right: 1px solid rgba(226, 217, 244, 0.14) !important;
+    color: rgba(226, 217, 244, 0.56) !important;
+    font: 700 10px/1 var(--studio-mono) !important;
+    letter-spacing: 0.12em !important;
+    white-space: nowrap !important;
+  }
+
+  .experience-v3 body header .status-dot {
+    width: 7px !important;
+    height: 7px !important;
+    flex: 0 0 7px !important;
+  }
+
+  .experience-v3 body header .active-section {
+    display: none !important;
+  }
+
   .experience-v3 body header .header-cta {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 18px !important;
+    min-height: 50px !important;
+    padding: 0 22px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(184, 145, 255, 0.82) !important;
+    border-radius: 3px 3px 18px 3px !important;
+    color: #130f1a !important;
+    background: linear-gradient(120deg, var(--studio-violet), #c6a8ff 58%, var(--studio-blue)) !important;
+    box-shadow: 0 10px 30px rgba(126, 94, 218, 0.18) !important;
+    font: 800 10px/1 var(--studio-mono) !important;
+    letter-spacing: 0.08em !important;
+    white-space: nowrap !important;
+  }
+
+  .experience-v3 body header .header-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.34) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.55s ease;
+  }
+
+  .experience-v3 body header .header-cta:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 38px rgba(126, 94, 218, 0.28) !important;
+  }
+
+  .experience-v3 body header .header-cta:hover::before {
+    transform: translateX(120%);
+  }
+
+  .experience-v3 body header .header-cta span {
+    position: relative;
+    z-index: 1;
+    color: inherit !important;
+    font-size: 14px !important;
+  }
+
+  .experience-v3 body header .scroll-progress {
+    left: 34px !important;
+    right: 34px !important;
+    bottom: -6px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1450px) {
+  .experience-v3 body header .header-content {
+    grid-template-columns: minmax(230px, 275px) minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+    padding-left: 16px !important;
+  }
+
+  .experience-v3 body header .logo.wordmark {
+    width: 146px !important;
+  }
+
+  .experience-v3 body header .logo.wordmark img {
+    width: 146px !important;
+  }
+
+  .experience-v3 body header .brand-role {
+    font-size: 8px !important;
+    padding-left: 12px !important;
+  }
+
+  .experience-v3 body header nav a {
+    padding-inline: 7px !important;
+    font-size: 8px !important;
+  }
+
+  .experience-v3 body header nav a span {
+    font-size: 7px !important;
+  }
+
+  .experience-v3 body header .header-status {
+    display: none !important;
+  }
+
+  .experience-v3 body header .header-cta {
+    min-height: 44px !important;
+    padding-inline: 16px !important;
+    font-size: 9px !important;
+  }
+}
+
+@media (min-width: 1101px) and (max-width: 1199px) {
+  .experience-v3 body header .nav-toggle {
     display: inline-flex !important;
   }
 }
