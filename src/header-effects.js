@@ -54,6 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>`;
   });
 
+  document.querySelectorAll('a[href="/commission/"]').forEach((link) => {
+    link.href = '/services/#packages';
+  });
+  document.querySelectorAll('a[href="/faq"], a[href="/faq/"]').forEach((link) => {
+    link.href = '/services/#faq';
+  });
+  if (!path.startsWith('/guides')) {
+    document.querySelectorAll('a[href="/guides/"]').forEach((link) => {
+      link.href = '/services/';
+      if (/guide/i.test(link.textContent)) link.textContent = 'Explore services ↗';
+    });
+  }
+
   document.querySelectorAll('.cookie-settings').forEach((button) => {
     button.textContent = 'Biscuit settings';
   });
