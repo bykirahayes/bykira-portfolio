@@ -1,11 +1,10 @@
 @media (min-width: 1200px) {
   .experience-v3 body header {
-    inset: 14px 18px auto !important;
-    width: auto !important;
-    padding: 0 !important;
+    inset: 16px 0 auto !important;
+    width: 100% !important;
+    padding: 0 22px !important;
     overflow: visible !important;
     border: 0 !important;
-    border-radius: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
     transform: none !important;
@@ -14,62 +13,74 @@
   .experience-v3 body header .header-content {
     position: relative !important;
     display: grid !important;
-    grid-template-columns: minmax(270px, 320px) minmax(0, 1fr) auto !important;
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
     align-items: center !important;
-    gap: clamp(18px, 2vw, 34px) !important;
-    width: 100% !important;
-    max-width: none !important;
-    min-height: 82px !important;
-    margin: 0 !important;
-    padding: 10px 14px 10px 22px !important;
-    border: 1px solid rgba(226, 217, 244, 0.15) !important;
-    border-radius: 3px 3px 28px 3px !important;
+    gap: 20px !important;
+    width: min(1360px, 100%) !important;
+    min-height: 72px !important;
+    margin: 0 auto !important;
+    padding: 8px 10px 8px 18px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(226, 217, 244, 0.16) !important;
+    border-radius: 4px 4px 26px 4px !important;
     background:
-      linear-gradient(90deg, rgba(184, 145, 255, 0.035), transparent 22%, transparent 78%, rgba(166, 213, 255, 0.025)),
-      rgba(10, 9, 14, 0.88) !important;
-    box-shadow:
-      0 18px 55px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.02) !important;
+      radial-gradient(circle at 13% 50%, rgba(184,145,255,.07), transparent 20%),
+      linear-gradient(105deg, rgba(184,145,255,.028), transparent 42%, rgba(166,213,255,.02)),
+      rgba(10, 9, 14, 0.9) !important;
+    box-shadow: 0 18px 55px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.025) !important;
     backdrop-filter: blur(22px) saturate(125%) !important;
+  }
+
+  .experience-v3 body header .header-content::before {
+    content: "";
+    position: absolute;
+    width: 92px;
+    height: 92px;
+    right: -48px;
+    top: -48px;
+    border: 1px solid rgba(184,145,255,.22);
+    border-radius: 50%;
+    box-shadow: 0 0 0 22px rgba(184,145,255,.025);
+    pointer-events: none;
   }
 
   .experience-v3 body header .header-content::after {
     content: "";
     position: absolute;
-    right: 18px;
+    left: 24px;
     bottom: -1px;
-    width: 112px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--studio-violet), var(--studio-blue));
-    opacity: 0.75;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--studio-violet), var(--studio-blue), transparent);
+    opacity: .88;
     pointer-events: none;
   }
 
   .experience-v3 body header .header-brand {
     display: flex !important;
     align-items: center !important;
-    gap: 18px !important;
-    min-width: 0 !important;
+    gap: 14px !important;
+    min-width: max-content !important;
   }
 
   .experience-v3 body header .logo.wordmark {
-    width: 178px !important;
-    height: 58px !important;
+    width: 154px !important;
+    height: 54px !important;
   }
 
   .experience-v3 body header .logo.wordmark img {
-    width: 178px !important;
+    width: 154px !important;
   }
 
   .experience-v3 body header .brand-role {
     display: inline-flex !important;
     align-items: center !important;
-    min-height: 30px !important;
-    padding-left: 18px !important;
-    border-left: 1px solid rgba(226, 217, 244, 0.14) !important;
-    color: rgba(226, 217, 244, 0.48) !important;
-    font: 700 10px/1 var(--studio-mono) !important;
-    letter-spacing: 0.14em !important;
+    min-height: 28px !important;
+    padding-left: 14px !important;
+    border-left: 1px solid rgba(226,217,244,.14) !important;
+    color: rgba(226,217,244,.48) !important;
+    font: 700 9px/1 var(--studio-mono) !important;
+    letter-spacing: .13em !important;
     white-space: nowrap !important;
   }
 
@@ -82,15 +93,15 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    justify-self: stretch !important;
-    gap: clamp(2px, 0.35vw, 7px) !important;
-    width: 100% !important;
+    justify-self: center !important;
+    gap: 2px !important;
+    width: auto !important;
     min-width: 0 !important;
-    padding: 4px !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    padding: 3px !important;
+    border: 1px solid rgba(226,217,244,.08) !important;
+    border-radius: 11px !important;
+    background: rgba(255,255,255,.018) !important;
+    box-shadow: inset 0 0 20px rgba(184,145,255,.018) !important;
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
@@ -101,27 +112,28 @@
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 7px !important;
+    gap: 6px !important;
     width: auto !important;
     min-width: 0 !important;
     min-height: 38px !important;
-    padding: 0 clamp(8px, 0.7vw, 13px) !important;
+    padding: 0 10px !important;
     border: 0 !important;
-    border-radius: 10px !important;
-    color: rgba(226, 217, 244, 0.62) !important;
+    border-radius: 8px !important;
+    color: rgba(226,217,244,.66) !important;
     background: transparent !important;
-    font: 700 10px/1 var(--studio-mono) !important;
-    letter-spacing: 0.055em !important;
+    font: 750 10.5px/1 var(--studio-mono) !important;
+    letter-spacing: .045em !important;
     white-space: nowrap !important;
     text-transform: uppercase !important;
-    transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease !important;
+    transition: color .2s ease, background .2s ease, transform .2s ease !important;
   }
 
   .experience-v3 body header nav a span {
     margin: 0 !important;
-    color: rgba(184, 145, 255, 0.74) !important;
-    font-size: 8px !important;
+    color: rgba(184,145,255,.78) !important;
+    font-size: 7.5px !important;
     order: 2 !important;
+    transform: translateY(-1px);
   }
 
   .experience-v3 body header nav a::after {
@@ -129,31 +141,31 @@
     position: absolute;
     left: 50%;
     right: 50%;
-    bottom: 1px;
+    bottom: 2px;
     height: 2px;
     border-radius: 99px;
     background: linear-gradient(90deg, var(--studio-violet), var(--studio-blue));
     opacity: 0;
-    transition: left 0.2s ease, right 0.2s ease, opacity 0.2s ease;
+    transition: left .2s ease, right .2s ease, opacity .2s ease;
   }
 
   .experience-v3 body header nav a:hover {
-    color: var(--studio-ink) !important;
-    background: rgba(255, 255, 255, 0.035) !important;
+    color: #fff !important;
+    background: rgba(255,255,255,.035) !important;
     transform: translateY(-1px) !important;
   }
 
   .experience-v3 body header nav a.active,
   .experience-v3 body header nav a[aria-current="page"] {
     color: #fff !important;
-    background: rgba(184, 145, 255, 0.085) !important;
-    box-shadow: inset 0 0 0 1px rgba(184, 145, 255, 0.14) !important;
+    background: linear-gradient(180deg, rgba(184,145,255,.13), rgba(184,145,255,.055)) !important;
+    box-shadow: inset 0 0 0 1px rgba(184,145,255,.16), 0 6px 18px rgba(126,94,218,.07) !important;
   }
 
   .experience-v3 body header nav a.active::after,
   .experience-v3 body header nav a[aria-current="page"]::after {
-    left: 16px;
-    right: 16px;
+    left: 13px;
+    right: 13px;
     opacity: 1;
   }
 
@@ -161,19 +173,21 @@
     display: flex !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    gap: 18px !important;
+    gap: 14px !important;
     min-width: max-content !important;
   }
 
   .experience-v3 body header .header-status {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 9px !important;
-    padding-right: 18px !important;
-    border-right: 1px solid rgba(226, 217, 244, 0.14) !important;
-    color: rgba(226, 217, 244, 0.56) !important;
-    font: 700 10px/1 var(--studio-mono) !important;
-    letter-spacing: 0.12em !important;
+    gap: 8px !important;
+    padding: 0 14px !important;
+    min-height: 32px !important;
+    border-left: 1px solid rgba(226,217,244,.12) !important;
+    border-right: 1px solid rgba(226,217,244,.12) !important;
+    color: rgba(226,217,244,.56) !important;
+    font: 700 9px/1 var(--studio-mono) !important;
+    letter-spacing: .11em !important;
     white-space: nowrap !important;
   }
 
@@ -192,17 +206,17 @@
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 18px !important;
-    min-height: 50px !important;
-    padding: 0 22px !important;
+    gap: 14px !important;
+    min-height: 46px !important;
+    padding: 0 18px !important;
     overflow: hidden !important;
-    border: 1px solid rgba(184, 145, 255, 0.82) !important;
-    border-radius: 3px 3px 18px 3px !important;
+    border: 1px solid rgba(184,145,255,.78) !important;
+    border-radius: 4px 4px 16px 4px !important;
     color: #130f1a !important;
-    background: linear-gradient(120deg, var(--studio-violet), #c6a8ff 58%, var(--studio-blue)) !important;
-    box-shadow: 0 10px 30px rgba(126, 94, 218, 0.18) !important;
+    background: linear-gradient(120deg, var(--studio-violet), #c5a6ff 58%, var(--studio-blue)) !important;
+    box-shadow: 0 10px 26px rgba(126,94,218,.16) !important;
     font: 800 10px/1 var(--studio-mono) !important;
-    letter-spacing: 0.08em !important;
+    letter-spacing: .075em !important;
     white-space: nowrap !important;
   }
 
@@ -210,14 +224,14 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.34) 50%, transparent 70%);
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.34) 50%, transparent 70%);
     transform: translateX(-120%);
-    transition: transform 0.55s ease;
+    transition: transform .55s ease;
   }
 
   .experience-v3 body header .header-cta:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 15px 38px rgba(126, 94, 218, 0.28) !important;
+    box-shadow: 0 14px 34px rgba(126,94,218,.26) !important;
   }
 
   .experience-v3 body header .header-cta:hover::before {
@@ -228,43 +242,34 @@
     position: relative;
     z-index: 1;
     color: inherit !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
 
   .experience-v3 body header .scroll-progress {
-    left: 34px !important;
-    right: 34px !important;
+    left: calc(50% - 650px) !important;
+    right: calc(50% - 650px) !important;
     bottom: -6px !important;
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1450px) {
+@media (min-width: 1200px) and (max-width: 1390px) {
   .experience-v3 body header .header-content {
-    grid-template-columns: minmax(230px, 275px) minmax(0, 1fr) auto !important;
+    width: min(1260px, 100%) !important;
     gap: 12px !important;
-    padding-left: 16px !important;
   }
 
-  .experience-v3 body header .logo.wordmark {
-    width: 146px !important;
-  }
-
+  .experience-v3 body header .logo.wordmark,
   .experience-v3 body header .logo.wordmark img {
-    width: 146px !important;
+    width: 136px !important;
   }
 
   .experience-v3 body header .brand-role {
-    font-size: 8px !important;
-    padding-left: 12px !important;
+    display: none !important;
   }
 
   .experience-v3 body header nav a {
-    padding-inline: 7px !important;
-    font-size: 8px !important;
-  }
-
-  .experience-v3 body header nav a span {
-    font-size: 7px !important;
+    padding-inline: 8px !important;
+    font-size: 9.5px !important;
   }
 
   .experience-v3 body header .header-status {
@@ -273,7 +278,7 @@
 
   .experience-v3 body header .header-cta {
     min-height: 44px !important;
-    padding-inline: 16px !important;
+    padding-inline: 15px !important;
     font-size: 9px !important;
   }
 }
