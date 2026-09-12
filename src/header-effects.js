@@ -3,6 +3,21 @@ import './desktop-header.css';
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
 
+  if (header) {
+    const navigation = header.querySelector('nav');
+    if (navigation && !navigation.querySelector('a[data-home-link]')) {
+      const homeLink = document.createElement('a');
+      homeLink.href = '/';
+      homeLink.dataset.homeLink = 'true';
+      homeLink.innerHTML = 'Home <span>00</span>';
+      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+        homeLink.classList.add('active');
+        homeLink.setAttribute('aria-current', 'page');
+      }
+      navigation.prepend(homeLink);
+    }
+  }
+
   document.addEventListener('mousemove', (e) => {
     if (!header) return;
 
