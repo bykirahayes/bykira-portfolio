@@ -1,39 +1,43 @@
 .cinematic-process {
   position: relative;
-  width: min(1460px, calc(100% - 32px));
-  min-height: 560px;
-  margin: 54px auto 28px;
+  width: min(1600px, calc(100% - 32px));
+  min-height: 650px;
+  margin: 56px auto 32px;
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid rgba(202, 183, 255, .16);
-  border-radius: 2px 2px 34px 2px;
+  border: 1px solid rgba(207, 188, 255, .18);
+  border-radius: 2px 2px 38px 2px;
   background:
-    radial-gradient(circle at 83% 46%, rgba(139, 87, 255, .16), transparent 20%),
-    radial-gradient(circle at 14% 92%, rgba(126, 77, 220, .11), transparent 20%),
-    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px),
-    #09090d;
+    radial-gradient(circle at 72% 48%, rgba(142, 92, 255, .14), transparent 26%),
+    radial-gradient(circle at 90% 18%, rgba(103, 67, 177, .09), transparent 18%),
+    linear-gradient(rgba(255,255,255,.016) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.016) 1px, transparent 1px),
+    #08080c;
   background-size: auto, auto, 86px 86px, 86px 86px, auto;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 36px 90px rgba(0,0,0,.24);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 36px 90px rgba(0,0,0,.28);
 }
 
 .cinematic-process::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 0 66%, rgba(165, 116, 255, .035) 66% 66.2%, transparent 66.2%);
+  inset: -10% -4% auto 52%;
+  height: 48%;
+  border: 1px solid rgba(183, 148, 255, .12);
+  border-radius: 50%;
+  transform: rotate(-14deg);
+  box-shadow: 0 0 48px rgba(153, 98, 255, .04);
   pointer-events: none;
 }
 
 .cinematic-process::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 42px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(182,144,255,.18), rgba(182,144,255,.52), rgba(182,144,255,.08));
-  box-shadow: 0 0 22px rgba(168,115,255,.08);
+  inset: auto -8% -34% 42%;
+  height: 58%;
+  border: 1px solid rgba(183, 148, 255, .08);
+  border-radius: 50%;
+  transform: rotate(13deg);
+  pointer-events: none;
 }
 
 .cinematic-process .first-project-orbit,
@@ -43,28 +47,28 @@
 
 .cinematic-process .process-number {
   position: absolute;
-  left: 26px;
-  top: 70px;
-  z-index: 1;
-  color: rgba(121, 86, 180, .11);
+  left: 24px;
+  top: 82px;
+  z-index: 0;
+  color: rgba(124, 91, 183, .10);
   font-family: var(--studio-serif, Georgia, serif);
-  font-size: clamp(210px, 25vw, 390px);
+  font-size: clamp(230px, 24vw, 420px);
   font-weight: 400;
-  line-height: .8;
+  line-height: .78;
   letter-spacing: -.08em;
-  text-shadow: 0 0 54px rgba(133, 85, 227, .04);
   pointer-events: none;
+  user-select: none;
 }
 
 .cinematic-process .process-kicker {
   position: absolute;
   left: 54px;
-  top: 68px;
-  z-index: 5;
+  top: 72px;
+  z-index: 6;
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  color: #cab6ff;
+  color: #cdbbff;
   font: 800 10px/1 var(--studio-mono, monospace);
   letter-spacing: .18em;
   text-transform: uppercase;
@@ -73,130 +77,250 @@
 .cinematic-process .process-kicker::before {
   content: "✦";
   color: #fff;
-  text-shadow: 0 0 14px rgba(191, 145, 255, .68);
+  font-size: 14px;
+  text-shadow: 0 0 16px rgba(190, 145, 255, .72);
 }
 
 .cinematic-process .process-copy {
   position: relative;
-  z-index: 4;
+  z-index: 5;
   width: min(650px, 44vw);
-  margin-left: 31%;
-  padding: 152px 0 118px;
+  margin-left: 9%;
+  padding: 190px 0 152px;
 }
 
 .cinematic-process .process-copy h2 {
   margin: 0;
-  color: #f5f1ec;
+  color: #f4f0eb;
   font-family: var(--studio-serif, Georgia, serif);
-  font-size: clamp(58px, 5vw, 88px);
+  font-size: clamp(62px, 5.4vw, 98px);
   font-weight: 400;
-  line-height: .93;
-  letter-spacing: -.045em;
+  line-height: .9;
+  letter-spacing: -.05em;
+  text-wrap: balance;
 }
 
 .cinematic-process .process-copy h2 em {
-  color: #b58cff;
+  color: #b489ff;
   font-weight: 400;
-  text-shadow: 0 0 30px rgba(174, 124, 255, .16);
+  text-shadow: 0 0 32px rgba(174, 124, 255, .16);
 }
 
 .cinematic-process .process-copy p {
-  max-width: 690px;
-  margin: 28px 0 0;
+  max-width: 640px;
+  margin: 30px 0 0;
   color: rgba(229, 221, 241, .64);
   font-size: 16px;
   line-height: 1.75;
 }
 
+/*
+  The existing three decorative spans are intentionally turned into a small
+  portfolio tableau here: laptop, phone and floating brand card. Keeping the
+  markup light means the section remains easy to maintain and fast to load.
+*/
 .cinematic-process .process-visual {
   position: absolute;
-  right: 38px;
-  top: 44px;
-  bottom: 58px;
-  z-index: 2;
-  width: 31%;
-  min-width: 320px;
+  right: 2.8%;
+  top: 60px;
+  bottom: 72px;
+  z-index: 3;
+  width: 49%;
+  min-width: 610px;
   pointer-events: none;
+  perspective: 1400px;
 }
 
+/* laptop */
 .cinematic-process .process-rock {
   position: absolute;
-  right: 10%;
-  top: 17%;
-  width: 58%;
-  aspect-ratio: .85;
+  left: 13%;
+  top: 18%;
+  width: 69%;
+  aspect-ratio: 1.63;
+  border: 1px solid rgba(200, 177, 255, .32);
+  border-radius: 18px;
   background:
-    radial-gradient(circle at 34% 28%, rgba(189, 145, 255, .3), transparent 10%),
-    radial-gradient(circle at 66% 52%, rgba(118, 70, 204, .25), transparent 22%),
-    linear-gradient(145deg, #262132 0%, #17131f 25%, #0b0a10 58%, #1b1525 100%);
-  clip-path: polygon(28% 0, 74% 8%, 100% 37%, 89% 80%, 52% 100%, 14% 85%, 0 42%);
-  box-shadow: 0 0 56px rgba(147, 91, 255, .22), inset -22px -28px 42px rgba(0,0,0,.5), inset 18px 16px 30px rgba(198,160,255,.08);
-  filter: drop-shadow(0 26px 28px rgba(0,0,0,.45));
-  transform: rotate(-7deg);
+    radial-gradient(circle at 74% 34%, rgba(175, 127, 255, .18), transparent 22%),
+    linear-gradient(135deg, rgba(255,255,255,.025), transparent 30%),
+    #0a0a0f;
+  box-shadow: 0 40px 70px rgba(0,0,0,.48), 0 0 54px rgba(143, 91, 255, .12), inset 0 0 0 8px #060609;
+  transform: rotateY(-10deg) rotateX(3deg) rotateZ(2deg);
+  transform-style: preserve-3d;
+  overflow: visible;
 }
 
 .cinematic-process .process-rock::before {
-  content: "";
+  content: "ALDER\A\AThoughtful brands for\Aa brighter tomorrow.\A\A──────────\A Strategy   Design   Development";
+  white-space: pre;
   position: absolute;
-  inset: 7%;
-  clip-path: inherit;
-  border: 1px solid rgba(181, 139, 255, .12);
+  inset: 10% 8% 12% 8%;
+  display: block;
+  padding: 11% 8%;
+  border: 1px solid rgba(207, 188, 255, .1);
+  border-radius: 8px;
+  color: rgba(247, 243, 250, .93);
   background:
-    linear-gradient(58deg, transparent 46%, rgba(185,137,255,.22) 47%, transparent 48%),
-    linear-gradient(122deg, transparent 58%, rgba(135,84,226,.16) 59%, transparent 60%);
+    linear-gradient(90deg, rgba(9,9,14,.94) 0 48%, rgba(9,9,14,.24) 48%),
+    radial-gradient(circle at 74% 44%, rgba(170, 119, 255, .25), transparent 26%),
+    linear-gradient(145deg, #24202d 0%, #131119 58%, #292033 100%);
+  font-family: var(--studio-serif, Georgia, serif);
+  font-size: clamp(11px, .92vw, 16px);
+  line-height: 1.25;
+  letter-spacing: -.015em;
+  box-shadow: inset 0 0 40px rgba(0,0,0,.24);
 }
 
+.cinematic-process .process-rock::after {
+  content: "";
+  position: absolute;
+  left: -7%;
+  right: -8%;
+  bottom: -8%;
+  height: 9%;
+  border: 1px solid rgba(206, 188, 245, .22);
+  border-radius: 3px 3px 22px 22px;
+  background: linear-gradient(180deg, #312d39, #111116 42%, #09090c);
+  box-shadow: 0 25px 34px rgba(0,0,0,.46);
+  transform: translateZ(-2px) rotateX(66deg);
+  transform-origin: top;
+}
+
+/* phone */
 .cinematic-process .process-crystal {
   position: absolute;
-  right: 47%;
-  top: 1%;
-  width: 74px;
-  height: 122px;
-  clip-path: polygon(50% 0, 100% 34%, 76% 100%, 20% 80%, 0 28%);
-  background: linear-gradient(145deg, rgba(234,222,255,.88), rgba(153,97,255,.54) 42%, rgba(76,45,140,.34) 72%, rgba(255,255,255,.14));
-  box-shadow: 0 0 34px rgba(170,107,255,.44);
-  transform: rotate(-17deg);
+  left: 0;
+  top: 26%;
+  width: 18%;
+  min-width: 112px;
+  aspect-ratio: .48;
+  border: 1px solid rgba(215, 193, 255, .36);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(201, 176, 255, .22), transparent 18%),
+    linear-gradient(155deg, rgba(177, 136, 255, .22), transparent 46%),
+    #08080c;
+  box-shadow: 0 28px 54px rgba(0,0,0,.48), 0 0 30px rgba(161, 103, 255, .16), inset 0 0 0 5px #050507;
+  transform: rotate(-7deg) translateZ(50px);
+  overflow: hidden;
 }
 
-.cinematic-process .process-orbit,
-.cinematic-process .process-orbit::before {
+.cinematic-process .process-crystal::before {
+  content: "ALDER\A\A Ideas\A into impact.\A\A  ↗";
+  white-space: pre;
   position: absolute;
-  content: "";
-  border: 1px solid rgba(181,136,255,.42);
-  border-radius: 50%;
+  inset: 6%;
+  padding: 15% 12%;
+  border-radius: 18px;
+  color: rgba(246, 240, 252, .92);
+  background:
+    radial-gradient(ellipse at 52% 34%, rgba(215, 196, 255, .33), transparent 16%),
+    linear-gradient(170deg, rgba(138, 92, 218, .25), transparent 45%),
+    #0d0c12;
+  font-family: var(--studio-serif, Georgia, serif);
+  font-size: clamp(9px, .78vw, 13px);
+  line-height: 1.35;
 }
 
+.cinematic-process .process-crystal::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 34%;
+  height: 4px;
+  border-radius: 999px;
+  background: #020203;
+  transform: translateX(-50%);
+}
+
+/* floating identity card */
 .cinematic-process .process-orbit {
-  width: 92%;
-  height: 34%;
-  right: -6%;
-  top: 39%;
-  transform: rotate(10deg);
-  box-shadow: 0 0 22px rgba(162,101,255,.12);
+  position: absolute;
+  right: -1%;
+  top: 9%;
+  width: 35%;
+  min-width: 218px;
+  aspect-ratio: 1.42;
+  border: 1px solid rgba(196, 166, 255, .28);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 80% 18%, rgba(185, 137, 255, .16), transparent 25%),
+    linear-gradient(145deg, rgba(24,21,31,.96), rgba(8,8,12,.98));
+  box-shadow: 0 26px 56px rgba(0,0,0,.42), 0 0 26px rgba(153, 95, 255, .09), inset 0 1px 0 rgba(255,255,255,.035);
+  transform: rotate(7deg) translateZ(24px);
+  overflow: hidden;
 }
 
 .cinematic-process .process-orbit::before {
-  inset: 16% 7%;
-  opacity: .45;
+  content: "ALDER\A BRAND IDENTITY\A\A A MORE CONSCIOUS\A TOMORROW";
+  white-space: pre;
+  position: absolute;
+  inset: 0;
+  padding: 15% 12%;
+  color: rgba(238, 230, 249, .82);
+  font: 700 clamp(8px, .66vw, 11px)/1.7 var(--studio-mono, monospace);
+  letter-spacing: .16em;
+}
+
+.cinematic-process .process-orbit::after {
+  content: "DIGITAL\A BRANDS\A REAL IMPACT   +";
+  white-space: pre;
+  position: absolute;
+  right: 8%;
+  bottom: -66%;
+  width: 76%;
+  aspect-ratio: 1.35;
+  padding: 12% 10%;
+  border: 1px solid rgba(194, 163, 255, .25);
+  border-radius: 12px;
+  color: rgba(237, 228, 248, .7);
+  background:
+    radial-gradient(circle at 72% 28%, rgba(187, 141, 255, .24), transparent 18%),
+    linear-gradient(145deg, #17131e, #09090d);
+  font: 700 clamp(7px, .58vw, 10px)/1.65 var(--studio-mono, monospace);
+  letter-spacing: .16em;
+  box-shadow: 0 16px 34px rgba(0,0,0,.3);
+}
+
+.cinematic-process .process-meta {
+  position: absolute;
+  right: 3.2%;
+  top: 38px;
+  z-index: 7;
+  color: rgba(210, 194, 240, .46);
+  font: 800 9px/1.6 var(--studio-mono, monospace);
+  letter-spacing: .22em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.cinematic-process .process-meta::before {
+  content: "IDEAS  /  DESIGN  /  DEVELOPMENT  /  LAUNCH";
+  display: block;
+  margin-bottom: 7px;
+  color: rgba(190, 157, 246, .66);
+  font-size: 8px;
+  letter-spacing: .18em;
 }
 
 .cinematic-process .process-cta {
   position: absolute;
-  right: 4%;
-  bottom: 13%;
-  z-index: 6;
+  left: 9%;
+  bottom: 64px;
+  z-index: 8;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
   gap: 34px;
   min-width: 220px;
-  min-height: 64px;
+  min-height: 62px;
   padding: 0 22px 0 26px;
-  border: 1px solid rgba(201, 170, 255, .58);
+  border: 1px solid rgba(201, 170, 255, .54);
   border-radius: 999px;
   color: #eee8f7;
-  background: linear-gradient(180deg, rgba(20,17,27,.85), rgba(10,9,14,.9));
-  box-shadow: 0 18px 48px rgba(0,0,0,.34), 0 0 30px rgba(151,92,255,.12), inset 0 1px 0 rgba(255,255,255,.06);
+  background: linear-gradient(180deg, rgba(20,17,27,.78), rgba(10,9,14,.88));
+  box-shadow: 0 18px 48px rgba(0,0,0,.34), 0 0 30px rgba(151,92,255,.10), inset 0 1px 0 rgba(255,255,255,.05);
   font: 800 10px/1 var(--studio-mono, monospace);
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -207,51 +331,81 @@
 .cinematic-process .process-cta:hover {
   transform: translateY(-4px);
   border-color: rgba(221, 200, 255, .86);
-  box-shadow: 0 24px 54px rgba(0,0,0,.4), 0 0 38px rgba(151,92,255,.22), inset 0 1px 0 rgba(255,255,255,.1);
+  box-shadow: 0 24px 54px rgba(0,0,0,.4), 0 0 38px rgba(151,92,255,.2), inset 0 1px 0 rgba(255,255,255,.1);
 }
 
-.cinematic-process .process-meta {
-  position: absolute;
-  right: 38px;
-  top: 34px;
-  z-index: 4;
-  color: rgba(210, 194, 240, .46);
-  font: 800 9px/1.6 var(--studio-mono, monospace);
-  letter-spacing: .22em;
-  text-align: right;
-  text-transform: uppercase;
-}
-
-@media (max-width: 980px) {
+@media (max-width: 1180px) {
   .cinematic-process {
-    min-height: 650px;
+    min-height: 690px;
   }
 
   .cinematic-process .process-copy {
-    width: min(560px, 58vw);
-    margin-left: 22%;
-    padding-top: 150px;
+    width: min(580px, 48vw);
+    margin-left: 6%;
   }
 
   .cinematic-process .process-visual {
-    width: 34%;
-    opacity: .72;
+    right: 0;
+    width: 50%;
+    min-width: 520px;
+    opacity: .9;
+  }
+
+  .cinematic-process .process-cta {
+    left: 6%;
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
+  .cinematic-process {
+    min-height: 860px;
+  }
+
+  .cinematic-process .process-copy {
+    width: auto;
+    margin: 0;
+    padding: 160px 38px 0;
+  }
+
+  .cinematic-process .process-copy p {
+    max-width: 620px;
+  }
+
+  .cinematic-process .process-visual {
+    left: 50%;
+    right: auto;
+    top: 410px;
+    bottom: auto;
+    width: 76%;
+    min-width: 560px;
+    height: 390px;
+    transform: translateX(-50%);
+  }
+
+  .cinematic-process .process-cta {
+    left: 38px;
+    bottom: 34px;
+  }
+
+  .cinematic-process .process-meta {
+    top: auto;
+    bottom: 40px;
+    right: 32px;
+  }
+}
+
+@media (max-width: 680px) {
   .cinematic-process {
     width: calc(100% - 20px);
-    min-height: 720px;
+    min-height: 820px;
     margin-top: 34px;
     border-radius: 2px 2px 28px 2px;
   }
 
   .cinematic-process .process-number {
-    left: 2px;
-    top: 74px;
+    left: 0;
+    top: 86px;
     font-size: 210px;
-    opacity: .9;
   }
 
   .cinematic-process .process-kicker {
@@ -261,9 +415,7 @@
   }
 
   .cinematic-process .process-copy {
-    width: auto;
-    margin: 0;
-    padding: 150px 22px 0;
+    padding: 132px 22px 0;
   }
 
   .cinematic-process .process-copy h2 {
@@ -277,26 +429,34 @@
   }
 
   .cinematic-process .process-visual {
-    right: -28px;
-    top: auto;
-    bottom: 18px;
-    width: 72%;
-    min-width: 260px;
-    height: 280px;
-    opacity: .78;
+    top: 408px;
+    width: 94%;
+    min-width: 430px;
+    height: 320px;
+    opacity: .88;
+  }
+
+  .cinematic-process .process-rock {
+    left: 15%;
+    width: 66%;
   }
 
   .cinematic-process .process-crystal {
-    width: 50px;
-    height: 82px;
+    left: 3%;
+    min-width: 84px;
+    border-radius: 18px;
+  }
+
+  .cinematic-process .process-orbit {
+    right: 2%;
+    min-width: 160px;
   }
 
   .cinematic-process .process-cta {
     left: 22px;
-    right: auto;
-    bottom: 34px;
-    min-width: 180px;
-    min-height: 56px;
+    bottom: 28px;
+    min-width: 178px;
+    min-height: 54px;
     font-size: 9px;
   }
 
