@@ -194,9 +194,6 @@ document.querySelectorAll('footer').forEach((footer) => {
         <span><i aria-hidden="true"></i> AVAILABLE FOR SELECTED PROJECTS</span>
         <span>MANCHESTER / WORLDWIDE</span>
       </div>
-      <div class="footer-symbol-tape" aria-hidden="true">
-        <div><span>DESIGN</span><b>✦</b><span>DEVELOPMENT</span><b>⌁</b><span>CLARITY</span><b>◎</b><span>CHARACTER</span><b>↗</b><span>DESIGN</span><b>✦</b><span>DEVELOPMENT</span><b>⌁</b><span>CLARITY</span><b>◎</b><span>CHARACTER</span><b>↗</b></div>
-      </div>
       <div class="footer-directory">
         <div class="footer-identity">
           <a class="logo" href="/" aria-label="By Kira home"><img src="/image/kira-logo.png" alt="By Kira" width="44" height="44"></a>
