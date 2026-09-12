@@ -58,13 +58,20 @@ document.querySelectorAll('header').forEach((header) => {
           : path.includes('privacy') ? 'PRIVACY'
             : path.includes('accessibility') ? 'ACCESSIBILITY'
               : 'HOME';
-  const activeKey = pageContext.toLowerCase();
-  navigation.innerHTML = [
+  const navItems = [
     ['work', '/work/', '01', 'Work'],
-    ['services', '/services/', '£', 'Services'],
-    ['about', '/about/', '02', 'About'],
-    ['faq', '/faq', '?', 'FAQ'],
-  ].map(([key, href, marker, label]) => `<a${activeKey === key ? ' class="active" aria-current="page"' : ''} href="${href}"><span>${marker}</span>${label}</a>`).join('');
+    ['services', '/services/', '02', 'Services'],
+    ['about', '/about/', '03', 'About'],
+    ['guides', '/guides/', '04', 'Guides'],
+    ['commission', '/commission/', '05', 'Commission'],
+    ['website-review', '/website-review/', '06', 'Free review'],
+    ['faq', '/faq', '07', 'FAQ'],
+    ['enquiry', '/enquiry/', '08', 'Enquire'],
+  ];
+  navigation.innerHTML = navItems.map(([key, href, marker, label]) => {
+    const active = path === href || path.startsWith(`/${key}/`) || (key === 'faq' && path.startsWith('/faq'));
+    return `<a${active ? ' class="active" aria-current="page"' : ''} href="${href}"><span>${marker}</span>${label}</a>`;
+  }).join('');
 
   let headerActions = headerContent.querySelector('.header-actions');
   if (!headerActions) {
@@ -102,9 +109,6 @@ document.querySelectorAll('header').forEach((header) => {
   document.addEventListener('pointerdown', (event) => {
     if (header.classList.contains('menu-open') && !header.contains(event.target)) closeMenu();
   });
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 720) closeMenu();
-  }, { passive: true });
 });
 
 // A shared chapter language gives every route its own identity without
