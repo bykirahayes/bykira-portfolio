@@ -12,10 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     header.style.setProperty('--mouse-y', `${y}px`);
   });
 
-  // Handle scroll effects
   const handleScroll = () => {
     if (!header) return;
-    
+
     if (window.scrollY > 20) {
       header.classList.add('scrolled');
     } else {
@@ -24,5 +23,5 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Initial check
+  handleScroll();
 });
