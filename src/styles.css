@@ -1981,6 +1981,68 @@ footer::before {
 .biscuit-preferences a { width: max-content; color: var(--coral-light); font: 8px var(--mono); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
 .biscuit-preferences a:hover { text-decoration: underline; }
 
+/* A route-first menu keeps the homepage short and makes every section easy to reach. */
+header .header-content {
+  position: relative;
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+}
+header .nav-toggle {
+  position: relative;
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 82px;
+  height: 38px;
+  padding: 0 13px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  color: rgba(255,255,255,.86);
+  background: rgba(255,255,255,.045);
+  font: 8px var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+header nav {
+  position: absolute;
+  z-index: 11;
+  top: calc(100% + 12px);
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(190px, 1fr));
+  width: min(500px, calc(100vw - 28px));
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 4px 4px 26px 4px;
+  background: rgba(7,7,7,.985);
+  box-shadow: 0 28px 70px rgba(0,0,0,.55);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity .2s ease, visibility .2s ease, transform .2s ease;
+}
+header.menu-open nav { opacity: 1; visibility: visible; transform: translateY(0); }
+header nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  padding: 0 14px;
+  border-bottom: 1px solid rgba(255,255,255,.075);
+  border-radius: 0;
+  font-size: 10px;
+}
+header nav a span { display: inline; margin-left: auto; order: 2; font-size: 8px; }
+header nav a.active::after { display: none; }
+
+@media (max-width: 720px) {
+  header .header-content { grid-template-columns: 1fr auto; }
+  header nav { left: 0; grid-template-columns: 1fr; width: 100%; max-height: calc(100svh - 88px); overflow-y: auto; }
+  header nav a { min-height: 46px; }
+}
+
 
 @media (max-width: 720px) {
   .hero-studio-note { left: 24px; top: auto; bottom: 29%; gap: 12px; transform: none; font-size: 7px; }
