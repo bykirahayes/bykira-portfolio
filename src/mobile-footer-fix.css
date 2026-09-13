@@ -1,0 +1,26 @@
+/* Mobile footer spacing fix: keep the legal links tight to the bottom status rail. */
+@media (max-width: 680px) {
+  #site-footer .footer-directory {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #site-footer .footer-columns {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #site-footer .footer-columns > div:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #site-footer .footer-columns > div:last-child > :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  #site-footer .footer-bottom {
+    margin-top: 0 !important;
+    padding-top: 14px !important;
+  }
+}
