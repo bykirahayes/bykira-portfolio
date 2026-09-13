@@ -1,0 +1,162 @@
+/* FAQ layout corrections — keep the editorial idea without the awkward oversized block. */
+
+.faq-page .faq-shell {
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: clamp(34px, 5vw, 72px);
+  padding-top: 74px;
+}
+
+.faq-page .faq-content {
+  min-width: 0;
+}
+
+.faq-page .faq-content-intro {
+  display: block;
+  margin: 0 0 28px;
+  padding: 0 0 26px;
+  border-bottom: 1px solid rgba(255,255,255,.13);
+  overflow: hidden;
+}
+
+.faq-page .faq-content-intro::after {
+  right: 10px;
+  bottom: 12px;
+  font-size: 72px;
+  opacity: .65;
+}
+
+.faq-page .faq-content-intro .faq-section-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  color: rgba(244,240,234,.58);
+  line-height: 1;
+}
+
+.faq-page .faq-content-intro .faq-section-kicker span {
+  flex: 0 0 auto;
+  padding: 5px 8px;
+}
+
+.faq-page .faq-content h2 {
+  max-width: 760px;
+  font-size: clamp(40px, 4.2vw, 62px);
+  line-height: .96;
+}
+
+/* Override the older shared FAQ/card rules that were forcing the open answer into a side column. */
+.faq-page .faq-list,
+.faq-page .faq-list details,
+.faq-page .faq-list details[open] {
+  display: block !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.faq-page .faq-list {
+  border-top: 1px solid rgba(255,255,255,.13) !important;
+}
+
+.faq-page .faq-list details {
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  padding: 0 !important;
+}
+
+.faq-page .faq-list details[open] {
+  border-left: 0 !important;
+}
+
+.faq-page .faq-list summary {
+  display: grid !important;
+  grid-template-columns: 44px minmax(0,1fr) 28px !important;
+  gap: 16px !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  padding: 21px 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.faq-page .faq-list details[open] summary {
+  padding-bottom: 14px !important;
+}
+
+.faq-page .faq-list summary > span {
+  align-self: center;
+}
+
+.faq-page .faq-list summary strong {
+  max-width: 760px;
+  font-size: clamp(20px, 1.9vw, 27px) !important;
+  line-height: 1.18 !important;
+}
+
+.faq-page .faq-list details > div,
+.faq-page .faq-list details[open] > div {
+  display: block !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 52px 22px 60px !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.faq-page .faq-list details p {
+  width: auto !important;
+  max-width: 720px !important;
+  margin: 0 !important;
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+  color: rgba(244,240,234,.6) !important;
+}
+
+.faq-page .faq-list details a {
+  margin-top: 12px !important;
+}
+
+@media (max-width: 900px) {
+  .faq-page .faq-shell {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .faq-page .faq-index {
+    position: static;
+  }
+}
+
+@media (max-width: 680px) {
+  .faq-page .faq-content-intro {
+    padding-bottom: 22px;
+  }
+
+  .faq-page .faq-content-intro::after {
+    font-size: 54px;
+  }
+
+  .faq-page .faq-content-intro .faq-section-kicker {
+    margin-bottom: 14px;
+  }
+
+  .faq-page .faq-content h2 {
+    font-size: clamp(38px, 12vw, 54px);
+  }
+
+  .faq-page .faq-list summary {
+    grid-template-columns: 34px minmax(0,1fr) 22px !important;
+    gap: 10px !important;
+    padding: 18px 0 !important;
+  }
+
+  .faq-page .faq-list details > div,
+  .faq-page .faq-list details[open] > div {
+    padding: 0 28px 20px 44px !important;
+  }
+}
