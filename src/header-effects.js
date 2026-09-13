@@ -1,30 +1,56 @@
 import './desktop-header.css';
 
+const path = window.location.pathname;
+
+const applyModernHeader = () => {
+  const header = document.querySelector('header');
+  if (!header) return;
+
+  const navigation = header.querySelector('nav');
+  if (navigation) {
+    const items = [
+      ['/', '00', 'Home', path === '/' || path === '/index.html'],
+      ['/work/', '01', 'Work', path.startsWith('/work')],
+      ['/services/', '02', 'Services', path.startsWith('/services') || path.startsWith('/commission') || path.startsWith('/faq')],
+      ['/about/', '03', 'About', path.startsWith('/about')],
+      ['/enquiry/', '04', 'Enquire', path.startsWith('/enquiry')],
+    ];
+
+    const expected = items.map(([href, marker, label, active]) => (
+      `<a href="${href}"${active ? ' class="active" aria-current="page"' : ''}>${label} <span>${marker}</span></a>`
+    )).join('');
+
+    if (navigation.innerHTML !== expected) navigation.innerHTML = expected;
+  }
+
+  header.querySelectorAll('.active-section').forEach((item) => item.remove());
+
+  const cta = header.querySelector('.header-cta');
+  if (cta && cta.innerHTML !== 'Start a project <span>↗</span>') {
+    cta.innerHTML = 'Start a project <span>↗</span>';
+  }
+};
+
+applyModernHeader();
+
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
-  const path = window.location.pathname;
+  applyModernHeader();
 
   if (header) {
     const navigation = header.querySelector('nav');
-    if (navigation) {
-      const items = [
-        ['/', '00', 'Home', path === '/' || path === '/index.html'],
-        ['/work/', '01', 'Work', path.startsWith('/work')],
-        ['/services/', '02', 'Services', path.startsWith('/services') || path.startsWith('/commission') || path.startsWith('/faq')],
-        ['/about/', '03', 'About', path.startsWith('/about')],
-        ['/enquiry/', '04', 'Enquire', path.startsWith('/enquiry')],
-      ];
+    const headerActions = header.querySelector('.header-actions');
+    let correcting = false;
 
-      navigation.innerHTML = items.map(([href, marker, label, active]) => (
-        `<a href="${href}"${active ? ' class="active" aria-current="page"' : ''}>${label} <span>${marker}</span></a>`
-      )).join('');
-    }
+    const observer = new MutationObserver(() => {
+      if (correcting) return;
+      correcting = true;
+      applyModernHeader();
+      queueMicrotask(() => { correcting = false; });
+    });
 
-    const activeSection = header.querySelector('.active-section');
-    if (activeSection) activeSection.remove();
-
-    const cta = header.querySelector('.header-cta');
-    if (cta) cta.innerHTML = 'Start a project <span>↗</span>';
+    if (navigation) observer.observe(navigation, { childList: true, subtree: true });
+    if (headerActions) observer.observe(headerActions, { childList: true, subtree: true });
   }
 
   document.querySelectorAll('footer').forEach((footer) => {
