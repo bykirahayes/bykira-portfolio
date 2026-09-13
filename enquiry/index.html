@@ -23,7 +23,7 @@
     <link rel="icon" href="/image/favicon.ico" />
     <link rel="stylesheet" href="/src/styles.css?v=20260913-enquiry6" />
     <link rel="stylesheet" href="/src/enquiry-site.css?v=20260913-site1" />
-    <link rel="stylesheet" href="/src/enquiry-form-align.css?v=20260913-align1" />
+    <link rel="stylesheet" href="/src/enquiry-form-align.css?v=20260913-align2" />
     <script type="module" src="/src/header-effects.js"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
@@ -71,10 +71,11 @@
 
           <form id="project-enquiry" class="calm-form">
             <fieldset class="calm-step enquiry-group">
-              <legend>
+              <legend class="visually-hidden">Your details</legend>
+              <div class="calm-step-head">
                 <span>01</span>
                 <div><strong>Who are you?</strong><small>The basics so I know who I’m speaking with.</small></div>
-              </legend>
+              </div>
               <div class="calm-fields enquiry-fields">
                 <div class="calm-row field-row">
                   <label><span>Your name *</span><input name="name" type="text" autocomplete="name" maxlength="100" required /></label>
@@ -85,10 +86,11 @@
             </fieldset>
 
             <fieldset class="calm-step enquiry-group">
-              <legend>
+              <legend class="visually-hidden">Project basics</legend>
+              <div class="calm-step-head">
                 <span>02</span>
                 <div><strong>What are we making?</strong><small>Just enough practical detail to understand the scope.</small></div>
-              </legend>
+              </div>
               <div class="calm-fields enquiry-fields">
                 <div class="calm-row field-row">
                   <label>
@@ -121,10 +123,11 @@
             </fieldset>
 
             <fieldset class="calm-step calm-step-wide enquiry-group enquiry-group-brief">
-              <legend>
+              <legend class="visually-hidden">The idea</legend>
+              <div class="calm-step-head">
                 <span>03</span>
                 <div><strong>What’s the idea?</strong><small>Write naturally. No agency-speak required.</small></div>
-              </legend>
+              </div>
               <div class="calm-fields enquiry-fields">
                 <label>
                   <span>Tell me about the project *</span>
@@ -135,10 +138,11 @@
             </fieldset>
 
             <fieldset class="calm-step calm-step-send enquiry-group enquiry-group-send">
-              <legend>
+              <legend class="visually-hidden">Send your enquiry</legend>
+              <div class="calm-step-head">
                 <span>04</span>
                 <div><strong>Ready when you are.</strong><small>Send it over and I’ll take it from here.</small></div>
-              </legend>
+              </div>
               <div class="calm-fields enquiry-fields">
                 <label class="form-trap" aria-hidden="true">Leave this field empty<input name="companyWebsite" type="text" autocomplete="off" tabindex="-1" /></label>
                 <div class="turnstile-wrap">
