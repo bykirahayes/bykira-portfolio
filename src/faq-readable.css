@@ -176,4 +176,19 @@
     font-size: 15px;
     line-height: 1.7;
   }
+
+  .faq-page .faq-cta h2 {
+    max-width: 100% !important;
+    font-size: clamp(42px, 12vw, 54px) !important;
+    line-height: .96 !important;
+    letter-spacing: -.04em !important;
+    overflow-wrap: anywhere;
+  }
+
+  .faq-page .faq-cta h2 em {
+    display: block;
+    max-width: 100%;
+    margin-top: .08em;
+    padding-right: .08em;
+  }
 }
