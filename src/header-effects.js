@@ -1,4 +1,5 @@
 import './desktop-header.css';
+import './site-experience.js';
 
 const path = window.location.pathname;
 
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="footer-columns">
             <div><span class="footer-label">01 / Explore</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/faq">FAQ</a></div>
             <div><span class="footer-label">02 / Start</span><a href="/enquiry/">Project enquiry</a><a href="/website-review/">Free website review</a></div>
-            <div><span class="footer-label">03 / Details</span><a href="/privacy/">Privacy &amp; biscuits</a><a href="/accessibility/">Accessibility</a><a href="/terms/">Terms</a></div>
+            <div><span class="footer-label">03 / Details</span><a href="/privacy/">Privacy &amp; Biscuits</a><a href="/accessibility/">Accessibility</a><a href="/terms/">Terms</a></div>
           </div>
         </div>
         <div class="footer-bottom"><span><i aria-hidden="true"></i> STUDIO ONLINE</span><span>© 2026 BY KIRA</span><a href="#main-content">BACK TO TOP ↑</a></div>
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.querySelectorAll('.cookie-settings').forEach((button) => {
-    button.textContent = 'Biscuit settings';
+    button.textContent = 'Privacy & Biscuits';
   });
 
   document.addEventListener('mousemove', (event) => {
