@@ -8,8 +8,8 @@ const initLoader = () => {
 
   const loaderStartedAt = performance.now();
   const isMobile = window.matchMedia('(max-width: 760px)').matches;
-  const minimumVisible = isMobile ? 2600 : 3200;
-  const fadeDuration = 900;
+  const minimumVisible = isMobile ? 1400 : 3200;
+  const fadeDuration = isMobile ? 550 : 900;
 
   const loader = document.createElement('div');
   loader.className = 'bykira-loader';
