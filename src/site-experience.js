@@ -4,11 +4,13 @@ import './mobile-brand-hardfix.css';
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const initLoader = () => {
-  // Keep the loading experience on mobile only. Desktop was flashing too quickly
-  // because the module is loaded after the document has already rendered.
-  if (!window.matchMedia('(max-width: 760px)').matches) return;
   if (document.querySelector('.bykira-loader')) return;
+
   const loaderStartedAt = performance.now();
+  const isMobile = window.matchMedia('(max-width: 760px)').matches;
+  const minimumVisible = isMobile ? 2600 : 3200;
+  const exitDuration = reduceMotion ? 0 : 900;
+
   const loader = document.createElement('div');
   loader.className = 'bykira-loader';
   loader.setAttribute('aria-hidden', 'true');
@@ -21,16 +23,17 @@ const initLoader = () => {
   document.body.prepend(loader);
 
   const leave = () => {
-    if (reduceMotion) {
-      loader.remove();
-      return;
-    }
     const elapsed = performance.now() - loaderStartedAt;
-    const minimumVisible = 2600;
     const remaining = Math.max(0, minimumVisible - elapsed);
+
     window.setTimeout(() => {
+      if (reduceMotion) {
+        loader.remove();
+        return;
+      }
+
       loader.classList.add('is-leaving');
-      window.setTimeout(() => loader.remove(), 860);
+      window.setTimeout(() => loader.remove(), exitDuration);
     }, remaining);
   };
 
