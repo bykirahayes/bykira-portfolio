@@ -2,33 +2,64 @@ import './desktop-header.css';
 
 const path = window.location.pathname;
 
+const navItems = [
+  ['/', '00', 'Home', path === '/' || path === '/index.html'],
+  ['/work/', '01', 'Work', path.startsWith('/work')],
+  ['/services/', '02', 'Services', path.startsWith('/services') || path.startsWith('/commission') || path.startsWith('/faq')],
+  ['/about/', '03', 'About', path.startsWith('/about')],
+  ['/enquiry/', '04', 'Enquire', path.startsWith('/enquiry')],
+];
+
+const buildNav = () => navItems.map(([href, marker, label, active]) => (
+  `<a href="${href}"${active ? ' class="active" aria-current="page"' : ''}>${label} <span>${marker}</span></a>`
+)).join('');
+
 const applyModernHeader = () => {
   const header = document.querySelector('header');
   if (!header) return;
 
-  const navigation = header.querySelector('nav');
-  if (navigation) {
-    const items = [
-      ['/', '00', 'Home', path === '/' || path === '/index.html'],
-      ['/work/', '01', 'Work', path.startsWith('/work')],
-      ['/services/', '02', 'Services', path.startsWith('/services') || path.startsWith('/commission') || path.startsWith('/faq')],
-      ['/about/', '03', 'About', path.startsWith('/about')],
-      ['/enquiry/', '04', 'Enquire', path.startsWith('/enquiry')],
-    ];
+  const headerContent = header.querySelector('.header-content');
+  if (!headerContent) return;
 
-    const expected = items.map(([href, marker, label, active]) => (
-      `<a href="${href}"${active ? ' class="active" aria-current="page"' : ''}>${label} <span>${marker}</span></a>`
-    )).join('');
+  let brand = headerContent.querySelector('.header-brand');
+  if (!brand) {
+    brand = document.createElement('div');
+    brand.className = 'header-brand';
+    headerContent.prepend(brand);
+  }
+  brand.innerHTML = '<a class="logo wordmark" href="/" aria-label="By Kira home"><img src="/image/bykira-wordmark.png" alt="By Kira" width="1664" height="936"></a><span class="brand-role">WEB DEVELOPER</span>';
 
-    if (navigation.innerHTML !== expected) navigation.innerHTML = expected;
+  let navigation = headerContent.querySelector('nav');
+  if (!navigation) {
+    navigation = document.createElement('nav');
+    navigation.setAttribute('aria-label', 'Primary navigation');
+    headerContent.append(navigation);
+  }
+  navigation.innerHTML = buildNav();
+
+  let headerActions = headerContent.querySelector('.header-actions');
+  if (!headerActions) {
+    headerActions = document.createElement('div');
+    headerActions.className = 'header-actions';
+    headerContent.append(headerActions);
+  }
+  headerActions.innerHTML = '<a class="header-cta" href="/enquiry/">Start a project <span>↗</span></a>';
+
+  // This hidden sentinel prevents the legacy header builder in main.js from ever running.
+  let lock = headerContent.querySelector('[data-modern-header-lock]');
+  if (!lock) {
+    lock = document.createElement('span');
+    lock.className = 'nav-toggle';
+    lock.dataset.modernHeaderLock = '';
+    lock.hidden = true;
+    lock.setAttribute('aria-hidden', 'true');
+    lock.style.setProperty('display', 'none', 'important');
+    headerContent.append(lock);
   }
 
-  header.querySelectorAll('.active-section').forEach((item) => item.remove());
-
-  const cta = header.querySelector('.header-cta');
-  if (cta && cta.innerHTML !== 'Start a project <span>↗</span>') {
-    cta.innerHTML = 'Start a project <span>↗</span>';
-  }
+  header.querySelectorAll('.active-section, .header-status').forEach((item) => item.remove());
+  header.dataset.navVersion = 'modern';
+  document.documentElement.classList.add('modern-header-ready');
 };
 
 applyModernHeader();
@@ -38,19 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
   applyModernHeader();
 
   if (header) {
-    const navigation = header.querySelector('nav');
-    const headerActions = header.querySelector('.header-actions');
     let correcting = false;
-
     const observer = new MutationObserver(() => {
       if (correcting) return;
       correcting = true;
       applyModernHeader();
       queueMicrotask(() => { correcting = false; });
     });
-
-    if (navigation) observer.observe(navigation, { childList: true, subtree: true });
-    if (headerActions) observer.observe(headerActions, { childList: true, subtree: true });
+    observer.observe(header, { childList: true, subtree: true });
   }
 
   document.querySelectorAll('footer').forEach((footer) => {
