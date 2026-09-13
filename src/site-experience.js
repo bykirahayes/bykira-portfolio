@@ -1,5 +1,5 @@
 import './site-experience.css';
-import './mobile-brand-hardfix.css';
+import './mobile-brand.css';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -9,7 +9,7 @@ const initLoader = () => {
   const loaderStartedAt = performance.now();
   const isMobile = window.matchMedia('(max-width: 760px)').matches;
   const minimumVisible = isMobile ? 2600 : 3200;
-  const exitDuration = reduceMotion ? 0 : 900;
+  const fadeDuration = 900;
 
   const loader = document.createElement('div');
   loader.className = 'bykira-loader';
@@ -24,16 +24,15 @@ const initLoader = () => {
 
   const leave = () => {
     const elapsed = performance.now() - loaderStartedAt;
-    const remaining = Math.max(0, minimumVisible - elapsed);
+    const remaining = reduceMotion ? 0 : Math.max(0, minimumVisible - elapsed);
 
     window.setTimeout(() => {
       if (reduceMotion) {
         loader.remove();
         return;
       }
-
       loader.classList.add('is-leaving');
-      window.setTimeout(() => loader.remove(), exitDuration);
+      window.setTimeout(() => loader.remove(), fadeDuration);
     }, remaining);
   };
 
@@ -80,15 +79,18 @@ const initModernMobileMenu = () => {
 
   if (!document.documentElement.dataset.bykiraMenuEvents) {
     document.documentElement.dataset.bykiraMenuEvents = 'true';
+
     document.addEventListener('keydown', (event) => {
       if (event.key !== 'Escape') return;
       document.querySelectorAll('header.menu-open').forEach((header) => header._bykiraSetMenuOpen?.(false));
     });
+
     document.addEventListener('pointerdown', (event) => {
       document.querySelectorAll('header.menu-open').forEach((header) => {
         if (!header.contains(event.target)) header._bykiraSetMenuOpen?.(false);
       });
     });
+
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 1200) {
         document.querySelectorAll('header.menu-open').forEach((header) => header._bykiraSetMenuOpen?.(false));
@@ -109,11 +111,13 @@ const initScrollReveals = () => {
     '.policy-section',
     '#site-footer .footer-directory'
   ];
+
   const candidates = [...new Set(document.querySelectorAll(selectors.join(',')))];
   if (reduceMotion || !('IntersectionObserver' in window)) {
     candidates.forEach((el) => el.classList.add('is-visible'));
     return;
   }
+
   const viewport = window.innerHeight || document.documentElement.clientHeight;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -139,12 +143,19 @@ const initBiscuits = () => {
   document.querySelectorAll('.cookie-settings').forEach((button) => {
     button.textContent = 'Privacy & Biscuits';
     if (button.tagName === 'BUTTON') {
-      button.addEventListener('click', () => { window.location.href = '/privacy/#biscuits'; });
+      button.addEventListener('click', () => {
+        window.location.href = '/privacy/#biscuits';
+      });
     }
   });
 
   let seen = false;
-  try { seen = localStorage.getItem('bykira-biscuit-note') === 'seen'; } catch { seen = true; }
+  try {
+    seen = localStorage.getItem('bykira-biscuit-note') === 'seen';
+  } catch {
+    seen = true;
+  }
+
   if (seen || document.querySelector('.biscuit-note')) return;
 
   const note = document.createElement('aside');
@@ -157,10 +168,14 @@ const initBiscuits = () => {
       <a href="/privacy/#biscuits">Read about biscuits</a>
       <button type="button">Got it</button>
     </div>`;
+
   note.querySelector('button')?.addEventListener('click', () => {
-    try { localStorage.setItem('bykira-biscuit-note', 'seen'); } catch { /* no-op */ }
+    try {
+      localStorage.setItem('bykira-biscuit-note', 'seen');
+    } catch {}
     note.remove();
   });
+
   document.body.append(note);
 };
 
@@ -171,10 +186,12 @@ const boot = () => {
   initBiscuits();
 };
 
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
-else boot();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot, { once: true });
+} else {
+  boot();
+}
 
-/* header-effects can rewrite the modern header; keep the new menu attached afterwards. */
 const headerWatcher = new MutationObserver(() => queueMicrotask(initModernMobileMenu));
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header[data-nav-version="modern"]');
