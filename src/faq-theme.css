@@ -1,0 +1,330 @@
+/* FAQ page — compact editorial question index */
+
+body.faq-page {
+  background: #080808;
+  color: #f4f0ea;
+}
+
+.faq-page .faq-main {
+  overflow: hidden;
+}
+
+.faq-page .faq-hero,
+.faq-page .faq-shell,
+.faq-page .faq-cta {
+  width: min(100% - 48px, 1220px);
+  margin-inline: auto;
+}
+
+.faq-page .faq-hero {
+  position: relative;
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+  gap: clamp(34px, 6vw, 86px);
+  align-items: end;
+  padding: clamp(88px, 10vw, 138px) 0 62px;
+  border-bottom: 1px solid rgba(255,255,255,.11);
+}
+
+.faq-page .faq-hero::before {
+  content: "04";
+  position: absolute;
+  right: 1%;
+  top: 54px;
+  font: italic clamp(150px, 22vw, 330px)/.82 Georgia, 'Times New Roman', serif;
+  color: rgba(156,128,255,.045);
+  pointer-events: none;
+}
+
+.faq-page .faq-kicker,
+.faq-page .faq-section-kicker {
+  margin: 0 0 20px;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #9f90db;
+}
+
+.faq-page .faq-kicker span {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background: currentColor;
+}
+
+.faq-page .faq-hero h1,
+.faq-page .faq-shell h2,
+.faq-page .faq-cta h2 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  letter-spacing: -.045em;
+  line-height: .93;
+}
+
+.faq-page .faq-hero h1 {
+  max-width: 780px;
+  font-size: clamp(62px, 8.2vw, 126px);
+}
+
+.faq-page em {
+  color: #a796ea;
+  font-weight: 400;
+}
+
+.faq-page .faq-hero-copy > p:last-child {
+  max-width: 650px;
+  margin: 30px 0 0;
+  color: rgba(244,240,234,.66);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.7;
+}
+
+.faq-page .faq-side-note {
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255,255,255,.13);
+  background: radial-gradient(circle at 100% 0%, rgba(157,137,230,.16), transparent 46%), rgba(255,255,255,.025);
+  padding: 26px;
+}
+
+.faq-page .faq-side-note > span {
+  display: block;
+  margin-bottom: 34px;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(244,240,234,.45);
+}
+
+.faq-page .faq-side-note strong {
+  display: block;
+  max-width: 280px;
+  font: 400 30px/1.08 Georgia, 'Times New Roman', serif;
+  letter-spacing: -.03em;
+}
+
+.faq-page .faq-side-note a {
+  display: inline-flex;
+  gap: 12px;
+  margin-top: 30px;
+  color: #b7a8ef;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.faq-page .faq-shell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: clamp(36px, 7vw, 100px);
+  padding: 90px 0 104px;
+}
+
+.faq-page .faq-index {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+
+.faq-page .faq-index p {
+  margin: 0 0 22px;
+  color: rgba(244,240,234,.38);
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.faq-page .faq-index nav {
+  display: grid;
+  gap: 0;
+}
+
+.faq-page .faq-index a {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,255,255,.09);
+  color: rgba(244,240,234,.58);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.faq-page .faq-index a:last-child {
+  border-bottom: 1px solid rgba(255,255,255,.09);
+}
+
+.faq-page .faq-index a span {
+  color: #9f90db;
+}
+
+.faq-page .faq-content h2 {
+  font-size: clamp(46px, 5vw, 74px);
+  margin-bottom: 38px;
+}
+
+.faq-page .faq-list {
+  border-top: 1px solid rgba(255,255,255,.13);
+}
+
+.faq-page .faq-list details {
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.faq-page .faq-list summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 32px;
+  gap: 18px;
+  align-items: center;
+  padding: 22px 0;
+}
+
+.faq-page .faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-page .faq-list summary > span {
+  color: #9f90db;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+
+.faq-page .faq-list summary strong {
+  font: 400 clamp(21px, 2vw, 29px)/1.2 Georgia, 'Times New Roman', serif;
+  letter-spacing: -.025em;
+}
+
+.faq-page .faq-list summary i {
+  font-style: normal;
+  color: rgba(244,240,234,.45);
+  font-size: 22px;
+  transition: transform .2s ease;
+}
+
+.faq-page .faq-list details[open] summary i {
+  transform: rotate(45deg);
+}
+
+.faq-page .faq-list details > div {
+  padding: 0 32px 24px 76px;
+}
+
+.faq-page .faq-list details p {
+  max-width: 720px;
+  margin: 0;
+  color: rgba(244,240,234,.58);
+  line-height: 1.7;
+}
+
+.faq-page .faq-list details a {
+  display: inline-block;
+  margin-top: 16px;
+  color: #b7a8ef;
+}
+
+.faq-page .faq-cta {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 40px;
+  align-items: end;
+  padding: 88px 0 112px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.faq-page .faq-cta h2 {
+  max-width: 820px;
+  font-size: clamp(54px, 6.4vw, 92px);
+}
+
+.faq-page .faq-cta p {
+  max-width: 600px;
+  margin: 24px 0 0;
+  color: rgba(244,240,234,.58);
+  line-height: 1.7;
+}
+
+.faq-page .faq-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 15px 19px;
+  border: 1px solid rgba(255,255,255,.2);
+  color: #f4f0ea;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.faq-page .faq-cta-link span {
+  color: #a796ea;
+}
+
+/* Suppress the older shared route decorations; this page has its own chapter identity. */
+.faq-page .page-chapter-rail,
+.faq-page .page-atmosphere,
+.faq-page .section-index-glyph {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .faq-page .faq-hero,
+  .faq-page .faq-shell,
+  .faq-page .faq-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-page .faq-hero {
+    min-height: auto;
+  }
+
+  .faq-page .faq-index {
+    position: static;
+  }
+
+  .faq-page .faq-index nav {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 0 24px;
+  }
+
+  .faq-page .faq-cta-link {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 680px) {
+  .faq-page .faq-hero,
+  .faq-page .faq-shell,
+  .faq-page .faq-cta {
+    width: min(100% - 28px, 1220px);
+  }
+
+  .faq-page .faq-hero {
+    padding-top: 72px;
+    padding-bottom: 44px;
+  }
+
+  .faq-page .faq-shell {
+    padding: 70px 0 80px;
+  }
+
+  .faq-page .faq-index nav {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-page .faq-list summary {
+    grid-template-columns: 40px 1fr 24px;
+    gap: 10px;
+  }
+
+  .faq-page .faq-list details > div {
+    padding: 0 24px 22px 50px;
+  }
+
+  .faq-page .faq-cta {
+    padding: 72px 0 90px;
+  }
+}
