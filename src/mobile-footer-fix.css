@@ -1,0 +1,10 @@
+@media (max-width: 680px) {
+  .experience-v3 body #site-footer .footer-directory {
+    padding-bottom: 0 !important;
+  }
+
+  .experience-v3 body #site-footer .footer-bottom,
+  .experience-v3 body #site-footer .footer-bottom:has(.legal-links-inline) {
+    margin-top: 0 !important;
+  }
+}
