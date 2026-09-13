@@ -1,0 +1,46 @@
+/* Keep each enquiry fieldset heading inside the same visual card as its fields. */
+.enquiry-calm .calm-step{
+  position:relative;
+  display:block;
+  padding:clamp(28px,3vw,42px);
+}
+
+.enquiry-calm .calm-step legend{
+  float:left;
+  width:100%;
+  box-sizing:border-box;
+  margin:0 0 26px;
+  padding:0;
+}
+
+.enquiry-calm .calm-step legend + .calm-fields{
+  clear:both;
+}
+
+.enquiry-calm .calm-step legend>span{
+  margin-top:1px;
+}
+
+.enquiry-calm .calm-step legend div{
+  min-width:0;
+}
+
+.enquiry-calm .calm-step legend strong{
+  display:block;
+  margin:0;
+}
+
+.enquiry-calm .calm-step legend small{
+  display:block;
+  margin-top:5px;
+}
+
+@media(max-width:680px){
+  .enquiry-calm .calm-step{
+    padding:24px 20px;
+  }
+
+  .enquiry-calm .calm-step legend{
+    margin-bottom:20px;
+  }
+}
