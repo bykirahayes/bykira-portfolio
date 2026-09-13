@@ -1,0 +1,494 @@
+/* Site-wide responsive polish for ByKira.
+   Loaded globally from main.js so every route gets the same mobile treatment. */
+
+:root {
+  --site-gutter: clamp(16px, 3vw, 42px);
+  --site-mobile-gutter: 16px;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+main,
+main > section,
+footer,
+.footer-inner,
+.header-content {
+  box-sizing: border-box;
+}
+
+main > section {
+  min-width: 0;
+}
+
+/* Keep long copy and controls from forcing horizontal overflow. */
+p,
+h1,
+h2,
+h3,
+h4,
+a,
+button,
+label,
+summary,
+li,
+input,
+select,
+textarea {
+  overflow-wrap: anywhere;
+}
+
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+}
+
+/* Shared interactive polish. */
+a,
+button,
+summary,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(190, 150, 255, .9);
+  outline-offset: 4px;
+}
+
+/* Large tablet / small laptop */
+@media (max-width: 1100px) {
+  .about-layout,
+  .skills-row,
+  .sales-hero-grid,
+  .enquiry-main,
+  .section-heading {
+    gap: clamp(28px, 5vw, 58px) !important;
+  }
+
+  .commission-process-grid,
+  .footer-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .service-card {
+    grid-template-columns: minmax(0, 1.1fr) minmax(220px, .75fr) !important;
+  }
+
+  .service-card > .service-number {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  :root {
+    --site-gutter: 22px;
+  }
+
+  header .header-content {
+    min-height: 68px;
+    padding-left: var(--site-gutter) !important;
+    padding-right: var(--site-gutter) !important;
+  }
+
+  header .brand-role,
+  header .header-status,
+  header .active-section {
+    display: none !important;
+  }
+
+  header .wordmark img,
+  header .logo img {
+    max-height: 38px;
+    width: auto;
+  }
+
+  main:not(.atelier-home),
+  .sales-main,
+  .enquiry-main {
+    padding-left: var(--site-gutter);
+    padding-right: var(--site-gutter);
+  }
+
+  .about-layout,
+  .skills-row,
+  .sales-hero-grid,
+  .section-heading,
+  .enquiry-main,
+  .service-card,
+  .footer-directory {
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-copy,
+  .skills-heading,
+  .sales-hero-grid > div,
+  .enquiry-panel,
+  .enquiry-intro,
+  .service-card > div,
+  .service-card > ul,
+  .service-price {
+    min-width: 0;
+    max-width: none !important;
+  }
+
+  .about-heading h1,
+  .section-heading h1,
+  .sales-hero h1,
+  .enquiry-intro h1 {
+    font-size: clamp(50px, 9vw, 78px) !important;
+    line-height: .96 !important;
+  }
+
+  .skills-heading h2,
+  .service-card h2,
+  .sales-note h2 {
+    font-size: clamp(38px, 7vw, 62px) !important;
+    line-height: 1 !important;
+  }
+
+  .service-card {
+    gap: 28px !important;
+  }
+
+  .service-card > .service-number {
+    margin-bottom: -8px;
+  }
+
+  .commission-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .first-project-card {
+    min-height: 0 !important;
+  }
+
+  .first-project-card > div,
+  .first-project-card > a {
+    position: relative;
+    z-index: 2;
+  }
+
+  .enquiry-main {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .enquiry-intro {
+    position: relative !important;
+    top: auto !important;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .enquiry-group legend {
+    grid-template-columns: auto 1fr !important;
+  }
+
+  .enquiry-group legend small {
+    grid-column: 2;
+  }
+
+  .footer-directory,
+  .footer-columns {
+    gap: 34px !important;
+  }
+
+  .page-chapter-rail,
+  .studio-hud {
+    display: none !important;
+  }
+}
+
+/* Phones */
+@media (max-width: 680px) {
+  :root {
+    --site-gutter: var(--site-mobile-gutter);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  header .header-content {
+    min-height: 62px;
+    padding: 10px 14px !important;
+  }
+
+  header .header-brand {
+    min-width: 0;
+  }
+
+  header .header-cta {
+    display: none !important;
+  }
+
+  .nav-toggle {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  header.menu-open nav {
+    max-height: calc(100svh - 70px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  main:not(.atelier-home),
+  .sales-main,
+  .enquiry-main {
+    padding-left: var(--site-gutter) !important;
+    padding-right: var(--site-gutter) !important;
+  }
+
+  main > section:not(.atelier-hero):not(.home-services):not(.compact-process):not(.home-review-showcase) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+
+  .section-topline {
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .section-note {
+    max-width: 17ch;
+    text-align: right;
+  }
+
+  .about-layout,
+  .skills-row,
+  .sales-hero-grid,
+  .section-heading,
+  .enquiry-main,
+  .footer-directory {
+    gap: 26px !important;
+  }
+
+  .about-heading h1,
+  .section-heading h1,
+  .sales-hero h1,
+  .enquiry-intro h1 {
+    font-size: clamp(44px, 13vw, 62px) !important;
+    letter-spacing: -.045em !important;
+  }
+
+  .skills-heading h2,
+  .service-card h2,
+  .sales-note h2,
+  .faq-content h2 {
+    font-size: clamp(34px, 10vw, 50px) !important;
+  }
+
+  .about-number,
+  .skills-number,
+  .service-number {
+    font-size: clamp(72px, 24vw, 118px) !important;
+  }
+
+  .about-coordinate,
+  .about-signoff,
+  .console-status,
+  .sales-meta,
+  .about-foot {
+    flex-wrap: wrap;
+    gap: 10px 16px !important;
+  }
+
+  .tool-console {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .tool-cloud {
+    gap: 8px !important;
+  }
+
+  .tool-cloud span {
+    font-size: 12px !important;
+  }
+
+  .service-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .service-card {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 26px 20px !important;
+    border-radius: 18px !important;
+  }
+
+  .service-card ul {
+    padding-left: 20px !important;
+  }
+
+  .service-price {
+    width: 100%;
+    text-align: left !important;
+  }
+
+  .service-price strong {
+    font-size: clamp(32px, 10vw, 46px) !important;
+  }
+
+  .commission-process-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .commission-process-grid article {
+    min-height: 0 !important;
+  }
+
+  .faq-list summary {
+    grid-template-columns: auto 1fr auto !important;
+    gap: 12px !important;
+    align-items: start !important;
+  }
+
+  .faq-list summary strong {
+    font-size: 15px !important;
+    line-height: 1.45;
+  }
+
+  .sales-note-actions,
+  .home-review-actions,
+  .atelier-actions,
+  .compact-actions {
+    width: 100%;
+    align-items: stretch !important;
+  }
+
+  .sales-note-actions a,
+  .home-review-actions a,
+  .enquiry-submit button,
+  .contact-button {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .enquiry-panel {
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
+  }
+
+  .enquiry-panel-head {
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .enquiry-panel-count {
+    white-space: nowrap;
+  }
+
+  .enquiry-group {
+    padding: 22px 0 !important;
+  }
+
+  .enquiry-fields,
+  .field-row {
+    gap: 14px !important;
+  }
+
+  .enquiry-fields input,
+  .enquiry-fields select,
+  .enquiry-fields textarea {
+    width: 100%;
+    min-height: 48px;
+    font-size: 16px !important;
+    box-sizing: border-box;
+  }
+
+  .enquiry-fields textarea {
+    min-height: 150px;
+  }
+
+  .turnstile-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .footer-topline,
+  .footer-bottom {
+    flex-wrap: wrap;
+    gap: 12px !important;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+  }
+
+  .footer-columns > div {
+    min-width: 0;
+  }
+
+  .footer-columns a,
+  .footer-columns button,
+  .footer-identity-cta {
+    min-height: 42px;
+  }
+
+  .review-float,
+  .editorial-collage,
+  .page-atmosphere {
+    max-width: 100%;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 390px) {
+  :root { --site-mobile-gutter: 12px; }
+
+  .section-note,
+  .about-coordinate,
+  .enquiry-panel-count {
+    display: none !important;
+  }
+
+  .about-heading h1,
+  .section-heading h1,
+  .sales-hero h1,
+  .enquiry-intro h1 {
+    font-size: clamp(40px, 13.5vw, 54px) !important;
+  }
+
+  .service-card,
+  .enquiry-panel {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+  }
+}
