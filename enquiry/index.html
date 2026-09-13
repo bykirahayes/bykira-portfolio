@@ -21,9 +21,8 @@
     <meta name="twitter:image" content="https://bykira.co.uk/og.png" />
     <link rel="canonical" href="https://bykira.co.uk/enquiry/" />
     <link rel="icon" href="/image/favicon.ico" />
-    <link rel="stylesheet" href="/src/styles.css?v=20260913-enquiry4" />
-    <link rel="stylesheet" href="/src/enquiry-reset.css?v=20260913-reset1" />
-    <link rel="stylesheet" href="/src/enquiry-signature.css?v=20260913-signature1" />
+    <link rel="stylesheet" href="/src/styles.css?v=20260913-enquiry5" />
+    <link rel="stylesheet" href="/src/enquiry-calm.css?v=20260913-calm1" />
     <script type="module" src="/src/header-effects.js"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
@@ -43,36 +42,40 @@
         </div>
       </header>
 
-      <main id="main-content" class="enquiry-clean3">
-        <section class="eq3-hero" aria-labelledby="enquiry-title">
-          <p class="eq3-kicker">Project enquiry</p>
-          <h1 id="enquiry-title">Tell me the idea.<em>I’ll take it from there.</em></h1>
-          <p>You do not need a finished brief. A rough idea, a goal and a bit of context is enough to start a useful conversation.</p>
-          <div class="eq3-meta" aria-label="Enquiry details">
-            <span>Usually replies within 2 working days</span>
-            <span>Manchester · working worldwide</span>
-            <span>No obligation</span>
+      <main id="main-content" class="enquiry-calm">
+        <section class="calm-hero" aria-labelledby="enquiry-title">
+          <div class="calm-hero-copy">
+            <p class="calm-eyebrow"><span></span> Project enquiry</p>
+            <h1 id="enquiry-title">Let’s make<br><em>something good.</em></h1>
+            <p class="calm-intro">Tell me what you have in mind. It can be rough, half-formed, or already mapped out — this is just the first conversation.</p>
           </div>
+          <aside class="calm-note" aria-label="Project availability">
+            <div class="calm-note-mark">↗</div>
+            <p class="calm-note-label">Currently</p>
+            <h2>Taking on selected new projects.</h2>
+            <div class="calm-note-meta">
+              <span>Reply in ~2 working days</span>
+              <span>Manchester / worldwide</span>
+              <span>No obligation</span>
+            </div>
+          </aside>
         </section>
 
-        <section class="eq3-shell" aria-label="Project enquiry form">
-          <div class="eq3-shell-head">
-            <div>
-              <span>Start here</span>
-              <h2>Share what you know.</h2>
-            </div>
-            <p>Four short sections. If something is uncertain, leave the detail for later and we can work through it together.</p>
+        <section class="calm-form-wrap" aria-label="Project enquiry form">
+          <div class="calm-form-intro">
+            <p>Project brief</p>
+            <h2>Four small steps.<br>Nothing complicated.</h2>
+            <span>Anything you do not know yet can be figured out later.</span>
           </div>
 
-          <form id="project-enquiry">
-            <fieldset class="eq3-card enquiry-group">
+          <form id="project-enquiry" class="calm-form">
+            <fieldset class="calm-step enquiry-group">
               <legend>
                 <span>01</span>
-                <strong>Your details</strong>
-                <small>Who should I reply to?</small>
+                <div><strong>Who are you?</strong><small>The basics so I know who I’m speaking with.</small></div>
               </legend>
-              <div class="eq3-fields enquiry-fields">
-                <div class="eq3-row field-row">
+              <div class="calm-fields enquiry-fields">
+                <div class="calm-row field-row">
                   <label><span>Your name *</span><input name="name" type="text" autocomplete="name" maxlength="100" required /></label>
                   <label><span>Email address *</span><input name="email" type="email" autocomplete="email" maxlength="254" required /></label>
                 </div>
@@ -80,14 +83,13 @@
               </div>
             </fieldset>
 
-            <fieldset class="eq3-card enquiry-group">
+            <fieldset class="calm-step enquiry-group">
               <legend>
                 <span>02</span>
-                <strong>Project basics</strong>
-                <small>The practical bits.</small>
+                <div><strong>What are we making?</strong><small>Just enough practical detail to understand the scope.</small></div>
               </legend>
-              <div class="eq3-fields enquiry-fields">
-                <div class="eq3-row field-row">
+              <div class="calm-fields enquiry-fields">
+                <div class="calm-row field-row">
                   <label>
                     <span>What do you need? *</span>
                     <select name="service" required>
@@ -110,41 +112,39 @@
                     </select>
                   </label>
                 </div>
-                <div class="eq3-row field-row">
+                <div class="calm-row field-row">
                   <label><span>Ideal launch date</span><input name="launch" type="date" /></label>
                   <label><span>Current website</span><input name="website" type="url" inputmode="url" maxlength="500" placeholder="https://" /></label>
                 </div>
               </div>
             </fieldset>
 
-            <fieldset class="eq3-card enquiry-group enquiry-group-brief">
+            <fieldset class="calm-step calm-step-wide enquiry-group enquiry-group-brief">
               <legend>
                 <span>03</span>
-                <strong>The idea</strong>
-                <small>Tell me what you want this to become.</small>
+                <div><strong>What’s the idea?</strong><small>Write naturally. No agency-speak required.</small></div>
               </legend>
-              <div class="eq3-fields enquiry-fields">
+              <div class="calm-fields enquiry-fields">
                 <label>
                   <span>Tell me about the project *</span>
-                  <textarea name="details" rows="7" maxlength="4000" required placeholder="What should the site achieve? Who is it for? What do you want it to feel like?"></textarea>
+                  <textarea name="details" rows="7" maxlength="4000" required placeholder="What should the site achieve? Who is it for? What would make it feel successful to you?"></textarea>
                 </label>
                 <label><span>How did you find me?</span><input name="source" type="text" maxlength="300" placeholder="Search, recommendation, social media…" /></label>
               </div>
             </fieldset>
 
-            <fieldset class="eq3-card enquiry-group enquiry-group-send">
+            <fieldset class="calm-step calm-step-send enquiry-group enquiry-group-send">
               <legend>
                 <span>04</span>
-                <strong>Send it over</strong>
-                <small>That is enough to get started.</small>
+                <div><strong>Ready when you are.</strong><small>Send it over and I’ll take it from here.</small></div>
               </legend>
-              <div class="eq3-fields enquiry-fields">
+              <div class="calm-fields enquiry-fields">
                 <label class="form-trap" aria-hidden="true">Leave this field empty<input name="companyWebsite" type="text" autocomplete="off" tabindex="-1" /></label>
                 <div class="turnstile-wrap">
                   <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkAsCh3bt33raW8" data-theme="dark" data-action="enquiry"></div>
                 </div>
-                <div class="eq3-send enquiry-submit">
-                  <p class="eq3-private"><strong>Private by design</strong>Your details are used only to respond to your enquiry.</p>
+                <div class="calm-send enquiry-submit">
+                  <p><strong>Private by design</strong>Your details are only used to respond to this enquiry.</p>
                   <button type="submit">Send project brief <span>↗</span></button>
                 </div>
                 <p class="form-status" role="status" aria-live="polite"></p>
@@ -152,7 +152,7 @@
             </fieldset>
           </form>
 
-          <section class="enquiry-confirmation" id="enquiry-confirmation" tabindex="-1" aria-labelledby="confirmation-title" hidden>
+          <section class="enquiry-confirmation calm-confirmation" id="enquiry-confirmation" tabindex="-1" aria-labelledby="confirmation-title" hidden>
             <span class="confirmation-mark" aria-hidden="true">✓</span>
             <p class="confirmation-kicker">Project brief received</p>
             <h2 id="confirmation-title">Thank you<span data-enquiry-name></span>.<br />I’ve got it.</h2>
@@ -169,15 +169,15 @@
           </section>
         </section>
 
-        <section class="eq3-next" aria-label="What happens next">
-          <div>
-            <h3>Then what?</h3>
-            <p>I read the brief, check the project is a good fit, then come back with the clearest next step.</p>
-          </div>
-          <div class="eq3-next-list">
-            <div><span>01</span><strong>I review your brief</strong></div>
-            <div><span>02</span><strong>We talk through direction</strong></div>
-            <div><span>03</span><strong>You get a clear proposal</strong></div>
+        <section class="calm-after" aria-label="What happens next">
+          <p class="calm-after-label">After you hit send</p>
+          <div class="calm-after-copy">
+            <h2>You send the idea.<br><em>I make the next step clear.</em></h2>
+            <div class="calm-after-steps">
+              <p><span>01</span>I read through everything personally.</p>
+              <p><span>02</span>I reply with questions or a suggested direction.</p>
+              <p><span>03</span>If it feels right, I put together a clear proposal.</p>
+            </div>
           </div>
         </section>
       </main>
