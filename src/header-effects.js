@@ -5,9 +5,9 @@ const path = window.location.pathname;
 const navItems = [
   ['/', '00', 'Home', path === '/' || path === '/index.html'],
   ['/work/', '01', 'Work', path.startsWith('/work')],
-  ['/services/', '02', 'Services', path.startsWith('/services') || path.startsWith('/commission') || path.startsWith('/faq')],
+  ['/services/', '02', 'Services', path.startsWith('/services') || path.startsWith('/commission')],
   ['/about/', '03', 'About', path.startsWith('/about')],
-  ['/enquiry/', '04', 'Enquire', path.startsWith('/enquiry')],
+  ['/faq', '04', 'FAQ', path.startsWith('/faq')],
 ];
 
 const buildNav = () => navItems.map(([href, marker, label, active]) => (
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>EST. MCR / 2026</span>
           </div>
           <div class="footer-columns">
-            <div><span class="footer-label">01 / Explore</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a></div>
+            <div><span class="footer-label">01 / Explore</span><a href="/work/">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/faq">FAQ</a></div>
             <div><span class="footer-label">02 / Start</span><a href="/enquiry/">Project enquiry</a><a href="/website-review/">Free website review</a></div>
             <div><span class="footer-label">03 / Details</span><a href="/privacy/">Privacy &amp; biscuits</a><a href="/accessibility/">Accessibility</a><a href="/terms/">Terms</a></div>
           </div>
@@ -108,9 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('a[href="/commission/"]').forEach((link) => {
     link.href = '/services/#packages';
-  });
-  document.querySelectorAll('a[href="/faq"], a[href="/faq/"]').forEach((link) => {
-    link.href = '/services/#faq';
   });
   if (!path.startsWith('/guides')) {
     document.querySelectorAll('a[href="/guides/"]').forEach((link) => {
