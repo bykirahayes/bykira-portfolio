@@ -4,6 +4,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 const initLoader = () => {
   if (document.querySelector('.bykira-loader')) return;
+  const loaderStartedAt = performance.now();
   const loader = document.createElement('div');
   loader.className = 'bykira-loader';
   loader.setAttribute('aria-hidden', 'true');
@@ -15,22 +16,17 @@ const initLoader = () => {
     </div>`;
   document.body.prepend(loader);
 
-  const startedAt = performance.now();
-  const minimumVisibleTime = 1450;
-  const exitDuration = 720;
-
   const leave = () => {
     if (reduceMotion) {
       loader.remove();
       return;
     }
-
-    const elapsed = performance.now() - startedAt;
-    const remaining = Math.max(0, minimumVisibleTime - elapsed);
-
+    const elapsed = performance.now() - loaderStartedAt;
+    const minimumVisible = 2600;
+    const remaining = Math.max(0, minimumVisible - elapsed);
     window.setTimeout(() => {
       loader.classList.add('is-leaving');
-      window.setTimeout(() => loader.remove(), exitDuration);
+      window.setTimeout(() => loader.remove(), 860);
     }, remaining);
   };
 
