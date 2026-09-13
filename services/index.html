@@ -18,9 +18,10 @@
     <link rel="icon" href="/image/favicon.ico" />
     <link rel="stylesheet" href="/src/styles.css?v=20260913-services" />
     <link rel="stylesheet" href="/src/desktop-header.css?v=20260913-modern2" />
+    <link rel="stylesheet" href="/src/services-theme.css?v=20260913-services2" />
     <script type="module" src="/src/header-effects.js"></script>
   </head>
-  <body>
+  <body class="services-page">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <div id="content">
       <header data-nav-version="modern">
@@ -34,53 +35,110 @@
       </header>
 
       <main id="main-content" class="sales-main">
-        <section class="sales-hero">
-          <p class="eyebrow"><span class="section-symbol">✦</span> SERVICES / PRICING</p>
-          <div class="sales-hero-grid">
-            <h1>One page.<br /><em>Everything useful.</em></h1>
-            <div>
-              <p>Choose a starting point, see how the process works and get the common questions answered before you enquire.</p>
-              <a href="/enquiry/">Tell me what you need <span>↗</span></a>
+        <section class="services-hero" aria-labelledby="services-title">
+          <div class="services-hero-copy">
+            <p class="services-kicker"><span></span> 02 / Services</p>
+            <h1 id="services-title">Websites built<br /><em>around the idea.</em></h1>
+            <p>I handle the design and development together, so the thinking stays consistent from the first rough layout through to the final build.</p>
+          </div>
+
+          <aside class="services-brief-card" aria-label="Services at a glance">
+            <span>ByKira / services</span>
+            <h2>Clear scope.<br />One person.<br />No handoffs.</h2>
+            <div class="services-brief-list">
+              <span>Design + development</span>
+              <span>Responsive by default</span>
+              <span>Scope agreed first</span>
             </div>
+          </aside>
+        </section>
+
+        <section class="services-packages" id="packages" aria-labelledby="packages-title">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Starting points</p>
+              <h2 id="packages-title">Pick the shape.<br /><em>I’ll make it yours.</em></h2>
+            </div>
+            <p>These are starting points rather than rigid packages. The final scope is based on what the website actually needs, with the price agreed before work starts.</p>
           </div>
-          <div class="sales-meta"><span>Design + development</span><span>Responsive as standard</span><span>Clear scope before payment</span></div>
-        </section>
 
-        <section class="service-list" id="packages" aria-label="Website packages">
-          <article class="service-card">
-            <span class="service-number">01</span>
-            <div><p class="eyebrow">LANDING PAGE</p><h2>One idea,<br /><em>made convincing.</em></h2><p>For a launch, service, campaign or focused offer that needs a sharp single-page home.</p></div>
-            <ul><li>Page structure and visual direction</li><li>Responsive design and build</li><li>Contact or lead-generation form</li><li>Performance and launch checks</li></ul>
-            <div class="service-price"><span>Typical investment</span><strong>£50–£150</strong><small>Usually 2–3 weeks</small></div>
-          </article>
+          <div class="package-list">
+            <article class="package-row">
+              <span class="package-number">01</span>
+              <div class="package-copy">
+                <p class="package-label">Landing page</p>
+                <h3>One idea,<br /><em>made convincing.</em></h3>
+                <p>For a launch, service, campaign or focused offer that needs one strong page with a clear job to do.</p>
+              </div>
+              <div class="package-includes" aria-label="Landing page includes">
+                <span>Page structure + visual direction</span>
+                <span>Responsive design + build</span>
+                <span>Contact or lead form</span>
+                <span>Launch checks</span>
+              </div>
+              <div class="package-price"><span>Typical investment</span><strong>£50–£150</strong><small>Usually 2–3 weeks</small></div>
+            </article>
 
-          <article class="service-card service-featured">
-            <span class="service-number">02</span>
-            <div><p class="eyebrow">BUSINESS / PORTFOLIO</p><h2>A complete<br /><em>digital home.</em></h2><p>For a business or independent professional ready for a credible, distinctive presence.</p></div>
-            <ul><li>Up to six considered pages</li><li>Content structure and copy guidance</li><li>Custom interactions and responsive build</li><li>Basic SEO, analytics-ready setup and handover</li></ul>
-            <div class="service-price"><span>Typical investment</span><strong>£150–£300</strong><small>Usually 4–6 weeks</small></div>
-          </article>
+            <article class="package-row is-featured">
+              <span class="package-number">02</span>
+              <div class="package-copy">
+                <p class="package-label">Business / portfolio</p>
+                <h3>A complete<br /><em>digital home.</em></h3>
+                <p>For a business or independent professional that needs a full website with enough space to explain the work properly.</p>
+              </div>
+              <div class="package-includes" aria-label="Business website includes">
+                <span>Up to six considered pages</span>
+                <span>Content structure + copy guidance</span>
+                <span>Custom interactions</span>
+                <span>SEO-ready handover</span>
+              </div>
+              <div class="package-price"><span>Typical investment</span><strong>£150–£300</strong><small>Usually 4–6 weeks</small></div>
+            </article>
 
-          <article class="service-card">
-            <span class="service-number">03</span>
-            <div><p class="eyebrow">CUSTOM WEBSITE</p><h2>Built around<br /><em>your ambition.</em></h2><p>For custom functionality, a content system or an experience that needs deeper planning.</p></div>
-            <ul><li>Discovery and technical planning</li><li>Bespoke interface system</li><li>Custom functionality or CMS</li><li>Testing, launch support and handover</li></ul>
-            <div class="service-price"><span>Projects from</span><strong>£500</strong><small>Timeline agreed after discovery</small></div>
-          </article>
-        </section>
-
-        <section class="commission-process" id="process">
-          <div class="section-topline"><p class="eyebrow"><span class="section-symbol">⌁</span> HOW IT WORKS</p><p class="section-note">Four steps. No mystery.</p></div>
-          <div class="commission-process-grid">
-            <article><span>01</span><h3>Brief</h3><p>Tell me what you need, what already exists and what the site should achieve.</p></article>
-            <article><span>02</span><h3>Scope</h3><p>I confirm the pages, features, timing, milestones and one clear price.</p></article>
-            <article><span>03</span><h3>Build</h3><p>Design and development happen as one connected process with review points.</p></article>
-            <article><span>04</span><h3>Launch</h3><p>Final checks, handover and launch support get everything over the line.</p></article>
+            <article class="package-row">
+              <span class="package-number">03</span>
+              <div class="package-copy">
+                <p class="package-label">Custom website</p>
+                <h3>Built around<br /><em>your ambition.</em></h3>
+                <p>For custom functionality, a content system or something that needs deeper technical planning before the build begins.</p>
+              </div>
+              <div class="package-includes" aria-label="Custom website includes">
+                <span>Discovery + technical planning</span>
+                <span>Bespoke interface system</span>
+                <span>Custom functionality or CMS</span>
+                <span>Launch support + handover</span>
+              </div>
+              <div class="package-price"><span>Projects from</span><strong>£500</strong><small>Timeline agreed after discovery</small></div>
+            </article>
           </div>
         </section>
 
-        <section class="faq-content" id="faq" aria-labelledby="faq-title">
-          <div class="section-topline"><p class="eyebrow" id="faq-title"><span class="section-symbol">?</span> COMMON QUESTIONS</p><p class="section-note">The useful answers.</p></div>
+        <section class="services-process" id="process" aria-labelledby="process-title">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">How it works</p>
+              <h2 id="process-title">Simple enough<br /><em>to stay focused.</em></h2>
+            </div>
+            <p>You are always speaking to the same person who is actually designing and building the site, so the process stays direct from start to finish.</p>
+          </div>
+
+          <div class="process-grid">
+            <article><span>01 / BRIEF</span><h3>Tell me the idea.</h3><p>Send over what you need, what already exists and what the website should achieve.</p></article>
+            <article><span>02 / SCOPE</span><h3>Make it clear.</h3><p>I confirm the pages, features, timing and one agreed price before anything starts.</p></article>
+            <article><span>03 / BUILD</span><h3>Shape + develop.</h3><p>Design and development happen together with useful review points instead of endless handoffs.</p></article>
+            <article><span>04 / LAUNCH</span><h3>Get it live.</h3><p>Final checks, handover and launch support get the finished site over the line cleanly.</p></article>
+          </div>
+        </section>
+
+        <section class="services-faq" id="faq" aria-labelledby="faq-title">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Common questions</p>
+              <h2 id="faq-title">The useful<br /><em>answers first.</em></h2>
+            </div>
+            <p>No huge FAQ wall — just the things people normally want to know before sending an enquiry.</p>
+          </div>
+
           <div class="faq-list">
             <details open><summary><span>01</span><strong>Do you handle both design and development?</strong><i>+</i></summary><div><p>Yes. Structure, visual direction, responsive layouts, interaction and the final build are handled as one connected process.</p></div></details>
             <details><summary><span>02</span><strong>What do you need from me?</strong><i>+</i></summary><div><p>Your goals, audience and any existing brand or content materials. I can help turn that into a clearer structure and refine the website copy.</p></div></details>
@@ -90,11 +148,13 @@
           </div>
         </section>
 
-        <section class="sales-note" id="start">
-          <p class="eyebrow">NOT READY FOR A PROJECT?</p>
-          <h2>Get three practical ideas for your current website.</h2>
-          <p>The free website review stays separate because it does one job well: a concise first look at clarity, confidence and usability.</p>
-          <div class="sales-note-actions"><a class="contact-button" href="/enquiry/">Start a project <span>↗</span></a><a href="/website-review/">Get a free website review</a></div>
+        <section class="services-cta" aria-labelledby="services-cta-title">
+          <div>
+            <p class="section-kicker">Have something in mind?</p>
+            <h2 id="services-cta-title">Tell me what<br /><em>you’re making.</em></h2>
+            <p>You do not need a polished brief. A rough idea, an existing site or a few notes is enough to start the conversation.</p>
+          </div>
+          <a class="services-cta-link" href="/enquiry/">Start a project <span>↗</span></a>
         </section>
       </main>
 
