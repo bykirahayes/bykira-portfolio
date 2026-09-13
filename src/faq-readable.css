@@ -50,10 +50,10 @@
 
 .faq-page .faq-content h2 {
   max-width: 760px !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   font: 400 clamp(38px,4vw,58px)/1.02 Georgia, 'Times New Roman', serif !important;
   letter-spacing: -.035em !important;
-  text-align: left !important;
+  text-align: center !important;
 }
 
 .faq-page .faq-content h2 br {
