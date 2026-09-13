@@ -8,3 +8,8 @@
 .services-page.chapter-page .services-hero {
   margin-top: 0;
 }
+
+/* Services is chapter 03 in the site sequence. */
+.services-page .services-hero::before {
+  content: "03" !important;
+}
