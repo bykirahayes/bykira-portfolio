@@ -10,7 +10,6 @@ export default defineConfig({
     name: 'clean-faq-url',
     transformIndexHtml(html) {
       return {
-        // Apply the current editorial theme before the browser's first paint.
         html: html.replace('<html ', '<html class="experience-v3" '),
         tags: [{
           tag: 'meta',
@@ -80,6 +79,9 @@ export default defineConfig({
   }],
   build: {
     sourcemap: false,
+    minify: true,
+    cssMinify: true,
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
