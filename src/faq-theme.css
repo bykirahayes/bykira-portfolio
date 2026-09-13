@@ -161,9 +161,52 @@ body.faq-page {
   color: #9f90db;
 }
 
+.faq-page .faq-content-intro {
+  position: relative;
+  display: grid;
+  grid-template-columns: 170px minmax(0,1fr);
+  gap: 34px;
+  align-items: end;
+  margin-bottom: 34px;
+  padding: 0 0 30px;
+  border-bottom: 1px solid rgba(255,255,255,.13);
+}
+
+.faq-page .faq-content-intro::after {
+  content: "?";
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  font: italic 88px/.8 Georgia, 'Times New Roman', serif;
+  color: rgba(167,150,234,.055);
+  pointer-events: none;
+}
+
+.faq-page .faq-content-intro .faq-section-kicker {
+  margin: 0 0 7px;
+  display: grid;
+  gap: 10px;
+  color: rgba(244,240,234,.62);
+  line-height: 1.35;
+}
+
+.faq-page .faq-content-intro .faq-section-kicker span {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 9px;
+  border: 1px solid rgba(167,150,234,.32);
+  border-radius: 999px;
+  color: #ad9de9;
+  font-size: 9px;
+  letter-spacing: .14em;
+}
+
 .faq-page .faq-content h2 {
-  font-size: clamp(46px, 5vw, 74px);
-  margin-bottom: 38px;
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  font-size: clamp(42px, 4.7vw, 70px);
+  margin: 0;
 }
 
 .faq-page .faq-list {
@@ -313,6 +356,23 @@ body.faq-page {
 
   .faq-page .faq-index nav {
     grid-template-columns: 1fr;
+  }
+
+  .faq-page .faq-content-intro {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-bottom: 24px;
+  }
+
+  .faq-page .faq-content-intro::after {
+    font-size: 66px;
+    bottom: 10px;
+  }
+
+  .faq-page .faq-content-intro .faq-section-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   .faq-page .faq-list summary {
