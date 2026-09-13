@@ -14,16 +14,26 @@ const initLoader = () => {
       <div class="bykira-loader-track"><i></i></div>
     </div>`;
   document.body.prepend(loader);
+
+  const startedAt = performance.now();
+  const minimumVisibleTime = 1450;
+  const exitDuration = 720;
+
   const leave = () => {
     if (reduceMotion) {
       loader.remove();
       return;
     }
+
+    const elapsed = performance.now() - startedAt;
+    const remaining = Math.max(0, minimumVisibleTime - elapsed);
+
     window.setTimeout(() => {
       loader.classList.add('is-leaving');
-      window.setTimeout(() => loader.remove(), 620);
-    }, 240);
+      window.setTimeout(() => loader.remove(), exitDuration);
+    }, remaining);
   };
+
   if (document.readyState === 'complete') leave();
   else window.addEventListener('load', leave, { once: true });
 };
