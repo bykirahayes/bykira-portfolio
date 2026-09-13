@@ -21,8 +21,8 @@
     <meta name="twitter:image" content="https://bykira.co.uk/og.png" />
     <link rel="canonical" href="https://bykira.co.uk/enquiry/" />
     <link rel="icon" href="/image/favicon.ico" />
-    <link rel="stylesheet" href="/src/styles.css?v=20260913-enquiry3" />
-    <link rel="stylesheet" href="/src/enquiry-fresh.css?v=20260913-fresh1" />
+    <link rel="stylesheet" href="/src/styles.css?v=20260913-enquiry4" />
+    <link rel="stylesheet" href="/src/enquiry-reset.css?v=20260913-reset1" />
     <script type="module" src="/src/header-effects.js"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
@@ -42,32 +42,36 @@
         </div>
       </header>
 
-      <main id="main-content" class="enquiry-fresh">
-        <section class="fresh-hero" aria-labelledby="enquiry-title">
-          <div class="fresh-status"><i aria-hidden="true"></i> Open for selected projects</div>
-          <h1 id="enquiry-title">Got an idea?<em>Tell me about it.</em></h1>
-          <p>You do not need a polished brief. Give me the useful bits — what you want to make, what it needs to do, and where you want it to go.</p>
-          <div class="fresh-pills" aria-label="Enquiry details">
-            <span>Reply within 2 working days</span>
-            <span>Manchester · worldwide</span>
+      <main id="main-content" class="enquiry-clean3">
+        <section class="eq3-hero" aria-labelledby="enquiry-title">
+          <p class="eq3-kicker">Project enquiry</p>
+          <h1 id="enquiry-title">Tell me the idea.<em>I’ll take it from there.</em></h1>
+          <p>You do not need a finished brief. A rough idea, a goal and a bit of context is enough to start a useful conversation.</p>
+          <div class="eq3-meta" aria-label="Enquiry details">
+            <span>Usually replies within 2 working days</span>
+            <span>Manchester · working worldwide</span>
             <span>No obligation</span>
           </div>
         </section>
 
-        <section class="fresh-card" aria-label="Project enquiry form">
-          <div class="fresh-card-head">
+        <section class="eq3-shell" aria-label="Project enquiry form">
+          <div class="eq3-shell-head">
             <div>
-              <span>Project enquiry</span>
-              <h2>Start with what you know.</h2>
+              <span>Start here</span>
+              <h2>Share what you know.</h2>
             </div>
-            <p>Anything uncertain can be worked out together later.</p>
+            <p>Four short sections. If something is uncertain, leave the detail for later and we can work through it together.</p>
           </div>
 
           <form id="project-enquiry">
-            <fieldset class="fresh-step enquiry-group">
-              <legend><span>01</span><strong>You</strong><small>Who should I reply to?</small></legend>
-              <div class="fresh-fields enquiry-fields">
-                <div class="fresh-row field-row">
+            <fieldset class="eq3-card enquiry-group">
+              <legend>
+                <span>01</span>
+                <strong>Your details</strong>
+                <small>Who should I reply to?</small>
+              </legend>
+              <div class="eq3-fields enquiry-fields">
+                <div class="eq3-row field-row">
                   <label><span>Your name *</span><input name="name" type="text" autocomplete="name" maxlength="100" required /></label>
                   <label><span>Email address *</span><input name="email" type="email" autocomplete="email" maxlength="254" required /></label>
                 </div>
@@ -75,10 +79,14 @@
               </div>
             </fieldset>
 
-            <fieldset class="fresh-step enquiry-group">
-              <legend><span>02</span><strong>The project</strong><small>What are we making?</small></legend>
-              <div class="fresh-fields enquiry-fields">
-                <div class="fresh-row field-row">
+            <fieldset class="eq3-card enquiry-group">
+              <legend>
+                <span>02</span>
+                <strong>Project basics</strong>
+                <small>The practical bits.</small>
+              </legend>
+              <div class="eq3-fields enquiry-fields">
+                <div class="eq3-row field-row">
                   <label>
                     <span>What do you need? *</span>
                     <select name="service" required>
@@ -101,16 +109,20 @@
                     </select>
                   </label>
                 </div>
-                <div class="fresh-row field-row">
+                <div class="eq3-row field-row">
                   <label><span>Ideal launch date</span><input name="launch" type="date" /></label>
                   <label><span>Current website</span><input name="website" type="url" inputmode="url" maxlength="500" placeholder="https://" /></label>
                 </div>
               </div>
             </fieldset>
 
-            <fieldset class="fresh-step enquiry-group enquiry-group-brief">
-              <legend><span>03</span><strong>The idea</strong><small>Say it in your own words.</small></legend>
-              <div class="fresh-fields enquiry-fields">
+            <fieldset class="eq3-card enquiry-group enquiry-group-brief">
+              <legend>
+                <span>03</span>
+                <strong>The idea</strong>
+                <small>Tell me what you want this to become.</small>
+              </legend>
+              <div class="eq3-fields enquiry-fields">
                 <label>
                   <span>Tell me about the project *</span>
                   <textarea name="details" rows="7" maxlength="4000" required placeholder="What should the site achieve? Who is it for? What do you want it to feel like?"></textarea>
@@ -119,15 +131,19 @@
               </div>
             </fieldset>
 
-            <fieldset class="fresh-step enquiry-group enquiry-group-send">
-              <legend><span>04</span><strong>Send it over</strong><small>That is enough to get started.</small></legend>
-              <div class="fresh-fields enquiry-fields">
+            <fieldset class="eq3-card enquiry-group enquiry-group-send">
+              <legend>
+                <span>04</span>
+                <strong>Send it over</strong>
+                <small>That is enough to get started.</small>
+              </legend>
+              <div class="eq3-fields enquiry-fields">
                 <label class="form-trap" aria-hidden="true">Leave this field empty<input name="companyWebsite" type="text" autocomplete="off" tabindex="-1" /></label>
                 <div class="turnstile-wrap">
                   <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkAsCh3bt33raW8" data-theme="dark" data-action="enquiry"></div>
                 </div>
-                <div class="fresh-send enquiry-submit">
-                  <p class="fresh-private"><strong>Private by design</strong>Your details are used only to respond to your enquiry.</p>
+                <div class="eq3-send enquiry-submit">
+                  <p class="eq3-private"><strong>Private by design</strong>Your details are used only to respond to your enquiry.</p>
                   <button type="submit">Send project brief <span>↗</span></button>
                 </div>
                 <p class="form-status" role="status" aria-live="polite"></p>
@@ -152,17 +168,15 @@
           </section>
         </section>
 
-        <section class="fresh-after" aria-label="What happens next">
+        <section class="eq3-next" aria-label="What happens next">
           <div>
-            <h3>What happens next?</h3>
-            <p>I read your brief, make sure the project feels like a good fit, then reply with the clearest next step.</p>
+            <h3>Then what?</h3>
+            <p>I read the brief, check the project is a good fit, then come back with the clearest next step.</p>
           </div>
-          <div>
-            <div class="fresh-next-list">
-              <span><b>01</b> I review your brief</span>
-              <span><b>02</b> We talk through the direction</span>
-              <span><b>03</b> You get a clear proposal</span>
-            </div>
+          <div class="eq3-next-list">
+            <div><span>01</span><strong>I review your brief</strong></div>
+            <div><span>02</span><strong>We talk through direction</strong></div>
+            <div><span>03</span><strong>You get a clear proposal</strong></div>
           </div>
         </section>
       </main>
