@@ -1,0 +1,233 @@
+/* Work page — distinctive editorial layer. */
+
+.work-page .work-manifesto {
+  position: relative;
+  width: min(100% - 48px, 1260px);
+  margin: 0 auto;
+  padding: 54px 0 68px;
+  border-bottom: 1px solid rgba(255,255,255,.11);
+  overflow: hidden;
+}
+
+.work-page .work-manifesto::before {
+  content: "NOT A GALLERY / A RECORD";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: center;
+  color: rgba(167,150,234,.18);
+  font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .22em;
+  white-space: nowrap;
+}
+
+.work-page .work-manifesto-grid {
+  display: grid;
+  grid-template-columns: minmax(0,.95fr) minmax(380px,1.05fr);
+  gap: clamp(52px,8vw,120px);
+  align-items: stretch;
+}
+
+.work-page .manifesto-statement {
+  position: relative;
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 26px;
+}
+
+.work-page .manifesto-statement::after {
+  content: "✦";
+  position: absolute;
+  right: 6%;
+  bottom: 6%;
+  color: rgba(167,150,234,.44);
+  font-size: 20px;
+}
+
+.work-page .manifesto-label {
+  margin: 0;
+  color: #9f90db;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.work-page .manifesto-statement h2 {
+  max-width: 680px;
+  margin: 24px 0 0;
+  color: #f4f0ea;
+  font: 400 clamp(52px,6vw,86px)/.91 Georgia, 'Times New Roman', serif;
+  letter-spacing: -.05em;
+}
+
+.work-page .manifesto-statement h2 em {
+  color: #a796ea;
+  font-weight: 400;
+}
+
+.work-page .manifesto-statement > p:last-child {
+  max-width: 550px;
+  margin: 30px 0 0;
+  color: rgba(244,240,234,.56);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.work-page .manifesto-rules {
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,.13);
+}
+
+.work-page .manifesto-rule {
+  position: relative;
+  display: grid;
+  grid-template-columns: 68px minmax(0,1fr) auto;
+  gap: 20px;
+  align-items: center;
+  min-height: 104px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  overflow: hidden;
+}
+
+.work-page .manifesto-rule::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: #a796ea;
+  transition: width .35s ease;
+}
+
+.work-page .manifesto-rule:hover::before {
+  width: 100%;
+}
+
+.work-page .manifesto-rule > span:first-child {
+  color: #a796ea;
+  font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .1em;
+}
+
+.work-page .manifesto-rule h3 {
+  margin: 0;
+  color: #f1edf4;
+  font: 400 clamp(26px,2.4vw,36px)/1 Georgia, 'Times New Roman', serif;
+  letter-spacing: -.03em;
+}
+
+.work-page .manifesto-rule p {
+  max-width: 330px;
+  margin: 8px 0 0;
+  color: rgba(244,240,234,.46);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.work-page .manifesto-rule > span:last-child {
+  color: rgba(244,240,234,.28);
+  font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.work-page .work-stage {
+  position: relative;
+}
+
+.work-page .work-stage::before {
+  content: "CASE STUDY SLOT / 001";
+  position: absolute;
+  right: 0;
+  top: 62px;
+  color: rgba(244,240,234,.22);
+  font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .18em;
+}
+
+.work-page .project-reserve {
+  background:
+    linear-gradient(90deg, rgba(167,150,234,.035), transparent 34%),
+    rgba(255,255,255,.008);
+}
+
+.work-page .project-reserve:hover .project-copy h3 {
+  color: #fff;
+}
+
+.work-page .project-copy h3 {
+  transition: color .2s ease;
+}
+
+.work-page .work-note {
+  position: relative;
+  padding-top: 22px;
+}
+
+.work-page .work-note::before {
+  content: "";
+  position: absolute;
+  left: 154px;
+  top: 0;
+  width: 54px;
+  height: 1px;
+  background: #a796ea;
+}
+
+@media (max-width: 900px) {
+  .work-page .work-manifesto-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .work-page .manifesto-statement {
+    min-height: 280px;
+  }
+
+  .work-page .work-stage::before {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .work-page .work-manifesto {
+    width: min(100% - 28px,1260px);
+    padding: 42px 0 54px;
+  }
+
+  .work-page .work-manifesto::before {
+    display: none;
+  }
+
+  .work-page .manifesto-statement {
+    min-height: 0;
+    padding-right: 0;
+  }
+
+  .work-page .manifesto-statement::after {
+    display: none;
+  }
+
+  .work-page .manifesto-statement h2 {
+    font-size: clamp(46px,14vw,68px);
+  }
+
+  .work-page .manifesto-rule {
+    grid-template-columns: 42px 1fr;
+    min-height: 92px;
+  }
+
+  .work-page .manifesto-rule > span:last-child {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .work-page .work-note::before {
+    left: 0;
+  }
+}
