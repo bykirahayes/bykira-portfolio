@@ -21,8 +21,8 @@
     <meta name="twitter:image" content="https://bykira.co.uk/og.png" />
     <link rel="canonical" href="https://bykira.co.uk/enquiry/" />
     <link rel="icon" href="/image/favicon.ico" />
-    <link rel="stylesheet" href="/src/styles.css?v=20260913-enquiry2" />
-    <link rel="stylesheet" href="/src/enquiry-redesign.css?v=20260913-redesign1" />
+    <link rel="stylesheet" href="/src/styles.css?v=20260913-enquiry3" />
+    <link rel="stylesheet" href="/src/enquiry-fresh.css?v=20260913-fresh1" />
     <script type="module" src="/src/header-effects.js"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
@@ -37,173 +37,132 @@
           </div>
           <nav aria-label="Primary navigation"></nav>
           <div class="header-actions">
-            <span class="active-section" data-static>ENQUIRY</span>
             <a class="header-cta" href="/enquiry/" aria-current="page">Start a project <span>↗</span></a>
           </div>
         </div>
       </header>
 
-      <main id="main-content" class="enquiry-main enquiry-v2">
-        <section class="enquiry-hero" aria-labelledby="enquiry-title">
-          <div class="enquiry-hero-copy">
-            <p class="enquiry-kicker">New project / enquiry</p>
-            <h1 id="enquiry-title">Bring me the idea.<em>I’ll help shape it.</em></h1>
-            <p>A few useful details are enough to start. Tell me what you are building, where you are stuck and what a good result should feel like.</p>
+      <main id="main-content" class="enquiry-fresh">
+        <section class="fresh-hero" aria-labelledby="enquiry-title">
+          <div class="fresh-status"><i aria-hidden="true"></i> Open for selected projects</div>
+          <h1 id="enquiry-title">Got an idea?<em>Tell me about it.</em></h1>
+          <p>You do not need a polished brief. Give me the useful bits — what you want to make, what it needs to do, and where you want it to go.</p>
+          <div class="fresh-pills" aria-label="Enquiry details">
+            <span>Reply within 2 working days</span>
+            <span>Manchester · worldwide</span>
+            <span>No obligation</span>
           </div>
-          <aside class="enquiry-hero-side" aria-label="Enquiry information">
-            <div class="enquiry-availability"><i aria-hidden="true"></i><span>Welcoming new projects</span></div>
-            <div>
-              <div class="enquiry-hero-facts">
-                <div><span>01</span><p>Replies typically within two working days.</p></div>
-                <div><span>02</span><p>Manchester based, working with people anywhere.</p></div>
-                <div><span>03</span><p>No pressure or sales script — just a useful first conversation.</p></div>
-              </div>
-              <p class="enquiry-hero-note">Design / development / launch support</p>
-            </div>
-          </aside>
         </section>
 
-        <section class="enquiry-workspace" aria-label="Project enquiry form">
-          <aside class="enquiry-brief-rail">
-            <div class="enquiry-brief-rail-inner">
-              <p class="rail-code">Project intake / 2026</p>
-              <h2>A clear place to begin.</h2>
-              <p>The form is split into four short parts. Give me what you know now — anything uncertain can be worked through later.</p>
-              <ol class="enquiry-route">
-                <li><span>01</span> Your details</li>
-                <li><span>02</span> Project scope</li>
-                <li><span>03</span> The brief</li>
-                <li><span>04</span> Review &amp; send</li>
-              </ol>
-              <p class="enquiry-rail-foot">Private by design · Secure form · No obligation</p>
+        <section class="fresh-card" aria-label="Project enquiry form">
+          <div class="fresh-card-head">
+            <div>
+              <span>Project enquiry</span>
+              <h2>Start with what you know.</h2>
             </div>
-          </aside>
+            <p>Anything uncertain can be worked out together later.</p>
+          </div>
 
-          <section class="enquiry-panel">
-            <div class="enquiry-panel-head">
-              <div class="enquiry-panel-head-copy">
-                <span class="enquiry-panel-kicker">Start with the useful bits</span>
-                <strong class="enquiry-panel-title">Tell me enough to understand the job.</strong>
+          <form id="project-enquiry">
+            <fieldset class="fresh-step enquiry-group">
+              <legend><span>01</span><strong>You</strong><small>Who should I reply to?</small></legend>
+              <div class="fresh-fields enquiry-fields">
+                <div class="fresh-row field-row">
+                  <label><span>Your name *</span><input name="name" type="text" autocomplete="name" maxlength="100" required /></label>
+                  <label><span>Email address *</span><input name="email" type="email" autocomplete="email" maxlength="254" required /></label>
+                </div>
+                <label><span>Business or project name</span><input name="business" type="text" autocomplete="organization" maxlength="150" /></label>
               </div>
-              <span class="enquiry-panel-count" aria-label="Four short sections">04 sections</span>
-            </div>
+            </fieldset>
 
-            <form id="project-enquiry">
-              <fieldset class="enquiry-group">
-                <legend>
-                  <span>01</span>
-                  <strong>Your details</strong>
-                  <small>Who should I reply to?</small>
-                </legend>
-                <div class="enquiry-fields">
-                  <div class="field-row">
-                    <label><span>Your name *</span><input name="name" type="text" autocomplete="name" maxlength="100" required /></label>
-                    <label><span>Email address *</span><input name="email" type="email" autocomplete="email" maxlength="254" required /></label>
-                  </div>
-                  <label><span>Business or project name</span><input name="business" type="text" autocomplete="organization" maxlength="150" /></label>
-                </div>
-              </fieldset>
-
-              <fieldset class="enquiry-group">
-                <legend>
-                  <span>02</span>
-                  <strong>Project scope</strong>
-                  <small>The practical outline.</small>
-                </legend>
-                <div class="enquiry-fields">
-                  <div class="field-row">
-                    <label>
-                      <span>What do you need? *</span>
-                      <select name="service" required>
-                        <option value="">Choose one</option>
-                        <option>Landing page</option>
-                        <option>Business or portfolio website</option>
-                        <option>Custom website</option>
-                        <option>Redesign of an existing site</option>
-                        <option>Not sure yet</option>
-                      </select>
-                    </label>
-                    <label>
-                      <span>Approximate budget *</span>
-                      <select name="budget" required>
-                        <option value="">Choose a range</option>
-                        <option>£50–£150</option>
-                        <option>£150–£300</option>
-                        <option>£500+</option>
-                        <option>I need guidance</option>
-                      </select>
-                    </label>
-                  </div>
-                  <div class="field-row">
-                    <label><span>Ideal launch date</span><input name="launch" type="date" /></label>
-                    <label><span>Current website</span><input name="website" type="url" inputmode="url" maxlength="500" placeholder="https://" /></label>
-                  </div>
-                </div>
-              </fieldset>
-
-              <fieldset class="enquiry-group enquiry-group-brief">
-                <legend>
-                  <span>03</span>
-                  <strong>The brief</strong>
-                  <small>What would a good result look like?</small>
-                </legend>
-                <div class="enquiry-fields">
+            <fieldset class="fresh-step enquiry-group">
+              <legend><span>02</span><strong>The project</strong><small>What are we making?</small></legend>
+              <div class="fresh-fields enquiry-fields">
+                <div class="fresh-row field-row">
                   <label>
-                    <span>Tell me about the project *</span>
-                    <textarea name="details" rows="7" maxlength="4000" required placeholder="What should the website achieve, who is it for, and what is not working today?"></textarea>
+                    <span>What do you need? *</span>
+                    <select name="service" required>
+                      <option value="">Choose one</option>
+                      <option>Landing page</option>
+                      <option>Business or portfolio website</option>
+                      <option>Custom website</option>
+                      <option>Redesign of an existing site</option>
+                      <option>Not sure yet</option>
+                    </select>
                   </label>
-                  <label><span>How did you find me?</span><input name="source" type="text" maxlength="300" placeholder="Search, recommendation, social media…" /></label>
+                  <label>
+                    <span>Approximate budget *</span>
+                    <select name="budget" required>
+                      <option value="">Choose a range</option>
+                      <option>£50–£150</option>
+                      <option>£150–£300</option>
+                      <option>£500+</option>
+                      <option>I need guidance</option>
+                    </select>
+                  </label>
                 </div>
-              </fieldset>
-
-              <fieldset class="enquiry-group enquiry-group-send">
-                <legend>
-                  <span>04</span>
-                  <strong>Review &amp; send</strong>
-                  <small>Your details stay private.</small>
-                </legend>
-                <div class="enquiry-fields">
-                  <label class="form-trap" aria-hidden="true">Leave this field empty<input name="companyWebsite" type="text" autocomplete="off" tabindex="-1" /></label>
-                  <div class="turnstile-wrap">
-                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkAsCh3bt33raW8" data-theme="dark" data-action="enquiry"></div>
-                  </div>
-                  <div class="enquiry-submit">
-                    <p><span>Private by design</span>Your information is encrypted in transit and used only to respond to your enquiry.</p>
-                    <button type="submit">Send project brief <span>↗</span></button>
-                  </div>
-                  <p class="form-status" role="status" aria-live="polite"></p>
+                <div class="fresh-row field-row">
+                  <label><span>Ideal launch date</span><input name="launch" type="date" /></label>
+                  <label><span>Current website</span><input name="website" type="url" inputmode="url" maxlength="500" placeholder="https://" /></label>
                 </div>
-              </fieldset>
-            </form>
-
-            <section class="enquiry-confirmation" id="enquiry-confirmation" tabindex="-1" aria-labelledby="confirmation-title" hidden>
-              <span class="confirmation-mark" aria-hidden="true">✓</span>
-              <p class="confirmation-kicker">Project brief / received</p>
-              <h2 id="confirmation-title">Thank you<span data-enquiry-name></span>.<br />Your idea is safely with me.</h2>
-              <p>A confirmation is on its way to your inbox. I’ll review the details and reply personally within two working days.</p>
-              <ol class="confirmation-steps">
-                <li><span>01</span>Check your inbox for confirmation</li>
-                <li><span>02</span>I’ll review the goals and practical details</li>
-                <li><span>03</span>You’ll receive a personal reply from Kira</li>
-              </ol>
-              <div class="confirmation-actions">
-                <a href="/">Return to the homepage <span>↗</span></a>
-                <button type="button" data-new-enquiry>Send another enquiry</button>
               </div>
-            </section>
+            </fieldset>
+
+            <fieldset class="fresh-step enquiry-group enquiry-group-brief">
+              <legend><span>03</span><strong>The idea</strong><small>Say it in your own words.</small></legend>
+              <div class="fresh-fields enquiry-fields">
+                <label>
+                  <span>Tell me about the project *</span>
+                  <textarea name="details" rows="7" maxlength="4000" required placeholder="What should the site achieve? Who is it for? What do you want it to feel like?"></textarea>
+                </label>
+                <label><span>How did you find me?</span><input name="source" type="text" maxlength="300" placeholder="Search, recommendation, social media…" /></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="fresh-step enquiry-group enquiry-group-send">
+              <legend><span>04</span><strong>Send it over</strong><small>That is enough to get started.</small></legend>
+              <div class="fresh-fields enquiry-fields">
+                <label class="form-trap" aria-hidden="true">Leave this field empty<input name="companyWebsite" type="text" autocomplete="off" tabindex="-1" /></label>
+                <div class="turnstile-wrap">
+                  <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkAsCh3bt33raW8" data-theme="dark" data-action="enquiry"></div>
+                </div>
+                <div class="fresh-send enquiry-submit">
+                  <p class="fresh-private"><strong>Private by design</strong>Your details are used only to respond to your enquiry.</p>
+                  <button type="submit">Send project brief <span>↗</span></button>
+                </div>
+                <p class="form-status" role="status" aria-live="polite"></p>
+              </div>
+            </fieldset>
+          </form>
+
+          <section class="enquiry-confirmation" id="enquiry-confirmation" tabindex="-1" aria-labelledby="confirmation-title" hidden>
+            <span class="confirmation-mark" aria-hidden="true">✓</span>
+            <p class="confirmation-kicker">Project brief received</p>
+            <h2 id="confirmation-title">Thank you<span data-enquiry-name></span>.<br />I’ve got it.</h2>
+            <p>I’ll review everything personally and reply within two working days.</p>
+            <ol class="confirmation-steps">
+              <li><span>01</span>Check your inbox for confirmation</li>
+              <li><span>02</span>I’ll review the brief and practical details</li>
+              <li><span>03</span>You’ll receive a personal reply from Kira</li>
+            </ol>
+            <div class="confirmation-actions">
+              <a href="/">Return home <span>↗</span></a>
+              <button type="button" data-new-enquiry>Send another enquiry</button>
+            </div>
           </section>
         </section>
 
-        <section class="enquiry-proof" aria-labelledby="working-together-title">
-          <div class="enquiry-proof-top"><span>Working together / 05</span><span>Clear from the start</span></div>
-          <div class="enquiry-proof-intro">
-            <h2 id="working-together-title">Simple process.<br />No mystery.</h2>
-            <p>You’ll know what is happening, what comes next and what needs your approval before anything moves forward.</p>
+        <section class="fresh-after" aria-label="What happens next">
+          <div>
+            <h3>What happens next?</h3>
+            <p>I read your brief, make sure the project feels like a good fit, then reply with the clearest next step.</p>
           </div>
-          <div class="enquiry-proof-grid">
-            <article><span>01</span><h3>Clear communication</h3><p>Plain-English updates, agreed milestones and no unexplained jargon.</p></article>
-            <article><span>02</span><h3>Simple approvals</h3><p>You review the important decisions before the work moves forward.</p></article>
-            <article><span>03</span><h3>Fair payment stages</h3><p>Costs and payment points are agreed in writing before work begins.</p></article>
+          <div>
+            <div class="fresh-next-list">
+              <span><b>01</b> I review your brief</span>
+              <span><b>02</b> We talk through the direction</span>
+              <span><b>03</b> You get a clear proposal</span>
+            </div>
           </div>
         </section>
       </main>
