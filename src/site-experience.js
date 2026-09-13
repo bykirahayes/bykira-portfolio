@@ -1,8 +1,12 @@
 import './site-experience.css';
+import './mobile-brand-hardfix.css';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const initLoader = () => {
+  // Keep the loading experience on mobile only. Desktop was flashing too quickly
+  // because the module is loaded after the document has already rendered.
+  if (!window.matchMedia('(max-width: 760px)').matches) return;
   if (document.querySelector('.bykira-loader')) return;
   const loaderStartedAt = performance.now();
   const loader = document.createElement('div');
