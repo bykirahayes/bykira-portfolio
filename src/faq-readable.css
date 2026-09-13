@@ -177,18 +177,38 @@
     line-height: 1.7;
   }
 
+  .faq-page .faq-cta {
+    overflow: hidden;
+  }
+
+  .faq-page .faq-cta > div {
+    width: 100%;
+    min-width: 0;
+  }
+
   .faq-page .faq-cta h2 {
+    width: 100% !important;
     max-width: 100% !important;
-    font-size: clamp(42px, 12vw, 54px) !important;
-    line-height: .96 !important;
-    letter-spacing: -.04em !important;
-    overflow-wrap: anywhere;
+    font-size: clamp(42px, 10.5vw, 56px) !important;
+    line-height: .93 !important;
+    letter-spacing: -.045em !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+  .faq-page .faq-cta h2 br {
+    display: block !important;
   }
 
   .faq-page .faq-cta h2 em {
-    display: block;
+    display: block !important;
+    width: 100%;
     max-width: 100%;
     margin-top: .08em;
-    padding-right: .08em;
+    padding: 0 .04em 0 0;
+    font-size: .92em;
+    line-height: .98;
+    white-space: normal !important;
   }
 }
