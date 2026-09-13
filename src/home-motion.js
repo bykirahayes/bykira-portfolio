@@ -6,12 +6,12 @@ const revealTargets = [
   document.querySelector('.home-services-intro'),
   ...document.querySelectorAll('.home-service-grid > article'),
   document.querySelector('.home-services-footer'),
-  document.querySelector('.first-project-card'),
+  document.querySelector('.compact-process'),
   document.querySelector('.home-review-showcase')
 ].filter(Boolean);
 
 revealTargets.forEach((element, index) => {
-  element.dataset.reveal = element.matches('.atelier-hero, .first-project-card, .home-review-showcase') ? 'scale' : 'rise';
+  element.dataset.reveal = element.matches('.atelier-hero, .compact-process, .home-review-showcase') ? 'scale' : 'rise';
   element.style.setProperty('--reveal-delay', `${Math.min(index * 45, 220)}ms`);
 });
 
