@@ -150,12 +150,114 @@
 }
 
 @media (max-width: 680px) {
+  .faq-page .faq-main {
+    overflow-x: clip !important;
+  }
+
+  .faq-page .faq-hero,
+  .faq-page .faq-shell,
+  .faq-page .faq-cta {
+    width: calc(100% - 28px) !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+  }
+
+  .faq-page .faq-hero {
+    grid-template-columns: minmax(0,1fr) !important;
+    gap: 24px !important;
+    padding-top: 76px !important;
+    padding-bottom: 42px !important;
+  }
+
+  .faq-page .faq-hero-copy,
+  .faq-page .faq-side-note,
+  .faq-page .faq-content,
+  .faq-page .faq-cta > div {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .faq-page .faq-hero h1 {
+    max-width: 100% !important;
+    font-size: clamp(54px, 15vw, 72px) !important;
+    line-height: .94 !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .faq-page .faq-side-note {
+    padding: 20px !important;
+  }
+
+  .faq-page .faq-side-note strong {
+    max-width: 100% !important;
+    font-size: 24px !important;
+  }
+
+  .faq-page .faq-shell {
+    display: block !important;
+    padding: 54px 0 72px !important;
+  }
+
+  .faq-page .faq-index {
+    position: static !important;
+    width: 100% !important;
+    margin: 0 0 40px !important;
+  }
+
+  .faq-page .faq-index nav {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .faq-page .faq-index a {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 14px !important;
+    padding: 12px 0 !important;
+    border-top: 1px solid rgba(255,255,255,.09) !important;
+    color: rgba(244,240,234,.68) !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+  }
+
+  .faq-page .faq-index a:last-child {
+    border-bottom: 1px solid rgba(255,255,255,.09) !important;
+  }
+
+  .faq-page .faq-index a span {
+    color: #a796ea !important;
+  }
+
+  .faq-page .faq-content-intro {
+    margin-bottom: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .faq-page .faq-content-intro .faq-section-kicker {
+    flex-wrap: wrap !important;
+    line-height: 1.35 !important;
+  }
+
   .faq-page .faq-content h2 {
-    font-size: clamp(34px,10vw,46px) !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: clamp(38px, 11.5vw, 52px) !important;
+    line-height: .98 !important;
+    text-align: left !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .faq-page .faq-content h2 br {
+    display: block !important;
   }
 
   .faq-page .faq-content h2 em {
-    margin-left: 0;
+    display: block !important;
+    margin: .06em 0 0 !important;
   }
 
   .faq-page .answer-list summary {
@@ -178,20 +280,17 @@
   }
 
   .faq-page .faq-cta {
-    overflow: hidden;
-  }
-
-  .faq-page .faq-cta > div {
-    width: 100%;
-    min-width: 0;
+    display: block !important;
+    overflow: hidden !important;
+    padding: 62px 0 78px !important;
   }
 
   .faq-page .faq-cta h2 {
     width: 100% !important;
     max-width: 100% !important;
-    font-size: clamp(42px, 10.5vw, 56px) !important;
-    line-height: .93 !important;
-    letter-spacing: -.045em !important;
+    font-size: clamp(38px, 10vw, 50px) !important;
+    line-height: .96 !important;
+    letter-spacing: -.04em !important;
     white-space: normal !important;
     word-break: normal !important;
     overflow-wrap: normal !important;
@@ -203,12 +302,22 @@
 
   .faq-page .faq-cta h2 em {
     display: block !important;
-    width: 100%;
-    max-width: 100%;
-    margin-top: .08em;
-    padding: 0 .04em 0 0;
-    font-size: .92em;
-    line-height: .98;
-    white-space: normal !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: .08em 0 0 !important;
+    padding: 0 !important;
+    font-size: .9em !important;
+    line-height: 1 !important;
+  }
+
+  .faq-page .faq-cta p {
+    max-width: 100% !important;
+    margin-top: 20px !important;
+  }
+
+  .faq-page .faq-cta-link {
+    width: fit-content !important;
+    max-width: 100% !important;
+    margin-top: 24px !important;
   }
 }
