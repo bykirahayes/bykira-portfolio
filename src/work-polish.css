@@ -1,0 +1,240 @@
+/* Work page polish — adds depth, motion and a more distinctive portfolio feel. */
+
+.work-page .work-main {
+  position: relative;
+}
+
+.work-page .work-main::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 100% 64px, 102px 100%;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.12) 68%, transparent);
+  opacity: .42;
+  z-index: 0;
+}
+
+.work-page .work-hero,
+.work-page .work-stage,
+.work-page .work-cta {
+  position: relative;
+  z-index: 1;
+}
+
+.work-page .work-hero::after {
+  content: "SELECTED WORK / GROWING ARCHIVE";
+  position: absolute;
+  left: 0;
+  bottom: 18px;
+  color: rgba(244,240,234,.22);
+  font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+.work-page .work-hero-copy h1 em {
+  position: relative;
+  display: inline-block;
+}
+
+.work-page .work-hero-copy h1 em::after {
+  content: "";
+  position: absolute;
+  left: 1%;
+  right: 1%;
+  bottom: .02em;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(167,150,234,.6), transparent);
+}
+
+.work-page .work-status {
+  backdrop-filter: blur(10px);
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+.work-page .work-status:hover {
+  transform: translateY(-6px);
+  border-color: rgba(167,150,234,.42);
+  box-shadow: 0 28px 70px rgba(0,0,0,.28);
+}
+
+.work-page .work-status::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(167,150,234,.14), transparent 34%, transparent 70%, rgba(167,150,234,.08));
+  opacity: .5;
+}
+
+.work-page .work-stage-head {
+  position: relative;
+}
+
+.work-page .work-stage-head::after {
+  content: "01";
+  position: absolute;
+  right: 0;
+  top: -28px;
+  font: italic clamp(90px,12vw,170px)/.8 Georgia, 'Times New Roman', serif;
+  color: rgba(167,150,234,.025);
+  pointer-events: none;
+}
+
+.work-page .project-reserve {
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.012), transparent 45%),
+    radial-gradient(circle at 72% 42%, rgba(167,150,234,.055), transparent 24rem);
+  transition: border-color .35s ease, background .35s ease;
+}
+
+.work-page .project-reserve:hover {
+  border-color: rgba(167,150,234,.32);
+}
+
+.work-page .project-reserve::before {
+  animation: reserve-orbit 18s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.work-page .project-reserve::after {
+  transition: color .35s ease, transform .35s ease;
+}
+
+.work-page .project-reserve:hover::after {
+  color: rgba(167,150,234,.085);
+  transform: translateX(-8px);
+}
+
+.work-page .project-copy::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 78px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a796ea;
+  box-shadow: 0 0 0 7px rgba(167,150,234,.07), 0 0 24px rgba(167,150,234,.22);
+}
+
+.work-page .project-side::before {
+  content: "LIVE SLOT";
+  position: absolute;
+  right: 0;
+  top: 34px;
+  color: rgba(167,150,234,.54);
+  font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .16em;
+}
+
+.work-page .project-side a,
+.work-page .work-cta-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.work-page .project-side a::before,
+.work-page .work-cta-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-105%);
+  background: linear-gradient(90deg, transparent, rgba(167,150,234,.12), transparent);
+  transition: transform .45s ease;
+}
+
+.work-page .project-side a:hover::before,
+.work-page .work-cta-link:hover::before {
+  transform: translateX(105%);
+}
+
+.work-page .work-note {
+  position: relative;
+  padding-top: 22px;
+}
+
+.work-page .work-note::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(167,150,234,.42), rgba(255,255,255,.08), transparent 82%);
+}
+
+.work-page .work-cta {
+  isolation: isolate;
+}
+
+.work-page .work-cta::before {
+  content: "✦";
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(167,150,234,.055);
+  font-size: clamp(120px,16vw,230px);
+  line-height: 1;
+  z-index: -1;
+}
+
+.work-page .work-cta-link {
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.work-page .work-cta-link:hover {
+  transform: translateY(-3px);
+  border-color: rgba(167,150,234,.56);
+  background: rgba(167,150,234,.055);
+}
+
+@keyframes reserve-orbit {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-page .project-reserve::before { animation: none; }
+  .work-page .work-status,
+  .work-page .project-reserve::after,
+  .work-page .project-side a::before,
+  .work-page .work-cta-link::before,
+  .work-page .work-cta-link { transition: none; }
+}
+
+@media (max-width: 900px) {
+  .work-page .work-hero::after {
+    bottom: 12px;
+  }
+
+  .work-page .project-side::before {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .work-page .work-main::before {
+    background-size: 100% 56px, 72px 100%;
+    opacity: .28;
+  }
+
+  .work-page .work-hero::after {
+    display: none;
+  }
+
+  .work-page .project-copy::before {
+    left: -10px;
+    top: 54px;
+  }
+
+  .work-page .work-stage-head::after {
+    top: -8px;
+    font-size: 92px;
+  }
+}
