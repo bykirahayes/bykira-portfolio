@@ -22,6 +22,7 @@
     <link rel="canonical" href="https://bykira.co.uk/enquiry/" />
     <link rel="icon" href="/image/favicon.ico" />
     <link rel="stylesheet" href="/src/styles.css?v=20260913-enquiry6" />
+    <link rel="stylesheet" href="/src/desktop-header.css?v=20260913-modern2" />
     <link rel="stylesheet" href="/src/enquiry-site.css?v=20260913-site1" />
     <link rel="stylesheet" href="/src/enquiry-form-align.css?v=20260913-align4" />
     <link rel="stylesheet" href="/src/enquiry-homepage-language.css?v=20260913-home1" />
@@ -32,16 +33,15 @@
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <div id="content">
-      <header>
+      <header data-nav-version="modern">
         <div class="header-content">
           <div class="header-brand">
-            <a class="logo" href="/" aria-label="By Kira home"><img src="/image/kira-logo.png" alt="Kira" width="44" height="44" /></a>
+            <a class="logo wordmark" href="/" aria-label="By Kira home"><img src="/image/bykira-wordmark.png" alt="By Kira" width="1664" height="936" /></a>
             <span class="brand-role">WEB DEVELOPER</span>
           </div>
-          <nav aria-label="Primary navigation"></nav>
-          <div class="header-actions">
-            <a class="header-cta" href="/enquiry/" aria-current="page">Start a project <span>↗</span></a>
-          </div>
+          <nav aria-label="Primary navigation"><a href="/">Home <span>00</span></a><a href="/work/">Work <span>01</span></a><a href="/services/">Services <span>02</span></a><a href="/about/">About <span>03</span></a><a class="active" href="/enquiry/" aria-current="page">Enquire <span>04</span></a></nav>
+          <div class="header-actions"><a class="header-cta" href="/enquiry/">Start a project <span>↗</span></a></div>
+          <span class="nav-toggle" data-modern-header-lock hidden aria-hidden="true" style="display:none!important"></span>
         </div>
       </header>
 
