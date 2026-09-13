@@ -26,6 +26,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/image/apple-touch-icon.png" />
     <link rel="manifest" href="/image/site.webmanifest" />
     <link rel="stylesheet" href="src/styles.css?v=20260913-home3" />
+    <link rel="stylesheet" href="src/desktop-header.css?v=20260913-modern2" />
     <link rel="stylesheet" href="src/hero-fix.css?v=20260913-home3" />
     <link rel="stylesheet" href="src/home-review.css?v=20260913-review2" />
     <link rel="stylesheet" href="src/home-process-compact.css?v=20260913-compact1" />
@@ -48,17 +49,15 @@
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <div id="content">
-      <header>
+      <header data-nav-version="modern">
         <div class="header-content">
           <div class="header-brand">
-            <a class="logo" href="/" aria-label="By Kira home"><img src="/image/kira-logo.png" alt="By Kira" width="44" height="44" /></a>
+            <a class="logo wordmark" href="/" aria-label="By Kira home"><img src="/image/bykira-wordmark.png" alt="By Kira" width="1664" height="936" /></a>
             <span class="brand-role">WEB DEVELOPER</span>
           </div>
-          <nav aria-label="Primary navigation"></nav>
-          <div class="header-actions">
-            <div class="header-status"><span class="status-dot"></span><span class="status-copy">AVAILABLE</span></div>
-            <a class="header-cta" href="/enquiry/">Start a project <span>↗</span></a>
-          </div>
+          <nav aria-label="Primary navigation"><a class="active" href="/" aria-current="page">Home <span>00</span></a><a href="/work/">Work <span>01</span></a><a href="/services/">Services <span>02</span></a><a href="/about/">About <span>03</span></a><a href="/enquiry/">Enquire <span>04</span></a></nav>
+          <div class="header-actions"><a class="header-cta" href="/enquiry/">Start a project <span>↗</span></a></div>
+          <span class="nav-toggle" data-modern-header-lock hidden aria-hidden="true" style="display:none!important"></span>
         </div>
         <div class="scroll-progress" aria-hidden="true"><span></span></div>
       </header>
