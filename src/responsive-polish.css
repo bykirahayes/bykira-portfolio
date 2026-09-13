@@ -456,6 +456,23 @@ textarea:focus-visible {
     min-height: 42px;
   }
 
+  /* Remove the extra mobile gap between Website terms and the footer status rail. */
+  #site-footer .footer-directory,
+  #site-footer .footer-columns,
+  #site-footer .footer-columns > div:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #site-footer .footer-columns > div:last-child > :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  #site-footer .footer-bottom {
+    margin-top: 0 !important;
+    padding-top: 14px !important;
+  }
+
   .review-float,
   .editorial-collage,
   .page-atmosphere {
