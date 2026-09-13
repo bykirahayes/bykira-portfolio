@@ -1,38 +1,66 @@
-/* Keep each enquiry fieldset heading inside the same visual card as its fields. */
+/* Enquiry form heading alignment: avoid browser legend rendering quirks entirely. */
 .enquiry-calm .calm-step{
   position:relative;
   display:block;
   padding:clamp(28px,3vw,42px);
 }
 
-.enquiry-calm .calm-step legend{
-  float:left;
+.enquiry-calm .calm-step > legend.visually-hidden{
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  padding:0 !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  clip:rect(0 0 0 0) !important;
+  clip-path:inset(50%) !important;
+  white-space:nowrap !important;
+  border:0 !important;
+}
+
+.enquiry-calm .calm-step-head{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
   width:100%;
-  box-sizing:border-box;
-  margin:0 0 26px;
-  padding:0;
+  margin:0 0 24px;
 }
 
-.enquiry-calm .calm-step legend + .calm-fields{
-  clear:both;
+.enquiry-calm .calm-step-head > span{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  border:1px solid var(--e-line-strong);
+  border-radius:50%;
+  color:var(--e-violet);
+  font:800 9px/1 var(--studio-mono,monospace);
 }
 
-.enquiry-calm .calm-step legend>span{
-  margin-top:1px;
-}
-
-.enquiry-calm .calm-step legend div{
+.enquiry-calm .calm-step-head > div{
+  display:grid;
+  gap:6px;
   min-width:0;
 }
 
-.enquiry-calm .calm-step legend strong{
+.enquiry-calm .calm-step-head strong{
   display:block;
   margin:0;
+  color:var(--e-ink);
+  font:400 24px/1.05 var(--studio-serif,Georgia,serif);
 }
 
-.enquiry-calm .calm-step legend small{
+.enquiry-calm .calm-step-head small{
   display:block;
-  margin-top:5px;
+  margin:0;
+  color:rgba(255,255,255,.38);
+  font-size:12px;
+  line-height:1.45;
+}
+
+.enquiry-calm .calm-fields{
+  clear:both;
 }
 
 @media(max-width:680px){
@@ -40,7 +68,11 @@
     padding:24px 20px;
   }
 
-  .enquiry-calm .calm-step legend{
+  .enquiry-calm .calm-step-head{
     margin-bottom:20px;
+  }
+
+  .enquiry-calm .calm-step-head strong{
+    font-size:22px;
   }
 }
