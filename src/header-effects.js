@@ -6,7 +6,7 @@ const path = window.location.pathname;
 const navItems = [
   ['/', '00', 'Home', path === '/' || path === '/index.html'],
   ['/work/', '01', 'Work', path.startsWith('/work')],
-  ['/services/', '02', 'Services', path.startsWith('/services') || path.startsWith('/commission')],
+  ['/services/', '02', 'Services', path.startsWith('/services')],
   ['/about/', '03', 'About', path.startsWith('/about')],
   ['/faq', '04', 'FAQ', path.startsWith('/faq')],
 ];
@@ -46,7 +46,6 @@ const applyModernHeader = () => {
   }
   headerActions.innerHTML = '<a class="header-cta" href="/enquiry/">Start a project <span>↗</span></a>';
 
-  // This hidden sentinel prevents the legacy header builder in main.js from ever running.
   let lock = headerContent.querySelector('[data-modern-header-lock]');
   if (!lock) {
     lock = document.createElement('span');
@@ -107,9 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>`;
   });
 
-  document.querySelectorAll('a[href="/commission/"]').forEach((link) => {
-    link.href = '/services/#packages';
-  });
   if (!path.startsWith('/guides')) {
     document.querySelectorAll('a[href="/guides/"]').forEach((link) => {
       link.href = '/services/';
